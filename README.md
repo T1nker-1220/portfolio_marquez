@@ -1,35 +1,23 @@
-# Modern Portfolio Website
+# Nathaniel's Portfolio
 
-A modern, responsive portfolio website built with Next.js 14, TypeScript, and TailwindCSS.
+A modern portfolio website built with Next.js, TypeScript, and TailwindCSS.
 
 ## Tech Stack
 
-- **Framework:** Next.js 14 (App Router)
-- **Language:** TypeScript
-- **Styling:** TailwindCSS
-- **UI Components:** Shadcn/UI
-- **Animations:** Framer Motion, GSAP
-- **State Management:** Zustand
-- **Form Handling:** React Hook Form, Zod
-- **Icons:** Lucide Icons
-- **Deployment:** Vercel
-
-## Features
-
-- Modern Design with Dark Mode
-- Responsive Layout
-- Glass Morphism Effects
-- Smooth Animations
-- Type-Safe
-- SEO Optimized
-- Performance Optimized
+- Next.js 14+
+- TypeScript
+- TailwindCSS
+- Framer Motion
+- Shadcn/UI
+- EmailJS
+- pnpm (Package Manager)
 
 ## Getting Started
 
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/T1nker-1220/portfolio_marquez.git
    ```
 
 2. Install dependencies:
@@ -38,50 +26,34 @@ A modern, responsive portfolio website built with Next.js 14, TypeScript, and Ta
    pnpm install
    ```
 
-3. Run the development server:
+3. Create a .env file with the following variables:
+
+   ```env
+   NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+   NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+   NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+   ```
+
+4. Run the development server:
 
    ```bash
    pnpm dev
    ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+## Features
 
-## Project Structure
-
-```
-src/
-├── app/                # Next.js App Router pages
-├── components/         # React components
-│   ├── sections/      # Page sections
-│   └── ui/            # UI components
-├── hooks/             # Custom React hooks
-├── lib/               # Utility functions
-├── styles/            # Global styles
-└── types/             # TypeScript types
-```
-
-## Development
-
-- **Components:** Follow atomic design principles
-- **Styling:** Use TailwindCSS utility classes
-- **State:** Implement Zustand for global state
-- **Animation:** Use Framer Motion for transitions
-
-## Performance
-
-- Optimized fonts
-- Responsive images
-- Code splitting
-- Route prefetching
+- Modern UI with glass morphism design
+- Responsive layout for all devices
+- Contact form with EmailJS integration
+- Project showcase with filtering
+- Interactive timeline
+- Social media integration
+- Performance optimized
+- SEO friendly
 
 ## Deployment
 
-The project is configured for deployment on Vercel:
-
-1. Push to GitHub
-2. Import to Vercel
-3. Configure environment variables
-4. Deploy
+This project is configured for deployment on Vercel. Simply connect your GitHub repository to Vercel and it will automatically deploy your changes.
 
 ## License
 

@@ -71,10 +71,11 @@ export function FeaturedProjects() {
               <div className="flex flex-wrap gap-2">
                 {project.techStack.map((tech) => (
                   <span
-                    key={tech}
+                    key={tech.name}
                     className="text-xs px-2 py-1 rounded bg-accent/50"
+                    style={{ color: tech.color }}
                   >
-                    {tech}
+                    {tech.name}
                   </span>
                 ))}
               </div>

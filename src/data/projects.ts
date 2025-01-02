@@ -147,10 +147,9 @@ export const projects: Project[] = [
     liveUrl: "https://www.youtube.com/@t1nkergaming731",
     githubUrl: null,
     techStack: [
-      { name: "Adobe Premiere Pro", icon: "premiere", color: "#EA77FF" },
-      { name: "Adobe After Effects", icon: "aftereffects", color: "#9999FF" },
-      { name: "Adobe Photoshop", icon: "photoshop", color: "#31A8FF" },
+      { name: "Canva", icon: "canva", color: "#00C4CC" },
       { name: "OBS Studio", icon: "obs", color: "#302E31" },
+      { name: "CapCut", icon: "capcut", color: "#FF3B5C" },
     ],
     features: [
       "Professional video editing",
