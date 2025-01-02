@@ -7,9 +7,24 @@ import { ThemeProvider } from "next-themes";
 import { type PropsWithChildren } from "react";
 
 export const metadata: Metadata = {
-  title: "Portfolio | John Nathaniel Marquez",
+  title: {
+    default: "Nathaniel | Full Stack Developer",
+    template: "%s | Nathaniel",
+  },
   description:
-    "Full-stack developer specializing in modern web technologies. Explore my journey, projects, and expertise in web development.",
+    "A passionate full-stack developer with expertise in modern web technologies.",
+  icons: {
+    icon: [
+      {
+        url: "/images/logo.png",
+        href: "/images/logo.png",
+      },
+    ],
+    apple: {
+      url: "/images/logo.png",
+      href: "/images/logo.png",
+    },
+  },
   keywords: [
     "John Nathaniel Marquez",
     "Nathaniel",
