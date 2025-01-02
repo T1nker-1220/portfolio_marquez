@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -32,9 +33,18 @@ export function Navbar() {
         {/* Logo/Home link */}
         <Link
           href="/"
-          className="text-lg font-heading font-bold hover:text-primary transition-colors"
+          className="flex items-center hover:opacity-80 transition-opacity"
         >
-          Nathaniel
+          <div className="relative w-12 h-12">
+            <Image
+              src="/images/logo.png"
+              alt="Nathaniel Logo"
+              fill
+              className="object-contain"
+              priority
+              sizes="48px"
+            />
+          </div>
         </Link>
 
         {/* Desktop Menu */}
@@ -111,7 +121,7 @@ export function Navbar() {
       </motion.nav>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
