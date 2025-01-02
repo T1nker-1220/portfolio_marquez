@@ -10,14 +10,35 @@ export type Skill = {
   category: "frontend" | "backend" | "tools" | "other";
 };
 
-export type Project = {
+export interface Project {
+  id: string;
   title: string;
   description: string;
-  image?: string;
-  liveUrl?: string;
-  githubUrl?: string;
-  techStack: string[];
-};
+  image: string;
+  liveUrl: string;
+  githubUrl: string | null;
+  techStack: TechStack[];
+  features: string[];
+  category: ProjectCategory;
+  status: ProjectStatus;
+  completedAt: string;
+}
+
+export type ProjectCategory =
+  | "Web Development"
+  | "API Integration"
+  | "UI/UX Design"
+  | "Full Stack"
+  | "Coming Soon"
+  | "Content Creation";
+
+export type ProjectStatus = "Completed" | "In Progress" | "Coming Soon";
+
+export interface TechStack {
+  name: string;
+  icon: string;
+  color: string;
+}
 
 export type SocialLink = {
   platform: string;
