@@ -57,7 +57,9 @@ export default function ContactPage() {
           transition={{ delay: 0.2 }}
           className="space-y-6"
         >
-          <h2 className="text-2xl font-semibold mb-6">Contact Information</h2>
+          <h1 className="text-3xl font-bold mb-4 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
+            Contact Information
+          </h1>
           <div className="space-y-4">
             {contactInfo.map((info) => (
               <motion.a
@@ -83,7 +85,9 @@ export default function ContactPage() {
 
           {/* Social Links */}
           <div className="mt-8">
-            <h2 className="text-2xl font-semibold mb-6">Connect with Me</h2>
+            <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
+              Connect with Me
+            </h2>
             <div className="grid grid-cols-3 sm:grid-cols-5 gap-4">
               {personalInfo.socialLinks.map((social) => (
                 <motion.a
@@ -114,7 +118,9 @@ export default function ContactPage() {
           transition={{ delay: 0.2 }}
           className="glass p-6 md:p-8 rounded-lg"
         >
-          <h2 className="text-2xl font-semibold mb-6">Send a Message</h2>
+          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
+            Send a Message
+          </h2>
           <ContactForm />
         </motion.div>
       </div>

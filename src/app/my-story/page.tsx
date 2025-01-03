@@ -1,4 +1,4 @@
-import { SkillsShowcase } from "@/components/sections/skills-showcase";
+import { SkillsSection } from "@/components/sections/skills";
 import { Timeline } from "@/components/sections/timeline";
 import { timeline } from "@/data/personal-info";
 import { Metadata } from "next";
@@ -20,16 +20,13 @@ export default function MyStoryPage() {
   return (
     <main className="container max-w-7xl mx-auto px-6 py-12">
       <div className="space-y-20">
-        <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold">My Journey</h1>
-          <p className="text-muted-foreground max-w-[600px] mx-auto">
-            The story of my development journey, from learning the basics to
-            building modern web applications
-          </p>
-        </div>
-
-        <Timeline items={timelineItems} />
-        <SkillsShowcase />
+        <Timeline
+          items={timelineItems.map((item) => ({
+            ...item,
+            date: item.year, // Add the required date property
+          }))}
+        />
+        <SkillsSection />
       </div>
     </main>
   );

@@ -1,95 +1,70 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 interface TimelineItem {
-  year: string;
   title: string;
+  date: string;
   description: string;
-  image?: string;
 }
 
 interface TimelineProps {
   items: TimelineItem[];
 }
 
-export const Timeline = ({ items }: TimelineProps) => {
+export function Timeline({ items }: TimelineProps) {
   return (
-    <div className="relative container mx-auto px-4">
-      {/* Timeline line - hidden on mobile, shown on md+ */}
-      <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-border" />
+    <section className="py-20">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center mb-12"
+      >
+        <h2 className="text-3xl font-heading font-bold sm:text-4xl mb-4 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
+          My Journey
+        </h2>
+        <p className="text-muted-foreground max-w-[600px] mx-auto">
+          A timeline of my professional experience and education
+        </p>
+      </motion.div>
 
-      {/* Mobile timeline line */}
-      <div className="md:hidden absolute left-4 top-0 h-full w-0.5 bg-border" />
+      <div className="relative container mx-auto px-4">
+        <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-border" />
 
-      {items.map((item, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: index * 0.2 }}
-          className={cn(
-            "relative flex items-start mb-16",
-            // Mobile: always left-aligned, Desktop: alternating
-            "flex-col md:flex-row",
-            index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-          )}
-        >
-          {/* Timeline dot - repositioned for mobile */}
+        {items.map((item, index) => (
           <div
-            className={cn(
-              "absolute w-4 h-4 rounded-full bg-primary",
-              // Mobile: left aligned, Desktop: centered
-              "left-2 md:left-1/2 md:-translate-x-1/2",
-              "top-1 md:top-1/2 md:-translate-y-1/2"
-            )}
-          />
-
-          {/* Content */}
-          <div
-            className={cn(
-              // Mobile: full width with left padding, Desktop: half width
-              "w-full pl-8 md:w-1/2 md:px-8",
-              // Text alignment based on screen size and position
-              "text-left",
-              index % 2 === 0 ? "md:text-right" : "md:text-left"
-            )}
+            key={index}
+            className={`mb-8 flex justify-between items-center w-full ${
+              index % 2 === 0 ? "flex-row-reverse" : ""
+            }`}
           >
+            <div className="order-1 w-5/12" />
+            <div className="z-20 flex items-center order-1 w-8 h-8 rounded-full">
+              <div className="relative flex items-center justify-center w-3 h-3">
+                <div className="absolute w-3 h-3 bg-primary rounded-full" />
+                <div className="absolute w-3 h-3 bg-primary rounded-full animate-ping" />
+              </div>
+            </div>
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.3 }}
-              className="glass p-6 rounded-lg"
+              className={`order-1 glass w-5/12 px-6 py-4 rounded-lg ${
+                index % 2 === 0 ? "text-right" : "text-left"
+              }`}
             >
-              <h3 className="text-xl md:text-2xl font-bold mb-2 text-primary">
-                {item.year}
-              </h3>
-              <h4 className="text-lg md:text-xl font-semibold mb-3">
+              <h3 className="mb-2 font-bold text-lg bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
                 {item.title}
-              </h4>
-              <p className="text-sm md:text-base text-muted-foreground">
-                {item.description}
-              </p>
-              {item.image && (
-                <div className="mt-4 relative h-40 md:h-48 w-full overflow-hidden rounded-lg">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    priority={index < 2} // Prioritize loading first two images
-                  />
-                </div>
-              )}
+              </h3>
+              <time className="mb-3 text-sm text-muted-foreground block">
+                {item.date}
+              </time>
+              <p className="text-muted-foreground">{item.description}</p>
             </motion.div>
           </div>
-        </motion.div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </section>
   );
-};
+}

@@ -37,7 +37,7 @@ export function SkillsSection() {
         viewport={{ once: true }}
         className="text-center mb-12"
       >
-        <h2 className="text-3xl font-heading font-bold sm:text-4xl mb-4">
+        <h2 className="text-3xl font-heading font-bold sm:text-4xl mb-4 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
           Skills & Technologies
         </h2>
         <p className="text-muted-foreground max-w-[600px] mx-auto">

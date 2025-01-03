@@ -60,9 +60,12 @@ export function ContactForm() {
       className="space-y-6 w-full max-w-md mx-auto"
     >
       <div className="space-y-2">
+        <label className="text-sm font-medium bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
+          Your Name
+        </label>
         <Input
           {...register("name")}
-          placeholder="Your Name"
+          placeholder="Enter your name"
           className="bg-background/80 backdrop-blur-[8px]"
         />
         {errors.name && (
@@ -71,10 +74,13 @@ export function ContactForm() {
       </div>
 
       <div className="space-y-2">
+        <label className="text-sm font-medium bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
+          Your Email
+        </label>
         <Input
           {...register("email")}
           type="email"
-          placeholder="Your Email"
+          placeholder="Enter your email"
           className="bg-background/80 backdrop-blur-[8px]"
         />
         {errors.email && (
@@ -83,9 +89,12 @@ export function ContactForm() {
       </div>
 
       <div className="space-y-2">
+        <label className="text-sm font-medium bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
+          Your Message
+        </label>
         <textarea
           {...register("message")}
-          placeholder="Your Message"
+          placeholder="Type your message here..."
           className="w-full min-h-[150px] rounded-md border border-border/50 bg-background/80 backdrop-blur-[8px] px-3 py-2 text-sm"
         />
         {errors.message && (
@@ -93,7 +102,11 @@ export function ContactForm() {
         )}
       </div>
 
-      <Button type="submit" className="w-full" disabled={isLoading}>
+      <Button
+        type="submit"
+        className="w-full bg-gradient-to-r from-green-400 via-emerald-500 to-teal-600 hover:from-green-500 hover:via-emerald-600 hover:to-teal-700"
+        disabled={isLoading}
+      >
         {isLoading ? "Sending..." : "Send Message"}
       </Button>
     </form>
