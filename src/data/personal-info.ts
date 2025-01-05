@@ -69,13 +69,9 @@ export const skills: Skill[] = [
   { name: "Webpack", category: "tools" },
   { name: "Prisma", category: "backend" },
   { name: "Supabase", category: "backend" },
-  { name: "Material UI", category: "frontend" },
   { name: "Framer Motion", category: "frontend" },
   { name: "Redux", category: "frontend" },
   { name: "Zustand", category: "frontend" },
-  { name: "GraphQL", category: "backend" },
-  { name: "Apollo", category: "backend" },
-  { name: "Cypress", category: "tools" },
   { name: "Vercel", category: "tools" },
 ];
 

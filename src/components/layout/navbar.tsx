@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 
 const navItems = {
   left: [
@@ -18,9 +19,15 @@ const navItems = {
   ],
 };
 
+const dropdownItems = [
+  { name: "My Services", path: "/services" },
+  { name: "Resume", path: "/resume" },
+];
+
 export function Navbar() {
   const pathname = usePathname();
   const [hoveredPath, setHoveredPath] = useState(pathname);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
@@ -68,10 +75,11 @@ export function Navbar() {
           ))}
         </ul>
 
-        {/* Logo/Home link */}
-        <Link
-          href="/"
-          className="flex items-center hover:opacity-80 transition-opacity mx-2 sm:mx-4"
+        {/* Logo/Home link with dropdown */}
+        <div
+          className="relative group flex flex-col items-center"
+          onMouseEnter={() => setIsDropdownOpen(true)}
+          onMouseLeave={() => setIsDropdownOpen(false)}
         >
           <div className="relative w-10 h-10 sm:w-12 sm:h-12">
             <Image
@@ -83,7 +91,40 @@ export function Navbar() {
               sizes="(max-width: 640px) 40px, 48px"
             />
           </div>
-        </Link>
+          <ChevronDown 
+            className={cn(
+              "w-4 h-4 mt-1 transition-all duration-300",
+              isDropdownOpen ? "rotate-180" : "",
+              "text-foreground/60 group-hover:text-foreground"
+            )} 
+          />
+          
+          {isDropdownOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="absolute top-full pt-2 w-[140px]"
+            >
+              <div className="py-2 bg-background/80 backdrop-blur-sm rounded-lg shadow-lg border border-border">
+                {dropdownItems.map((item) => (
+                  <Link
+                    key={item.path}
+                    href={item.path}
+                    className={cn(
+                      "block px-4 py-2 text-sm text-center hover:bg-accent/50 transition-colors",
+                      pathname === item.path
+                        ? "text-foreground"
+                        : "text-foreground/60"
+                    )}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </div>
 
         {/* Right Menu */}
         <ul className="flex items-center gap-0.5 sm:gap-1 flex-1 justify-end">
