@@ -75,8 +75,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
               {project.techStack.map((tech) => (
                 <span
                   key={tech.name}
-                  className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
-                  style={{ backgroundColor: `${tech.color}20` }}
+                  className="px-2 py-1 text-xs rounded-full transition-colors duration-200"
+                  style={{
+                    backgroundColor: `${tech.color}20`,
+                    color: tech.color,
+                    border: `1px solid ${tech.color}40`
+                  }}
                 >
                   {tech.name}
                 </span>
