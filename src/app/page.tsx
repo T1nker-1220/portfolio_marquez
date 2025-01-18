@@ -15,7 +15,7 @@ interface Particle {
 }
 
 export default function HomePage() {
-  const words = "Full Stack Developer".split(" ");
+  const words = "Front-End Developer".split(" ");
   const controls = useAnimation();
   const particlesRef = useRef<Particle[]>([]);
 

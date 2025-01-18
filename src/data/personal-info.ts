@@ -5,7 +5,7 @@ export const personalInfo: PersonalInfo = {
   fullName: "John Nathaniel Marquez",
   location: "Amadeo, Cavite",
   email: "marquezjohnnathanieljade@gmail.com",
-  bio: "A passionate full-stack developer with expertise in modern web technologies.",
+  bio: "A passionate front-end developer with expertise in modern web technologies.",
   education: {
     school: "ICCT College Cainta Campus",
     course: "Bachelor of Science in Information Technology",

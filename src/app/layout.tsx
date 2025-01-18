@@ -60,13 +60,13 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${fontSans.variable} ${fontMono.variable} ${fontHeading.variable} font-sans antialiased`}
+        className={`${fontSans.variable} ${fontMono.variable} ${fontHeading.variable} min-h-screen bg-background font-sans antialiased`}
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange={false}
         >
           <MainLayout>{children}</MainLayout>
           <Analytics />

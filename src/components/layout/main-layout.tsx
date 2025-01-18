@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { PropsWithChildren } from "react";
+import { ThemeToggle } from "../theme-toggle";
 import { Footer } from "./footer";
 import { Navbar } from "./navbar";
 
@@ -25,6 +26,7 @@ export function MainLayout({ children }: PropsWithChildren) {
         {children}
       </motion.main>
       <Footer />
+      <ThemeToggle />
     </div>
   );
 }
