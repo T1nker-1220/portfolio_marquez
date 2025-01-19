@@ -38,7 +38,7 @@ export const projects: Project[] = [
       "SEO optimized with Next.js",
     ],
     category: "Web Development",
-    status: "In Progress",
+    status: "Completed",
     completedAt: "2024-01",
   },
   {
@@ -141,7 +141,7 @@ export const projects: Project[] = [
       "Strict TypeScript checks",
     ],
     category: "Full Stack",
-    status: "In Progress",
+    status: "Completed",
     completedAt: "2024-03",
   },
   {
@@ -203,7 +203,7 @@ export const projects: Project[] = [
       "Email integration",
       "Analytics integration",
     ],
-    category: "Full Stack",
+    category: "Web Development",
     status: "Completed",
     completedAt: "2024-03",
   },

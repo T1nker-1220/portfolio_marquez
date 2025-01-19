@@ -1,4 +1,4 @@
-import { PersonalInfo, Project, Skill, TimelineItem } from "@/types";
+import { PersonalInfo, Skill, TimelineItem } from "@/types";
 
 export const personalInfo: PersonalInfo = {
   name: "Nathaniel",
@@ -6,11 +6,14 @@ export const personalInfo: PersonalInfo = {
   location: "Amadeo, Cavite",
   email: "marquezjohnnathanieljade@gmail.com",
   bio: "A passionate front-end developer with expertise in modern web technologies.",
-  education: {
-    school: "ICCT College Cainta Campus",
-    course: "Bachelor of Science in Information Technology",
-    year: "2024",
-  },
+  education: [
+    {
+      school: "ICCT College Cainta Campus",
+      course: "Bachelor of Science in Information Technology",
+      startYear: "2022",
+      endYear: "2024",
+    },
+  ],
   socialLinks: [
     {
       platform: "GitHub",
@@ -59,93 +62,17 @@ export const timeline: TimelineItem[] = [
 ];
 
 export const skills: Skill[] = [
-  { name: "React", category: "frontend" },
-  { name: "TypeScript", category: "frontend" },
-  { name: "TailwindCSS", category: "frontend" },
-  { name: "HTML", category: "frontend" },
-  { name: "CSS", category: "frontend" },
-  { name: "JavaScript", category: "frontend" },
-  { name: "Next.js", category: "frontend" },
-  { name: "Webpack", category: "tools" },
-  { name: "Prisma", category: "backend" },
-  { name: "Supabase", category: "backend" },
-  { name: "Framer Motion", category: "frontend" },
-  { name: "Redux", category: "frontend" },
-  { name: "Zustand", category: "frontend" },
-  { name: "Vercel", category: "tools" },
-];
-
-export const projects: Project[] = [
-  {
-    id: "excel-glass",
-    title: "Excel Glass Inc. Website",
-    description: "Corporate website for Excel Glass Inc.",
-    image: "/images/projects/excel-glass.png",
-    liveUrl: "https://excel-glass.vercel.app",
-    githubUrl: null,
-    features: ["Modern UI", "Responsive Design", "Glass Morphism"],
-    category: "Web Development",
-    status: "Completed",
-    completedAt: "2024-01",
-    techStack: [
-      { name: "Next.js", icon: "nextjs", color: "#000000" },
-      { name: "TailwindCSS", icon: "tailwind", color: "#38B2AC" },
-      { name: "TypeScript", icon: "typescript", color: "#3178C6" },
-    ],
-  },
-  {
-    id: "weather-api",
-    title: "Weather API",
-    description: "Weather application with real-time data",
-    image: "/images/projects/weather-api.png",
-    liveUrl: "https://weather-api-s.vercel.app",
-    githubUrl: null,
-    features: [
-      "Real-time Weather Data",
-      "Location Search",
-      "Responsive Design",
-    ],
-    category: "API Integration",
-    status: "Completed",
-    completedAt: "2024-01",
-    techStack: [
-      { name: "React", icon: "react", color: "#61DAFB" },
-      { name: "API Integration", icon: "api", color: "#38A169" },
-      { name: "CSS", icon: "css", color: "#1572B6" },
-    ],
-  },
-  {
-    id: "edible-artistry",
-    title: "Edible Artistry",
-    description: "Sample food menu website showcasing culinary creations",
-    image: "/images/projects/edible-artistry.png",
-    liveUrl: "https://edible-artistry.vercel.app",
-    githubUrl: null,
-    features: ["Menu Management", "Beautiful UI", "Responsive Design"],
-    category: "Web Development",
-    status: "Completed",
-    completedAt: "2024-02",
-    techStack: [
-      { name: "Next.js", icon: "nextjs", color: "#000000" },
-      { name: "TailwindCSS", icon: "tailwind", color: "#38B2AC" },
-      { name: "React", icon: "react", color: "#61DAFB" },
-    ],
-  },
-  {
-    id: "wedding-memories",
-    title: "Wedding Memories",
-    description: "Wedding photography and memories website",
-    image: "/images/projects/wedding-memories.png",
-    liveUrl: "https://nicholsweddingmemories.vercel.app",
-    githubUrl: null,
-    features: ["Photo Gallery", "Event Timeline", "RSVP System"],
-    category: "Web Development",
-    status: "Completed",
-    completedAt: "2024-02",
-    techStack: [
-      { name: "React", icon: "react", color: "#61DAFB" },
-      { name: "CSS", icon: "css", color: "#1572B6" },
-      { name: "JavaScript", icon: "javascript", color: "#F7DF1E" },
-    ],
-  },
+  { name: "HTML", category: "frontend", since: "2023" },
+  { name: "CSS", category: "frontend", since: "2023" },
+  { name: "JavaScript", category: "frontend", since: "2023" },
+  { name: "TypeScript", category: "frontend", since: "2024" },
+  { name: "React", category: "frontend", since: "2024" },
+  { name: "Next.js", category: "frontend", since: "2024" },
+  { name: "TailwindCSS", category: "frontend", since: "2024" },
+  { name: "Framer Motion", category: "frontend", since: "2024" },
+  { name: "Zustand", category: "frontend", since: "2024" },
+  { name: "Prisma", category: "backend", since: "2024" },
+  { name: "Supabase", category: "backend", since: "2024" },
+  { name: "Webpack", category: "tools", since: "2024" },
+  { name: "Vercel", category: "tools", since: "2024" },
 ];

@@ -8,6 +8,7 @@ export type Skill = {
   name: string;
   icon?: string;
   category: "frontend" | "backend" | "tools" | "other";
+  since: string;
 };
 
 export interface Project {
@@ -55,7 +56,8 @@ export type PersonalInfo = {
   education: {
     school: string;
     course: string;
-    year: string;
-  };
+    startYear: string;
+    endYear: string;
+  }[]
   socialLinks: SocialLink[];
 };
