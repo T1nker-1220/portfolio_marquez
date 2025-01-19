@@ -12,6 +12,7 @@ interface Particle {
   size: number;
   duration: number;
   delay: number;
+  rotation?: number;
 }
 
 export default function HomePage() {
@@ -21,14 +22,15 @@ export default function HomePage() {
 
   // Initialize particle positions and properties on mount
   useEffect(() => {
-    particlesRef.current = Array(20)
+    particlesRef.current = Array(25)
       .fill(null)
       .map(() => ({
         x: Math.random() * 100,
         y: Math.random() * 100,
-        size: Math.random() * 20 + 10,
+        size: Math.random() * 25 + 10,
         duration: Math.random() * 3 + 2,
         delay: Math.random() * 2,
+        rotation: Math.random() * 360,
       }));
     controls.start("visible");
   }, [controls]);
@@ -36,10 +38,11 @@ export default function HomePage() {
   const particleVariants = {
     hidden: { opacity: 0 },
     visible: (i: number) => ({
-      opacity: [0.3, 0.6, 0.3],
+      opacity: [0.3, 0.7, 0.3],
       y: [0, -30, 0],
       x: [0, (particlesRef.current[i]?.x ?? 0) * 0.2 - 10, 0],
       scale: [1, 1.2, 1],
+      rotate: [0, 180, 360],
       transition: {
         duration: particlesRef.current[i]?.duration ?? 3,
         repeat: Infinity,
@@ -52,13 +55,13 @@ export default function HomePage() {
   return (
     <div className="relative w-full max-w-7xl mx-auto px-4 overflow-hidden">
       <motion.section className="relative flex flex-col items-center justify-center min-h-[85vh] text-center">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-green-400/5 via-emerald-500/5 to-background rounded-3xl">
-          {/* Animated Particles */}
+        {/* Optimized Background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 via-emerald-500/5 to-background dark:from-green-400/20 dark:via-emerald-500/15 dark:to-background rounded-3xl before:absolute before:inset-0 before:bg-gradient-to-tr before:from-green-400/5 before:via-emerald-500/5 before:to-transparent dark:before:from-green-400/10 dark:before:via-emerald-500/10 dark:before:to-transparent before:animate-gradient-shift">
+          {/* Optimized Particles */}
           {particlesRef.current?.map((particle, i) => (
             <motion.div
               key={i}
-              className="absolute rounded-full bg-gradient-to-r from-green-400/10 to-emerald-500/10"
+              className="absolute backdrop-blur-[1px]"
               style={{
                 width: particle.size,
                 height: particle.size,
@@ -69,23 +72,29 @@ export default function HomePage() {
               animate="visible"
               custom={i}
               variants={particleVariants}
-            />
+            >
+              {/* Star shape */}
+              <div className="w-full h-full relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-green-300/40 to-emerald-400/40 dark:from-green-400/60 dark:to-emerald-500/60 rotate-45 transform origin-center star-shape" />
+                <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-green-300/30 to-emerald-400/30 dark:from-green-400/50 dark:to-emerald-500/50 -rotate-45 transform origin-center star-shape" />
+              </div>
+            </motion.div>
           ))}
         </div>
 
-        {/* Animated circles */}
+        {/* Optimized animated stars */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-3xl">
           {[...Array(3)].map((_, i) => (
             <motion.div
               key={i}
               className={cn(
-                "absolute rounded-full mix-blend-multiply filter blur-xl opacity-30",
-                "bg-gradient-to-r from-green-400 to-emerald-500"
+                "absolute mix-blend-screen filter blur-md",
+                "star-glow"
               )}
               animate={{
                 scale: [1, 1.5, 1],
-                x: [0, 50, 0],
-                y: [0, -25, 0],
+                opacity: [0.3, 0.7, 0.3],
+                rotate: [0, 180, 360],
               }}
               transition={{
                 duration: 8,
@@ -94,12 +103,15 @@ export default function HomePage() {
                 ease: "linear",
               }}
               style={{
-                top: `${35 + i * 15}%`,
-                left: `${25 + i * 15}%`,
-                width: "15rem",
-                height: "15rem",
+                top: `${35 + i * 20}%`,
+                left: `${25 + i * 20}%`,
+                width: `${12 + i * 2}rem`,
+                height: `${12 + i * 2}rem`,
               }}
-            />
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-green-300/30 to-emerald-400/30 dark:from-green-400/50 dark:to-emerald-500/50 star-shape animate-pulse" />
+              <div className="absolute inset-0 bg-gradient-to-r from-green-300/20 to-emerald-400/20 dark:from-green-400/40 dark:to-emerald-500/40 star-shape rotate-45" />
+            </motion.div>
           ))}
         </div>
 

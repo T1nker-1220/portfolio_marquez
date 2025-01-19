@@ -54,8 +54,8 @@ const resumeData: ResumeData = {
   education: [
     {
       degree: "Bachelor of Science in Information Technology",
-      school: personalInfo.education.school,
-      period: `2020 - ${personalInfo.education.year}`,
+      school: personalInfo.education[0].school,
+      period: `${personalInfo.education[0].startYear} - ${personalInfo.education[0].endYear}`,
       description: "Specializing in web development, software engineering, and modern development practices",
     },
   ],
@@ -198,13 +198,13 @@ export default function ResumePage() {
               Resume
             </h1>
             <div className="w-20 h-1 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-600 mx-auto rounded-full" />
-            
+
             {/* Contact Info */}
             <div className="text-muted-foreground">
               <p>{resumeData.contact.email}</p>
               <p>{resumeData.contact.location}</p>
             </div>
-            
+
             {/* Download Resume Button */}
             <motion.a
               whileHover={{ scale: 1.05 }}
@@ -257,7 +257,7 @@ export default function ResumePage() {
               <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
                 Skills
               </h2>
-              <SkillsSection 
+              <SkillsSection
                 technical={resumeData.skills.technical}
                 tools={resumeData.skills.tools}
                 soft={resumeData.skills.soft}
@@ -268,4 +268,4 @@ export default function ResumePage() {
       </div>
     </main>
   );
-} 
+}
