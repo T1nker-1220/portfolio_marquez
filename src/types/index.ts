@@ -4,12 +4,13 @@ export type TimelineItem = {
   image?: string;
 };
 
-export type Skill = {
+export interface Skill {
   name: string;
   icon?: string;
-  category: "frontend" | "backend" | "tools" | "other";
-  since: string;
-};
+  category: "frontend" | "backend" | "tools" | "other" | "soft skills";
+  level?: "Beginner" | "Intermediate" | "Advanced" | "Expert";
+  since?: string;
+}
 
 export interface Project {
   id: string;
