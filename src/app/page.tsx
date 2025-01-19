@@ -4,50 +4,51 @@ import { personalInfo } from "@/data/personal-info";
 import { cn } from "@/lib/utils";
 import { motion, useAnimation } from "framer-motion";
 import { Download } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 
-interface Particle {
+type Particle = {
   x: number;
   y: number;
   size: number;
   duration: number;
   delay: number;
-  rotation?: number;
-}
+};
 
 export default function HomePage() {
   const words = "Front-End Developer".split(" ");
   const controls = useAnimation();
-  const particlesRef = useRef<Particle[]>([]);
+  const [particles, setParticles] = useState<Particle[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  // Initialize particle positions and properties on mount
+  // Generate particles after component mounts to avoid hydration mismatch
   useEffect(() => {
-    particlesRef.current = Array(25)
+    const newParticles = Array(15)
       .fill(null)
       .map(() => ({
         x: Math.random() * 100,
         y: Math.random() * 100,
-        size: Math.random() * 25 + 10,
-        duration: Math.random() * 3 + 2,
+        size: Math.random() * 15 + 5,
+        duration: Math.random() * 2 + 2,
         delay: Math.random() * 2,
-        rotation: Math.random() * 360,
       }));
+
+    setParticles(newParticles);
+    setIsLoaded(true);
     controls.start("visible");
   }, [controls]);
 
   const particleVariants = {
     hidden: { opacity: 0 },
     visible: (i: number) => ({
-      opacity: [0.3, 0.7, 0.3],
-      y: [0, -30, 0],
-      x: [0, (particlesRef.current[i]?.x ?? 0) * 0.2 - 10, 0],
-      scale: [1, 1.2, 1],
-      rotate: [0, 180, 360],
+      opacity: [0.2, 0.5, 0.2],
+      y: [0, -20, 0],
+      x: [0, (particles[i]?.x ?? 0) * 0.1 - 5, 0],
+      scale: [1, 1.1, 1],
       transition: {
-        duration: particlesRef.current[i]?.duration ?? 3,
+        duration: particles[i]?.duration ?? 3,
         repeat: Infinity,
         ease: "easeInOut",
-        delay: particlesRef.current[i]?.delay ?? 0,
+        delay: particles[i]?.delay ?? 0,
       },
     }),
   };
@@ -56,9 +57,9 @@ export default function HomePage() {
     <div className="relative w-full max-w-7xl mx-auto px-4 overflow-hidden">
       <motion.section className="relative flex flex-col items-center justify-center min-h-[85vh] text-center">
         {/* Optimized Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 via-emerald-500/5 to-background dark:from-green-400/20 dark:via-emerald-500/15 dark:to-background rounded-3xl before:absolute before:inset-0 before:bg-gradient-to-tr before:from-green-400/5 before:via-emerald-500/5 before:to-transparent dark:before:from-green-400/10 dark:before:via-emerald-500/10 dark:before:to-transparent before:animate-gradient-shift">
-          {/* Optimized Particles */}
-          {particlesRef.current?.map((particle, i) => (
+        <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 via-emerald-500/5 to-background dark:from-green-400/20 dark:via-emerald-500/15 dark:to-background rounded-3xl">
+          {/* Optimized Particles - Only render when loaded */}
+          {isLoaded && particles.map((particle, i) => (
             <motion.div
               key={i}
               className="absolute backdrop-blur-[1px]"
@@ -75,42 +76,8 @@ export default function HomePage() {
             >
               {/* Star shape */}
               <div className="w-full h-full relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-green-300/40 to-emerald-400/40 dark:from-green-400/60 dark:to-emerald-500/60 rotate-45 transform origin-center star-shape" />
-                <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-green-300/30 to-emerald-400/30 dark:from-green-400/50 dark:to-emerald-500/50 -rotate-45 transform origin-center star-shape" />
+                <div className="absolute inset-0 bg-gradient-to-r from-green-300/30 to-emerald-400/30 dark:from-green-400/40 dark:to-emerald-500/40 rotate-45 transform origin-center star-shape" />
               </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Optimized animated stars */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-3xl">
-          {[...Array(3)].map((_, i) => (
-            <motion.div
-              key={i}
-              className={cn(
-                "absolute mix-blend-screen filter blur-md",
-                "star-glow"
-              )}
-              animate={{
-                scale: [1, 1.5, 1],
-                opacity: [0.3, 0.7, 0.3],
-                rotate: [0, 180, 360],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                delay: i * 2,
-                ease: "linear",
-              }}
-              style={{
-                top: `${35 + i * 20}%`,
-                left: `${25 + i * 20}%`,
-                width: `${12 + i * 2}rem`,
-                height: `${12 + i * 2}rem`,
-              }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-green-300/30 to-emerald-400/30 dark:from-green-400/50 dark:to-emerald-500/50 star-shape animate-pulse" />
-              <div className="absolute inset-0 bg-gradient-to-r from-green-300/20 to-emerald-400/20 dark:from-green-400/40 dark:to-emerald-500/40 star-shape rotate-45" />
             </motion.div>
           ))}
         </div>
