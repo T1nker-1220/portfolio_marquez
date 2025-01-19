@@ -23,13 +23,26 @@ const item = {
 const getCategoryIcon = (category: string) => {
   switch (category) {
     case "frontend":
-      return <IconCode className="w-5 h-5" />;
+      return <IconCode className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />;
     case "backend":
-      return <IconBrain className="w-5 h-5" />;
+      return <IconBrain className="w-6 h-6 text-teal-600 dark:text-teal-400" />;
     case "tools":
-      return <IconTools className="w-5 h-5" />;
+      return <IconTools className="w-6 h-6 text-green-600 dark:text-green-400" />;
     default:
-      return <IconStar className="w-5 h-5" />;
+      return <IconStar className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />;
+  }
+};
+
+const getCategoryGradient = (category: string) => {
+  switch (category) {
+    case "frontend":
+      return "dark:from-emerald-500/20 dark:to-emerald-800/30 from-emerald-100 to-emerald-200/80";
+    case "backend":
+      return "dark:from-teal-500/20 dark:to-teal-800/30 from-teal-100 to-teal-200/80";
+    case "tools":
+      return "dark:from-green-500/20 dark:to-green-800/30 from-green-100 to-green-200/80";
+    default:
+      return "dark:from-cyan-500/20 dark:to-cyan-800/30 from-cyan-100 to-cyan-200/80";
   }
 };
 
@@ -66,11 +79,16 @@ export function SkillsSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-card/50 rounded-xl p-6 md:p-8 backdrop-blur-sm border border-border/50"
+            className={cn(
+              "rounded-xl p-6 md:p-8",
+              "bg-gradient-to-br from-gray-50 to-gray-100/80 dark:from-gray-900/90 dark:to-gray-800/90",
+              "backdrop-blur-sm border border-gray-200 dark:border-gray-800/50",
+              "shadow-lg"
+            )}
           >
             <div className="flex items-center gap-3 mb-6">
               {getCategoryIcon(category)}
-              <h3 className="text-2xl font-heading font-semibold capitalize">
+              <h3 className="text-2xl font-heading font-semibold capitalize text-gray-800 dark:text-gray-100">
                 {category.replace("-", " ")}
               </h3>
             </div>
@@ -86,17 +104,30 @@ export function SkillsSection() {
                 <motion.div
                   key={skill.name}
                   variants={item}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{
+                    scale: 1.05,
+                    transition: { duration: 0.2 }
+                  }}
                   className={cn(
-                    "p-4 rounded-lg glass transition-all duration-300",
-                    "hover:glass-hover cursor-pointer hover:shadow-lg",
-                    "border border-border/50 bg-card/30",
+                    "p-4 rounded-lg transition-all duration-300",
+                    "bg-gradient-to-br",
+                    getCategoryGradient(category),
+                    "hover:shadow-lg hover:shadow-gray-200/50 dark:hover:shadow-gray-800/50",
+                    "border border-gray-200/50 dark:border-gray-700/50",
+                    "backdrop-blur-sm",
                     "flex flex-col items-center justify-center gap-2 text-center"
                   )}
                 >
-                  <div className="text-base font-medium">{skill.name}</div>
+                  <div className="text-base font-medium text-gray-800 dark:text-gray-100">
+                    {skill.name}
+                  </div>
                   {skill.level && (
-                    <span className="text-xs text-muted-foreground px-2 py-1 rounded-full bg-primary/10">
+                    <span className={cn(
+                      "text-xs px-3 py-1 rounded-full",
+                      "bg-gray-100/80 dark:bg-gray-800/60",
+                      "text-gray-700 dark:text-gray-300",
+                      "border border-gray-200/50 dark:border-gray-700/50"
+                    )}>
                       {skill.level}
                     </span>
                   )}
