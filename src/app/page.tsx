@@ -169,7 +169,7 @@ export default function HomePage() {
                 scale: 1.05,
               }}
               whileTap={{ scale: 0.95 }}
-              href="/images/JOHN-NATHANIEL-MARQUEZ-FlowCV-Resume-.pdf"
+              href="/images/JOHN-NATHANIEL-MARQUEZ-RESUME.pdf"
               download
               className={cn(
                 "w-full sm:w-auto px-8 py-4 rounded-lg font-medium",

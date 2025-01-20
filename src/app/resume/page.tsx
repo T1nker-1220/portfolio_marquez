@@ -209,7 +209,7 @@ export default function ResumePage() {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="/images/JOHN-NATHANIEL-MARQUEZ-FlowCV-Resume-.pdf"
+              href="/images/JOHN-NATHANIEL-MARQUEZ-RESUME.pdf"
               download
               className={cn(
                 "inline-flex items-center gap-2 px-6 py-3 mt-4",
