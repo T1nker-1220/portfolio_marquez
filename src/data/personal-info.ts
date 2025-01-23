@@ -21,7 +21,7 @@ export const personalInfo: PersonalInfo = {
     },
     {
       platform: "LinkedIn",
-      url: "www.linkedin.com/in/john-nathaniel-marquez-866522334",
+      url: "https://www.linkedin.com/in/john-nathaniel-marquez-866522334",
     },
     {
       platform: "Facebook",
