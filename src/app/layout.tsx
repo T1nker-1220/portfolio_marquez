@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'google-site-verification=QlbrsGI33bBt54ehZOaZYRxeAxnpkgnfu650XO3RPb0',
+    google: 'QlbrsGI33bBt54ehZOaZYRxeAxnpkgnfu650XO3RPb0',
   },
   alternates: {
     canonical: 'https://portfolio-marquez.vercel.app',
