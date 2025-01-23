@@ -38,6 +38,22 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/icon.png', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png' },
+    ],
+    other: [
+      {
+        rel: 'mask-icon',
+        url: '/safari-pinned-tab.svg',
+      },
+    ],
+  },
+  manifest: '/site.webmanifest',
   robots: {
     index: true,
     follow: true,
@@ -65,9 +81,9 @@ export const metadata: Metadata = {
     siteName: "John Nathaniel Marquez Portfolio",
     images: [
       {
-        url: "https://portfolio-marquez.vercel.app/images/logo.png",
-        width: 1200,
-        height: 630,
+        url: "https://portfolio-marquez.vercel.app/icon.png",
+        width: 512,
+        height: 512,
         alt: "John Nathaniel Marquez Portfolio",
       },
     ],
@@ -77,7 +93,7 @@ export const metadata: Metadata = {
     title: "John Nathaniel Marquez | Front-End Developer Portfolio",
     description:
       "Front-end developer specializing in modern web technologies. Explore my journey, projects, and expertise in web development.",
-    images: ["https://portfolio-marquez.vercel.app/images/logo.png"],
+    images: ["https://portfolio-marquez.vercel.app/icon.png"],
     creator: "@your-twitter-handle",
   },
 };
@@ -93,7 +109,7 @@ const jsonLd = {
   ],
   jobTitle: 'Front-end Developer',
   knowsAbout: ['React', 'Next.js', 'TypeScript', 'Web Development'],
-  image: 'https://portfolio-marquez.vercel.app/images/logo.png',
+  image: 'https://portfolio-marquez.vercel.app/icon.png',
   description: 'Front-end developer specializing in React, Next.js, and TypeScript.'
 }
 
@@ -105,6 +121,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body
         className={`${fontSans.variable} ${fontMono.variable} ${fontHeading.variable} min-h-screen bg-background font-sans antialiased`}
