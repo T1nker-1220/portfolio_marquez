@@ -56,9 +56,30 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'John Nathaniel Marquez',
+  url: 'https://portfolio-marquez.vercel.app/',
+  sameAs: [
+    'https://github.com/T1nker-1220',
+    'https://linkedin.com/in/your-profile'
+  ],
+  jobTitle: 'Front-end Developer',
+  knowsAbout: ['React', 'Next.js', 'TypeScript', 'Web Development'],
+  image: 'https://portfolio-marquez.vercel.app/images/logo.png',
+  description: 'Front-end developer specializing in React, Next.js, and TypeScript.'
+}
+
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${fontSans.variable} ${fontMono.variable} ${fontHeading.variable} min-h-screen bg-background font-sans antialiased`}
       >

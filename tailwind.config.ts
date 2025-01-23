@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 import plugin from "tailwindcss/plugin";
 
 const config: Config = {
@@ -17,6 +18,10 @@ const config: Config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-geist-sans)", ...fontFamily.sans],
+        mono: ["var(--font-geist-mono)", ...fontFamily.mono],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -61,6 +66,10 @@ const config: Config = {
         "gradient-shift": "gradient-shift 8s ease infinite",
         "star-pulse": "star-pulse 3s ease-in-out infinite",
         "star-spin": "star-spin 8s linear infinite",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        gradient: "gradient 6s linear infinite",
+        "gradient-xy": "gradient-xy 15s ease infinite",
       },
       keyframes: {
         "gradient-shift": {
@@ -91,6 +100,29 @@ const config: Config = {
             transform: "rotate(360deg)",
           },
         },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        gradient: {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        },
+        "gradient-xy": {
+          "0%, 100%": {
+            "background-size": "400% 400%",
+            "background-position": "0% 0%"
+          },
+          "50%": {
+            "background-size": "200% 200%",
+            "background-position": "100% 100%"
+          }
+        }
       },
     },
   },
@@ -120,6 +152,7 @@ const config: Config = {
         },
       });
     }),
+    require("tailwindcss-animate"),
   ],
 };
 
