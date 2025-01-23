@@ -18,7 +18,7 @@ export function OptimizedVideo({ src, poster, className, alt }: OptimizedVideoPr
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const prefersReducedMotion = useReducedMotion();
-  const playAttemptRef = useRef<NodeJS.Timeout>();
+  const playAttemptRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
   // Handle video loading and autoplay
   useEffect(() => {

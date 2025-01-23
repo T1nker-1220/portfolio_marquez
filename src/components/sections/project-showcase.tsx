@@ -52,7 +52,7 @@ export function ProjectShowcase() {
   const [selectedStatus, setSelectedStatus] = useState<Status>("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
-  const searchTimeout = useRef<NodeJS.Timeout>();
+  const searchTimeout = useRef<NodeJS.Timeout | undefined>(undefined);
 
   // Debounced search
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
