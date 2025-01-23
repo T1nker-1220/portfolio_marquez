@@ -7,24 +7,15 @@ import { ThemeProvider } from "next-themes";
 import { type PropsWithChildren } from "react";
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://portfolio-marquez.vercel.app'),
   title: {
     default: "Home | Front-End | Marquez",
     template: "%s | Front-End | Marquez",
   },
   description:
-    "A passionate front-end developer with expertise in modern web technologies.",
-  icons: {
-    icon: [
-      {
-        url: "/images/logo.png",
-        href: "/images/logo.png",
-      },
-    ],
-    apple: {
-      url: "/images/logo.png",
-      href: "/images/logo.png",
-    },
-  },
+    "A passionate front-end developer with expertise in modern web technologies. Portfolio showcasing web development projects, skills, and experience.",
+  applicationName: "John Nathaniel Marquez Portfolio",
+  generator: "Next.js",
   keywords: [
     "John Nathaniel Marquez",
     "Nathaniel",
@@ -34,25 +25,60 @@ export const metadata: Metadata = {
     "Next.js Developer",
     "Portfolio",
     "Projects",
+    "Web Development",
+    "Frontend Development",
+    "React Development",
+    "TypeScript Development",
   ],
-  authors: [{ name: "John Nathaniel Marquez" }],
+  authors: [{ name: "John Nathaniel Marquez", url: "https://portfolio-marquez.vercel.app" }],
   creator: "John Nathaniel Marquez",
   publisher: "John Nathaniel Marquez",
-  robots: "index, follow",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'google-site-verification=QlbrsGI33bBt54ehZOaZYRxeAxnpkgnfu650XO3RPb0',
+  },
+  alternates: {
+    canonical: 'https://portfolio-marquez.vercel.app',
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: process.env.NEXT_PUBLIC_APP_URL,
-    title: "Portfolio | John Nathaniel Marquez",
+    url: "https://portfolio-marquez.vercel.app",
+    title: "John Nathaniel Marquez | Front-End Developer Portfolio",
     description:
       "Front-end developer specializing in modern web technologies. Explore my journey, projects, and expertise in web development.",
     siteName: "John Nathaniel Marquez Portfolio",
+    images: [
+      {
+        url: "https://portfolio-marquez.vercel.app/images/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "John Nathaniel Marquez Portfolio",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Portfolio | John Nathaniel Marquez",
+    title: "John Nathaniel Marquez | Front-End Developer Portfolio",
     description:
       "Front-end developer specializing in modern web technologies. Explore my journey, projects, and expertise in web development.",
+    images: ["https://portfolio-marquez.vercel.app/images/logo.png"],
+    creator: "@your-twitter-handle",
   },
 };
 
