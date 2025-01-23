@@ -17,6 +17,10 @@ export interface Project {
   title: string;
   description: string;
   image: string;
+  video?: {
+    src: string;
+    poster: string;
+  };
   liveUrl: string;
   githubUrl: string | null;
   techStack: TechStack[];

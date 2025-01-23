@@ -222,7 +222,7 @@ export function ProjectShowcase() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 pt-8"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 pt-8"
         role="tabpanel"
         id="project-grid"
         aria-live="polite"

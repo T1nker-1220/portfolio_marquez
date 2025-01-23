@@ -7,6 +7,10 @@ export const projects: Project[] = [
     description:
       "A modern website for Excel Glass Inc. showcasing their products and services with a beautiful UI and responsive design.",
     image: "/images/projects/excel-glass.webp",
+    video: {
+      src: "/videos/excel_glass.mp4",
+      poster: "/images/projects/excel-glass.webp",
+    },
     liveUrl: "https://excel-glass.vercel.app",
     githubUrl: "https://github.com/T1nker-1220/ExcelGlass",
     techStack: [
@@ -47,6 +51,10 @@ export const projects: Project[] = [
     description:
       "A weather application that provides real-time weather information using modern API integration techniques.",
     image: "/images/projects/weather-api.webp",
+    video: {
+      src: "/videos/weather_api.mp4",
+      poster: "/images/projects/weather-api.webp",
+    },
     liveUrl: "https://weather-api-s.vercel.app",
     githubUrl: "https://github.com/T1nker-1220/Weather_API-s",
     techStack: [
@@ -79,6 +87,10 @@ export const projects: Project[] = [
     description:
       "A sample food menu website showcasing culinary creations with an artistic touch.",
     image: "/images/projects/edible-artistry.webp",
+    video: {
+      src: "/videos/edible-artistry.mp4",
+      poster: "/images/projects/edible-artistry.webp",
+    },
     liveUrl: "https://edible-artistry.vercel.app",
     githubUrl: "https://github.com/T1nker-1220/edible-artistry",
     techStack: [
@@ -110,6 +122,10 @@ export const projects: Project[] = [
     description:
       "A beautiful wedding memories website with photo galleries and event information.",
     image: "/images/projects/wedding-memories.webp",
+    video: {
+      src: "/videos/wedding_memories.mp4",
+      poster: "/images/projects/wedding-memories.webp",
+    },
     liveUrl: "https://nicholsweddingmemories.vercel.app",
     githubUrl: "https://github.com/T1nker-1220/nichols-wed-blog",
     techStack: [
@@ -150,6 +166,10 @@ export const projects: Project[] = [
     description:
       "A YouTube gaming channel featuring gameplay videos, tutorials, and gaming content with professional editing and production.",
     image: "/images/projects/youtube.webp",
+    video: {
+      src: "/videos/youtube.mp4",
+      poster: "/images/projects/youtube.webp",
+    },
     liveUrl: "https://www.youtube.com/@t1nkergaming731",
     githubUrl: null,
     techStack: [
@@ -173,6 +193,10 @@ export const projects: Project[] = [
     description:
       "Modern portfolio website showcasing my projects and skills with advanced animations and interactions",
     image: "/images/projects/portfolio-marquez.webp",
+    video: {
+      src: "/videos/portfolio-marquez.mp4",
+      poster: "/images/projects/portfolio-marquez.webp",
+    },
     liveUrl: "https://portfolio-marquez.vercel.app",
     githubUrl: "https://github.com/T1nker-1220/portfolio_marquez",
     techStack: [
@@ -213,6 +237,10 @@ export const projects: Project[] = [
     description:
       "A modern restaurant management system with online ordering, inventory tracking, and customer relationship management.",
     image: "/images/projects/kda-product-showcase.vercel.app.jpeg",
+    video: {
+      src: "/videos/kusina_de_amadeo.mp4",
+      poster: "/images/projects/kda-product-showcase.vercel.app.jpeg",
+    },
     liveUrl: "https://kda-product-showcase.vercel.app/",
     githubUrl: "https://github.com/T1nker-1220/kda-product-showcase",
     techStack: [
