@@ -2,7 +2,7 @@ import { ProjectShowcase } from "@/components/sections/project-showcase";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Projects | Nathaniel Marquez",
+  title: "Projects",
   description:
     "Explore my portfolio of web development projects showcasing expertise in Next.js, React, TypeScript, and more.",
 };

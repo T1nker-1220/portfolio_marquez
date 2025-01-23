@@ -8,8 +8,8 @@ import { type PropsWithChildren } from "react";
 
 export const metadata: Metadata = {
   title: {
-    default: "Nathaniel | Front-End Developer",
-    template: "%s | Nathaniel",
+    default: "Home | Front-End | Marquez",
+    template: "%s | Front-End | Marquez",
   },
   description:
     "A passionate front-end developer with expertise in modern web technologies.",

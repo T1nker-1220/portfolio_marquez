@@ -4,7 +4,7 @@ import { timeline } from "@/data/personal-info";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "My Story | John Nathaniel Marquez",
+  title: "Story",
   description:
     "Follow my journey through education and technology, from my first steps in programming to becoming a full-stack developer.",
 };

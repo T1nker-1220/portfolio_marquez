@@ -1,15 +1,11 @@
 import { Metadata } from "next";
+import { type PropsWithChildren } from "react";
 
 export const metadata: Metadata = {
-  title: "Contact | John Nathaniel Marquez",
-  description:
-    "Get in touch with me for collaborations, opportunities, or just to say hello.",
+  title: "Contact",
+  description: "Get in touch with me. Let's discuss your project or any opportunities.",
 };
 
-export default function ContactLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return children;
+export default function ContactLayout({ children }: PropsWithChildren) {
+  return <>{children}</>;
 }
