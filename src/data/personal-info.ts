@@ -36,8 +36,8 @@ export const personalInfo: PersonalInfo = {
       url: "https://wa.me/639605088715",
     },
     {
-      platform: "Vercel",
-      url: "https://vercel.com/t1nker-1220s-projects",
+      platform: "Youtube",
+      url: "https://www.youtube.com/@t1nkergaming731",
     },
   ],
 };
