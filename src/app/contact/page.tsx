@@ -138,9 +138,9 @@ export default function ContactPage() {
                       )}>
                         {info.icon}
                       </div>
-                      <div>
+                      <div className="min-w-0 flex-1">
                         <p className="font-semibold text-foreground/90">{info.label}</p>
-                        <p className="text-sm text-muted-foreground group-hover:text-foreground/90 transition-colors">
+                        <p className="text-sm text-muted-foreground group-hover:text-foreground/90 transition-colors break-all">
                           {info.value}
                         </p>
                       </div>

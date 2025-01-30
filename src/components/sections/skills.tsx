@@ -98,7 +98,7 @@ export function SkillsSection() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
             >
               {categorySkills.map((skill) => (
                 <motion.div
@@ -115,10 +115,10 @@ export function SkillsSection() {
                     "hover:shadow-lg hover:shadow-gray-200/50 dark:hover:shadow-gray-800/50",
                     "border border-gray-200/50 dark:border-gray-700/50",
                     "backdrop-blur-sm",
-                    "flex flex-col items-center justify-center gap-2 text-center"
+                    "flex flex-col items-center justify-center gap-2 text-center min-h-[90px]"
                   )}
                 >
-                  <div className="text-base font-medium text-gray-800 dark:text-gray-100">
+                  <div className="text-base font-medium text-gray-800 dark:text-gray-100 break-words w-full">
                     {skill.name}
                   </div>
                   {skill.level && (
@@ -126,7 +126,8 @@ export function SkillsSection() {
                       "text-xs px-3 py-1 rounded-full",
                       "bg-gray-100/80 dark:bg-gray-800/60",
                       "text-gray-700 dark:text-gray-300",
-                      "border border-gray-200/50 dark:border-gray-700/50"
+                      "border border-gray-200/50 dark:border-gray-700/50",
+                      "break-words max-w-full"
                     )}>
                       {skill.level}
                     </span>
