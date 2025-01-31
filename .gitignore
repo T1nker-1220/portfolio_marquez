@@ -30,6 +30,7 @@ yarn-error.log*
 # local env files
 .env
 .env*.local
+!.env.example
 
 # vercel
 .vercel
@@ -50,5 +51,13 @@ next-env.d.ts
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# PWA files
+**/public/sw.js
+**/public/workbox-*.js
+**/public/worker-*.js
+**/public/sw.js.map
+**/public/workbox-*.js.map
+**/public/worker-*.js.map
 
 /private
