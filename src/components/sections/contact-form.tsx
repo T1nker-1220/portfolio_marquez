@@ -12,6 +12,18 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
+// Initialize EmailJS
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+
+if (!EMAILJS_PUBLIC_KEY || !EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID) {
+  console.error('EmailJS configuration is missing');
+}
+
+// Initialize EmailJS when the component mounts
+emailjs.init(EMAILJS_PUBLIC_KEY || '');
+
 const formSchema = z.object({
   name: z.string()
     .min(2, "Name must be at least 2 characters")
@@ -95,6 +107,12 @@ export function ContactForm() {
     try {
       if (!canSubmit()) return;
 
+      // Validate EmailJS configuration
+      if (!EMAILJS_PUBLIC_KEY || !EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID) {
+        toast.error("Contact form is not properly configured. Please try again later.");
+        return;
+      }
+
       setIsLoading(true);
       const sanitizedData = {
         from_name: data.name.trim(),
@@ -103,10 +121,10 @@ export function ContactForm() {
       };
 
       const result = await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
         sanitizedData,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+        EMAILJS_PUBLIC_KEY
       );
 
       if (result.text === "OK") {
@@ -125,7 +143,7 @@ export function ContactForm() {
         lastSubmitTime.current = Date.now();
       }
     } catch (err) {
-      console.error(err);
+      console.error('EmailJS Error:', err);
       toast.error(
         "Failed to send message. Please try again or contact me directly via email."
       );

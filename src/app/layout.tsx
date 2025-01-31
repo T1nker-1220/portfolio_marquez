@@ -93,7 +93,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'QlbrsGI33bBt54ehZOaZYRxeAxnpkgnfu650XO3RPb0',
+    google: process.env.GOOGLE_VERIFICATION_TOKEN,
   },
   alternates: {
     canonical: 'https://portfolio-marquez.vercel.app',
