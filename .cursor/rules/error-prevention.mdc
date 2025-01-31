@@ -1,6 +1,6 @@
 ---
-description: this will help to prevent the errors on early development and best practices
-globs: plan.mdc .cursorrules
+description: You will use this error prevention when it's plan and act mode
+globs: 
 ---
 [plan.mdc](mdc:.cursor/rules/plan.mdc)
 # Error Prevention Protocol

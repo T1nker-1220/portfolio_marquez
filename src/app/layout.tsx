@@ -1,10 +1,21 @@
 import { MainLayout } from "@/components/layout/main-layout";
+import { InstallPrompt } from "@/components/pwa/InstallPrompt";
 import { fontHeading, fontMono, fontSans } from "@/lib/fonts";
 import "@/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";
+import Script from "next/script";
 import { type PropsWithChildren } from "react";
+
+export const viewport: Viewport = {
+  themeColor: "#FF5733",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://portfolio-marquez.vercel.app'),
@@ -29,6 +40,15 @@ export const metadata: Metadata = {
     "Frontend Development",
     "React Development",
     "TypeScript Development",
+    "T1nker",
+    "Vercel",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "JavaScript",
+    "HTML",
+    "CSS",
   ],
   authors: [{ name: "John Nathaniel Marquez", url: "https://portfolio-marquez.vercel.app" }],
   creator: "John Nathaniel Marquez",
@@ -40,22 +60,27 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico' },
-      { url: '/icon.png', type: 'image/png' },
-      { url: '/android-chrome-192x192.png', type: 'image/png' },
-      { url: '/android-chrome-512x512.png', type: 'image/png' },
+      { url: '/icons/favicon.ico' },
+      { url: '/icons/icon.png', type: 'image/png' },
+      { url: '/icons/android-chrome-192x192.png', type: 'image/png' },
+      { url: '/icons/android-chrome-512x512.png', type: 'image/png' },
     ],
     apple: [
-      { url: '/apple-touch-icon.png' },
+      { url: '/icons/apple-touch-icon.png' },
     ],
     other: [
       {
         rel: 'mask-icon',
-        url: '/safari-pinned-tab.svg',
+        url: '/icons/icon.svg',
       },
     ],
   },
-  manifest: '/site.webmanifest',
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "JN Portfolio",
+  },
   robots: {
     index: true,
     follow: true,
@@ -123,10 +148,16 @@ export default function RootLayout({ children }: PropsWithChildren) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="icon" href="/icons/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icons/icon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="JN Portfolio" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="theme-color" content="#FF5733" />
+        <meta name="apple-touch-fullscreen" content="yes" />
       </head>
       <body
         className={`${fontSans.variable} ${fontMono.variable} ${fontHeading.variable} min-h-screen bg-background font-sans antialiased`}
@@ -137,9 +168,25 @@ export default function RootLayout({ children }: PropsWithChildren) {
           enableSystem
           disableTransitionOnChange={false}
         >
-          <MainLayout>{children}</MainLayout>
+          <MainLayout>
+            {children}
+            <InstallPrompt />
+          </MainLayout>
           <Analytics />
         </ThemeProvider>
+        <Script
+          id="pwa-init"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/sw.js');
+                });
+              }
+            `,
+          }}
+        />
       </body>
     </html>
   );

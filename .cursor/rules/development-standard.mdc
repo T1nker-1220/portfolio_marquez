@@ -1,6 +1,6 @@
 ---
-description: This tasks is helpful for developing or implementing a project
-globs: plan.mdc .cursorrules
+description: You will use this development standard when it's developing a web development using plan and act modes
+globs: 
 ---
 [plan.mdc](mdc:.cursor/rules/plan.mdc)
 # Development Standards

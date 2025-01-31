@@ -1,6 +1,6 @@
 ---
-description: this rule is for web development best practices
-globs: plan.mdc .cursorrules
+description: You will use this web development when we are developing this project, you will activate this always on every generated prompt and using plan and act mode
+globs: 
 ---
 [plan.mdc](mdc:.cursor/rules/plan.mdc)
 # Web Development Rules:
