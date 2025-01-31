@@ -1,4 +1,6 @@
-const withPWA = require("next-pwa")({
+import withPWA from 'next-pwa';
+
+const pwaConfig = withPWA({
   dest: "public",
   register: true,
   skipWaiting: true,
@@ -113,6 +115,27 @@ const nextConfig = {
       },
     ],
   },
+  // Configure source maps
+  productionBrowserSourceMaps: false, // Disable source maps in production
+  webpack: (config, { dev, isServer }) => {
+    // Suppress source map warnings in development
+    if (dev && !isServer) {
+      config.devtool = 'eval-source-map';
+      // Filter out unwanted source map warnings
+      config.ignoreWarnings = [
+        /Failed to parse source map/,
+        /source map/,
+        /sourceMap/
+      ];
+    }
+    return config;
+  },
+  // Suppress specific 404 warnings in development
+  onDemandEntries: {
+    // Reduce log noise
+    maxInactiveAge: 25 * 1000,
+    pagesBufferLength: 2,
+  }
 };
 
-module.exports = withPWA(nextConfig);
+export default pwaConfig(nextConfig);
