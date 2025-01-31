@@ -4,19 +4,26 @@ export const trackEvent = (
   eventName: TrackingEvents,
   properties?: AnalyticsEvent
 ) => {
+  // Convert AnalyticsEvent to Record<string, unknown>
+  const eventProperties: Record<string, unknown> = properties ? {
+    event_category: properties.event_category,
+    event_label: properties.event_label,
+    ...(properties.value !== undefined && { value: properties.value })
+  } : {};
+
   // Track with Vercel Analytics
   if (window.va) {
-    window.va.track(eventName, properties);
+    window.va.track(eventName, eventProperties);
   }
 
   // Track with Google Analytics if available
   if (window.gtag) {
-    window.gtag('event', eventName, properties);
+    window.gtag('event', eventName, eventProperties);
   }
 
   // Log in development
   if (process.env.NODE_ENV === 'development') {
-    console.log('[Analytics]', eventName, properties);
+    console.log('[Analytics]', eventName, eventProperties);
   }
 };
 
