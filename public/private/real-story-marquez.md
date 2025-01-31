@@ -106,6 +106,36 @@ My current development approach centers on:
 
 This phase of my journey represents a significant transition from academic to professional development, marked by practical application of skills and continuous learning through modern development tools.
 
+### AI Tools Journey and Portfolio Development
+My journey with portfolio development has been marked by both challenges and significant growth, particularly in my use of AI tools:
+
+#### Early AI Tool Exploration
+- Started with VSCode Copilot (free version)
+- Found it highly effective for my knowledge level at the time
+- Used it as my primary development assistant before discovering alternatives
+
+#### Evolution to Advanced AI Tools
+- Discovered and transitioned to Cursor AI
+  - Proved to be a game-changing development tool
+  - Offered more comprehensive assistance
+  - Became my primary development environment
+- Explored WindSurf AI
+  - Became my secondary AI assistant
+  - Complemented Cursor AI's capabilities
+
+#### Portfolio Development Challenges
+- Experienced multiple iterations of portfolio development
+- Faced frustrations with early versions
+  - Encountered aesthetic issues
+  - Dealt with functionality bugs
+  - Struggled with implementation challenges
+- Persisted through challenges by:
+  - Leveraging AI tools effectively
+  - Learning from each iteration
+  - Continuously improving my approach
+
+This journey with AI tools has been instrumental in my growth as a developer, helping me overcome challenges and improve my development process significantly.
+
 ## Portfolio Development and Learning Challenges
 
 ### Frontend Portfolio Projects

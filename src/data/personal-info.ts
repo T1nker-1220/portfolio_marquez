@@ -5,7 +5,7 @@ export const personalInfo: PersonalInfo = {
   fullName: "John Nathaniel Marquez",
   location: "Amadeo, Cavite",
   email: "marquezjohnnathanieljade@gmail.com",
-  bio: "I'm a passionate front-end developer with beginner knowledge in modern web technologies. I embrace AI technologies to accelerate my development process while maintaining high standards of reliability in my web projects.",
+  bio: "I'm a passionate web developer with a strong foundation in modern technologies. Starting from basic programming concepts, I've evolved to embrace AI-assisted development while maintaining high standards of code quality. My journey includes successful projects in both frontend and full-stack development, showcasing my ability to learn and adapt quickly.",
   education: [
     {
       school: "ICCT College Cainta Campus",
@@ -46,27 +46,27 @@ export const timeline: TimelineItem[] = [
   {
     year: "2022",
     description:
-      "First year of college, began learning Java and foundational programming concepts.",
+      "Started my IT journey at ICCT College, focusing on Java programming and fundamental computer science concepts. This foundation helped shape my understanding of programming logic and object-oriented principles.",
   },
   {
     year: "2023",
     description:
-      "Second year, expanded knowledge with Python basics.",
+      "Expanded my programming knowledge with Python, choosing it for its simplicity and versatility. Started exploring web development fundamentals including HTML, CSS, and JavaScript. This year marked my initial steps into the world of web technologies.",
   },
   {
     year: "2024",
     description:
-      "Third and fourth year, I've got more knowledge in web development and I've learned more about AI integration in development processes. By incorporating AI tools into my daily workflow, I optimize my web development process for speed and reliability. I've also learned more about the importance of testing and documentation in web development. ",
+      "Made significant strides in web development, completing several key projects including a Weather API integration, Wedding Memories blog, and restaurant management systems. Embraced AI-assisted development tools like Cursor AI and WindSurf AI to enhance my development workflow. Successfully integrated modern frameworks and technologies into my projects.",
   },
   {
     year: "2024 December",
     description:
-      "Graduated from ICCT College Cainta Campus with a degree in Information Technology. While I'm not a professional yet, I'm confident that I can contribute to your team. ",
+      "Graduated from ICCT College Cainta Campus with a degree in Information Technology. Completed my first professional project with Excel Glass Inc., applying my web development skills in a real-world business context.",
   },
   {
     year: "2025",
     description:
-      "Actively seeking opportunities to join a collaborative team where I can contribute while continuing to grow my web development skills. Eager to learn from experienced developers and take on new challenges.",
+      "Actively developing my portfolio and skills through continuous learning and project development. Working on enhancing my full-stack capabilities while seeking opportunities to contribute to meaningful projects in a professional team environment.",
   },
 ];
 
@@ -76,23 +76,26 @@ export const skills: Skill[] = [
   { name: "Next.js", category: "frontend", level: "Beginner", since: "2024" },
   { name: "TypeScript", category: "frontend", level: "Beginner", since: "2024" },
   { name: "Tailwind CSS", category: "frontend", level: "Beginner", since: "2024" },
-  { name: "HTML5", category: "frontend", level: "Intermediate", since: "2024" },
-  { name: "CSS3", category: "frontend", level: "Intermediate", since: "2024" },
-  { name: "JavaScript", category: "frontend", level: "Beginner", since: "2024" },
+  { name: "HTML5", category: "frontend", level: "Intermediate", since: "2023" },
+  { name: "CSS3", category: "frontend", level: "Intermediate", since: "2023" },
+  { name: "JavaScript", category: "frontend", level: "Beginner", since: "2023" },
   { name: "Framer Motion", category: "frontend", level: "Beginner", since: "2024" },
 
   // Backend Skills
   { name: "Node.js", category: "backend", level: "Beginner", since: "2024" },
-  { name: "PostgreSQL", category: "backend", level: "Beginner", since: "2024" },
+  { name: "Python", category: "backend", level: "Intermediate", since: "2023" },
+  { name: "Flask", category: "backend", level: "Beginner", since: "2024" },
   { name: "RESTful APIs", category: "backend", level: "Beginner", since: "2024" },
   { name: "Prisma", category: "backend", level: "Beginner", since: "2024" },
   { name: "Supabase", category: "backend", level: "Beginner", since: "2024" },
 
   // Development Tools
   { name: "Git", category: "tools", level: "Beginner", since: "2024" },
-  { name: "VS Code", category: "tools", level: "Advanced", since: "2024" },
+  { name: "VS Code", category: "tools", level: "Advanced", since: "2023" },
+  { name: "Cursor AI", category: "tools", level: "Advanced", since: "2024" },
+  { name: "WindSurf AI", category: "tools", level: "Intermediate", since: "2024" },
   { name: "Vercel", category: "tools", level: "Intermediate", since: "2024" },
-  { name: "npm/pnpm", category: "tools", level: "Intermediate", since: "2024" },
+  { name: "pnpm", category: "tools", level: "Intermediate", since: "2024" },
   { name: "GitHub", category: "tools", level: "Intermediate", since: "2024" },
   { name: "CI/CD", category: "tools", level: "Beginner", since: "2024" },
 
@@ -101,17 +104,19 @@ export const skills: Skill[] = [
   { name: "Communication", category: "soft skills" },
   { name: "Project Management", category: "soft skills" },
   { name: "Time Management", category: "soft skills" },
-  { name: "Mentoring", category: "soft skills" },
+  { name: "Adaptability", category: "soft skills" },
   { name: "Critical Thinking", category: "soft skills" },
   { name: "Prompt Engineering", category: "soft skills" },
+  { name: "Self-Learning", category: "soft skills" },
 
   // Other Skills
   { name: "UI/UX Design", category: "other" },
   { name: "Responsive Design", category: "other" },
   { name: "Web Performance", category: "other" },
   { name: "SEO", category: "other" },
-  { name: "Testing", category: "other" },
+  { name: "API Integration", category: "other" },
   { name: "Documentation", category: "other" },
   { name: "Code Review", category: "other" },
   { name: "System Design", category: "other" },
+  { name: "AI-Assisted Development", category: "other" },
 ];
