@@ -1,82 +1,89 @@
 import { promises as fs } from 'fs';
-import { dirname, join } from 'path';
+import { join } from 'path';
 import sharp from 'sharp';
-import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const ICONS_DIR = join(dirname(__dirname), 'public', 'icons');
+const ICONS_DIR = join(process.cwd(), 'public', 'icons');
+const SOURCE_PNG = join(ICONS_DIR, 'source', 'original.png');
 
-// Icon sizes to generate
 const ICON_SIZES = [
-  512, // PWA icon
-  192, // Android
-  180, // Apple touch icon
-  144, // Windows tile
-  96,  // Android
-  72,  // Android
-  48,  // Android
-  32,  // favicon
-  16   // favicon
+  16, 32, 48, 72, 96, 144, 180, 192, 512
 ];
 
 async function generateIcons() {
   try {
-    // Ensure icons directory exists
+    // Ensure the icons directory exists
     await fs.mkdir(ICONS_DIR, { recursive: true });
-
-    // Read the base SVG
-    const svgBuffer = await fs.readFile(join(ICONS_DIR, 'icon.svg'));
 
     // Generate regular icons
     for (const size of ICON_SIZES) {
-      const fileName = size === 180 ? 'apple-touch-icon.png' : `icon-${size}x${size}.png`;
-      if (size === 16 || size === 32) {
-        await sharp(svgBuffer)
-          .resize(size, size, {
-            fit: 'contain',
-            background: { r: 0, g: 0, b: 0, alpha: 1 }
-          })
-          .png()
-          .toFile(join(ICONS_DIR, `favicon-${size}x${size}.png`));
-      } else {
-        await sharp(svgBuffer)
-          .resize(size, size, {
-            fit: 'contain',
-            background: { r: 0, g: 0, b: 0, alpha: 1 }
-          })
-          .png()
-          .toFile(join(ICONS_DIR, fileName));
-      }
-      console.log(`Generated ${fileName}`);
-    }
-
-    // Generate maskable icons with exact dimensions
-    const maskableSizes = [512, 192];
-    for (const size of maskableSizes) {
-      // Calculate safe area (80% of the total size)
-      const safeArea = Math.floor(size * 0.8);
-      const padding = Math.floor((size - safeArea) / 2);
-
-      await sharp(svgBuffer)
-        .resize(safeArea, safeArea, {
+      const outputName = size === 180 ? 'apple-touch-icon.png' : `icon-${size}x${size}.png`;
+      await sharp(SOURCE_PNG)
+        .resize(size, size, {
           fit: 'contain',
-          background: { r: 0, g: 0, b: 0, alpha: 1 }
+          background: { r: 0, g: 0, b: 0, alpha: 0 },
+          withoutEnlargement: false,
+          kernel: 'lanczos3' // High-quality resampling
         })
-        .extend({
-          top: padding,
-          bottom: padding,
-          left: padding,
-          right: padding,
-          background: { r: 0, g: 0, b: 0, alpha: 1 }
+        .png({
+          quality: 100,
+          compressionLevel: 9,
+          palette: true // Better color handling
         })
-        .png()
-        .toFile(join(ICONS_DIR, `icon-${size}x${size}-maskable.png`));
+        .toFile(join(ICONS_DIR, outputName));
 
-      console.log(`Generated maskable icon ${size}x${size}`);
+      // Generate maskable icons for PWA (only for 192 and 512)
+      if (size === 192 || size === 512) {
+        const padding = Math.floor(size * 0.1); // 10% padding
+        const innerSize = size - (padding * 2);
+
+        await sharp(SOURCE_PNG)
+          .resize(innerSize, innerSize, {
+            fit: 'contain',
+            background: { r: 0, g: 0, b: 0, alpha: 0 },
+            withoutEnlargement: false,
+            kernel: 'lanczos3'
+          })
+          .extend({
+            top: padding,
+            bottom: padding,
+            left: padding,
+            right: padding,
+            background: { r: 0, g: 133, b: 79, alpha: 1 } // #00854F
+          })
+          .png({
+            quality: 100,
+            compressionLevel: 9,
+            palette: true
+          })
+          .toFile(join(ICONS_DIR, `icon-${size}x${size}-maskable.png`));
+      }
     }
 
-    console.log('All icons generated successfully!');
+    // Generate favicon.ico (multi-size)
+    const favSizes = [16, 32];
+    const favBuffers = await Promise.all(
+      favSizes.map(size =>
+        sharp(SOURCE_PNG)
+          .resize(size, size, {
+            fit: 'contain',
+            background: { r: 0, g: 0, b: 0, alpha: 0 },
+            withoutEnlargement: false,
+            kernel: 'lanczos3'
+          })
+          .png({
+            quality: 100,
+            compressionLevel: 9,
+            palette: true
+          })
+          .toBuffer()
+      )
+    );
+
+    // Use the first size as favicon-16x16.png and second as favicon-32x32.png
+    await sharp(favBuffers[0]).toFile(join(ICONS_DIR, 'favicon-16x16.png'));
+    await sharp(favBuffers[1]).toFile(join(ICONS_DIR, 'favicon-32x32.png'));
+
+    console.log('✅ All icons generated successfully with high quality!');
   } catch (error) {
     console.error('Error generating icons:', error);
     process.exit(1);
