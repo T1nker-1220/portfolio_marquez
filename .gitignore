@@ -60,4 +60,9 @@ Thumbs.db
 **/public/workbox-*.js.map
 **/public/worker-*.js.map
 
-/private
+private/
+.specstory/
+.cursor/
+.cursorindexingignore
+.cursorrules
+.gitignore
