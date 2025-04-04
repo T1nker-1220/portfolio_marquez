@@ -15,6 +15,7 @@ const categories = [
   "UI/UX Design",
   "Full Stack",
   "Content Creation",
+  "Cursor-AI",
   "Coming Soon",
 ] as const;
 

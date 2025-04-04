@@ -2,6 +2,108 @@ import { Project } from "@/types";
 
 export const projects: Project[] = [
   {
+    id: "ultracontextai",
+    title: "UltraContextAI",
+    description:
+      "A comprehensive system for managing AI interactions through memory management, lessons learned tracking, and dual-mode operation (Plan/Agent). Ensures consistent, high-quality development while maintaining detailed project documentation and knowledge retention.",
+    image: "/images/projects/ulracontextai.png",
+    video: {
+      src: "/videos/UltraContextAI.mp4",
+      poster: "/images/projects/ulracontextai.png",
+    },
+    liveUrl: "https://github.com/T1nker-1220/UltraContextAI",
+    githubUrl: "https://github.com/T1nker-1220/UltraContextAI",
+    techStack: [
+      { name: "Cursor AI", icon: "cursor", color: "#E5E7EB" },
+      { name: "JavaScript", icon: "javascript", color: "#F7DF1E" },
+      { name: "TypeScript", icon: "typescript", color: "#3178C6" },
+      { name: "AI Memory Systems", icon: "ai", color: "#FF6B6B" },
+      { name: "Claude 3", icon: "claude", color: "#7B61FF" },
+      { name: "GitHub", icon: "github", color: "#181717" },
+    ],
+    features: [
+      "Memory system for tracking interactions chronologically",
+      "Lessons learned tracking for solutions and best practices",
+      "Dual-mode operation (Plan/Agent)",
+      "Task dependency tracking",
+      "Confidence metrics for implementation readiness",
+      "Cross-referencing between memory components",
+      "Version control format [v1.0.0] for entries",
+      "Supports #tags for easy searching",
+    ],
+    category: "Cursor-AI",
+    status: "Completed",
+    completedAt: "2025-01",
+  },
+  {
+    id: "memories-with-lessons-mcp-server",
+    title: "Memory MCP Server",
+    description:
+      "Enhanced knowledge graph memory server that lets Claude remember information about users across chats and learn from past errors through a lesson system. Built on the MCP protocol for AI memory management.",
+    image: "/images/projects/memories-with-lessons-mcp-server.png",
+    video: {
+      src: "/videos/memories-lessons-mcp.mp4",
+      poster: "/images/projects/memories-with-lessons-mcp-server.png",
+    },
+    liveUrl: "https://github.com/T1nker-1220/memories-with-lessons-mcp-server",
+    githubUrl: "https://github.com/T1nker-1220/memories-with-lessons-mcp-server",
+    techStack: [
+      { name: "JavaScript", icon: "javascript", color: "#F7DF1E" },
+      { name: "TypeScript", icon: "typescript", color: "#3178C6" },
+      { name: "Node.js", icon: "nodejs", color: "#339933" },
+      { name: "Docker", icon: "docker", color: "#2496ED" },
+      { name: "Claude 3", icon: "claude", color: "#7B61FF" },
+      { name: "MCP Protocol", icon: "api", color: "#FF4154" },
+      { name: "Knowledge Graphs", icon: "database", color: "#00BFFF" },
+    ],
+    features: [
+      "Persistent memory using a local knowledge graph",
+      "Entity-relation model for storing information",
+      "Lesson system for learning from past errors",
+      "Automatic file splitting for performance optimization",
+      "Integration with Cursor MCP client",
+      "Query capability for finding specific entities",
+      "Error pattern matching for solution recommendations",
+      "Success rate tracking for solutions",
+    ],
+    category: "Cursor-AI",
+    status: "Completed",
+    completedAt: "2025-01",
+  },
+  {
+    id: "minrights-nextjs",
+    title: "Minrights Nextjs",
+    description:
+      "A full-stack web application built with Next.js and Mantine v7. As a collaborative project, I focus primarily on frontend development and API integration while also contributing to Python backend tasks when needed. The application features a modern responsive interface with comprehensive data management capabilities.",
+    image: "/images/projects/placeholder.png", // Placeholder for now
+    video: {
+      src: "/videos/placeholder.mp4", // Placeholder for now
+      poster: "/images/projects/placeholder.png",
+    },
+    liveUrl: "",
+    githubUrl: "",
+    techStack: [
+      { name: "Next.js", icon: "nextjs", color: "#E5E7EB" },
+      { name: "Mantine v7", icon: "mantine", color: "#339AF0" },
+      { name: "TypeScript", icon: "typescript", color: "#3178C6" },
+      { name: "Python", icon: "python", color: "#3776AB" },
+      { name: "React", icon: "react", color: "#61DAFB" },
+      { name: "Supabase", icon: "supabase", color: "#3ECF8E" },
+    ],
+    features: [
+      "Modern UI with Mantine v7 components",
+      "API integration and data management",
+      "Responsive design for all device sizes",
+      "Server-side rendering with Next.js",
+      "Cross-browser compatibility",
+      "Frontend and backend collaboration",
+      "Authentication and user management",
+    ],
+    category: "Full Stack",
+    status: "In Progress",
+    completedAt: "2025-03",
+  },
+  {
     id: "excel-glass",
     title: "Excel Glass Inc.",
     description:

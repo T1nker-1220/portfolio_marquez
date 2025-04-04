@@ -36,7 +36,8 @@ export type ProjectCategory =
   | "UI/UX Design"
   | "Full Stack"
   | "Coming Soon"
-  | "Content Creation";
+  | "Content Creation"
+  | "Cursor-AI";
 
 export type ProjectStatus = "Completed" | "In Progress" | "Coming Soon";
 

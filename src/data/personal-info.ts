@@ -76,6 +76,7 @@ export const skills: Skill[] = [
   { name: "Next.js", category: "frontend", level: "Beginner", since: "2024" },
   { name: "TypeScript", category: "frontend", level: "Beginner", since: "2024" },
   { name: "Tailwind CSS", category: "frontend", level: "Beginner", since: "2024" },
+  { name: "Mantine v7", category: "frontend", level: "Intermediate", since: "2025" },
   { name: "HTML5", category: "frontend", level: "Intermediate", since: "2023" },
   { name: "CSS3", category: "frontend", level: "Intermediate", since: "2023" },
   { name: "JavaScript", category: "frontend", level: "Beginner", since: "2023" },
@@ -88,6 +89,8 @@ export const skills: Skill[] = [
   { name: "RESTful APIs", category: "backend", level: "Beginner", since: "2024" },
   { name: "Prisma", category: "backend", level: "Beginner", since: "2024" },
   { name: "Supabase", category: "backend", level: "Beginner", since: "2024" },
+  { name: "MCP Protocol", category: "backend", level: "Intermediate", since: "2025" },
+  { name: "Knowledge Graphs", category: "backend", level: "Intermediate", since: "2025" },
 
   // Development Tools
   { name: "Git", category: "tools", level: "Beginner", since: "2024" },
@@ -98,6 +101,7 @@ export const skills: Skill[] = [
   { name: "pnpm", category: "tools", level: "Intermediate", since: "2024" },
   { name: "GitHub", category: "tools", level: "Intermediate", since: "2024" },
   { name: "CI/CD", category: "tools", level: "Beginner", since: "2024" },
+  { name: "Docker", category: "tools", level: "Intermediate", since: "2025" },
 
   // Soft Skills
   { name: "Problem Solving", category: "soft skills" },
@@ -119,4 +123,6 @@ export const skills: Skill[] = [
   { name: "Code Review", category: "other" },
   { name: "System Design", category: "other" },
   { name: "AI-Assisted Development", category: "other" },
+  { name: "AI Context Management", category: "other", level: "Intermediate", since: "2025" },
+  { name: "Memory Systems", category: "other", level: "Intermediate", since: "2025" },
 ];

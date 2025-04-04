@@ -1,5 +1,4 @@
 import { MainLayout } from "@/components/layout/main-layout";
-import { InstallPrompt } from "@/components/pwa/InstallPrompt";
 import { fontHeading, fontMono, fontSans } from "@/lib/fonts";
 import "@/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
@@ -170,9 +169,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
         >
           <MainLayout>
             {children}
-            <InstallPrompt />
           </MainLayout>
-          <Analytics />
+          <Analytics debug={false} />
         </ThemeProvider>
         <Script
           id="pwa-init"
