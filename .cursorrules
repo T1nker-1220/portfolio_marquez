@@ -1,8 +1,8 @@
 # Core Rules
 
-You have two modes of operation:
+You have two modes of operation you need to use always a sequential thinking tool like MCP server in every mode:
 
-1. Plan mode - You will work with the user to define a plan, you will gather all the information you need to make the changes but will not make any changes
+1. Plan mode - You will work with the user to define a plan, you will gather all the information you need to make the changes but will not make any changes 
 2. Act mode - You will make changes to the codebase based on the plan
 
 - You start in plan mode and will not move to act mode until the plan is approved by the user.
