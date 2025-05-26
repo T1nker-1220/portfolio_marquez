@@ -5,7 +5,7 @@ export const personalInfo: PersonalInfo = {
   fullName: "John Nathaniel Marquez",
   location: "Amadeo, Cavite",
   email: "marquezjohnnathanieljade@gmail.com",
-  bio: "I'm a passionate web developer with a strong foundation in modern technologies. Starting from basic programming concepts, I've evolved to embrace AI-assisted development while maintaining high standards of code quality. My journey includes successful projects in both frontend and full-stack development, showcasing my ability to learn and adapt quickly.",
+  bio: "I'm a passionate web developer with a strong foundation in modern technologies. My latest project, the T1NKER PC Rental & Management System, showcases my ability to architect secure, real-time, and user-friendly solutions for real-world business needs. I embrace AI-assisted development and modern frameworks to deliver high-quality, scalable applications. Starting from basic programming concepts, I've evolved to embrace AI-assisted development while maintaining high standards of code quality. My journey includes successful projects in both frontend and full-stack development, showcasing my ability to learn and adapt quickly.",
   education: [
     {
       school: "ICCT College Cainta Campus",
@@ -68,6 +68,11 @@ export const timeline: TimelineItem[] = [
     description:
       "Actively developing my portfolio and skills through continuous learning and project development. Working on enhancing my full-stack capabilities while seeking opportunities to contribute to meaningful projects in a professional team environment.",
   },
+  {
+    year: "2025 May 15–26",
+    description:
+      "Designed and launched the T1NKER PC Rental & Management System—a full-stack, real-time kiosk and admin dashboard solution for PC rental shops. Integrated Next.js, Electron, Supabase, PostgreSQL, and advanced session management for a seamless, secure rental experience.",
+  },
 ];
 
 export const skills: Skill[] = [
@@ -91,6 +96,8 @@ export const skills: Skill[] = [
   { name: "Supabase", category: "backend", level: "Beginner", since: "2024" },
   { name: "MCP Protocol", category: "backend", level: "Intermediate", since: "2025" },
   { name: "Knowledge Graphs", category: "backend", level: "Intermediate", since: "2025" },
+  { name: "PostgreSQL", category: "backend", level: "Beginner", since: "2025" },
+  { name: "bcryptjs", category: "backend", level: "Beginner", since: "2025" },
 
   // Development Tools
   { name: "Git", category: "tools", level: "Beginner", since: "2024" },
@@ -102,6 +109,7 @@ export const skills: Skill[] = [
   { name: "GitHub", category: "tools", level: "Intermediate", since: "2024" },
   { name: "CI/CD", category: "tools", level: "Beginner", since: "2024" },
   { name: "Docker", category: "tools", level: "Intermediate", since: "2025" },
+  { name: "Electron", category: "tools", level: "Beginner", since: "2025" },
 
   // Soft Skills
   { name: "Problem Solving", category: "soft skills" },
