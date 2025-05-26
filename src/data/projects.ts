@@ -453,10 +453,10 @@ export const projects: Project[] = [
     title: "T1NKER PC Rental & Management System",
     description:
       "A secure, automated, and user-friendly time-based PC rental system for internet cafes and gaming lounges. Features a web-based admin dashboard, real-time session management, robust client kiosk app, and comprehensive transaction and activity logging. Built for operational efficiency, security, and a seamless user experience.",
-    image: "/images/projects/t1nker-pc-rental.png",
+    image: "/images/projects/tinker-pc-rental.png",
     video: {
-      src: "/videos/t1nker-pc-rental.mp4",
-      poster: "/images/projects/t1nker-pc-rental.png",
+      src: "/videos/tinker-pc-rental.mp4",
+      poster: "/images/projects/tinker-pc-rental.png",
     },
     liveUrl: "",
     githubUrl: "",
