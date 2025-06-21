@@ -28,6 +28,8 @@ export interface Project {
   category: ProjectCategory;
   status: ProjectStatus;
   completedAt: string;
+  featured?: boolean;
+  featuredRank?: number;
 }
 
 export type ProjectCategory =

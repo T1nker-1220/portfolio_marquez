@@ -70,6 +70,7 @@ const config: Config = {
         "accordion-up": "accordion-up 0.2s ease-out",
         gradient: "gradient 6s linear infinite",
         "gradient-xy": "gradient-xy 15s ease infinite",
+        "pulse-slow": "pulse-slow 4s ease-in-out infinite",
       },
       keyframes: {
         "gradient-shift": {
@@ -121,6 +122,14 @@ const config: Config = {
           "50%": {
             "background-size": "200% 200%",
             "background-position": "100% 100%"
+          }
+        },
+        "pulse-slow": {
+          "0%, 100%": {
+            opacity: "0.85"
+          },
+          "50%": {
+            opacity: "1"
           }
         }
       },

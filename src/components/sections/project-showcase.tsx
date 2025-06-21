@@ -68,22 +68,29 @@ export function ProjectShowcase() {
     }, 300);
   };
 
-  const filteredProjects = projects.filter((project) => {
-    const matchesCategory =
-      selectedCategory === "All" || project.category === selectedCategory;
-    const matchesStatus =
-      selectedStatus === "All" || project.status === selectedStatus;
-    const matchesSearch =
-      project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.features.some((feature) =>
-        feature.toLowerCase().includes(searchQuery.toLowerCase())
-      ) ||
-      project.techStack.some((tech) =>
-        tech.name.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    return matchesCategory && matchesStatus && matchesSearch;
-  });
+  const filteredProjects = projects
+    .filter((project) => {
+      const matchesCategory =
+        selectedCategory === "All" || project.category === selectedCategory;
+      const matchesStatus =
+        selectedStatus === "All" || project.status === selectedStatus;
+      const matchesSearch =
+        project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        project.features.some((feature) =>
+          feature.toLowerCase().includes(searchQuery.toLowerCase())
+        ) ||
+        project.techStack.some((tech) =>
+          tech.name.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+      return matchesCategory && matchesStatus && matchesSearch;
+    })
+    .sort((a, b) => {
+      // Sort featured projects first by rank, then non-featured projects
+      const aRank = a.featured ? a.featuredRank ?? 0 : Infinity;
+      const bRank = b.featured ? b.featuredRank ?? 0 : Infinity;
+      return aRank - bRank;
+    });
 
   return (
     <section

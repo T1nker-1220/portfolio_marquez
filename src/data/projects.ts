@@ -34,6 +34,8 @@ export const projects: Project[] = [
     category: "Cursor-AI",
     status: "Completed",
     completedAt: "2025-01",
+    featured: true,
+    featuredRank: 4,
   },
   {
     id: "memories-with-lessons-mcp-server",
@@ -69,18 +71,20 @@ export const projects: Project[] = [
     category: "Cursor-AI",
     status: "Completed",
     completedAt: "2025-01",
+    featured: true,
+    featuredRank: 3,
   },
   {
-    id: "minrights-nextjs",
-    title: "Minrights Nextjs",
+    id: "minrights-ai",
+    title: "Minrights AI",
     description:
       "A full-stack web application built with Next.js and Mantine v7. As a collaborative project, I focus primarily on frontend development and API integration while also contributing to Python backend tasks when needed. The application features a modern responsive interface with comprehensive data management capabilities.",
-    image: "/images/projects/placeholder.png", // Placeholder for now
+    image: "/images/projects/minrights-ai.png",
     video: {
-      src: "/videos/placeholder.mp4", // Placeholder for now
-      poster: "/images/projects/placeholder.png",
+      src: "/videos/minrights-ai.mp4",
+      poster: "/images/projects/minrights-ai.png",
     },
-    liveUrl: "",
+    liveUrl: "https://www.mineralrights.ai/",
     githubUrl: "",
     techStack: [
       { name: "Next.js", icon: "nextjs", color: "#E5E7EB" },
@@ -89,6 +93,8 @@ export const projects: Project[] = [
       { name: "Python", icon: "python", color: "#3776AB" },
       { name: "React", icon: "react", color: "#61DAFB" },
       { name: "Supabase", icon: "supabase", color: "#3ECF8E" },
+      { name: "Heroku", icon: "heroku", color: "#E5E7EB" },
+      
     ],
     features: [
       "Modern UI with Mantine v7 components",
@@ -100,8 +106,10 @@ export const projects: Project[] = [
       "Authentication and user management",
     ],
     category: "Full Stack",
-    status: "In Progress",
-    completedAt: "2025-03",
+    status: "Completed",
+    completedAt: "2025-06",
+    featured: true,
+    featuredRank: 1,
   },
   {
     id: "excel-glass",
@@ -488,5 +496,7 @@ export const projects: Project[] = [
     category: "Full Stack",
     status: "Completed",
     completedAt: "2025-05",
+    featured: true,
+    featuredRank: 2,
   },
 ];
