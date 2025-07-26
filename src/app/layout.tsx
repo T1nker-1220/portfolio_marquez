@@ -4,16 +4,12 @@ import "@/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";
-import Script from "next/script";
 import { type PropsWithChildren } from "react";
 
 export const viewport: Viewport = {
   themeColor: "#FF5733",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
-  viewportFit: "cover",
 };
 
 export const metadata: Metadata = {
@@ -73,12 +69,6 @@ export const metadata: Metadata = {
         url: '/icons/icon.svg',
       },
     ],
-  },
-  manifest: "/manifest.json",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "JN Portfolio",
   },
   robots: {
     index: true,
@@ -150,13 +140,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <link rel="icon" href="/icons/favicon.ico" sizes="any" />
         <link rel="icon" href="/icons/icon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="JN Portfolio" />
-        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="theme-color" content="#FF5733" />
-        <meta name="apple-touch-fullscreen" content="yes" />
       </head>
       <body
         className={`${fontSans.variable} ${fontMono.variable} ${fontHeading.variable} min-h-screen bg-background font-sans antialiased`}
@@ -172,19 +156,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
           </MainLayout>
           <Analytics debug={false} />
         </ThemeProvider>
-        <Script
-          id="pwa-init"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `
-              if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function() {
-                  navigator.serviceWorker.register('/sw.js');
-                });
-              }
-            `,
-          }}
-        />
       </body>
     </html>
   );

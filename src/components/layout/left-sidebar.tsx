@@ -17,7 +17,9 @@ import {
   FolderOpen,
   User2,
   FileText,
-  MessageSquare
+  MessageSquare,
+  Download,
+  Sparkles
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -76,6 +78,29 @@ export default function LeftSidebar() {
             <MapPin className="w-3 h-3" />
             <span>{personalInfo.location}</span>
           </div>
+          
+          {/* Hire Me Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-4"
+          >
+            <motion.div
+              animate={{ 
+                boxShadow: [
+                  "0 0 20px rgba(16, 185, 129, 0.3)",
+                  "0 0 30px rgba(16, 185, 129, 0.5)",
+                  "0 0 20px rgba(16, 185, 129, 0.3)"
+                ]
+              }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="inline-flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-emerald-500 to-green-500 text-white text-xs font-semibold rounded-full"
+            >
+              <Sparkles className="w-3 h-3 animate-spin" />
+              <span>Available for Hire!</span>
+            </motion.div>
+          </motion.div>
         </motion.div>
 
         {/* Navigation */}
@@ -118,6 +143,20 @@ export default function LeftSidebar() {
           <h3 className="text-sm font-medium text-foreground mb-3">
             Get in Touch
           </h3>
+          
+          {/* Download Resume Button */}
+          <motion.a
+            href="/resume.pdf"
+            download="John_Nathaniel_Marquez_Resume.pdf"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="flex items-center gap-3 p-3 mb-3 rounded-lg bg-gradient-to-r from-blue-500/20 to-indigo-500/20 hover:from-blue-500/30 hover:to-indigo-500/30 border border-blue-500/20 transition-all group"
+          >
+            <Download className="w-4 h-4 text-blue-600 group-hover:text-blue-700" />
+            <span className="text-sm font-medium text-blue-700 group-hover:text-blue-800">
+              Download Resume
+            </span>
+          </motion.a>
           
           <Link href={`mailto:${personalInfo.email}`}>
             <motion.div

@@ -2,7 +2,7 @@
 
 import { skills } from "@/data/personal-info";
 import { cn } from "@/lib/utils";
-import { IconBrain, IconCode, IconStar, IconTools } from "@tabler/icons-react";
+import { Brain, Code, Star, Wrench } from "lucide-react";
 import { motion } from "framer-motion";
 
 const container = {
@@ -23,13 +23,13 @@ const item = {
 const getCategoryIcon = (category: string) => {
   switch (category) {
     case "frontend":
-      return <IconCode className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />;
+      return <Code className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />;
     case "backend":
-      return <IconBrain className="w-6 h-6 text-teal-600 dark:text-teal-400" />;
+      return <Brain className="w-6 h-6 text-teal-600 dark:text-teal-400" />;
     case "tools":
-      return <IconTools className="w-6 h-6 text-green-600 dark:text-green-400" />;
+      return <Wrench className="w-6 h-6 text-green-600 dark:text-green-400" />;
     default:
-      return <IconStar className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />;
+      return <Star className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />;
   }
 };
 
