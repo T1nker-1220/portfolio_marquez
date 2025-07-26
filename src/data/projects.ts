@@ -124,7 +124,7 @@ export const projects: Project[] = [
   },
   {
     id: "minrights-ai",
-    title: "Minrights AI",
+    title: "Mineral Rights AI",
     description:
       "A full-stack web application built with Next.js and Mantine v7. As a collaborative project, I focus primarily on frontend development and API integration while also contributing to Python backend tasks when needed. The application features a modern responsive interface with comprehensive data management capabilities.",
     image: "/images/projects/minrights-ai.png",

@@ -20,6 +20,7 @@ export default function HomePage() {
   const [selectedTech, setSelectedTech] = useState<string[]>([]);
   const [featuredOnly, setFeaturedOnly] = useState<boolean>(false);
   const [sortBy, setSortBy] = useState<string>("featured"); // featured, date, title
+  const [showAdvancedFilters, setShowAdvancedFilters] = useState<boolean>(false);
 
   // Extract unique categories and technologies
   const categories = useMemo(() => {
@@ -47,6 +48,7 @@ export default function HomePage() {
     setSelectedTech([]);
     setFeaturedOnly(false);
     setSortBy("featured");
+    setShowAdvancedFilters(false);
   };
 
   // Prepare feed items
@@ -160,142 +162,165 @@ export default function HomePage() {
       leftSidebar={<LeftSidebar />}
       rightSidebar={<RightSidebar />}
     >
-      {/* Feed Header with Filters */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="glass rounded-2xl p-6 backdrop-blur-sm border border-border/50 mb-6"
-      >
-   
-          <div className="flex flex-col gap-4 w-full">
-            {/* Search and Main Filters */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full">
-              <div className="relative flex-1 sm:flex-none">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                <input
-                  type="text"
-                  placeholder="Search projects, tech, features..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 pr-4 py-2 bg-muted/50 border border-border/50 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-colors w-full sm:w-64"
-                />
-              </div>
-              
-              <div className="flex items-center gap-2 flex-wrap">
-                <select
-                  value={filter}
-                  onChange={(e) => setFilter(e.target.value)}
-                  className="px-3 py-2 bg-muted/50 border border-border/50 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-colors"
-                >
-                                     <option value="all">All Posts</option>
-                   <option value="project">Projects</option>
-                </select>
-                
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="px-3 py-2 bg-muted/50 border border-border/50 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-colors"
-                >
-                  <option value="featured">Featured First</option>
-                  <option value="date">Latest First</option>
-                  <option value="title">A-Z</option>
-                </select>
-                
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setFeaturedOnly(!featuredOnly)}
-                  className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm transition-colors ${
-                    featuredOnly 
-                      ? "bg-emerald-500/20 text-emerald-600 border border-emerald-500/50" 
-                      : "bg-muted/50 text-muted-foreground border border-border/50 hover:bg-muted"
-                  }`}
-                >
-                  <Star className="w-3 h-3" />
-                  Featured
-                </motion.button>
-              </div>
-            </div>
-            
-            {/* Category Filter */}
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-xs font-medium text-muted-foreground">Category:</span>
-              <div className="flex items-center gap-1 flex-wrap">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setSelectedCategory("all")}
-                  className={`px-2 py-1 rounded-md text-xs transition-colors ${
-                    selectedCategory === "all" 
-                      ? "bg-emerald-500/20 text-emerald-600" 
-                      : "bg-muted/50 text-muted-foreground hover:bg-muted"
-                  }`}
-                >
-                  All
-                </motion.button>
-                {categories.map(category => (
-                  <motion.button
-                    key={category}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setSelectedCategory(category)}
-                    className={`px-2 py-1 rounded-md text-xs transition-colors ${
-                      selectedCategory === category 
-                        ? "bg-emerald-500/20 text-emerald-600" 
-                        : "bg-muted/50 text-muted-foreground hover:bg-muted"
-                    }`}
-                  >
-                    {category}
-                  </motion.button>
-                ))}
-              </div>
-            </div>
-            
-            {/* Technology Filter */}
-            <div className="flex items-start gap-2 flex-wrap">
-              <span className="text-xs font-medium text-muted-foreground mt-1">Technologies:</span>
-              <div className="flex items-center gap-1 flex-wrap max-h-20 overflow-y-auto scrollbar-hide">
-                {technologies.slice(0, 15).map(tech => (
-                  <motion.button
-                    key={tech}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => handleTechToggle(tech)}
-                    className={`flex items-center gap-1 px-2 py-1 rounded-md text-xs transition-colors ${
-                      selectedTech.includes(tech) 
-                        ? "bg-blue-500/20 text-blue-600 border border-blue-500/50" 
-                        : "bg-muted/50 text-muted-foreground hover:bg-muted"
-                    }`}
-                  >
-                    <Tag className="w-2 h-2" />
-                    {tech}
-                  </motion.button>
-                ))}
-              </div>
-            </div>
-            
-            {/* Active Filters */}
-            {activeFiltersCount > 0 && (
-              <div className="flex items-center gap-2 pt-2 border-t border-border/30">
-                <span className="text-xs text-muted-foreground">
-                  {activeFiltersCount} filter{activeFiltersCount !== 1 ? 's' : ''} active
-                </span>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={clearFilters}
-                  className="flex items-center gap-1 px-2 py-1 text-xs text-red-600 hover:bg-red-500/10 rounded-md transition-colors"
-                >
-                  <X className="w-3 h-3" />
-                  Clear All
-                </motion.button>
-              </div>
-            )}
-          </div>
-      </motion.div>
+             {/* Centered Minimalist Filter */}
+       <motion.div
+         initial={{ opacity: 0, y: -20 }}
+         animate={{ opacity: 1, y: 0 }}
+         className="sticky top-4 z-50 mb-8"
+       >
+         <div className="max-w-4xl mx-auto">
+                       <div className="backdrop-blur-xl bg-white/80 dark:bg-slate-900/80 rounded-2xl shadow-xl shadow-black/10 border border-white/20 dark:border-slate-700/30 overflow-hidden">
+             {/* Main Filter Bar */}
+             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 p-4">
+               {/* Search */}
+               <div className="relative w-full sm:w-80">
+                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                 <input
+                   type="text"
+                   placeholder="Search projects..."
+                   value={searchQuery}
+                   onChange={(e) => setSearchQuery(e.target.value)}
+                   className="w-full pl-10 pr-4 py-3 bg-muted/20 border-0 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:bg-muted/30 transition-all"
+                 />
+               </div>
+
+               {/* Quick Actions */}
+               <div className="flex items-center gap-2">
+                 <select
+                   value={sortBy}
+                   onChange={(e) => setSortBy(e.target.value)}
+                   className="px-4 py-3 bg-muted/20 border-0 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 transition-all"
+                 >
+                   <option value="featured">Featured</option>
+                   <option value="date">Latest</option>
+                   <option value="title">A-Z</option>
+                 </select>
+                 
+                 <motion.button
+                   whileHover={{ scale: 1.02 }}
+                   whileTap={{ scale: 0.98 }}
+                   onClick={() => setFeaturedOnly(!featuredOnly)}
+                   className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                     featuredOnly 
+                       ? "bg-emerald-500/20 text-emerald-600" 
+                       : "bg-muted/20 text-muted-foreground hover:bg-muted/30"
+                   }`}
+                 >
+                   <Star className="w-4 h-4" />
+                   Featured
+                 </motion.button>
+
+                 <motion.button
+                   whileHover={{ scale: 1.02 }}
+                   whileTap={{ scale: 0.98 }}
+                   onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
+                   className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                     showAdvancedFilters || activeFiltersCount > 0
+                       ? "bg-blue-500/20 text-blue-600"
+                       : "bg-muted/20 text-muted-foreground hover:bg-muted/30"
+                   }`}
+                 >
+                   <Filter className="w-4 h-4" />
+                   Filters
+                   {activeFiltersCount > 0 && (
+                     <span className="min-w-[1.125rem] h-5 px-1 bg-blue-500 text-white text-xs rounded-full flex items-center justify-center">
+                       {activeFiltersCount}
+                     </span>
+                   )}
+                 </motion.button>
+               </div>
+             </div>
+
+             {/* Advanced Filters */}
+             <motion.div
+               initial={false}
+               animate={{ 
+                 height: showAdvancedFilters ? "auto" : 0,
+                 opacity: showAdvancedFilters ? 1 : 0 
+               }}
+               transition={{ duration: 0.2, ease: "easeInOut" }}
+               className="overflow-hidden"
+             >
+               <div className="px-4 pb-4 space-y-4">
+                 {/* Categories */}
+                 <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                   <span className="text-sm font-medium text-muted-foreground min-w-fit">Categories</span>
+                   <div className="flex items-center gap-2 flex-wrap">
+                     <motion.button
+                       whileHover={{ scale: 1.02 }}
+                       whileTap={{ scale: 0.98 }}
+                       onClick={() => setSelectedCategory("all")}
+                       className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                         selectedCategory === "all" 
+                           ? "bg-emerald-500/20 text-emerald-600" 
+                           : "bg-muted/20 text-muted-foreground hover:bg-muted/30"
+                       }`}
+                     >
+                       All
+                     </motion.button>
+                     {categories.map(category => (
+                       <motion.button
+                         key={category}
+                         whileHover={{ scale: 1.02 }}
+                         whileTap={{ scale: 0.98 }}
+                         onClick={() => setSelectedCategory(category)}
+                         className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                           selectedCategory === category 
+                             ? "bg-emerald-500/20 text-emerald-600" 
+                             : "bg-muted/20 text-muted-foreground hover:bg-muted/30"
+                         }`}
+                       >
+                         {category}
+                       </motion.button>
+                     ))}
+                   </div>
+                 </div>
+                 
+                 {/* Technologies */}
+                 <div className="flex flex-col sm:flex-row sm:items-start gap-3">
+                   <span className="text-sm font-medium text-muted-foreground min-w-fit">Technologies</span>
+                   <div className="flex items-center gap-2 flex-wrap">
+                     {technologies.slice(0, 10).map(tech => (
+                       <motion.button
+                         key={tech}
+                         whileHover={{ scale: 1.02 }}
+                         whileTap={{ scale: 0.98 }}
+                         onClick={() => handleTechToggle(tech)}
+                         className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                           selectedTech.includes(tech) 
+                             ? "bg-blue-500/20 text-blue-600" 
+                             : "bg-muted/20 text-muted-foreground hover:bg-muted/30"
+                         }`}
+                       >
+                         <Tag className="w-3 h-3" />
+                         {tech}
+                       </motion.button>
+                     ))}
+                   </div>
+                 </div>
+                 
+                 {/* Clear Filters */}
+                 {activeFiltersCount > 0 && (
+                   <div className="flex justify-center pt-2">
+                     <motion.button
+                       whileHover={{ scale: 1.02 }}
+                       whileTap={{ scale: 0.98 }}
+                       onClick={clearFilters}
+                       className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-500/10 rounded-lg transition-all"
+                     >
+                       <X className="w-4 h-4" />
+                       Clear All Filters ({activeFiltersCount})
+                     </motion.button>
+                   </div>
+                 )}
+               </div>
+             </motion.div>
+           </div>
+         </div>
+       </motion.div>
 
       {/* Feed Content */}
-      <div className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
                  {filteredItems.map((item, index) => {
            switch (item.type) {
              case "project":
@@ -323,11 +348,11 @@ export default function HomePage() {
         })}
         
         {filteredItems.length === 0 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="glass rounded-2xl p-8 backdrop-blur-sm border border-border/50 text-center"
-          >
+                     <motion.div
+             initial={{ opacity: 0 }}
+             animate={{ opacity: 1 }}
+             className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 shadow-lg shadow-black/5 text-center"
+           >
             <div className="text-muted-foreground mb-4">
               <Filter className="w-8 h-8 mx-auto mb-2 opacity-50" />
               No posts found matching your criteria.

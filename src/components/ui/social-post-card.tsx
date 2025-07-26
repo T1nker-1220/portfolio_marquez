@@ -103,10 +103,10 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
       onHoverEnd={handleHoverEnd}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className={`relative rounded-2xl overflow-hidden backdrop-blur-sm border group transition-all duration-300 gpu-accelerated ${
+      className={`relative rounded-2xl overflow-hidden backdrop-blur-xl border group transition-all duration-300 gpu-accelerated ${
         project.featured 
-          ? 'glass-featured border-gradient-featured shadow-2xl shadow-emerald-500/20 shimmer' 
-          : 'glass border-border/50'
+          ? 'bg-white/90 dark:bg-slate-800/90 border-emerald-200/50 dark:border-emerald-800/50 shadow-2xl shadow-emerald-500/20 shimmer' 
+          : 'bg-white/80 dark:bg-slate-800/80 border-slate-200/50 dark:border-slate-700/50 shadow-lg shadow-black/5'
       } ${
         isMobile ? 'active:scale-95' : ''
       }`}
@@ -137,7 +137,7 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
         </div>
       )}
       {/* Enhanced Card Header */}
-      <div className="relative p-4 flex items-center justify-between">
+      <div className="relative p-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <motion.div 
             className={`w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold ${
@@ -198,7 +198,7 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
       {/* Enhanced Project Title & Description */}
       <div className="px-4 pb-3">
         <motion.h2 
-          className={`text-lg font-semibold mb-2 transition-colors ${
+          className={`text-base font-semibold mb-1 transition-colors ${
             project.featured 
               ? 'text-foreground group-hover:text-emerald-600 group-hover:drop-shadow-sm'
               : 'text-foreground group-hover:text-emerald-600'
@@ -215,7 +215,7 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
       {/* Media Section */}
       <div className="relative">
         {showVideo && project.video ? (
-          <div className="aspect-video bg-black">
+          <div className="aspect-[4/3] bg-black">
             <video
               src={project.video.src}
               poster={project.video.poster}
@@ -225,7 +225,7 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
             />
           </div>
         ) : (
-          <div className="relative aspect-video group/media">
+          <div className="relative aspect-[4/3] group/media">
             <Image
               src={project.image}
               alt={project.title}
@@ -280,7 +280,7 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
       </div>
 
       {/* Enhanced Content */}
-      <div className="p-4 relative">
+      <div className="p-3 relative">
         {/* Interactive Organized Tech Stack */}
         <div className="mb-4">
           <h4 className="text-xs font-medium text-muted-foreground mb-2 flex items-center gap-1">

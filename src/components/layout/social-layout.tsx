@@ -19,15 +19,15 @@ export default function SocialLayout({
   const [rightSidebarOpen, setRightSidebarOpen] = useState(false);
 
   return (
-    <div className="h-screen bg-background overflow-hidden">
+    <div className="h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-950 dark:via-blue-950 dark:to-indigo-950 overflow-hidden dot-pattern">
       {/* Mobile Navigation Bar */}
-      <div className="lg:hidden sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/50">
+      <div className="lg:hidden sticky top-0 z-50 bg-white/90 dark:bg-slate-950/90 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-700/50">
         <div className="flex items-center justify-between p-4">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setLeftSidebarOpen(true)}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
+            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-200/80 dark:hover:bg-slate-700/80 transition-colors"
           >
             <User className="w-4 h-4" />
             <span className="text-sm font-medium">Profile</span>
@@ -41,7 +41,7 @@ export default function SocialLayout({
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setRightSidebarOpen(true)}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
+            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-200/80 dark:hover:bg-slate-700/80 transition-colors"
           >
             <BarChart3 className="w-4 h-4" />
             <span className="text-sm font-medium">Stats</span>
@@ -58,7 +58,7 @@ export default function SocialLayout({
             transition={{ duration: 0.5 }}
             className="hidden lg:flex lg:flex-col lg:w-80 lg:min-w-[320px] lg:max-w-[400px] lg:sticky lg:top-6 lg:h-[calc(100vh-3rem)] lg:overflow-hidden"
           >
-            <div className="glass rounded-2xl p-6 backdrop-blur-sm border border-border/50 h-full flex flex-col">
+            <div className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-2xl p-6 border border-white/20 dark:border-slate-700/30 shadow-xl shadow-black/5 h-full flex flex-col">
               {leftSidebar}
             </div>
           </motion.aside>
@@ -82,7 +82,7 @@ export default function SocialLayout({
             transition={{ duration: 0.5, delay: 0.4 }}
             className="hidden xl:flex xl:flex-col xl:w-80 xl:min-w-[320px] xl:max-w-[400px] xl:sticky xl:top-6 xl:h-[calc(100vh-3rem)] xl:overflow-hidden"
           >
-            <div className="glass rounded-2xl p-6 backdrop-blur-sm border border-border/50 h-full flex flex-col">
+            <div className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-2xl p-6 border border-white/20 dark:border-slate-700/30 shadow-xl shadow-black/5 h-full flex flex-col">
               {rightSidebar}
             </div>
           </motion.aside>
@@ -103,16 +103,16 @@ export default function SocialLayout({
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 120 }}
-            className="w-80 max-w-[85vw] h-full bg-background border-r border-border/50"
+            className="w-80 max-w-[85vw] h-full bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-slate-700"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between p-4 border-b border-border/50">
+            <div className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-700">
               <h2 className="text-lg font-semibold text-foreground">Profile</h2>
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setLeftSidebarOpen(false)}
-                className="p-2 rounded-lg hover:bg-muted transition-colors"
+                className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               >
                 <X className="w-5 h-5" />
               </motion.button>
@@ -138,16 +138,16 @@ export default function SocialLayout({
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 120 }}
-            className="ml-auto w-80 max-w-[85vw] h-full bg-background border-l border-border/50"
+            className="ml-auto w-80 max-w-[85vw] h-full bg-white dark:bg-slate-950 border-l border-slate-200 dark:border-slate-700"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between p-4 border-b border-border/50">
+            <div className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-700">
               <h2 className="text-lg font-semibold text-foreground">Stats</h2>
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setRightSidebarOpen(false)}
-                className="p-2 rounded-lg hover:bg-muted transition-colors"
+                className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               >
                 <X className="w-5 h-5" />
               </motion.button>
