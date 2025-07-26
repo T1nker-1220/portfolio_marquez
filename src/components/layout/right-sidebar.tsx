@@ -3,6 +3,8 @@
 import { skills } from "@/data/personal-info";
 import { projects } from "@/data/projects";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 import { 
   Code2, 
   Trophy, 
@@ -13,15 +15,126 @@ import {
   GitBranch,
   Zap
 } from "lucide-react";
+import { 
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiFramer,
+  SiNodedotjs,
+  SiPython,
+  SiFlask,
+  SiPrisma,
+  SiSupabase,
+  SiPostgresql,
+  SiGit,
+  SiVercel,
+  SiPnpm,
+  SiGithub,
+  SiDocker,
+  SiFigma,
+  SiElectron
+} from "react-icons/si";
+import { 
+  FaCode,
+  FaDatabase,
+  FaCog,
+  FaGlobe,
+  FaBolt,
+  FaMobile,
+  FaDesktop,
+  FaFileCode,
+  FaCodeBranch,
+  FaLayerGroup
+} from "react-icons/fa";
+
+// Tech stack icon mapping for sidebar skills
+const getIconComponent = (skillName: string) => {
+  const iconMap: Record<string, React.ComponentType<any>> = {
+    // Frontend
+    "React.js": SiReact,
+    "Next.js": SiNextdotjs,
+    "TypeScript": SiTypescript,
+    "Tailwind CSS": SiTailwindcss,
+    "HTML5": SiHtml5,
+    "CSS3": SiCss3,
+    "JavaScript": SiJavascript,
+    "Framer Motion": SiFramer,
+    "Mantine v7": FaCode,
+
+    // Backend
+    "Node.js": SiNodedotjs,
+    "Python": SiPython,
+    "Flask": SiFlask,
+    "RESTful APIs": FaGlobe,
+    "Prisma": SiPrisma,
+    "Supabase": SiSupabase,
+    "PostgreSQL": SiPostgresql,
+    "bcryptjs": FaCog,
+    "MCP Protocol": FaCog,
+    "Knowledge Graphs": FaDatabase,
+
+    // Tools
+    "Git": SiGit,
+    "VS Code": FaDesktop,
+    "Cursor AI": FaDesktop,
+    "WindSurf AI": FaDesktop,
+    "Vercel": SiVercel,
+    "pnpm": SiPnpm,
+    "GitHub": SiGithub,
+    "CI/CD": FaCog,
+    "Docker": SiDocker,
+    "Electron": SiElectron,
+
+    // Other skills
+    "UI/UX Design": SiFigma,
+    "Responsive Design": FaMobile,
+    "Web Performance": FaBolt,
+    "SEO": FaGlobe,
+    "API Integration": FaCog,
+    "Documentation": FaFileCode,
+    "Code Review": FaCodeBranch,
+    "System Design": FaLayerGroup,
+    "AI-Assisted Development": FaBolt,
+    "AI Context Management": FaDatabase,
+    "Memory Systems": FaDatabase,
+  };
+
+  return iconMap[skillName] || FaCode; // Default fallback
+};
 
 export default function RightSidebar() {
+  const [animationsReady, setAnimationsReady] = useState(false);
+  
+  // Force animations to start after component mounts
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimationsReady(true);
+      // Force repaint to trigger animations
+      if (typeof window !== 'undefined') {
+        const elements = document.querySelectorAll('.animate-scroll-infinite, .animate-scroll-reverse');
+        elements.forEach(el => {
+          const element = el as HTMLElement;
+          element.style.animationName = 'none';
+          element.offsetHeight; // Force reflow
+          element.style.animationName = '';
+        });
+      }
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
   // Calculate stats
   const completedProjects = projects.filter(p => p.status === "Completed").length;
   const featuredProjects = projects.filter(p => p.featured).length;
   const totalSkills = skills.length;
   const advancedSkills = skills.filter(s => s.level === "Advanced").length;
   
-  // Get all skills by category for scrollable display
+  // Get all skills by category for auto-scrolling display
   const skillsByCategory = {
     frontend: skills.filter(s => s.category === "frontend"),
     backend: skills.filter(s => s.category === "backend"),
@@ -75,7 +188,7 @@ export default function RightSidebar() {
         </div>
       </motion.div>
 
-      {/* Skills Summary - Scrollable */}
+      {/* Auto-Scrolling Skills Showcase - Compact Sidebar Version */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -84,31 +197,123 @@ export default function RightSidebar() {
       >
         <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2 flex-shrink-0 drop-shadow-lg">
           <Code2 className="w-4 h-4" />
-          All Skills
+          Skills Showcase
         </h3>
         
-        <div className="flex-1 overflow-y-auto custom-scrollbar pr-2 -mr-2">
-          <div className="space-y-4">
-            {Object.entries(skillsByCategory).map(([category, categorySkills]) => (
-              <div key={category}>
-                <h4 className="text-xs font-medium text-muted-foreground mb-2 capitalize sticky top-0 backdrop-blur-md bg-white/10 dark:bg-white/5 border border-white/20 dark:border-white/10 rounded-md px-2 py-1">
-                  {category} ({categorySkills.length})
-                </h4>
-                <div className="grid grid-cols-2 gap-1">
-                  {categorySkills.map((skill, index) => (
-                    <motion.div
-                      key={skill.name}
-                      whileHover={{ scale: 1.02 }}
-                      className="px-2 py-1.5 text-xs bg-emerald-500/10 text-emerald-600 rounded-md hover:bg-emerald-500/20 transition-colors cursor-default group"
-                    >
-                      <div className="font-medium truncate">{skill.name}</div>
-                      <div className="text-xs text-emerald-500/60 capitalize">{skill.level}</div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="flex-1 space-y-4">
+                     {/* Frontend Skills - Horizontal Scroll */}
+           <div className="relative">
+             <h4 className="text-xs font-medium text-emerald-400 mb-2 flex items-center gap-1">
+               🎨 Frontend ({skillsByCategory.frontend.length})
+             </h4>
+             <div className="relative overflow-hidden rounded-lg bg-gradient-to-r from-emerald-500/10 to-emerald-800/20 border border-emerald-500/20">
+               <div 
+                 className={cn(
+                   "flex items-center py-2",
+                   animationsReady ? "animate-scroll-infinite" : ""
+                 )}
+                 style={{
+                   width: `${skillsByCategory.frontend.length * 3 * 72}px`,
+                   animationDuration: '15s',
+                   animationTimingFunction: 'linear',
+                   animationIterationCount: 'infinite',
+                   animationPlayState: 'running',
+                   transform: 'translateZ(0)'
+                 }}
+               >
+                 {[...skillsByCategory.frontend, ...skillsByCategory.frontend, ...skillsByCategory.frontend].map((skill, index) => {
+                   const IconComponent = getIconComponent(skill.name);
+                   return (
+                     <div 
+                       key={`frontend-${skill.name}-${index}`}
+                       className="flex-shrink-0 w-[70px] mx-1 flex flex-col items-center justify-center bg-white/5 rounded-md p-2 hover:bg-white/10 transition-colors"
+                     >
+                       <IconComponent className="w-4 h-4 text-emerald-400 mb-1" />
+                       <span className="text-[8px] text-center text-emerald-300 leading-tight truncate w-full">
+                         {skill.name.split(' ')[0]}
+                       </span>
+                     </div>
+                   );
+                 })}
+               </div>
+             </div>
+           </div>
+
+                     {/* Backend Skills - Reverse Scroll */}
+           <div className="relative">
+             <h4 className="text-xs font-medium text-teal-400 mb-2 flex items-center gap-1">
+               ⚙️ Backend ({skillsByCategory.backend.length})
+             </h4>
+             <div className="relative overflow-hidden rounded-lg bg-gradient-to-r from-teal-500/10 to-teal-800/20 border border-teal-500/20">
+               <div 
+                 className={cn(
+                   "flex items-center py-2",
+                   animationsReady ? "animate-scroll-reverse" : ""
+                 )}
+                 style={{
+                   width: `${skillsByCategory.backend.length * 3 * 72}px`,
+                   animationDuration: '18s',
+                   animationTimingFunction: 'linear',
+                   animationIterationCount: 'infinite',
+                   animationPlayState: 'running',
+                   transform: 'translateZ(0)'
+                 }}
+               >
+                 {[...skillsByCategory.backend, ...skillsByCategory.backend, ...skillsByCategory.backend].map((skill, index) => {
+                   const IconComponent = getIconComponent(skill.name);
+                   return (
+                     <div 
+                       key={`backend-${skill.name}-${index}`}
+                       className="flex-shrink-0 w-[70px] mx-1 flex flex-col items-center justify-center bg-white/5 rounded-md p-2 hover:bg-white/10 transition-colors"
+                     >
+                       <IconComponent className="w-4 h-4 text-teal-400 mb-1" />
+                       <span className="text-[8px] text-center text-teal-300 leading-tight truncate w-full">
+                         {skill.name.split(' ')[0]}
+                       </span>
+                     </div>
+                   );
+                 })}
+               </div>
+             </div>
+           </div>
+
+           {/* Tools Skills - Normal Scroll */}
+           <div className="relative">
+             <h4 className="text-xs font-medium text-green-400 mb-2 flex items-center gap-1">
+               🛠️ Tools ({skillsByCategory.tools.length})
+             </h4>
+             <div className="relative overflow-hidden rounded-lg bg-gradient-to-r from-green-500/10 to-green-800/20 border border-green-500/20">
+               <div 
+                 className={cn(
+                   "flex items-center py-2",
+                   animationsReady ? "animate-scroll-infinite" : ""
+                 )}
+                 style={{
+                   width: `${skillsByCategory.tools.length * 3 * 72}px`,
+                   animationDuration: '16s',
+                   animationTimingFunction: 'linear',
+                   animationIterationCount: 'infinite',
+                   animationPlayState: 'running',
+                   transform: 'translateZ(0)'
+                 }}
+               >
+                 {[...skillsByCategory.tools, ...skillsByCategory.tools, ...skillsByCategory.tools].map((skill, index) => {
+                   const IconComponent = getIconComponent(skill.name);
+                   return (
+                     <div 
+                       key={`tools-${skill.name}-${index}`}
+                       className="flex-shrink-0 w-[70px] mx-1 flex flex-col items-center justify-center bg-white/5 rounded-md p-2 hover:bg-white/10 transition-colors"
+                     >
+                       <IconComponent className="w-4 h-4 text-green-400 mb-1" />
+                       <span className="text-[8px] text-center text-green-300 leading-tight truncate w-full">
+                         {skill.name.split(' ')[0]}
+                       </span>
+                     </div>
+                   );
+                 })}
+               </div>
+             </div>
+           </div>
         </div>
       </motion.div>
 

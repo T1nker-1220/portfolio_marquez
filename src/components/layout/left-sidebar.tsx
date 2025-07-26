@@ -53,7 +53,7 @@ const navigationItems: NavigationItem[] = [
   },
   {
     id: "contributions",
-    label: "Contributions",
+    label: "Contributions", 
     icon: <GitCommit className="w-4 h-4" />,
   }
 ];

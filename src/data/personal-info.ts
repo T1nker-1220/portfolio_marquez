@@ -134,3 +134,62 @@ export const skills: Skill[] = [
   { name: "AI Context Management", category: "other", level: "Intermediate", since: "2025" },
   { name: "Memory Systems", category: "other", level: "Intermediate", since: "2025" },
 ];
+
+// Skill Icon Mapping for devicons-react components
+export const SKILL_ICONS = {
+  // Frontend Skills
+  "React.js": "ReactOriginal",
+  "Next.js": "NextjsOriginal",
+  "TypeScript": "TypescriptOriginal",
+  "Tailwind CSS": "TailwindcssOriginal",
+  "Mantine v7": "MantineOriginal",
+  "HTML5": "Html5Original",
+  "CSS3": "Css3Original",
+  "JavaScript": "JavascriptOriginal",
+  "Framer Motion": "FramermotionOriginal",
+
+  // Backend Skills
+  "Node.js": "NodejsOriginal",
+  "Python": "PythonOriginal",
+  "Flask": "FlaskOriginal",
+  "RESTful APIs": "FastapiOriginal", // Using FastAPI as REST representation
+  "Prisma": "PrismaOriginal",
+  "Supabase": "SupabaseOriginal",
+  "MCP Protocol": "ProtocolbuffersOriginal", // Using Protocol Buffers as representation
+  "Knowledge Graphs": "GraphqlOriginal", // Using GraphQL as representation
+  "PostgreSQL": "PostgresqlOriginal",
+  "bcryptjs": "NodejsOriginal", // Using Node.js as it's a Node.js package
+
+  // Development Tools
+  "Git": "GitOriginal",
+  "VS Code": "VscodeOriginal",
+  "Cursor AI": "VscodeOriginal", // Using VS Code icon as similar tool
+  "WindSurf AI": "VscodeOriginal", // Using VS Code icon as similar tool
+  "Vercel": "VercelOriginal",
+  "pnpm": "PnpmOriginal",
+  "GitHub": "GithubOriginal",
+  "CI/CD": "GithubactionsOriginal", // Using GitHub Actions as CI/CD representation
+  "Docker": "DockerOriginal",
+  "Electron": "ElectronOriginal",
+
+  // Fallback icons for skills without direct matches
+  "Problem Solving": "BrainOriginal",
+  "Communication": "SlackOriginal",
+  "Project Management": "TrelloOriginal",
+  "Time Management": "NotionOriginal",
+  "Adaptability": "GithubOriginal",
+  "Critical Thinking": "BrainOriginal",
+  "Prompt Engineering": "OpenaiOriginal",
+  "Self-Learning": "BookOriginal",
+  "UI/UX Design": "FigmaOriginal",
+  "Responsive Design": "Html5Original",
+  "Web Performance": "GoogleOriginal",
+  "SEO": "GoogleOriginal",
+  "API Integration": "PostmanOriginal",
+  "Documentation": "MarkdownOriginal",
+  "Code Review": "GithubOriginal",
+  "System Design": "DiagramsnetOriginal",
+  "AI-Assisted Development": "OpenaiOriginal",
+  "AI Context Management": "OpenaiOriginal",
+  "Memory Systems": "RedisOriginal"
+} as const;
