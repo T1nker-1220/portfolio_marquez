@@ -3,7 +3,6 @@
 import { cn } from "@/lib/utils";
 import { PropsWithChildren } from "react";
 import { PageTransition } from "../page-transition";
-import { ThemeToggle } from "../theme-toggle";
 
 export function MainLayout({ children }: PropsWithChildren) {
   return (
@@ -11,7 +10,6 @@ export function MainLayout({ children }: PropsWithChildren) {
       <main className="flex-1">
         <PageTransition>{children}</PageTransition>
       </main>
-      <ThemeToggle />
     </div>
   );
 }

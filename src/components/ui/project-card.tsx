@@ -187,7 +187,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       )}
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-3xl w-[95vw] max-h-[85vh] overflow-y-auto p-4 sm:p-6 gap-4 sm:gap-6">
+        <DialogContent className="max-w-3xl w-[95vw] max-h-[85vh] overflow-y-auto p-4 sm:p-6 gap-4 sm:gap-6 custom-scrollbar">
           <DialogHeader className="space-y-2 sm:space-y-3">
             <DialogTitle className="text-xl sm:text-2xl font-bold">{project.title}</DialogTitle>
             <DialogDescription className="text-sm sm:text-base">{project.description}</DialogDescription>

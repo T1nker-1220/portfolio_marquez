@@ -87,11 +87,11 @@ export default function RightSidebar() {
           All Skills
         </h3>
         
-        <div className="flex-1 overflow-y-auto scrollbar-hide pr-2 -mr-2">
+        <div className="flex-1 overflow-y-auto custom-scrollbar pr-2 -mr-2">
           <div className="space-y-4">
             {Object.entries(skillsByCategory).map(([category, categorySkills]) => (
               <div key={category}>
-                <h4 className="text-xs font-medium text-muted-foreground mb-2 capitalize sticky top-0 bg-background py-1">
+                <h4 className="text-xs font-medium text-muted-foreground mb-2 capitalize sticky top-0 backdrop-blur-md bg-white/10 dark:bg-white/5 border border-white/20 dark:border-white/10 rounded-md px-2 py-1">
                   {category} ({categorySkills.length})
                 </h4>
                 <div className="grid grid-cols-2 gap-1">

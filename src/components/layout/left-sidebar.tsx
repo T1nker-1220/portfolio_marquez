@@ -42,13 +42,58 @@ export default function LeftSidebar() {
 
   return (
     <div className="h-full flex flex-col">
+      {/* Top Action Buttons */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="flex-shrink-0 p-4 pb-2 flex items-center justify-between gap-3"
+      >
+        {/* Hire Me Button - Left */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <motion.div
+            animate={{ 
+              boxShadow: [
+                "0 0 20px rgba(16, 185, 129, 0.3)",
+                "0 0 30px rgba(16, 185, 129, 0.5)",
+                "0 0 20px rgba(16, 185, 129, 0.3)"
+              ]
+            }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="inline-flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-emerald-500 to-green-500 text-white text-xs font-semibold rounded-full cursor-pointer hover:scale-105 transition-transform"
+          >
+            <Sparkles className="w-3 h-3 animate-spin" />
+            <span>Hire Me!</span>
+          </motion.div>
+        </motion.div>
+
+        {/* Resume Button - Right */}
+        <motion.a
+          href="/resume.pdf"
+          download="John_Nathaniel_Marquez_Resume.pdf"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="inline-flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-xs font-semibold rounded-full cursor-pointer hover:shadow-lg transition-all"
+        >
+          <Download className="w-3 h-3" />
+          <span>Resume</span>
+        </motion.a>
+      </motion.div>
+
       {/* Main Content - Scrollable */}
-      <div className="flex-1 overflow-y-auto space-y-6">
+      <div className="flex-1 overflow-y-auto space-y-6 custom-scrollbar">
         {/* Profile Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
           className="text-center"
         >
           <div className="relative mb-4 w-20 h-20 mx-auto">
@@ -78,29 +123,6 @@ export default function LeftSidebar() {
             <MapPin className="w-3 h-3" />
             <span>{personalInfo.location}</span>
           </div>
-          
-          {/* Hire Me Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-4"
-          >
-            <motion.div
-              animate={{ 
-                boxShadow: [
-                  "0 0 20px rgba(16, 185, 129, 0.3)",
-                  "0 0 30px rgba(16, 185, 129, 0.5)",
-                  "0 0 20px rgba(16, 185, 129, 0.3)"
-                ]
-              }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="inline-flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-emerald-500 to-green-500 text-white text-xs font-semibold rounded-full"
-            >
-              <Sparkles className="w-3 h-3 animate-spin" />
-              <span>Available for Hire!</span>
-            </motion.div>
-          </motion.div>
         </motion.div>
 
         {/* Navigation */}
@@ -133,43 +155,29 @@ export default function LeftSidebar() {
           })}
         </motion.nav>
 
-        {/* Quick Contact */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="pt-4 border-t border-border/50"
-        >
-          <h3 className="text-sm font-medium text-foreground mb-3">
-            Get in Touch
-          </h3>
-          
-          {/* Download Resume Button */}
-          <motion.a
-            href="/resume.pdf"
-            download="John_Nathaniel_Marquez_Resume.pdf"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="flex items-center gap-3 p-3 mb-3 rounded-lg bg-gradient-to-r from-blue-500/20 to-indigo-500/20 hover:from-blue-500/30 hover:to-indigo-500/30 border border-blue-500/20 transition-all group"
-          >
-            <Download className="w-4 h-4 text-blue-600 group-hover:text-blue-700" />
-            <span className="text-sm font-medium text-blue-700 group-hover:text-blue-800">
-              Download Resume
-            </span>
-          </motion.a>
-          
-          <Link href={`mailto:${personalInfo.email}`}>
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors group"
-            >
-              <Mail className="w-4 h-4 text-muted-foreground group-hover:text-emerald-600" />
-              <span className="text-xs text-muted-foreground group-hover:text-foreground truncate">
-                {personalInfo.email}
-              </span>
-            </motion.div>
-          </Link>
-        </motion.div>
+                 {/* Quick Contact */}
+         <motion.div
+           initial={{ opacity: 0, y: 20 }}
+           animate={{ opacity: 1, y: 0 }}
+           transition={{ duration: 0.5, delay: 0.2 }}
+           className="pt-4 border-t border-border/50"
+         >
+           <h3 className="text-sm font-medium text-foreground mb-3">
+             Get in Touch
+           </h3>
+           
+           <Link href={`mailto:${personalInfo.email}`}>
+             <motion.div
+               whileHover={{ scale: 1.02 }}
+               className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors group"
+             >
+               <Mail className="w-4 h-4 text-muted-foreground group-hover:text-emerald-600" />
+               <span className="text-xs text-muted-foreground group-hover:text-foreground truncate">
+                 {personalInfo.email}
+               </span>
+             </motion.div>
+           </Link>
+         </motion.div>
 
         {/* Social Links */}
         <motion.div
@@ -209,7 +217,7 @@ export default function LeftSidebar() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className="flex-shrink-0 pt-4 border-t border-border/50 bg-background/80 backdrop-blur-sm"
+        className="flex-shrink-0 pt-4 border-t border-white/20 dark:border-white/10 bg-white/10 dark:bg-white/5 backdrop-blur-md"
       >
         <div className="text-center space-y-2">
           <p className="text-xs text-muted-foreground">

@@ -169,7 +169,7 @@ export default function HomePage() {
          className="sticky top-4 z-50 mb-8"
        >
          <div className="max-w-4xl mx-auto">
-                       <div className="backdrop-blur-xl bg-white/80 dark:bg-slate-900/80 rounded-2xl shadow-xl shadow-black/10 border border-white/20 dark:border-slate-700/30 overflow-hidden">
+                       <div className="bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-2xl shadow-2xl shadow-black/25 border border-white/20 dark:border-white/10 overflow-hidden glass-container">
              {/* Main Filter Bar */}
              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 p-4">
                {/* Search */}
@@ -351,7 +351,7 @@ export default function HomePage() {
                      <motion.div
              initial={{ opacity: 0 }}
              animate={{ opacity: 1 }}
-             className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 shadow-lg shadow-black/5 text-center"
+             className="bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-white/10 shadow-2xl shadow-black/25 text-center glass-container"
            >
             <div className="text-muted-foreground mb-4">
               <Filter className="w-8 h-8 mx-auto mb-2 opacity-50" />

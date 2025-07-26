@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";
 import { type PropsWithChildren } from "react";
+import ResponsiveVideoBackground from "@/components/ui/responsive-video-background";
 
 export const viewport: Viewport = {
   themeColor: "#FF5733",
@@ -143,19 +144,28 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <meta name="theme-color" content="#FF5733" />
       </head>
       <body
-        className={`${fontSans.variable} ${fontMono.variable} ${fontHeading.variable} min-h-screen bg-background font-sans antialiased`}
+        className={`${fontSans.variable} ${fontMono.variable} ${fontHeading.variable} min-h-screen font-sans antialiased relative overflow-hidden`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange={false}
-        >
-          <MainLayout>
-            {children}
-          </MainLayout>
-          <Analytics debug={false} />
-        </ThemeProvider>
+                          {/* Responsive Video Background Component */}
+         <ResponsiveVideoBackground />
+        
+                 {/* Subtle Overlay for Readability */}
+         <div className="fixed inset-0 bg-black/20 dark:bg-black/40 z-10"></div>
+        
+        {/* Content Layer */}
+        <div className="relative z-20 min-h-screen">
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange={false}
+          >
+            <MainLayout>
+              {children}
+            </MainLayout>
+            <Analytics debug={false} />
+          </ThemeProvider>
+        </div>
       </body>
     </html>
   );

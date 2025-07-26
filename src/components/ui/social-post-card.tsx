@@ -103,10 +103,10 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
       onHoverEnd={handleHoverEnd}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className={`relative rounded-2xl overflow-hidden backdrop-blur-xl border group transition-all duration-300 gpu-accelerated ${
+      className={`relative rounded-2xl overflow-hidden backdrop-blur-md border group transition-all duration-300 gpu-accelerated glass-container ${
         project.featured 
-          ? 'bg-white/90 dark:bg-slate-800/90 border-emerald-200/50 dark:border-emerald-800/50 shadow-2xl shadow-emerald-500/20 shimmer' 
-          : 'bg-white/80 dark:bg-slate-800/80 border-slate-200/50 dark:border-slate-700/50 shadow-lg shadow-black/5'
+          ? 'bg-white/15 dark:bg-white/10 border-emerald-200/30 dark:border-emerald-400/20 shadow-2xl shadow-emerald-500/20 shimmer' 
+          : 'bg-white/10 dark:bg-white/5 border-white/20 dark:border-white/10 shadow-2xl shadow-black/25'
       } ${
         isMobile ? 'active:scale-95' : ''
       }`}
@@ -215,7 +215,7 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
       {/* Media Section */}
       <div className="relative">
         {showVideo && project.video ? (
-          <div className="aspect-[4/3] bg-black">
+          <div className="aspect-[4/3] bg-black/60 backdrop-blur-sm">
             <video
               src={project.video.src}
               poster={project.video.poster}
@@ -240,10 +240,10 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setShowVideo(true)}
-                className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover/media:opacity-100 transition-opacity"
+                className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-sm opacity-0 group-hover/media:opacity-100 transition-opacity"
               >
-                <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center">
-                  <Play className="w-6 h-6 text-black ml-1" />
+                <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center">
+                  <Play className="w-6 h-6 text-white ml-1" />
                 </div>
               </motion.button>
             )}
@@ -265,12 +265,12 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
             
             {/* Status Badge */}
             <div className="absolute top-3 right-3">
-              <div className={`px-2 py-1 text-xs font-medium rounded-full ${
+              <div className={`px-2 py-1 text-xs font-medium rounded-full backdrop-blur-sm ${
                 project.status === "Completed" 
-                  ? "bg-green-500/20 text-green-600 border border-green-500/30"
+                  ? "bg-emerald-500/20 text-emerald-600 border border-emerald-500/30"
                   : project.status === "In Progress"
-                  ? "bg-blue-500/20 text-blue-600 border border-blue-500/30"
-                  : "bg-gray-500/20 text-gray-600 border border-gray-500/30"
+                  ? "bg-white/20 text-foreground border border-white/30"
+                  : "bg-white/15 text-muted-foreground border border-white/20"
               }`}>
                 {project.status}
               </div>
@@ -321,7 +321,7 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
                     {tech.name}
                     {techHoverIndex === index && (
                       <motion.div
-                        className={`absolute left-1/2 transform -translate-x-1/2 px-2 py-1 bg-black/90 text-white text-xs rounded whitespace-nowrap z-10 ${
+                        className={`absolute left-1/2 transform -translate-x-1/2 px-2 py-1 bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs rounded whitespace-nowrap z-10 ${
                           isMobile ? '-bottom-8' : '-top-8'
                         }`}
                         initial={{ opacity: 0, y: isMobile ? -5 : 5 }}
@@ -330,7 +330,7 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
                       >
                         {tech.name}
                         {/* Small arrow pointing to the tech badge */}
-                        <div className={`absolute left-1/2 transform -translate-x-1/2 w-2 h-2 bg-black/90 rotate-45 ${
+                        <div className={`absolute left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white/20 backdrop-blur-md border border-white/30 rotate-45 ${
                           isMobile ? '-top-1' : '-bottom-1'
                         }`} />
                       </motion.div>
@@ -404,8 +404,8 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
                 ))}
                 {project.techStack.length > 10 && (
                   <motion.span 
-                    className="px-2 py-1 text-xs bg-muted/50 text-muted-foreground rounded-md cursor-pointer"
-                    whileHover={{ scale: 1.05, backgroundColor: 'rgba(var(--muted), 0.8)' }}
+                    className="px-2 py-1 text-xs bg-white/15 backdrop-blur-sm border border-white/20 text-muted-foreground rounded-md cursor-pointer"
+                    whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.25)' }}
                   >
                     +{project.techStack.length - 10} more
                   </motion.span>
@@ -427,10 +427,10 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
                     : '0 8px 25px rgba(16, 185, 129, 0.2)'
                 }}
                 whileTap={{ scale: 0.98 }}
-                className={`w-full flex items-center justify-center gap-2 py-2.5 px-4 text-white text-sm font-medium rounded-lg transition-all duration-200 ${
+                className={`w-full flex items-center justify-center gap-2 py-2.5 px-4 text-white text-sm font-medium rounded-lg transition-all duration-200 backdrop-blur-md border ${
                   project.featured 
-                    ? 'bg-gradient-to-r from-emerald-400 via-teal-500 to-cyan-600 shadow-lg shadow-emerald-500/25'
-                    : 'bg-gradient-to-r from-emerald-400 to-teal-500'
+                    ? 'bg-emerald-500/30 border-emerald-400/40 shadow-lg shadow-emerald-500/25'
+                    : 'bg-emerald-500/25 border-emerald-400/30 shadow-md shadow-emerald-500/20'
                 }`}
               >
                 <Eye className="w-4 h-4" />
@@ -444,11 +444,11 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
               <motion.button
                 whileHover={{ 
                   scale: 1.02,
-                  backgroundColor: 'rgba(var(--muted), 0.8)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.25)',
                   boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
                 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-muted text-foreground text-sm font-medium rounded-lg transition-all duration-200 border border-border/50 hover:border-border"
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-white/15 backdrop-blur-sm text-foreground text-sm font-medium rounded-lg transition-all duration-200 border border-white/20 hover:border-white/30"
               >
                 <Github className="w-4 h-4" />
                 Code
