@@ -3,24 +3,26 @@
 @tailwind utilities;
 
 :root {
+  /* High contrast light theme colors for dark background */
   --background: #f8fafc;
-  --foreground: #0f172a;
+  --foreground: #ffffff; /* Pure white for maximum contrast */
   --muted: #f1f5f9;
-  --muted-foreground: #64748b;
+  --muted-foreground: #e2e8f0; /* Much lighter for better visibility */
   --border: #e2e8f0;
   --card: #ffffff;
-  --card-foreground: #0f172a;
+  --card-foreground: #ffffff; /* White text on cards */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    /* Dark theme with high contrast whites */
     --background: #020617;
-    --foreground: #f8fafc;
+    --foreground: #ffffff; /* Pure white for maximum visibility */
     --muted: #0f172a;
-    --muted-foreground: #64748b;
+    --muted-foreground: #cbd5e1; /* Much lighter gray for secondary text */
     --border: #1e293b;
     --card: #0f172a;
-    --card-foreground: #f8fafc;
+    --card-foreground: #ffffff; /* White text on dark cards */
   }
 }
 
@@ -39,14 +41,15 @@ body {
 }
 
 .dot-pattern {
-  background-image: radial-gradient(circle at 1px 1px, rgba(156, 163, 175, 0.15) 1px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.15) 1px, transparent 0);
   background-size: 20px 20px;
 }
 
 .glass {
   backdrop-filter: blur(16px);
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.4); /* Darker glass for better text contrast */
   border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff; /* Ensure white text in glass elements */
 }
 
 /* Custom Scrollbar Styles */
@@ -63,19 +66,35 @@ body {
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: rgba(16, 185, 129, 0.2);
+  background: rgba(16, 185, 129, 0.3);
   border-radius: 3px;
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: rgba(16, 185, 129, 0.4);
+  background: rgba(16, 185, 129, 0.5);
 }
 
 @media (prefers-color-scheme: dark) {
   .glass {
-    background: rgba(15, 23, 42, 0.8);
-    border: 1px solid rgba(30, 41, 59, 0.5);
+    background: rgba(0, 0, 0, 0.6); /* Even darker for better contrast */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
   }
+  
+  .dot-pattern {
+    background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.2) 1px, transparent 0);
+  }
+}
+
+/* High contrast text utilities */
+.text-high-contrast {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.text-secondary-contrast {
+  color: #e2e8f0 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 /* Responsive Video Background Transitions */
@@ -85,6 +104,10 @@ body {
   will-change: opacity;
   transform: translateZ(0); /* Hardware acceleration */
   backface-visibility: hidden; /* Prevent flicker */
+}
+
+.video-background.loaded {
+  opacity: 1;
 }
 
 /* Enhanced performance for video playback */
@@ -267,4 +290,42 @@ div[style*="overflow"]::-webkit-scrollbar {
   display: none !important;
   width: 0 !important;
   height: 0 !important;
+}
+
+/* Custom scrollbar utility classes */
+.scrollbar-hide {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.hover\:scrollbar-show:hover {
+  scrollbar-width: thin !important;
+  -ms-overflow-style: auto !important;
+}
+
+.hover\:scrollbar-show:hover::-webkit-scrollbar {
+  display: block !important;
+  width: 4px !important;
+  height: 4px !important;
+}
+
+.hover\:scrollbar-show:hover::-webkit-scrollbar-track {
+  background: transparent !important;
+  display: block !important;
+}
+
+.hover\:scrollbar-show:hover::-webkit-scrollbar-thumb {
+  background: rgba(34, 197, 94, 0.3) !important;
+  border-radius: 4px !important;
+  display: block !important;
+}
+
+.hover\:scrollbar-show:hover::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 197, 94, 0.5) !important;
 }

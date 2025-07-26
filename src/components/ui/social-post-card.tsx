@@ -198,16 +198,16 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
       {/* Enhanced Project Title & Description */}
       <div className="px-4 pb-3">
         <motion.h2 
-          className={`text-base font-semibold mb-1 transition-colors ${
+          className={`text-base font-semibold mb-1 transition-colors drop-shadow-lg ${
             project.featured 
-              ? 'text-foreground group-hover:text-emerald-600 group-hover:drop-shadow-sm'
-              : 'text-foreground group-hover:text-emerald-600'
+              ? 'text-foreground group-hover:text-emerald-400 group-hover:drop-shadow-lg'
+              : 'text-foreground group-hover:text-emerald-400'
           }`}
           layoutId={`title-${project.id}`}
         >
           {project.title}
         </motion.h2>
-        <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed">
+        <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed drop-shadow-md">
           {project.description}
         </p>
       </div>
@@ -283,7 +283,7 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
       <div className="p-3 relative">
         {/* Interactive Organized Tech Stack */}
         <div className="mb-4">
-          <h4 className="text-xs font-medium text-muted-foreground mb-2 flex items-center gap-1">
+          <h4 className="text-xs font-medium text-muted-foreground mb-2 flex items-center gap-1 drop-shadow-md">
             <Tag className="w-3 h-3" />
             Tech Stack
           </h4>

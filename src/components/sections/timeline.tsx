@@ -64,13 +64,13 @@ export function Timeline({ items }: TimelineProps) {
               className={`glass pl-12 pr-4 py-4 md:px-6 md:py-4 rounded-lg ml-4 md:ml-0 md:w-5/12 ${index % 2 === 0 ? "md:text-right" : "md:text-left"
                 }`}
             >
-              <h3 className="mb-2 font-bold text-lg sm:text-xl bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
+              <h3 className="mb-2 font-bold text-lg sm:text-xl bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent drop-shadow-sm">
                 {item.title}
               </h3>
-              <time className="mb-3 text-sm text-muted-foreground block">
+              <time className="mb-3 text-sm text-muted-foreground block drop-shadow-md">
                 {item.date}
               </time>
-              <p className="text-muted-foreground text-sm sm:text-base">{item.description}</p>
+              <p className="text-muted-foreground text-sm sm:text-base drop-shadow-md">{item.description}</p>
             </motion.div>
           </div>
         ))}

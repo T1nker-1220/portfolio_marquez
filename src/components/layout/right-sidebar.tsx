@@ -48,7 +48,7 @@ export default function RightSidebar() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
+        <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2 drop-shadow-lg">
           <TrendingUp className="w-4 h-4" />
           Overview
         </h3>
@@ -63,10 +63,10 @@ export default function RightSidebar() {
                 className="p-3 rounded-lg bg-muted/30 text-center group hover:bg-muted/50 transition-colors"
               >
                 <Icon className={`w-5 h-5 mx-auto mb-1 ${stat.color}`} />
-                <div className="text-lg font-semibold text-foreground">
+                <div className="text-lg font-semibold text-foreground drop-shadow-lg">
                   {stat.value}
                 </div>
-                <div className="text-xs text-muted-foreground">
+                <div className="text-xs text-muted-foreground drop-shadow-md">
                   {stat.label}
                 </div>
               </motion.div>
@@ -82,7 +82,7 @@ export default function RightSidebar() {
         transition={{ duration: 0.5, delay: 0.1 }}
         className="flex-1 min-h-0 flex flex-col"
       >
-        <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2 flex-shrink-0">
+        <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2 flex-shrink-0 drop-shadow-lg">
           <Code2 className="w-4 h-4" />
           All Skills
         </h3>
@@ -119,7 +119,7 @@ export default function RightSidebar() {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="flex-shrink-0"
       >
-        <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
+        <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2 drop-shadow-lg">
           <GitBranch className="w-4 h-4" />
           Recent Work
         </h3>
@@ -134,10 +134,10 @@ export default function RightSidebar() {
               <div className="flex items-start gap-2">
                 <div className="w-6 h-6 rounded bg-gradient-to-br from-green-400 to-emerald-600 flex-shrink-0"></div>
                 <div className="flex-1 min-w-0">
-                  <h4 className="text-xs font-medium text-foreground group-hover:text-emerald-600 transition-colors truncate">
+                  <h4 className="text-xs font-medium text-foreground group-hover:text-emerald-400 transition-colors truncate drop-shadow-md">
                     {project.title}
                   </h4>
-                  <div className="text-xs text-muted-foreground truncate">
+                  <div className="text-xs text-muted-foreground truncate drop-shadow-sm">
                     {project.category}
                   </div>
                 </div>

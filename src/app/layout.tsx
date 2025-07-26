@@ -150,8 +150,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
                           {/* Responsive Video Background Component */}
          <ResponsiveVideoBackground />
         
-                 {/* Subtle Overlay for Readability */}
-         <div className="fixed inset-0 bg-black/20 dark:bg-black/40 z-10"></div>
+                 {/* Enhanced Overlay for Better Text Readability */}
+         <div className="fixed inset-0 bg-black/50 dark:bg-black/60 z-10"></div>
         
         {/* Content Layer */}
         <div className="relative z-20 min-h-screen">

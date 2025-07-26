@@ -256,7 +256,7 @@ export default function HomePage() {
                <div className="px-4 pb-4 space-y-4">
                  {/* Categories */}
                  <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-                   <span className="text-sm font-medium text-muted-foreground min-w-fit">Categories</span>
+                   <span className="text-sm font-medium text-muted-foreground min-w-fit drop-shadow-md">Categories</span>
                    <div className="flex items-center gap-2 flex-wrap">
                      <motion.button
                        whileHover={{ scale: 1.02 }}
@@ -290,7 +290,7 @@ export default function HomePage() {
                  
                  {/* Technologies */}
                  <div className="flex flex-col sm:flex-row sm:items-start gap-3">
-                   <span className="text-sm font-medium text-muted-foreground min-w-fit">Technologies</span>
+                   <span className="text-sm font-medium text-muted-foreground min-w-fit drop-shadow-md">Technologies</span>
                    <div className="flex items-center gap-2 flex-wrap">
                      {technologies.slice(0, 10).map(tech => (
                        <motion.button
@@ -364,7 +364,7 @@ export default function HomePage() {
                     animate={{ opacity: 1 }}
                     className="bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-white/10 shadow-2xl shadow-black/25 text-center glass-container"
                   >
-                    <div className="text-muted-foreground mb-4">
+                    <div className="text-muted-foreground mb-4 drop-shadow-md">
                       <Filter className="w-8 h-8 mx-auto mb-2 opacity-50" />
                       No projects found matching your criteria.
                     </div>

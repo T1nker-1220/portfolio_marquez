@@ -136,14 +136,11 @@ export default function LeftSidebar({
             <div className="absolute bottom-0 right-0 w-5 h-5 bg-green-500 rounded-full border-2 border-background"></div>
           </div>
           
-          <h2 className="text-lg font-semibold text-foreground">
-            {personalInfo.name}
+          <h2 className="text-lg font-semibold text-foreground drop-shadow-lg">
+            {personalInfo.name} | Full Stack Developer
           </h2>
-          <p className="text-sm text-muted-foreground">
-            Full Stack Developer
-          </p>
           
-          <div className="flex items-center justify-center gap-2 mt-2 text-xs text-muted-foreground">
+          <div className="flex items-center justify-center gap-2 mt-2 text-xs text-muted-foreground drop-shadow-md">
             <MapPin className="w-3 h-3" />
             <span>{personalInfo.location}</span>
           </div>
@@ -156,7 +153,7 @@ export default function LeftSidebar({
           transition={{ duration: 0.5, delay: 0.15 }}
           className="pt-4 border-t border-border/50"
         >
-          <h3 className="text-sm font-medium text-foreground mb-3">
+          <h3 className="text-sm font-medium text-foreground mb-3 drop-shadow-lg">
             Navigation
           </h3>
           
@@ -214,7 +211,7 @@ export default function LeftSidebar({
            transition={{ duration: 0.5, delay: 0.2 }}
            className="pt-4 border-t border-border/50"
          >
-           <h3 className="text-sm font-medium text-foreground mb-3">
+           <h3 className="text-sm font-medium text-foreground mb-3 drop-shadow-lg">
              Get in Touch
            </h3>
            
@@ -224,7 +221,7 @@ export default function LeftSidebar({
                className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors group"
              >
                <Mail className="w-4 h-4 text-muted-foreground group-hover:text-emerald-600" />
-               <span className="text-xs text-muted-foreground group-hover:text-foreground truncate">
+               <span className="text-xs text-muted-foreground group-hover:text-foreground truncate drop-shadow-md">
                  {personalInfo.email}
                </span>
              </motion.div>
@@ -238,7 +235,7 @@ export default function LeftSidebar({
           transition={{ duration: 0.5, delay: 0.3 }}
           className="pt-4 border-t border-border/50"
         >
-          <h3 className="text-sm font-medium text-foreground mb-3">
+          <h3 className="text-sm font-medium text-foreground mb-3 drop-shadow-lg">
             Follow Me
           </h3>
           
@@ -272,14 +269,14 @@ export default function LeftSidebar({
         className="flex-shrink-0 pt-4 border-t border-white/20 dark:border-white/10 bg-white/10 dark:bg-white/5 backdrop-blur-md"
       >
         <div className="text-center space-y-2">
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-muted-foreground drop-shadow-md">
             © 2025 John Nathaniel Marquez. All rights reserved.
           </p>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-muted-foreground drop-shadow-md">
             Built with{" "}
-            <span className="text-emerald-600 font-medium">Next.js</span>,{" "}
-            <span className="text-emerald-600 font-medium">TypeScript</span>, and{" "}
-            <span className="text-emerald-600 font-medium">TailwindCSS</span>
+            <span className="text-emerald-400 font-medium drop-shadow-sm">Next.js</span>,{" "}
+            <span className="text-emerald-400 font-medium drop-shadow-sm">TypeScript</span>, and{" "}
+            <span className="text-emerald-400 font-medium drop-shadow-sm">TailwindCSS</span>
           </p>
         </div>
       </motion.div>

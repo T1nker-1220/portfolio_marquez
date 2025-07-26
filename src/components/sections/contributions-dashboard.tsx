@@ -171,8 +171,8 @@ export default function ContributionsDashboard() {
               <Github className="w-6 h-6 text-emerald-600" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-foreground">GitHub Contributions</h2>
-              <p className="text-sm text-muted-foreground">
+              <h2 className="text-xl font-bold text-foreground drop-shadow-lg">GitHub Contributions</h2>
+              <p className="text-sm text-muted-foreground drop-shadow-md">
                 Activity overview for {selectedYear}
               </p>
             </div>
@@ -226,16 +226,16 @@ export default function ContributionsDashboard() {
           <div className="p-6">
             <div className="flex items-center gap-2 mb-4">
               <Calendar className="w-5 h-5 text-emerald-600" />
-              <h3 className="text-lg font-semibold text-foreground">
+              <h3 className="text-lg font-semibold text-foreground drop-shadow-lg">
                 Contribution Timeline - 2024 to 2025
               </h3>
-              <div className="ml-auto text-xs text-muted-foreground">
+              <div className="ml-auto text-xs text-muted-foreground drop-shadow-md">
                 Scroll horizontally to view all months
               </div>
             </div>
             
             {/* Horizontal Scrollable Container */}
-            <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-emerald-500/20 scrollbar-track-transparent">
+            <div className="overflow-x-auto overflow-y-hidden scrollbar-hide hover:scrollbar-show">
               <div className="flex gap-1 min-w-max pb-4">
                 {/* 2024 Heatmap */}
                 {allYearsData[2024] && (
