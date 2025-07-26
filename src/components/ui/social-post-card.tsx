@@ -3,10 +3,6 @@
 import { Project } from "@/types";
 import { motion } from "framer-motion";
 import { 
-  Heart, 
-  MessageCircle, 
-  Share, 
-  Bookmark,
   ExternalLink,
   Github,
   Calendar,
@@ -18,8 +14,8 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { useFeedInteractions } from "@/hooks/use-feed-interactions";
+import { useState } from "react";
+
 
 interface SocialPostCardProps {
   project: Project;
@@ -27,30 +23,6 @@ interface SocialPostCardProps {
 
 export default function SocialPostCard({ project }: SocialPostCardProps) {
   const [showVideo, setShowVideo] = useState(false);
-  const {
-    initializeLikeCount,
-    toggleLike,
-    toggleBookmark,
-    isLiked,
-    isBookmarked,
-    getLikeCount,
-  } = useFeedInteractions();
-
-  useEffect(() => {
-    initializeLikeCount(project.id);
-  }, [project.id, initializeLikeCount]);
-
-  const handleLike = () => {
-    toggleLike(project.id);
-  };
-
-  const handleBookmark = () => {
-    toggleBookmark(project.id);
-  };
-
-  const likedStatus = isLiked(project.id);
-  const bookmarkedStatus = isBookmarked(project.id);
-  const likesCount = getLikeCount(project.id);
 
   return (
     <motion.article
@@ -161,64 +133,8 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
         )}
       </div>
 
-      {/* Interaction Bar */}
+      {/* Content */}
       <div className="p-4">
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-4">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleLike}
-              className="flex items-center gap-2 group/like"
-            >
-              <Heart 
-                className={`w-5 h-5 transition-colors ${
-                  likedStatus 
-                    ? "text-red-500 fill-red-500" 
-                    : "text-muted-foreground group-hover/like:text-red-500"
-                }`} 
-              />
-              <span className="text-sm text-muted-foreground">
-                {likesCount}
-              </span>
-            </motion.button>
-            
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 group/comment"
-            >
-              <MessageCircle className="w-5 h-5 text-muted-foreground group-hover/comment:text-blue-500 transition-colors" />
-              <span className="text-sm text-muted-foreground">
-                {Math.floor(Math.random() * 20) + 1}
-              </span>
-            </motion.button>
-            
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="group/share"
-            >
-              <Share className="w-5 h-5 text-muted-foreground group-hover/share:text-emerald-500 transition-colors" />
-            </motion.button>
-          </div>
-          
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={handleBookmark}
-            className="group/bookmark"
-          >
-            <Bookmark 
-              className={`w-5 h-5 transition-colors ${
-                bookmarkedStatus 
-                  ? "text-emerald-500 fill-emerald-500" 
-                  : "text-muted-foreground group-hover/bookmark:text-emerald-500"
-              }`} 
-            />
-          </motion.button>
-        </div>
-
         {/* Tech Stack */}
         <div className="flex flex-wrap gap-1 mb-3">
           {project.techStack.slice(0, 6).map((tech, index) => (

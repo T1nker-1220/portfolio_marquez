@@ -19,18 +19,18 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://portfolio-marquez.vercel.app'),
   title: {
-    default: "Home | Front-End | Marquez",
-    template: "%s | Front-End | Marquez",
+    default: "Home | Full Stack | Marquez",
+    template: "%s | Full Stack | Marquez",
   },
   description:
-    "A passionate front-end developer with expertise in modern web technologies. Portfolio showcasing web development projects, skills, and experience.",
+    "A passionate Full Stack developer with expertise in modern web technologies. Portfolio showcasing web development projects, skills, and experience.",
   applicationName: "John Nathaniel Marquez Portfolio",
   generator: "Next.js",
   keywords: [
     "John Nathaniel Marquez",
     "Nathaniel",
     "Web Developer",
-    "Front-End Developer",
+    "Full Stack Developer",
     "React Developer",
     "Next.js Developer",
     "Portfolio",
@@ -101,9 +101,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://portfolio-marquez.vercel.app",
-    title: "John Nathaniel Marquez | Front-End Developer Portfolio",
+    title: "John Nathaniel Marquez | Full Stack Developer Portfolio",
     description:
-      "Front-end developer specializing in modern web technologies. Explore my journey, projects, and expertise in web development.",
+      "Full Stack developer specializing in modern web technologies. Explore my journey, projects, and expertise in web development.",
     siteName: "John Nathaniel Marquez Portfolio",
     images: [
       {
@@ -116,9 +116,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "John Nathaniel Marquez | Front-End Developer Portfolio",
+    title: "John Nathaniel Marquez | Full Stack Developer Portfolio",
     description:
-      "Front-end developer specializing in modern web technologies. Explore my journey, projects, and expertise in web development.",
+      "Full Stack developer specializing in modern web technologies. Explore my journey, projects, and expertise in web development.",
     images: ["https://portfolio-marquez.vercel.app/icon.png"],
     creator: "@your-twitter-handle",
   },
@@ -133,10 +133,10 @@ const jsonLd = {
     'https://github.com/T1nker-1220',
     'https://linkedin.com/in/your-profile'
   ],
-  jobTitle: 'Front-end Developer',
+  jobTitle: 'Full Stack Developer',
   knowsAbout: ['React', 'Next.js', 'TypeScript', 'Web Development'],
   image: 'https://portfolio-marquez.vercel.app/icon.png',
-  description: 'Front-end developer specializing in React, Next.js, and TypeScript.'
+  description: 'Full Stack developer specializing in React, Next.js, and TypeScript.'
 }
 
 export default function RootLayout({ children }: PropsWithChildren) {

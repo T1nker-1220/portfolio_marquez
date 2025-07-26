@@ -2,6 +2,7 @@
 
 import { personalInfo } from "@/data/personal-info";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { 
   User, 
   MapPin, 
@@ -32,10 +33,6 @@ const socialIcons = {
 
 const navigationItems = [
   { name: "Home", href: "/", icon: Home },
-  { name: "Projects", href: "/projects", icon: FolderOpen },
-  { name: "My Story", href: "/my-story", icon: User2 },
-  { name: "Resume", href: "/resume", icon: FileText },
-  { name: "Contact", href: "/contact", icon: MessageSquare },
 ];
 
 export default function LeftSidebar() {
@@ -51,8 +48,17 @@ export default function LeftSidebar() {
         className="text-center"
       >
         <div className="relative mb-4">
-          <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center text-white text-2xl font-bold">
-            {personalInfo.name[0]}
+          <div className="w-20 h-20 mx-auto rounded-full p-1 bg-gradient-to-br from-green-400 to-emerald-600">
+            <div className="w-full h-full rounded-full overflow-hidden bg-background">
+              <Image
+                src="/images/jnm_picture2.jpg"
+                alt={`${personalInfo.name} - Full StackDeveloper`}
+                width={80}
+                height={80}
+                className="w-full h-full object-cover"
+                priority
+              />
+            </div>
           </div>
           <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-background"></div>
         </div>
@@ -61,7 +67,7 @@ export default function LeftSidebar() {
           {personalInfo.name}
         </h2>
         <p className="text-sm text-muted-foreground">
-          Front-End Developer
+          Full Stack Developer
         </p>
         
         <div className="flex items-center justify-center gap-2 mt-2 text-xs text-muted-foreground">
@@ -153,6 +159,26 @@ export default function LeftSidebar() {
               </Link>
             );
           })}
+        </div>
+      </motion.div>
+
+      {/* Copyright & Tech Stack */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="pt-4 border-t border-border/50 mt-auto"
+      >
+        <div className="text-center space-y-2">
+          <p className="text-xs text-muted-foreground">
+            © 2025 John Nathaniel Marquez. All rights reserved.
+          </p>
+          <p className="text-xs text-muted-foreground">
+            Built with{" "}
+            <span className="text-emerald-600 font-medium">Next.js</span>,{" "}
+            <span className="text-emerald-600 font-medium">TypeScript</span>, and{" "}
+            <span className="text-emerald-600 font-medium">TailwindCSS</span>
+          </p>
         </div>
       </motion.div>
     </div>
