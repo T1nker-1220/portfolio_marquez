@@ -18,7 +18,8 @@ import {
   FileText,
   MessageSquare,
   Download,
-  Sparkles
+  Sparkles,
+  GitCommit
 } from "lucide-react";
 import Link from "next/link";
 
@@ -31,9 +32,37 @@ const socialIcons = {
   Youtube: Youtube,
 };
 
-const navigationItems: any[] = [];
+interface NavigationItem {
+  id: string;
+  label: string;
+  icon: React.ReactNode;
+  count?: number;
+}
 
-export default function LeftSidebar() {
+interface LeftSidebarProps {
+  activeTab?: string;
+  onTabChange?: (tab: string) => void;
+  projectsCount?: number;
+}
+
+const navigationItems: NavigationItem[] = [
+  {
+    id: "projects",
+    label: "Projects",
+    icon: <FolderOpen className="w-4 h-4" />,
+  },
+  {
+    id: "contributions",
+    label: "Contributions",
+    icon: <GitCommit className="w-4 h-4" />,
+  }
+];
+
+export default function LeftSidebar({ 
+  activeTab = "projects", 
+  onTabChange = () => {}, 
+  projectsCount = 0 
+}: LeftSidebarProps) {
 
   return (
     <div className="h-full flex flex-col">
@@ -120,6 +149,63 @@ export default function LeftSidebar() {
           </div>
         </motion.div>
 
+        {/* Navigation Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="pt-4 border-t border-border/50"
+        >
+          <h3 className="text-sm font-medium text-foreground mb-3">
+            Navigation
+          </h3>
+          
+          <div className="space-y-2">
+            {navigationItems.map((item) => {
+              const isActive = activeTab === item.id;
+              const count = item.id === "projects" ? projectsCount : undefined;
+              
+              return (
+                <motion.button
+                  key={item.id}
+                  onClick={() => onTabChange(item.id)}
+                  whileHover={{ scale: 1.01, x: 1 }}
+                  whileTap={{ scale: 0.99 }}
+                  className={`w-full flex items-center justify-between gap-2 p-2 rounded-lg transition-all group ${
+                    isActive 
+                      ? "bg-emerald-500/20 text-emerald-600 shadow-md shadow-emerald-500/10" 
+                      : "hover:bg-muted/50 text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <div className={`transition-colors ${
+                      isActive ? "text-emerald-600" : "text-muted-foreground group-hover:text-emerald-600"
+                    }`}>
+                      {item.icon}
+                    </div>
+                    <span className="text-xs font-medium">
+                      {item.label}
+                    </span>
+                  </div>
+                  
+                  {count !== undefined && (
+                    <motion.span 
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      className={`px-1.5 py-0.5 text-xs rounded-full font-medium ${
+                        isActive 
+                          ? "bg-emerald-600/20 text-emerald-700" 
+                          : "bg-muted text-muted-foreground"
+                      }`}
+                    >
+                      {count}
+                    </motion.span>
+                  )}
+                </motion.button>
+              );
+            })}
+          </div>
+        </motion.div>
 
                  {/* Quick Contact */}
          <motion.div

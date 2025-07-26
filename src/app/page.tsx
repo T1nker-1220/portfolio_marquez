@@ -7,7 +7,7 @@ import LeftSidebar from "@/components/layout/left-sidebar";
 import RightSidebar from "@/components/layout/right-sidebar";
 import SocialPostCard from "@/components/ui/social-post-card";
 import TimelinePost from "@/components/ui/timeline-post";
-import { Tabs, TabContent } from "@/components/ui/tabs";
+import { TabContent } from "@/components/ui/tabs";
 import ContributionsDashboard from "@/components/sections/contributions-dashboard";
 
 import { motion } from "framer-motion";
@@ -159,38 +159,18 @@ export default function HomePage() {
     (featuredOnly ? 1 : 0)
   );
 
-  const tabs = [
-    {
-      id: "projects",
-      label: "Projects",
-      icon: <FolderOpen className="w-4 h-4" />,
-      count: projects.length
-    },
-    {
-      id: "contributions",
-      label: "Contributions",
-      icon: <GitCommit className="w-4 h-4" />
-    }
-  ];
 
   return (
     <SocialLayout
-        leftSidebar={<LeftSidebar />}
-        rightSidebar={<RightSidebar />}
-      >
-        {/* Tab Navigation */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="sticky top-0 z-50 mb-6"
-        >
-          <Tabs
-            tabs={tabs}
+        leftSidebar={
+          <LeftSidebar 
             activeTab={activeTab}
             onTabChange={setActiveTab}
-            className="flex justify-center"
+            projectsCount={projects.length}
           />
-        </motion.div>
+        }
+        rightSidebar={<RightSidebar />}
+      >
 
         {activeTab === "projects" && (
           <>
@@ -203,25 +183,25 @@ export default function HomePage() {
          <div className="max-w-4xl mx-auto">
                        <div className="bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-2xl shadow-2xl shadow-black/25 border border-white/20 dark:border-white/10 overflow-hidden glass-container">
              {/* Main Filter Bar */}
-             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 p-4">
+             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 p-3">
                {/* Search */}
-               <div className="relative w-full sm:w-80">
-                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+               <div className="relative w-full sm:w-64">
+                 <Search className="absolute left-2.5 top-1/2 transform -translate-y-1/2 w-3.5 h-3.5 text-muted-foreground" />
                  <input
                    type="text"
                    placeholder="Search projects..."
                    value={searchQuery}
                    onChange={(e) => setSearchQuery(e.target.value)}
-                   className="w-full pl-10 pr-4 py-3 bg-muted/20 border-0 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:bg-muted/30 transition-all"
+                   className="w-full pl-8 pr-3 py-2 bg-muted/20 border-0 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:bg-muted/30 transition-all"
                  />
                </div>
 
                {/* Quick Actions */}
-               <div className="flex items-center gap-2">
+               <div className="flex items-center gap-1.5">
                  <select
                    value={sortBy}
                    onChange={(e) => setSortBy(e.target.value)}
-                   className="px-4 py-3 bg-muted/20 border-0 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 transition-all"
+                   className="px-3 py-2 bg-muted/20 border-0 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500/30 transition-all"
                  >
                    <option value="featured">Featured</option>
                    <option value="date">Latest</option>
@@ -232,13 +212,13 @@ export default function HomePage() {
                    whileHover={{ scale: 1.02 }}
                    whileTap={{ scale: 0.98 }}
                    onClick={() => setFeaturedOnly(!featuredOnly)}
-                   className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                   className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-all ${
                      featuredOnly 
                        ? "bg-emerald-500/20 text-emerald-600" 
                        : "bg-muted/20 text-muted-foreground hover:bg-muted/30"
                    }`}
                  >
-                   <Star className="w-4 h-4" />
+                   <Star className="w-3.5 h-3.5" />
                    Featured
                  </motion.button>
 
@@ -246,16 +226,16 @@ export default function HomePage() {
                    whileHover={{ scale: 1.02 }}
                    whileTap={{ scale: 0.98 }}
                    onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
-                   className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                   className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-all ${
                      showAdvancedFilters || activeFiltersCount > 0
                        ? "bg-blue-500/20 text-blue-600"
                        : "bg-muted/20 text-muted-foreground hover:bg-muted/30"
                    }`}
                  >
-                   <Filter className="w-4 h-4" />
+                   <Filter className="w-3.5 h-3.5" />
                    Filters
                    {activeFiltersCount > 0 && (
-                     <span className="min-w-[1.125rem] h-5 px-1 bg-blue-500 text-white text-xs rounded-full flex items-center justify-center">
+                     <span className="min-w-[1rem] h-4 px-1 bg-blue-500 text-white text-xs rounded-full flex items-center justify-center">
                        {activeFiltersCount}
                      </span>
                    )}

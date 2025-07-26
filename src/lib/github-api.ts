@@ -1,12 +1,15 @@
 import { GitHubApiResponse, GitHubContributionsData, ContributionStats } from '@/types/github';
 
-const GITHUB_API_URL = 'https://github-contributions-api.jogruber.de/v4/T1nker-1220';
-const CACHE_KEY = 'github_contributions_data';
+const GITHUB_API_BASE_URL = 'https://github-contributions-api.jogruber.de/v4/T1nker-1220';
 const CACHE_DURATION = 15 * 60 * 1000; // 15 minutes in milliseconds
 
 interface CachedData {
   data: GitHubContributionsData;
   timestamp: number;
+}
+
+function getCacheKey(year: number): string {
+  return `github_contributions_${year}`;
 }
 
 class GitHubApiError extends Error {
@@ -16,15 +19,18 @@ class GitHubApiError extends Error {
   }
 }
 
-export async function fetchGitHubContributions(): Promise<GitHubContributionsData> {
+export async function fetchGitHubContributions(year?: number): Promise<GitHubContributionsData> {
+  const targetYear = year || new Date().getFullYear();
+  
   try {
     // Check cache first
-    const cached = getCachedData();
+    const cached = getCachedData(targetYear);
     if (cached) {
       return cached;
     }
 
-    const response = await fetch(GITHUB_API_URL, {
+    const url = `${GITHUB_API_BASE_URL}?y=${targetYear}`;
+    const response = await fetch(url, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
@@ -38,7 +44,7 @@ export async function fetchGitHubContributions(): Promise<GitHubContributionsDat
 
     if (!response.ok) {
       throw new GitHubApiError(
-        `Failed to fetch GitHub contributions: ${response.status} ${response.statusText}`,
+        `Failed to fetch GitHub contributions for ${targetYear}: ${response.status} ${response.statusText}`,
         response.status
       );
     }
@@ -51,7 +57,7 @@ export async function fetchGitHubContributions(): Promise<GitHubContributionsDat
     }
 
     // Cache the successful response
-    setCachedData(data);
+    setCachedData(data, targetYear);
     
     return data;
   } catch (error) {
@@ -61,16 +67,40 @@ export async function fetchGitHubContributions(): Promise<GitHubContributionsDat
     
     // Handle network errors, etc.
     throw new GitHubApiError(
-      `Network error while fetching GitHub contributions: ${error instanceof Error ? error.message : 'Unknown error'}`
+      `Network error while fetching GitHub contributions for ${targetYear}: ${error instanceof Error ? error.message : 'Unknown error'}`
     );
   }
 }
 
-function getCachedData(): GitHubContributionsData | null {
+export async function fetchMultipleYears(years: number[]): Promise<{ [year: number]: GitHubContributionsData }> {
+  const results: { [year: number]: GitHubContributionsData } = {};
+  
+  try {
+    const promises = years.map(async (year) => {
+      const data = await fetchGitHubContributions(year);
+      return { year, data };
+    });
+    
+    const responses = await Promise.all(promises);
+    
+    responses.forEach(({ year, data }) => {
+      results[year] = data;
+    });
+    
+    return results;
+  } catch (error) {
+    throw new GitHubApiError(
+      `Failed to fetch contributions for multiple years: ${error instanceof Error ? error.message : 'Unknown error'}`
+    );
+  }
+}
+
+function getCachedData(year: number): GitHubContributionsData | null {
   if (typeof window === 'undefined') return null;
   
   try {
-    const cached = localStorage.getItem(CACHE_KEY);
+    const cacheKey = getCacheKey(year);
+    const cached = localStorage.getItem(cacheKey);
     if (!cached) return null;
 
     const { data, timestamp }: CachedData = JSON.parse(cached);
@@ -82,24 +112,26 @@ function getCachedData(): GitHubContributionsData | null {
     }
     
     // Cache expired, remove it
-    localStorage.removeItem(CACHE_KEY);
+    localStorage.removeItem(cacheKey);
     return null;
   } catch {
     // Invalid cache data, remove it
-    localStorage.removeItem(CACHE_KEY);
+    const cacheKey = getCacheKey(year);
+    localStorage.removeItem(cacheKey);
     return null;
   }
 }
 
-function setCachedData(data: GitHubContributionsData): void {
+function setCachedData(data: GitHubContributionsData, year: number): void {
   if (typeof window === 'undefined') return;
   
   try {
+    const cacheKey = getCacheKey(year);
     const cacheData: CachedData = {
       data,
       timestamp: Date.now()
     };
-    localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData));
+    localStorage.setItem(cacheKey, JSON.stringify(cacheData));
   } catch {
     // Ignore cache errors (storage might be full, etc.)
   }

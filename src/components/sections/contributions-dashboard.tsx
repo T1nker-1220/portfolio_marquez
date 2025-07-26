@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Github, RefreshCw, AlertCircle, Calendar } from "lucide-react";
-import { fetchGitHubContributions, calculateContributionStats } from "@/lib/github-api";
+import { fetchGitHubContributions, fetchMultipleYears, calculateContributionStats } from "@/lib/github-api";
 import { GitHubContributionsData, ContributionStats } from "@/types/github";
 import { ContributionHeatmap } from "@/components/ui/contribution-heatmap";
 import { ContributionStatsCard, ContributionLevelStats } from "@/components/ui/contribution-stats";
@@ -11,6 +11,7 @@ import { useToast } from "@/components/ui/toast";
 
 export default function ContributionsDashboard() {
   const [data, setData] = useState<GitHubContributionsData | null>(null);
+  const [allYearsData, setAllYearsData] = useState<{ [year: number]: GitHubContributionsData }>({});
   const [stats, setStats] = useState<ContributionStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -18,13 +19,17 @@ export default function ContributionsDashboard() {
   const [refreshing, setRefreshing] = useState(false);
   const { addToast } = useToast();
 
-  const loadContributions = async (isRefresh = false) => {
+  const loadAllContributions = async (isRefresh = false) => {
+    const years = [2024, 2025];
+    
     try {
       if (isRefresh) {
         setRefreshing(true);
-        // Clear cache by clearing localStorage
+        // Clear cache for all years
         if (typeof window !== 'undefined') {
-          localStorage.removeItem('github_contributions_data');
+          years.forEach(year => {
+            localStorage.removeItem(`github_contributions_${year}`);
+          });
         }
       } else {
         setLoading(true);
@@ -32,17 +37,23 @@ export default function ContributionsDashboard() {
       
       setError(null);
       
-      const contributionsData = await fetchGitHubContributions();
-      setData(contributionsData);
+      // Fetch all years data
+      const allData = await fetchMultipleYears(years);
+      setAllYearsData(allData);
       
-      const calculatedStats = calculateContributionStats(contributionsData);
-      setStats(calculatedStats);
+      // Set current year data for stats
+      const currentYearData = allData[selectedYear];
+      if (currentYearData) {
+        setData(currentYearData);
+        const calculatedStats = calculateContributionStats(currentYearData);
+        setStats(calculatedStats);
+      }
       
       if (isRefresh) {
         addToast({
           type: "success",
           title: "Contributions Updated",
-          message: "GitHub contributions have been refreshed successfully."
+          message: "All GitHub contributions have been refreshed successfully."
         });
       }
     } catch (err) {
@@ -61,18 +72,27 @@ export default function ContributionsDashboard() {
   };
 
   useEffect(() => {
-    loadContributions();
+    loadAllContributions();
   }, []);
 
+  useEffect(() => {
+    // Update stats when year changes
+    if (allYearsData[selectedYear]) {
+      setData(allYearsData[selectedYear]);
+      const calculatedStats = calculateContributionStats(allYearsData[selectedYear]);
+      setStats(calculatedStats);
+    }
+  }, [selectedYear, allYearsData]);
+
   const handleRefresh = () => {
-    loadContributions(true);
+    loadAllContributions(true);
   };
 
   const handleYearChange = (year: number) => {
     setSelectedYear(year);
   };
 
-  const availableYears = data?.years?.map(y => parseInt(y.year)).sort((a, b) => b - a) || [new Date().getFullYear()];
+  const availableYears = [2025, 2024].sort((a, b) => b - a);
 
   if (loading) {
     return (
@@ -195,8 +215,8 @@ export default function ContributionsDashboard() {
         </motion.div>
       )}
 
-      {/* Heatmap */}
-      {data && (
+      {/* Scrollable Timeline Heatmap */}
+      {Object.keys(allYearsData).length > 0 && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -207,13 +227,54 @@ export default function ContributionsDashboard() {
             <div className="flex items-center gap-2 mb-4">
               <Calendar className="w-5 h-5 text-emerald-600" />
               <h3 className="text-lg font-semibold text-foreground">
-                Contribution Heatmap - {selectedYear}
+                Contribution Timeline - 2024 to 2025
               </h3>
+              <div className="ml-auto text-xs text-muted-foreground">
+                Scroll horizontally to view all months
+              </div>
             </div>
-            <ContributionHeatmap 
-              contributions={data.contributions} 
-              year={selectedYear}
-            />
+            
+            {/* Horizontal Scrollable Container */}
+            <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-emerald-500/20 scrollbar-track-transparent">
+              <div className="flex gap-1 min-w-max pb-4">
+                {/* 2024 Heatmap */}
+                {allYearsData[2024] && (
+                  <div className="flex-shrink-0">
+                    <div className="text-xs font-medium text-muted-foreground mb-2 text-center">2024</div>
+                    <ContributionHeatmap 
+                      contributions={allYearsData[2024].contributions} 
+                      year={2024}
+                      compact={true}
+                    />
+                  </div>
+                )}
+                
+                {/* 2025 Heatmap */}
+                {allYearsData[2025] && (
+                  <div className="flex-shrink-0">
+                    <div className="text-xs font-medium text-muted-foreground mb-2 text-center">2025</div>
+                    <ContributionHeatmap 
+                      contributions={allYearsData[2025].contributions} 
+                      year={2025}
+                      compact={true}
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+            
+            {/* Legend */}
+            <div className="flex items-center justify-center gap-2 mt-4 text-xs text-muted-foreground">
+              <span>Less</span>
+              <div className="flex gap-1">
+                <div className="w-3 h-3 rounded-sm bg-muted/20"></div>
+                <div className="w-3 h-3 rounded-sm bg-emerald-500/20"></div>
+                <div className="w-3 h-3 rounded-sm bg-emerald-500/40"></div>
+                <div className="w-3 h-3 rounded-sm bg-emerald-500/60"></div>
+                <div className="w-3 h-3 rounded-sm bg-emerald-500/80"></div>
+              </div>
+              <span>More</span>
+            </div>
           </div>
         </motion.div>
       )}

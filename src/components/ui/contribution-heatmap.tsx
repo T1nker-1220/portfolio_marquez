@@ -7,9 +7,10 @@ interface ContributionHeatmapProps {
   contributions: GitHubContribution[];
   year?: number;
   className?: string;
+  compact?: boolean;
 }
 
-export function ContributionHeatmap({ contributions, year, className = "" }: ContributionHeatmapProps) {
+export function ContributionHeatmap({ contributions, year, className = "", compact = false }: ContributionHeatmapProps) {
   const currentYear = year || new Date().getFullYear();
   
   // Filter contributions for the specified year
@@ -61,6 +62,42 @@ export function ContributionHeatmap({ contributions, year, className = "" }: Con
   // Month labels
   const monthLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
                       "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  if (compact) {
+    return (
+      <div className={`${className}`}>
+        <div className="min-w-fit">
+          {/* Compact heatmap grid - no month labels, smaller spacing */}
+          <div className="flex gap-0.5">
+            {weeks.map((week, weekIndex) => (
+              <div key={weekIndex} className="flex flex-col gap-0.5">
+                {Array.from({ length: 7 }).map((_, dayIndex) => {
+                  const date = week[dayIndex];
+                  if (!date) {
+                    return <div key={dayIndex} className="w-2.5 h-2.5" />;
+                  }
+                  
+                  const dateStr = date.toISOString().split('T')[0];
+                  const contribution = contributionMap.get(dateStr);
+                  const level = contribution?.level || 0;
+                  const count = contribution?.count || 0;
+                  
+                  return (
+                    <motion.div
+                      key={dateStr}
+                      whileHover={{ scale: 1.3 }}
+                      className={`w-2.5 h-2.5 rounded-sm cursor-pointer transition-all ${getLevelColor(level)}`}
+                      title={`${date.toLocaleDateString()}: ${count} contributions`}
+                    />
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={`p-4 ${className}`}>
