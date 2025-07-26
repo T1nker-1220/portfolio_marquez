@@ -19,7 +19,7 @@ export default function SocialLayout({
   const [rightSidebarOpen, setRightSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="h-screen bg-background overflow-hidden">
       {/* Mobile Navigation Bar */}
       <div className="lg:hidden sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/50">
         <div className="flex items-center justify-between p-4">
@@ -49,16 +49,16 @@ export default function SocialLayout({
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div className="h-full px-4 py-6">
+        <div className="flex gap-6 h-full max-w-none">
           {/* Left Sidebar - Profile & Navigation */}
           <motion.aside
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="hidden lg:block lg:col-span-3 lg:sticky lg:top-6 lg:h-fit"
+            className="hidden lg:flex lg:flex-col lg:w-80 lg:min-w-[320px] lg:max-w-[400px] lg:sticky lg:top-6 lg:h-[calc(100vh-3rem)] lg:overflow-hidden"
           >
-            <div className="glass rounded-2xl p-6 backdrop-blur-sm border border-border/50">
+            <div className="glass rounded-2xl p-6 backdrop-blur-sm border border-border/50 h-full flex flex-col">
               {leftSidebar}
             </div>
           </motion.aside>
@@ -68,9 +68,9 @@ export default function SocialLayout({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="lg:col-span-6"
+            className="flex-1 min-w-0 max-w-full overflow-y-auto h-full"
           >
-            <div className="space-y-6">
+            <div className="space-y-6 h-full">
               {children}
             </div>
           </motion.main>
@@ -80,9 +80,9 @@ export default function SocialLayout({
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="hidden lg:block lg:col-span-3 lg:sticky lg:top-6 lg:h-fit"
+            className="hidden xl:flex xl:flex-col xl:w-80 xl:min-w-[320px] xl:max-w-[400px] xl:sticky xl:top-6 xl:h-[calc(100vh-3rem)] xl:overflow-hidden"
           >
-            <div className="glass rounded-2xl p-6 backdrop-blur-sm border border-border/50">
+            <div className="glass rounded-2xl p-6 backdrop-blur-sm border border-border/50 h-full flex flex-col">
               {rightSidebar}
             </div>
           </motion.aside>

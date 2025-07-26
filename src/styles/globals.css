@@ -94,4 +94,13 @@
   .glass-secondary {
     @apply bg-secondary/80 backdrop-blur-[8px] border border-secondary/50;
   }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }

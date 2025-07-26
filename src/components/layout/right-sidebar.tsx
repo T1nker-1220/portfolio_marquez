@@ -21,11 +21,11 @@ export default function RightSidebar() {
   const totalSkills = skills.length;
   const advancedSkills = skills.filter(s => s.level === "Advanced").length;
   
-  // Get top skills by category
-  const topSkills = {
-    frontend: skills.filter(s => s.category === "frontend").slice(0, 4),
-    backend: skills.filter(s => s.category === "backend").slice(0, 4),
-    tools: skills.filter(s => s.category === "tools").slice(0, 4),
+  // Get all skills by category for scrollable display
+  const skillsByCategory = {
+    frontend: skills.filter(s => s.category === "frontend"),
+    backend: skills.filter(s => s.category === "backend"),
+    tools: skills.filter(s => s.category === "tools"),
   };
 
   const stats = [
@@ -41,7 +41,7 @@ export default function RightSidebar() {
     .slice(0, 3);
 
   return (
-    <div className="space-y-6">
+    <div className="h-full flex flex-col space-y-6 overflow-hidden">
       {/* Stats Overview */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -75,44 +75,49 @@ export default function RightSidebar() {
         </div>
       </motion.div>
 
-      {/* Skills Summary */}
+      {/* Skills Summary - Scrollable */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
+        className="flex-1 min-h-0 flex flex-col"
       >
-        <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
+        <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2 flex-shrink-0">
           <Code2 className="w-4 h-4" />
-          Top Skills
+          All Skills
         </h3>
         
-        <div className="space-y-4">
-          {Object.entries(topSkills).map(([category, categorySkills]) => (
-            <div key={category}>
-              <h4 className="text-xs font-medium text-muted-foreground mb-2 capitalize">
-                {category}
-              </h4>
-              <div className="flex flex-wrap gap-1">
-                {categorySkills.map((skill, index) => (
-                  <motion.span
-                    key={skill.name}
-                    whileHover={{ scale: 1.05 }}
-                    className="px-2 py-1 text-xs bg-emerald-500/10 text-emerald-600 rounded-md hover:bg-emerald-500/20 transition-colors cursor-default"
-                  >
-                    {skill.name}
-                  </motion.span>
-                ))}
+        <div className="flex-1 overflow-y-auto scrollbar-hide pr-2 -mr-2">
+          <div className="space-y-4">
+            {Object.entries(skillsByCategory).map(([category, categorySkills]) => (
+              <div key={category}>
+                <h4 className="text-xs font-medium text-muted-foreground mb-2 capitalize sticky top-0 bg-background py-1">
+                  {category} ({categorySkills.length})
+                </h4>
+                <div className="grid grid-cols-2 gap-1">
+                  {categorySkills.map((skill, index) => (
+                    <motion.div
+                      key={skill.name}
+                      whileHover={{ scale: 1.02 }}
+                      className="px-2 py-1.5 text-xs bg-emerald-500/10 text-emerald-600 rounded-md hover:bg-emerald-500/20 transition-colors cursor-default group"
+                    >
+                      <div className="font-medium truncate">{skill.name}</div>
+                      <div className="text-xs text-emerald-500/60 capitalize">{skill.level}</div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </motion.div>
 
-      {/* Recent Projects */}
+      {/* Recent Projects - Compact */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
+        className="flex-shrink-0"
       >
         <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
           <GitBranch className="w-4 h-4" />
@@ -120,26 +125,20 @@ export default function RightSidebar() {
         </h3>
         
         <div className="space-y-2">
-          {recentProjects.map((project, index) => (
+          {recentProjects.slice(0, 2).map((project, index) => (
             <motion.div
               key={project.id}
               whileHover={{ scale: 1.02, x: 2 }}
-              className="p-3 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors group cursor-pointer"
+              className="p-2 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors group cursor-pointer"
             >
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded bg-gradient-to-br from-green-400 to-emerald-600 flex-shrink-0"></div>
+              <div className="flex items-start gap-2">
+                <div className="w-6 h-6 rounded bg-gradient-to-br from-green-400 to-emerald-600 flex-shrink-0"></div>
                 <div className="flex-1 min-w-0">
                   <h4 className="text-xs font-medium text-foreground group-hover:text-emerald-600 transition-colors truncate">
                     {project.title}
                   </h4>
-                  <div className="flex items-center gap-2 mt-1">
-                    <span className="text-xs text-muted-foreground">
-                      {project.category}
-                    </span>
-                    <span className="text-xs text-muted-foreground">•</span>
-                    <span className="text-xs text-muted-foreground">
-                      {project.completedAt}
-                    </span>
+                  <div className="text-xs text-muted-foreground truncate">
+                    {project.category}
                   </div>
                 </div>
               </div>
@@ -148,19 +147,20 @@ export default function RightSidebar() {
         </div>
       </motion.div>
 
-      {/* Activity Timeline */}
+      {/* Activity Timeline - Compact */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
+        className="flex-shrink-0"
       >
         <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
           <Calendar className="w-4 h-4" />
           Activity
         </h3>
         
-        <div className="space-y-3">
-          <div className="flex items-center gap-3">
+        <div className="space-y-2">
+          <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-green-500"></div>
             <div className="flex-1">
               <div className="text-xs text-foreground">
@@ -172,7 +172,7 @@ export default function RightSidebar() {
             </div>
           </div>
           
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-blue-500"></div>
             <div className="flex-1">
               <div className="text-xs text-foreground">
@@ -180,18 +180,6 @@ export default function RightSidebar() {
               </div>
               <div className="text-xs text-muted-foreground">
                 1 week ago
-              </div>
-            </div>
-          </div>
-          
-          <div className="flex items-center gap-3">
-            <div className="w-2 h-2 rounded-full bg-purple-500"></div>
-            <div className="flex-1">
-              <div className="text-xs text-foreground">
-                Skills enhanced
-              </div>
-              <div className="text-xs text-muted-foreground">
-                2 weeks ago
               </div>
             </div>
           </div>
