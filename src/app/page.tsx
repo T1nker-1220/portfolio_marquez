@@ -7,13 +7,15 @@ import LeftSidebar from "@/components/layout/left-sidebar";
 import RightSidebar from "@/components/layout/right-sidebar";
 import SocialPostCard from "@/components/ui/social-post-card";
 import TimelinePost from "@/components/ui/timeline-post";
-
+import { Tabs, TabContent } from "@/components/ui/tabs";
+import ContributionsDashboard from "@/components/sections/contributions-dashboard";
 
 import { motion } from "framer-motion";
 import { useState, useMemo } from "react";
-import { Filter, Search, X, Tag, Star, Calendar } from "lucide-react";
+import { Filter, Search, X, Tag, Star, Calendar, FolderOpen, GitCommit } from "lucide-react";
 
 export default function HomePage() {
+  const [activeTab, setActiveTab] = useState<string>("projects");
   const [filter, setFilter] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
@@ -157,12 +159,42 @@ export default function HomePage() {
     (featuredOnly ? 1 : 0)
   );
 
+  const tabs = [
+    {
+      id: "projects",
+      label: "Projects",
+      icon: <FolderOpen className="w-4 h-4" />,
+      count: projects.length
+    },
+    {
+      id: "contributions",
+      label: "Contributions",
+      icon: <GitCommit className="w-4 h-4" />
+    }
+  ];
+
   return (
     <SocialLayout
-      leftSidebar={<LeftSidebar />}
-      rightSidebar={<RightSidebar />}
-    >
-             {/* Centered Minimalist Filter */}
+        leftSidebar={<LeftSidebar />}
+        rightSidebar={<RightSidebar />}
+      >
+        {/* Tab Navigation */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="sticky top-0 z-50 mb-6"
+        >
+          <Tabs
+            tabs={tabs}
+            activeTab={activeTab}
+            onTabChange={setActiveTab}
+            className="flex justify-center"
+          />
+        </motion.div>
+
+        {activeTab === "projects" && (
+          <>
+            {/* Centered Minimalist Filter */}
        <motion.div
          initial={{ opacity: 0, y: -20 }}
          animate={{ opacity: 1, y: 0 }}
@@ -319,55 +351,63 @@ export default function HomePage() {
          </div>
        </motion.div>
 
-      {/* Feed Content */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
-                 {filteredItems.map((item, index) => {
-           switch (item.type) {
-             case "project":
-               return 'data' in item ? (
-                 <SocialPostCard
-                   key={item.id}
-                   project={item.data as any}
-                 />
-               ) : null;
-               
-             case "timeline":
-               return 'data' in item ? (
-                 <TimelinePost
-                   key={item.id}
-                   item={item.data as any}
-                   index={index}
-                 />
-               ) : null;
-              
-            
-              
-            default:
-              return null;
-          }
-        })}
-        
-        {filteredItems.length === 0 && (
-                     <motion.div
-             initial={{ opacity: 0 }}
-             animate={{ opacity: 1 }}
-             className="bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-white/10 shadow-2xl shadow-black/25 text-center glass-container"
-           >
-            <div className="text-muted-foreground mb-4">
-              <Filter className="w-8 h-8 mx-auto mb-2 opacity-50" />
-              No posts found matching your criteria.
-            </div>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={clearFilters}
-              className="px-4 py-2 bg-emerald-500/20 text-emerald-600 rounded-lg text-sm hover:bg-emerald-500/30 transition-colors"
-            >
-              Clear Filters
-            </motion.button>
-          </motion.div>
+            {/* Feed Content */}
+            <TabContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+                {filteredItems.map((item, index) => {
+                  switch (item.type) {
+                    case "project":
+                      return 'data' in item ? (
+                        <SocialPostCard
+                          key={item.id}
+                          project={item.data as any}
+                        />
+                      ) : null;
+                      
+                    case "timeline":
+                      return 'data' in item ? (
+                        <TimelinePost
+                          key={item.id}
+                          item={item.data as any}
+                          index={index}
+                        />
+                      ) : null;
+                     
+                    default:
+                      return null;
+                  }
+                })}
+                
+                {filteredItems.length === 0 && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-white/10 shadow-2xl shadow-black/25 text-center glass-container"
+                  >
+                    <div className="text-muted-foreground mb-4">
+                      <Filter className="w-8 h-8 mx-auto mb-2 opacity-50" />
+                      No projects found matching your criteria.
+                    </div>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={clearFilters}
+                      className="px-4 py-2 bg-emerald-500/20 text-emerald-600 rounded-lg text-sm hover:bg-emerald-500/30 transition-colors"
+                    >
+                      Clear Filters
+                    </motion.button>
+                  </motion.div>
+                )}
+              </div>
+            </TabContent>
+          </>
         )}
-      </div>
-    </SocialLayout>
+
+        {activeTab === "contributions" && (
+          <TabContent>
+            <ContributionsDashboard />
+          </TabContent>
+        )}
+      </SocialLayout>
   );
 }

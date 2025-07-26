@@ -13,7 +13,6 @@ import {
   Instagram, 
   MessageCircle,
   Youtube,
-  Home,
   FolderOpen,
   User2,
   FileText,
@@ -22,7 +21,6 @@ import {
   Sparkles
 } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 const socialIcons = {
   GitHub: Github,
@@ -33,12 +31,9 @@ const socialIcons = {
   Youtube: Youtube,
 };
 
-const navigationItems = [
-  { name: "Home", href: "/", icon: Home },
-];
+const navigationItems: any[] = [];
 
 export default function LeftSidebar() {
-  const pathname = usePathname();
 
   return (
     <div className="h-full flex flex-col">
@@ -125,35 +120,6 @@ export default function LeftSidebar() {
           </div>
         </motion.div>
 
-        {/* Navigation */}
-        <motion.nav
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="space-y-2"
-        >
-          {navigationItems.map((item, index) => {
-            const Icon = item.icon;
-            const isActive = pathname === item.href;
-            
-            return (
-              <Link key={item.name} href={item.href}>
-                <motion.div
-                  whileHover={{ scale: 1.02, x: 2 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`flex items-center gap-3 p-3 rounded-lg transition-colors ${
-                    isActive
-                      ? "bg-gradient-to-r from-green-400/20 to-emerald-500/20 text-emerald-600 border border-emerald-500/20"
-                      : "hover:bg-muted/50 text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  <Icon className="w-4 h-4" />
-                  <span className="text-sm font-medium">{item.name}</span>
-                </motion.div>
-              </Link>
-            );
-          })}
-        </motion.nav>
 
                  {/* Quick Contact */}
          <motion.div

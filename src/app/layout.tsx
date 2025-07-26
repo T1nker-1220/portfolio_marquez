@@ -6,6 +6,7 @@ import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";
 import { type PropsWithChildren } from "react";
 import ResponsiveVideoBackground from "@/components/ui/responsive-video-background";
+import { ToastProvider } from "@/components/ui/toast";
 
 export const viewport: Viewport = {
   themeColor: "#FF5733",
@@ -160,9 +161,11 @@ export default function RootLayout({ children }: PropsWithChildren) {
             enableSystem
             disableTransitionOnChange={false}
           >
-            <MainLayout>
-              {children}
-            </MainLayout>
+            <ToastProvider>
+              <MainLayout>
+                {children}
+              </MainLayout>
+            </ToastProvider>
             <Analytics debug={false} />
           </ThemeProvider>
         </div>
