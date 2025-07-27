@@ -152,7 +152,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
          <ResponsiveVideoBackground />
         
                  {/* Enhanced Overlay for Better Text Readability */}
-         <div className="fixed inset-0 bg-black/50 dark:bg-black/60 z-10"></div>
+         <div className="fixed inset-0 bg-black/20 dark:bg-black/30 z-10"></div>
         
         {/* Snowfall Effect */}
         <Snowfall particleCount={75} />
