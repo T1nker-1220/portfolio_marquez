@@ -49,7 +49,7 @@ export default function RightSidebar() {
   ];
 
   return (
-    <div className="h-full flex flex-col space-y-4 overflow-hidden">
+    <div className="h-full flex flex-col space-y-4 overflow-y-auto">
       {/* Stats Overview */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -88,14 +88,14 @@ export default function RightSidebar() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="flex-1 min-h-0 flex flex-col"
+        className="flex-shrink-0"
       >
-        <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2 flex-shrink-0 drop-shadow-lg">
+        <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2 drop-shadow-lg">
           <Code2 className="w-4 h-4" />
           Skills Showcase
         </h3>
         
-        <div className="flex-1">
+        <div className="h-48">
           <VerticalScrollSkills />
         </div>
       </motion.div>
