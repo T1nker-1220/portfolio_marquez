@@ -472,6 +472,134 @@ export const projects: Project[] = [
     featuredRank: 9,
   },
   {
+    id: "aws-postgres-mcp-server",
+    title: "AWS PostgreSQL MCP Server",
+    description:
+      "A sophisticated, production-ready Model Context Protocol server specifically designed for oil & gas industry data management with advanced PostgreSQL integration on AWS RDS. Features comprehensive safety controls, geospatial operations, and industry-specific tools for petroleum data analysis.",
+    image: "/images/projects/aws-postgres-mcp-server.png",
+    video: {
+      src: "/videos/aws-postgres-mcp-server.mp4",
+      poster: "/images/projects/aws-postgres-mcp-server.png",
+    },
+    liveUrl: "",
+    githubUrl: "",
+    techStack: [
+      // Runtime & Language
+      { name: "Node.js", icon: "nodejs", color: "#339933" },
+      { name: "TypeScript ES2020", icon: "typescript", color: "#3178C6" },
+      { name: "ES Modules (ESM)", icon: "javascript", color: "#F7DF1E" },
+      { name: "NodeNext Module Resolution", icon: "nodejs", color: "#339933" },
+
+      // MCP Framework
+      { name: "@modelcontextprotocol/sdk v1.10.2", icon: "mcp", color: "#FF4154" },
+      { name: "StdioServerTransport", icon: "transport", color: "#607D8B" },
+      { name: "Custom MCP Tools", icon: "tools", color: "#9C27B0" },
+      { name: "Advanced Protocol Handling", icon: "protocol", color: "#FF4154" },
+
+      // Database Technologies
+      { name: "PostgreSQL", icon: "postgresql", color: "#336791" },
+      { name: "AWS RDS", icon: "aws", color: "#FF9900" },
+      { name: "pg v8.15.1", icon: "postgresql", color: "#336791" },
+      { name: "PostGIS", icon: "postgis", color: "#336791" },
+
+      // Validation & Schema
+      { name: "Zod v3.24.3", icon: "zod", color: "#3E67B1" },
+      { name: "TypeScript Interfaces", icon: "typescript", color: "#3178C6" },
+      { name: "Schema Validation", icon: "validation", color: "#4CAF50" },
+
+      // Configuration & Security
+      { name: "dotenv v16.5.0", icon: "dotenv", color: "#ECD53F" },
+      { name: "SSL/TLS Configuration", icon: "security", color: "#4CAF50" },
+      { name: "Certificate Handling", icon: "cert", color: "#FF9800" },
+
+      // TypeScript Toolchain
+      { name: "TypeScript v5.8.3", icon: "typescript", color: "#3178C6" },
+      { name: "ts-node v10.9.2", icon: "nodejs", color: "#339933" },
+      { name: "@types/pg v8.11.13", icon: "types", color: "#3178C6" },
+
+      // Build Configuration
+      { name: "Source Maps", icon: "sourcemap", color: "#FF6B6B" },
+      { name: "Declaration Files", icon: "dts", color: "#3178C6" },
+      { name: "ESM-first Architecture", icon: "esm", color: "#F7DF1E" },
+
+      // Package Management
+      { name: "pnpm v10.8.1", icon: "pnpm", color: "#F69220" },
+      { name: "Binary Distribution", icon: "binary", color: "#607D8B" },
+      { name: "aws-pg-mcp Command", icon: "cli", color: "#FF9900" },
+
+      // Modular Architecture
+      { name: "config.ts Module", icon: "config", color: "#2196F3" },
+      { name: "sql-tools.ts Module", icon: "sql", color: "#336791" },
+      { name: "domain-tools.ts Module", icon: "domain", color: "#FF5722" },
+      { name: "resources.ts Module", icon: "resources", color: "#9C27B0" },
+      { name: "types.ts Module", icon: "types", color: "#3178C6" },
+      { name: "utils.ts Module", icon: "utils", color: "#607D8B" },
+
+      // Security & Safety Architecture
+      { name: "Multi-layered Validation", icon: "validation", color: "#4CAF50" },
+      { name: "SQL Injection Prevention", icon: "security", color: "#F44336" },
+      { name: "Critical Table Protection", icon: "protection", color: "#E91E63" },
+      { name: "Transaction Management", icon: "transaction", color: "#8B5CF6" },
+      { name: "Query Pattern Matching", icon: "pattern", color: "#FF9800" },
+
+      // Database Schema Management
+      { name: "Multi-Schema Architecture", icon: "schema", color: "#10B981" },
+      { name: "Schema Prioritization", icon: "priority", color: "#6366F1" },
+      { name: "Performance Optimization", icon: "performance", color: "#F59E0B" },
+
+      // Oil & Gas Domain
+      { name: "Well Management", icon: "oil", color: "#8B4513" },
+      { name: "Section Analysis", icon: "analysis", color: "#FF5722" },
+      { name: "Production Tracking", icon: "tracking", color: "#4CAF50" },
+      { name: "Economic Modeling", icon: "economics", color: "#2196F3" },
+      { name: "Decline Curve Analysis", icon: "curve", color: "#9C27B0" },
+      { name: "Type Curve Generation", icon: "generation", color: "#FF6B6B" },
+
+      // Geospatial Capabilities
+      { name: "PostGIS Spatial Operations", icon: "spatial", color: "#4CAF50" },
+      { name: "Geometry Processing", icon: "geometry", color: "#2196F3" },
+      { name: "Geographic Boundaries", icon: "boundaries", color: "#FF9800" },
+      { name: "Coordinate Systems", icon: "coordinates", color: "#9C27B0" },
+
+      // Cloud Integration
+      { name: "AWS RDS Integration", icon: "aws", color: "#FF9900" },
+      { name: "Environment Configuration", icon: "env", color: "#4CAF50" },
+      { name: "Encrypted Connections", icon: "encryption", color: "#F44336" },
+    ],
+    features: [
+      "Production-ready MCP server for oil & gas industry data management",
+      "Advanced PostgreSQL integration with AWS RDS hosting",
+      "Modular architecture with separation of concerns across 6 core modules",
+      "Comprehensive security with multi-layered validation and SQL injection prevention",
+      "Critical table protection for production data safety",
+      "PostGIS integration for advanced geospatial operations and analysis",
+      "Industry-specific tools for petroleum data analysis and forecasting",
+      "Well management with 10-digit and 14-digit API identifier support",
+      "Section analysis with land section data and well intersection calculations",
+      "Production tracking for monthly oil and gas production volumes",
+      "Economic modeling with section scenarios and forecasted outcomes",
+      "Decline curve analysis with PDP forecasting and hyperbolic decline parameters",
+      "Type curve generation for PUD forecasting at undeveloped locations",
+      "Drilling operations tracking with rig status and operational monitoring",
+      "Multi-schema architecture supporting minrights, prod, data, spatial schemas",
+      "Advanced query optimization with mandatory LIMIT clauses and timeouts",
+      "Transaction management with dry-run capabilities and automatic rollback",
+      "EXPLAIN plan analysis for query impact estimation",
+      "Configurable row limiting and result size management for performance",
+      "SSL/TLS encrypted database connections with certificate handling",
+      "ESM-first architecture with modern TypeScript ES2020 support",
+      "Zod schema validation for type-safe database operations",
+      "Connection pooling for optimized database performance",
+      "Binary distribution with aws-pg-mcp command-line interface",
+      "Comprehensive error handling, logging, and monitoring capabilities",
+    ],
+    category: "Infrastructure",
+    status: "Completed",
+    completedAt: "2025-07",
+    featured: true,
+    featuredRank: 10,
+  },
+  {
     id: "ultracontextai",
     title: "UltraContextAI",
     description:
