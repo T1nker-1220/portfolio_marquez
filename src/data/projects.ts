@@ -50,6 +50,102 @@ export const projects: Project[] = [
     featuredRank: 5,
   },
   {
+    id: "minrights-chatbot",
+    title: "MinRights Chatbot",
+    description:
+      "A sophisticated Python package providing AI-powered conversational interfaces for oil & gas data analysis. Built for the MinRights platform, it implements a two-tier bot architecture (Basic and Premium) with comprehensive database integration, web search capabilities, and advanced analytics features.",
+    image: "/images/projects/minrights-chatbot.png",
+    video: {
+      src: "/videos/minrights-chatbot.mp4",
+      poster: "/images/projects/minrights-chatbot.png",
+    },
+    liveUrl: "https://www.mineralrights.ai/",
+    githubUrl: "",
+    techStack: [
+      // Programming Languages & Core Runtime
+      { name: "Python >=3.8", icon: "python", color: "#3776AB" },
+      { name: "SQL PostgreSQL", icon: "postgresql", color: "#336791" },
+      { name: "JavaScript/Node.js", icon: "nodejs", color: "#339933" },
+      { name: "Markdown", icon: "markdown", color: "#000000" },
+
+      // AI & Machine Learning Stack
+      { name: "OpenAI SDK >=1.0.0", icon: "openai", color: "#412991" },
+      { name: "OpenAI Agents SDK >=0.0.16", icon: "openai", color: "#412991" },
+      { name: "Function Tools", icon: "ai", color: "#FF6B6B" },
+      { name: "Query Classification", icon: "ai", color: "#FF6B6B" },
+
+      // Database & Data Processing
+      { name: "PostgreSQL", icon: "postgresql", color: "#336791" },
+      { name: "asyncpg >=0.28.0", icon: "postgresql", color: "#336791" },
+      { name: "Connection Pooling", icon: "database", color: "#00BFFF" },
+      { name: "Pandas >=2.0.0", icon: "pandas", color: "#150458" },
+      { name: "AWS RDS", icon: "aws", color: "#FF9900" },
+
+      // Data Visualization & Analytics
+      { name: "Matplotlib >=3.5.0", icon: "matplotlib", color: "#11557c" },
+      { name: "Chart Generator", icon: "chartjs", color: "#FF6384" },
+      { name: "Table Formatter", icon: "datatable", color: "#339AF0" },
+
+      // Web Integration & External Services
+      { name: "aiohttp >=3.8.0", icon: "aiohttp", color: "#2C5BB4" },
+      { name: "ScrapingBee >=1.0.0", icon: "spider", color: "#FF7043" },
+      { name: "BeautifulSoup4 >=4.12.0", icon: "beautifulsoup", color: "#4CAF50" },
+      { name: "MCP Servers", icon: "api", color: "#FF4154" },
+
+      // Document Processing
+      { name: "pdfplumber >=0.10.0", icon: "pdf", color: "#E53E3E" },
+      { name: "pytesseract >=0.3.10", icon: "ocr", color: "#9C27B0" },
+      { name: "Pillow >=10.0.0", icon: "image", color: "#FF9800" },
+
+      // Development & Build Tools
+      { name: "setuptools", icon: "python", color: "#3776AB" },
+      { name: "pyproject.toml", icon: "config", color: "#4B32C3" },
+      { name: "python-dotenv >=1.0.0", icon: "dotenv", color: "#ECD53F" },
+      { name: "Poetry >=2.1.3", icon: "poetry", color: "#60A5FA" },
+
+      // Security & Configuration
+      { name: "SSL/TLS", icon: "security", color: "#4CAF50" },
+      { name: "Environment Variables", icon: "env", color: "#FFC107" },
+      { name: "Dataclass Config", icon: "config", color: "#2196F3" },
+
+      // Testing & Quality Assurance
+      { name: "Interactive Tests", icon: "test", color: "#9C27B0" },
+      { name: "pytest", icon: "pytest", color: "#0A9EDC" },
+      { name: "mypy", icon: "mypy", color: "#2E8B57" },
+      { name: "flake8", icon: "flake8", color: "#3F51B5" },
+      { name: "black", icon: "black", color: "#000000" },
+
+      // Infrastructure & Deployment
+      { name: "AWS RDS PostgreSQL", icon: "aws", color: "#FF9900" },
+      { name: "MCP Server Configuration", icon: "server", color: "#607D8B" },
+    ],
+    features: [
+      "Two-tier bot architecture (Basic and Premium)",
+      "AI-powered conversational interfaces for oil & gas data analysis",
+      "Comprehensive database integration with PostgreSQL",
+      "Web search capabilities with ScrapingBee integration",
+      "Advanced analytics and data visualization",
+      "PDF document processing with OCR capabilities",
+      "Async operations for database and API calls",
+      "Tool architecture using @function_tool() decorator",
+      "State management for SQL results and chart data",
+      "Modular prompt system with dynamic loading",
+      "MCP server integrations (aws-postgres-minrights, context7)",
+      "Query classification with ML-based routing",
+      "Connection pooling for efficient resource management",
+      "Base64 chart encoding for web compatibility",
+      "SSL-secured database connections",
+      "Interactive testing framework for real database testing",
+      "Bot inheritance hierarchy for code reusability",
+      "Environment variable management for secure configuration",
+    ],
+    category: "AI/ML",
+    status: "Completed",
+    completedAt: "2025-07",
+    featured: true,
+    featuredRank: 6,
+  },
+  {
     id: "ultracontextai",
     title: "UltraContextAI",
     description:

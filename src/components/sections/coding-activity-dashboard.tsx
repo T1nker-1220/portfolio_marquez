@@ -153,34 +153,29 @@ export default function CodingActivityDashboard() {
         </div>
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Top Languages */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.1 }}
-          className="bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/20 dark:border-white/10"
-        >
-          <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <Code2 className="w-5 h-5" />
-            Top Languages
-          </h3>
-          
-          <div className="space-y-3">
-            {topLanguages.length > 0 ? topLanguages.map((language, index) => (
-              <div key={language.name} className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-blue-500 flex items-center justify-center text-white text-sm font-bold">
-                    {language.name.charAt(0)}
-                  </div>
-                  <div>
-                    <p className="text-white font-medium">{language.name}</p>
-                    <p className="text-sm text-gray-400">{language.text}</p>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <p className="text-white font-semibold">{language.percent.toFixed(1)}%</p>
-                  <div className="w-16 h-2 bg-gray-700 rounded-full overflow-hidden">
+      {/* Top Languages - Full Width */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+        className="bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/20 dark:border-white/10"
+      >
+        <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+          <Code2 className="w-5 h-5" />
+          Top Languages
+        </h3>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {topLanguages.length > 0 ? topLanguages.map((language, index) => (
+            <div key={language.name} className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-400 to-blue-500 flex items-center justify-center text-white text-sm font-bold">
+                {language.name.charAt(0)}
+              </div>
+              <div className="flex-1">
+                <p className="text-white font-medium">{language.name}</p>
+                <p className="text-sm text-gray-400">{language.text}</p>
+                <div className="flex items-center gap-2 mt-1">
+                  <div className="flex-1 h-2 bg-gray-700 rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${language.percent}%` }}
@@ -188,64 +183,21 @@ export default function CodingActivityDashboard() {
                       className="h-full bg-gradient-to-r from-emerald-400 to-blue-500"
                     />
                   </div>
+                  <span className="text-xs text-white font-semibold min-w-fit">
+                    {language.percent.toFixed(1)}%
+                  </span>
                 </div>
               </div>
-            )) : (
-              <div className="text-center py-8">
-                <Code2 className="w-12 h-12 mx-auto mb-3 text-gray-500" />
-                <p className="text-gray-400">No language data yet</p>
-                <p className="text-sm text-gray-500">Start coding to see your language breakdown</p>
-              </div>
-            )}
-          </div>
-        </motion.div>
-
-        {/* Top Projects */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2 }}
-          className="bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/20 dark:border-white/10"
-        >
-          <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <GitBranch className="w-5 h-5" />
-            Active Projects
-          </h3>
-          
-          <div className="space-y-3">
-            {topProjects.length > 0 ? topProjects.map((project, index) => (
-              <div key={project.name} className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-white text-sm font-bold">
-                    {project.name.charAt(0).toUpperCase()}
-                  </div>
-                  <div>
-                    <p className="text-white font-medium">{project.name}</p>
-                    <p className="text-sm text-gray-400">{project.text}</p>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <p className="text-white font-semibold">{project.percent.toFixed(1)}%</p>
-                  <div className="w-16 h-2 bg-gray-700 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: `${project.percent}%` }}
-                      transition={{ delay: index * 0.1, duration: 0.8 }}
-                      className="h-full bg-gradient-to-r from-purple-400 to-pink-500"
-                    />
-                  </div>
-                </div>
-              </div>
-            )) : (
-              <div className="text-center py-8">
-                <GitBranch className="w-12 h-12 mx-auto mb-3 text-gray-500" />
-                <p className="text-gray-400">No project data yet</p>
-                <p className="text-sm text-gray-500">Keep coding to see your active projects</p>
-              </div>
-            )}
-          </div>
-        </motion.div>
-      </div>
+            </div>
+          )) : (
+            <div className="col-span-full text-center py-8">
+              <Code2 className="w-12 h-12 mx-auto mb-3 text-gray-500" />
+              <p className="text-gray-400">No language data yet</p>
+              <p className="text-sm text-gray-500">Start coding to see your language breakdown</p>
+            </div>
+          )}
+        </div>
+      </motion.div>
 
       {/* Additional Stats Row */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
