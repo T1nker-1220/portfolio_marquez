@@ -365,6 +365,113 @@ export const projects: Project[] = [
     featuredRank: 8,
   },
   {
+    id: "supabase-postgres-pcrental-mcp",
+    title: "Supabase PostgreSQL PC Rental MCP Server",
+    description:
+      "A sophisticated Model Context Protocol (MCP) server designed for safe PostgreSQL database interactions with Supabase. Provides both read and controlled write access while maintaining security and performance safeguards specifically for PC rental management systems.",
+    image: "/images/projects/supabase-postgres-pcrental-mcp.png",
+    video: {
+      src: "/videos/supabase-postgres-pcrental-mcp.mp4",
+      poster: "/images/projects/supabase-postgres-pcrental-mcp.png",
+    },
+    liveUrl: "",
+    githubUrl: "",
+    techStack: [
+      // Runtime & Language
+      { name: "Node.js", icon: "nodejs", color: "#339933" },
+      { name: "TypeScript", icon: "typescript", color: "#3178C6" },
+      { name: "ES2020", icon: "javascript", color: "#F7DF1E" },
+
+      // MCP Framework
+      { name: "@modelcontextprotocol/sdk v1.12.0", icon: "mcp", color: "#FF4154" },
+      { name: "StdioServerTransport", icon: "transport", color: "#607D8B" },
+      { name: "MCP Server Pattern", icon: "server", color: "#9C27B0" },
+
+      // Database Technologies
+      { name: "PostgreSQL", icon: "postgresql", color: "#336791" },
+      { name: "Supabase", icon: "supabase", color: "#3ECF8E" },
+      { name: "pg v8.11.3", icon: "postgresql", color: "#336791" },
+
+      // Configuration & Environment
+      { name: "dotenv v16.3.1", icon: "dotenv", color: "#ECD53F" },
+      { name: "Environment Variables", icon: "env", color: "#4CAF50" },
+      { name: ".env Configuration", icon: "config", color: "#2196F3" },
+
+      // TypeScript Toolchain
+      { name: "TypeScript v5.3.3", icon: "typescript", color: "#3178C6" },
+      { name: "ts-node v10.9.2", icon: "nodejs", color: "#339933" },
+      { name: "@types/node v20.10.5", icon: "types", color: "#3178C6" },
+      { name: "@types/pg v8.10.9", icon: "types", color: "#3178C6" },
+
+      // Build Configuration
+      { name: "tsconfig.json", icon: "config", color: "#3178C6" },
+      { name: "CommonJS Modules", icon: "commonjs", color: "#F7DF1E" },
+      { name: "Strict Type Checking", icon: "typescript", color: "#3178C6" },
+
+      // Package Management
+      { name: "npm", icon: "npm", color: "#CB3837" },
+      { name: "package-lock.json", icon: "lock", color: "#F7B32B" },
+
+      // Architecture Patterns
+      { name: "Class-based Architecture", icon: "class", color: "#9C27B0" },
+      { name: "Event-driven Programming", icon: "event", color: "#FF5722" },
+      { name: "Connection Pooling", icon: "pool", color: "#00BFFF" },
+      { name: "Query Validation", icon: "validation", color: "#4CAF50" },
+
+      // Security & Safety
+      { name: "SQL Injection Protection", icon: "security", color: "#F44336" },
+      { name: "Row Limiting", icon: "limit", color: "#FF9800" },
+      { name: "Timeout Management", icon: "timer", color: "#9C27B0" },
+      { name: "Dry-run Mode", icon: "test", color: "#2196F3" },
+
+      // Database Access Patterns
+      { name: "Transaction Management", icon: "transaction", color: "#8B5CF6" },
+      { name: "Schema Introspection", icon: "schema", color: "#10B981" },
+      { name: "Query Result Processing", icon: "query", color: "#6366F1" },
+
+      // Communication Protocol
+      { name: "STDIO Transport", icon: "stdio", color: "#607D8B" },
+      { name: "JSON-RPC", icon: "json", color: "#FFC107" },
+      { name: "MCP Protocol", icon: "protocol", color: "#FF4154" },
+
+      // Cloud Infrastructure
+      { name: "AWS (ap-southeast-1)", icon: "aws", color: "#FF9900" },
+      { name: "Supabase Hosting", icon: "supabase", color: "#3ECF8E" },
+    ],
+    features: [
+      "Model Context Protocol (MCP) server implementation",
+      "Safe PostgreSQL database interactions with Supabase integration",
+      "Read-only SQL query support (SELECT, WITH, SHOW, DESCRIBE, EXPLAIN)",
+      "Controlled write operations with safety controls (INSERT, UPDATE, DELETE)",
+      "Advanced query validation and SQL injection protection",
+      "Connection pooling for optimized database performance",
+      "Row limiting to prevent memory overflow issues",
+      "Query timeout management for performance control",
+      "Dry-run capabilities for safe testing of write operations",
+      "Database schema browsing via MCP resources",
+      "Table data sampling for development and testing",
+      "Transaction management with rollback capabilities",
+      "Dynamic database schema discovery and introspection",
+      "Event-driven architecture with comprehensive error handling",
+      "TypeScript with strict type checking for reliability",
+      "Environment-based configuration management",
+      "STDIO transport for seamless MCP communication",
+      "JSON-RPC protocol implementation for MCP compliance",
+      "Class-based architecture for maintainable code organization",
+      "AWS cloud infrastructure integration (ap-southeast-1 region)",
+      "PC rental system specific database operations",
+      "Production-ready security and performance safeguards",
+      "Comprehensive error handling and signal management",
+      "Parameter validation for secure database operations",
+      "Configurable query execution timeouts",
+    ],
+    category: "Infrastructure",
+    status: "Completed",
+    completedAt: "2025-07",
+    featured: true,
+    featuredRank: 9,
+  },
+  {
     id: "ultracontextai",
     title: "UltraContextAI",
     description:
