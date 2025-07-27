@@ -6,6 +6,7 @@ import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";
 import { type PropsWithChildren } from "react";
 import ResponsiveVideoBackground from "@/components/ui/responsive-video-background";
+import Snowfall from "@/components/ui/snowfall";
 import { ToastProvider } from "@/components/ui/toast";
 
 export const viewport: Viewport = {
@@ -152,6 +153,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
         
                  {/* Enhanced Overlay for Better Text Readability */}
          <div className="fixed inset-0 bg-black/50 dark:bg-black/60 z-10"></div>
+        
+        {/* Snowfall Effect */}
+        <Snowfall particleCount={75} />
         
         {/* Content Layer */}
         <div className="relative z-20 min-h-screen">
