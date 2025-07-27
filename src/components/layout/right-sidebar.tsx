@@ -49,7 +49,7 @@ export default function RightSidebar() {
   ];
 
   return (
-    <div className="h-full flex flex-col space-y-6 overflow-hidden">
+    <div className="h-full flex flex-col space-y-4 overflow-hidden">
       {/* Stats Overview */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -121,8 +121,8 @@ export default function RightSidebar() {
             />
           </div>
         ) : stats?.data?.projects && stats.data.projects.length > 0 ? (
-          <div className="space-y-2">
-            {stats.data.projects.slice(0, 3).map((project, index) => {
+          <div className="space-y-1.5">
+            {stats.data.projects.slice(0, 2).map((project, index) => {
               // Generate project icon color based on project name
               const colors = [
                 'from-blue-500 to-cyan-500',
@@ -140,26 +140,20 @@ export default function RightSidebar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ scale: 1.02, x: 2 }}
-                  className="p-3 rounded-lg bg-muted/30 hover:bg-muted/50 transition-all duration-200 group cursor-pointer border border-transparent hover:border-white/10"
+                  className="p-2.5 rounded-lg bg-muted/30 hover:bg-muted/50 transition-all duration-200 group cursor-pointer border border-transparent hover:border-white/10"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${colorClass} flex items-center justify-center flex-shrink-0 shadow-lg`}>
-                      <span className="text-white text-sm font-bold">
+                  <div className="flex items-center gap-2.5">
+                    <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${colorClass} flex items-center justify-center flex-shrink-0 shadow-lg`}>
+                      <span className="text-white text-xs font-bold">
                         {project.name.charAt(0).toUpperCase()}
                       </span>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-semibold text-white group-hover:text-gray-200 transition-colors truncate drop-shadow-md">
+                      <h4 className="text-xs font-semibold text-white group-hover:text-gray-200 transition-colors truncate drop-shadow-md">
                         {project.name}
                       </h4>
-                      <div className="flex items-center gap-2 mt-1">
-                        <Clock className="w-3 h-3 text-gray-400" />
-                        <span className="text-xs text-gray-400 truncate">
-                          {project.text}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2 mt-1">
-                        <div className="flex-1 bg-gray-700 rounded-full h-1.5 overflow-hidden">
+                      <div className="flex items-center gap-1.5 mt-0.5">
+                        <div className="flex-1 bg-gray-700 rounded-full h-1 overflow-hidden">
                           <motion.div
                             initial={{ width: 0 }}
                             animate={{ width: `${project.percent}%` }}
@@ -168,7 +162,13 @@ export default function RightSidebar() {
                           />
                         </div>
                         <span className="text-xs font-medium text-white min-w-fit">
-                          {project.percent.toFixed(1)}%
+                          {project.percent.toFixed(0)}%
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1 mt-0.5">
+                        <Clock className="w-2.5 h-2.5 text-gray-500" />
+                        <span className="text-xs text-gray-500 truncate">
+                          {project.text}
                         </span>
                       </div>
                     </div>
@@ -178,8 +178,8 @@ export default function RightSidebar() {
             })}
           </div>
         ) : (
-          <div className="text-center py-6">
-            <GitBranch className="w-8 h-8 mx-auto mb-2 text-gray-500" />
+          <div className="text-center py-3">
+            <GitBranch className="w-6 h-6 mx-auto mb-1 text-gray-500" />
             <p className="text-xs text-gray-400">No active projects</p>
             <p className="text-xs text-gray-500">Start coding to see your projects</p>
           </div>
@@ -198,26 +198,26 @@ export default function RightSidebar() {
           Activity
         </h3>
         
-        <div className="space-y-2">
+        <div className="space-y-1.5">
           <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-gray-400"></div>
+            <div className="w-1.5 h-1.5 rounded-full bg-gray-400"></div>
             <div className="flex-1">
               <div className="text-xs text-white">
                 New project completed
               </div>
-              <div className="text-xs text-gray-400">
+              <div className="text-xs text-gray-500">
                 2 days ago
               </div>
             </div>
           </div>
           
           <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-gray-500"></div>
+            <div className="w-1.5 h-1.5 rounded-full bg-gray-500"></div>
             <div className="flex-1">
               <div className="text-xs text-white">
                 Portfolio updated
               </div>
-              <div className="text-xs text-gray-400">
+              <div className="text-xs text-gray-500">
                 1 week ago
               </div>
             </div>
