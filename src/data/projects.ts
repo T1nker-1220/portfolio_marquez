@@ -1086,73 +1086,6 @@ export const projects: Project[] = [
     completedAt: "2024-06",
   },
   {
-    id: "filipino-cuisine-ui",
-    title: "Filipino Cuisine UI",
-    description:
-      "A modern UI/UX design system for a Filipino restaurant, combining cultural elements with professional e-commerce functionality.",
-    image: "/images/projects/filipino-cuisine-ui.png",
-    liveUrl: "#",
-    githubUrl: null,
-    techStack: [
-      { name: "Next.js 14", icon: "nextjs", color: "#E5E7EB" },
-      { name: "React 19", icon: "react", color: "#61DAFB" },
-      { name: "TypeScript", icon: "typescript", color: "#3178C6" },
-      { name: "TailwindCSS", icon: "tailwindcss", color: "#06B6D4" },
-      { name: "Shadcn UI", icon: "shadcn", color: "#E5E7EB" },
-      { name: "Radix UI", icon: "radix", color: "#FF69B4" },
-      { name: "Framer Motion", icon: "framer", color: "#0055FF" },
-      { name: "Zustand", icon: "zustand", color: "#FF4154" },
-      { name: "Sonner", icon: "sonner", color: "#4F46E5" },
-      { name: "pnpm", icon: "pnpm", color: "#F69220" },
-      { name: "Vercel", icon: "vercel", color: "#E5E7EB" },
-    ],
-    features: [
-      "Cultural-inspired design system",
-      "E-commerce functionality",
-      "Accessible components",
-      "Motion design animations",
-      "Toast notifications",
-      "Responsive layout",
-      "Dark mode support",
-      "Image optimization",
-    ],
-    category: "Coming Soon",
-    status: "Coming Soon",
-    completedAt: "2024-04",
-  },
-  {
-    id: "todo-list",
-    title: "Todo List",
-    description:
-      "A feature-rich todo list application with task management, categories, and progress tracking capabilities.",
-    image: "/images/projects/todo-list.png",
-    liveUrl: "#",
-    githubUrl: null,
-    techStack: [
-      { name: "Next.js 14", icon: "nextjs", color: "#E5E7EB" },
-      { name: "React 18", icon: "react", color: "#61DAFB" },
-      { name: "TypeScript", icon: "typescript", color: "#3178C6" },
-      { name: "TailwindCSS", icon: "tailwindcss", color: "#06B6D4" },
-      { name: "Zustand", icon: "zustand", color: "#FF4154" },
-      { name: "Framer Motion", icon: "framer", color: "#0055FF" },
-      { name: "LocalForage", icon: "localforage", color: "#FF9900" },
-      { name: "DnD Kit", icon: "dndkit", color: "#6366F1" },
-    ],
-    features: [
-      "Task categorization",
-      "Drag and drop reordering",
-      "Progress tracking",
-      "Due date reminders",
-      "Priority levels",
-      "Offline support",
-      "Dark mode",
-      "Data persistence",
-    ],
-    category: "Coming Soon",
-    status: "Coming Soon",
-    completedAt: "2024-05",
-  },
-  {
     id: "t1nker-pc-rental",
     title: "T1NKER PC Rental & Management System",
     description:
@@ -1165,15 +1098,74 @@ export const projects: Project[] = [
     liveUrl: "",
     githubUrl: "",
     techStack: [
-      { name: "Next.js (App Router)", icon: "nextjs", color: "#E5E7EB" },
-      { name: "TypeScript", icon: "typescript", color: "#3178C6" },
-      { name: "Tailwind CSS", icon: "tailwindcss", color: "#06B6D4" },
-      { name: "Zustand", icon: "zustand", color: "#FF4154" },
+      // Frontend Framework
+      { name: "Next.js 15.3.2", icon: "nextjs", color: "#E5E7EB" },
+      { name: "React 19.0.0", icon: "react", color: "#61DAFB" },
+      { name: "TypeScript 5", icon: "typescript", color: "#3178C6" },
+
+      // Styling & UI
+      { name: "Tailwind CSS 4.1.8", icon: "tailwindcss", color: "#06B6D4" },
+      { name: "Radix UI", icon: "radix", color: "#FF69B4" },
+      { name: "Shadcn/ui", icon: "shadcn", color: "#E5E7EB" },
+      { name: "Framer Motion 12.15.0", icon: "framer", color: "#0055FF" },
+      { name: "Lucide React", icon: "lucide", color: "#94A3B8" },
+      { name: "React Icons", icon: "react-icons", color: "#94A3B8" },
+      { name: "next-themes", icon: "theme", color: "#4B5563" },
+
+      // Backend & Database
       { name: "Supabase", icon: "supabase", color: "#3ECF8E" },
       { name: "PostgreSQL", icon: "postgresql", color: "#336791" },
-      { name: "Electron", icon: "electron", color: "#47848F" },
+      { name: "Supabase Real-time", icon: "realtime", color: "#3ECF8E" },
+      { name: "Supabase Auth", icon: "auth", color: "#3ECF8E" },
+      { name: "Row Level Security", icon: "security", color: "#4CAF50" },
+      { name: "Supabase SSR", icon: "ssr", color: "#3ECF8E" },
+
+      // State Management
+      { name: "Zustand 5.0.4", icon: "zustand", color: "#FF4154" },
+      { name: "adminStore", icon: "store", color: "#FF4154" },
+      { name: "clientStore", icon: "store", color: "#FF4154" },
+      { name: "activityLogStore", icon: "store", color: "#FF4154" },
+      { name: "adminNotificationStore", icon: "store", color: "#FF4154" },
+
+      // Data Visualization & Charts
+      { name: "Tremor React 3.18.7", icon: "tremor", color: "#8884D8" },
+      { name: "Recharts 2.15.3", icon: "recharts", color: "#8884D8" },
+
+      // Authentication & Security
       { name: "bcryptjs", icon: "lock", color: "#F7B32B" },
-      { name: "Docker", icon: "docker", color: "#2496ED" },
+      { name: "Next.js Middleware", icon: "middleware", color: "#E5E7EB" },
+
+      // Utilities & Tools
+      { name: "date-fns", icon: "date-fns", color: "#770C98" },
+      { name: "clsx", icon: "clsx", color: "#0284C7" },
+      { name: "tailwind-merge", icon: "tailwind", color: "#06B6D4" },
+      { name: "class-variance-authority", icon: "cva", color: "#16A34A" },
+      { name: "react-toastify", icon: "toast", color: "#FF6B35" },
+      { name: "sonner", icon: "sonner", color: "#4F46E5" },
+      { name: "Resend", icon: "email", color: "#00A95C" },
+
+      // Desktop Application
+      { name: "Electron 36.2.1", icon: "electron", color: "#47848F" },
+      { name: "Electron Builder", icon: "builder", color: "#47848F" },
+      { name: "PNPM", icon: "pnpm", color: "#F69220" },
+
+      // Development Tools
+      { name: "ESLint 9", icon: "eslint", color: "#4B32C3" },
+      { name: "PostCSS", icon: "postcss", color: "#DD3A0A" },
+      { name: "Autoprefixer", icon: "autoprefixer", color: "#DD3A0A" },
+      { name: "Turbopack", icon: "turbopack", color: "#0070F3" },
+      { name: "cross-env", icon: "env", color: "#4CAF50" },
+
+      // Build & Deployment
+      { name: "Next.js Build System", icon: "build", color: "#E5E7EB" },
+      { name: "Vercel-ready", icon: "vercel", color: "#E5E7EB" },
+      { name: "GitHub Actions", icon: "github", color: "#181717" },
+
+      // Architecture Patterns
+      { name: "Server Components", icon: "server", color: "#61DAFB" },
+      { name: "API Routes", icon: "api", color: "#FF4154" },
+      { name: "Multi-client Architecture", icon: "architecture", color: "#9C27B0" },
+      { name: "Modular Components", icon: "components", color: "#2196F3" },
     ],
     features: [
       "Admin dashboard for user, session, and transaction management",
