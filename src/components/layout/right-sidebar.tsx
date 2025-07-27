@@ -95,7 +95,7 @@ export default function RightSidebar() {
           Skills Showcase
         </h3>
         
-        <div className="h-48">
+        <div className="h-32">
           <VerticalScrollSkills />
         </div>
       </motion.div>
@@ -121,7 +121,7 @@ export default function RightSidebar() {
             />
           </div>
         ) : stats?.data?.projects && stats.data.projects.length > 0 ? (
-          <div className="space-y-1.5">
+          <div className="space-y-1">
             {stats.data.projects.slice(0, 2).map((project, index) => {
               // Generate project icon color based on project name
               const colors = [
@@ -139,21 +139,26 @@ export default function RightSidebar() {
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02, x: 2 }}
-                  className="p-2.5 rounded-lg bg-muted/30 hover:bg-muted/50 transition-all duration-200 group cursor-pointer border border-transparent hover:border-white/10"
+                  whileHover={{ scale: 1.01 }}
+                  className="p-2 rounded-md bg-muted/30 hover:bg-muted/50 transition-all duration-200 group cursor-pointer"
                 >
-                  <div className="flex items-center gap-2.5">
-                    <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${colorClass} flex items-center justify-center flex-shrink-0 shadow-lg`}>
+                  <div className="flex items-center gap-2">
+                    <div className={`w-6 h-6 rounded-md bg-gradient-to-br ${colorClass} flex items-center justify-center flex-shrink-0`}>
                       <span className="text-white text-xs font-bold">
                         {project.name.charAt(0).toUpperCase()}
                       </span>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-xs font-semibold text-white group-hover:text-gray-200 transition-colors truncate drop-shadow-md">
-                        {project.name}
-                      </h4>
-                      <div className="flex items-center gap-1.5 mt-0.5">
-                        <div className="flex-1 bg-gray-700 rounded-full h-1 overflow-hidden">
+                      <div className="flex items-center justify-between">
+                        <h4 className="text-xs font-medium text-white truncate">
+                          {project.name}
+                        </h4>
+                        <span className="text-xs font-medium text-white ml-1">
+                          {project.percent.toFixed(0)}%
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1 mt-0.5">
+                        <div className="flex-1 bg-gray-700 rounded-full h-0.5 overflow-hidden">
                           <motion.div
                             initial={{ width: 0 }}
                             animate={{ width: `${project.percent}%` }}
@@ -161,15 +166,6 @@ export default function RightSidebar() {
                             className={`h-full bg-gradient-to-r ${colorClass}`}
                           />
                         </div>
-                        <span className="text-xs font-medium text-white min-w-fit">
-                          {project.percent.toFixed(0)}%
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-1 mt-0.5">
-                        <Clock className="w-2.5 h-2.5 text-gray-500" />
-                        <span className="text-xs text-gray-500 truncate">
-                          {project.text}
-                        </span>
                       </div>
                     </div>
                   </div>

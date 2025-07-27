@@ -80,7 +80,7 @@ export default function SocialLayout({
              initial={{ opacity: 0, x: 20 }}
              animate={{ opacity: 1, x: 0 }}
              transition={{ duration: 0.5, delay: 0.4 }}
-             className="hidden xl:flex xl:flex-col xl:w-80 xl:min-w-[320px] xl:max-w-[400px] xl:sticky xl:top-6 xl:h-[calc(100vh-3rem)] xl:overflow-hidden"
+             className="hidden xl:flex xl:flex-col xl:w-80 xl:min-w-[320px] xl:max-w-[400px] xl:sticky xl:top-6 xl:h-[calc(100vh-3rem)]"
            >
              <div className="bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/20 dark:border-white/10 shadow-2xl shadow-black/25 h-full flex flex-col glass-container">
                {rightSidebar}
