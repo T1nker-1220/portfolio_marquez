@@ -47,7 +47,8 @@ export default function RightSidebar() {
             ],
             projects: [
               { name: 'portfolio_marquez', total_seconds: 15000, percent: 60.0, digital: '4h 10m', text: '4 hrs 10 mins' },
-              { name: 'minrights-chatbot', total_seconds: 10200, percent: 40.0, digital: '2h 50m', text: '2 hrs 50 mins' }
+              { name: 'minrights-chatbot', total_seconds: 10200, percent: 40.0, digital: '2h 50m', text: '2 hrs 50 mins' },
+              { name: 'deebo-prototype', total_seconds: 3600, percent: 14.3, digital: '1h 0m', text: '1 hr 0 mins' }
             ],
             editors: [],
             operating_systems: [],
