@@ -19,7 +19,8 @@ import {
   MessageSquare,
   Download,
   Sparkles,
-  GitCommit
+  GitCommit,
+  Activity
 } from "lucide-react";
 import Link from "next/link";
 
@@ -55,6 +56,11 @@ const navigationItems: NavigationItem[] = [
     id: "contributions",
     label: "Contributions", 
     icon: <GitCommit className="w-4 h-4" />,
+  },
+  {
+    id: "activity",
+    label: "Coding Activity",
+    icon: <Activity className="w-4 h-4" />,
   }
 ];
 
