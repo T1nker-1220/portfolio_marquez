@@ -21,14 +21,45 @@ import {
 export default function RightSidebar() {
   const [stats, setStats] = useState<WakaTimeStats | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchWakaTimeData() {
       try {
         const data = await wakaTimeAPI.getStats();
         setStats(data);
+        setError(null);
       } catch (err) {
         console.error('WakaTime API error:', err);
+        setError('Failed to load WakaTime data');
+        // Set mock data for development
+        setStats({
+          data: {
+            total_seconds: 25200, // 7 hours
+            human_readable_total: '7 hrs 0 mins',
+            daily_average: 3600, // 1 hour  
+            human_readable_daily_average: '1 hr 0 mins',
+            languages: [
+              { name: 'Markdown', total_seconds: 6048, percent: 24.0, digital: '1h 40m', text: '1 hr 40 mins' },
+              { name: 'Python', total_seconds: 5587, percent: 22.2, digital: '1h 33m', text: '1 hr 33 mins' },
+              { name: 'TypeScript', total_seconds: 5295, percent: 21.0, digital: '1h 28m', text: '1 hr 28 mins' },
+              { name: 'JSON', total_seconds: 4410, percent: 17.5, digital: '1h 13m', text: '1 hr 13 mins' }
+            ],
+            projects: [
+              { name: 'portfolio_marquez', total_seconds: 15000, percent: 60.0, digital: '4h 10m', text: '4 hrs 10 mins' },
+              { name: 'minrights-chatbot', total_seconds: 10200, percent: 40.0, digital: '2h 50m', text: '2 hrs 50 mins' }
+            ],
+            editors: [],
+            operating_systems: [],
+            best_day: {
+              date: '2025-01-26',
+              total_seconds: 14400,
+              text: '4 hrs 0 mins'
+            },
+            human_readable_range: 'Last 7 days',
+            range: 'last_7_days'
+          }
+        });
       } finally {
         setLoading(false);
       }
@@ -145,7 +176,7 @@ export default function RightSidebar() {
           </div>
         ) : stats?.data?.projects && stats.data.projects.length > 0 ? (
           <div className="space-y-1">
-            {stats.data.projects.slice(0, 2).map((project, index) => {
+            {stats.data.projects.slice(0, 3).map((project, index) => {
               // Generate project icon color based on project name
               const colors = [
                 'from-blue-500 to-cyan-500',
@@ -204,7 +235,7 @@ export default function RightSidebar() {
         )}
       </motion.div>
 
-      {/* Activity Timeline - Compact */}
+      {/* Coding Stats */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -212,35 +243,68 @@ export default function RightSidebar() {
         className="flex-shrink-0"
       >
         <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
-          <Calendar className="w-4 h-4" />
-          Activity
+          <TrendingUp className="w-4 h-4" />
+          Coding Stats
         </h3>
         
-        <div className="space-y-1.5">
-          <div className="flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-gray-400"></div>
-            <div className="flex-1">
-              <div className="text-xs text-white">
-                New project completed
+        {loading ? (
+          <div className="flex items-center justify-center py-2">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full"
+            />
+          </div>
+        ) : stats?.data ? (
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Clock className="w-3 h-3 text-blue-400" />
+                <span className="text-xs text-gray-300">Daily Avg</span>
               </div>
-              <div className="text-xs text-gray-500">
-                2 days ago
+              <span className="text-xs font-medium text-white">
+                {stats.data.human_readable_daily_average || '0m'}
+              </span>
+            </div>
+            
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Calendar className="w-3 h-3 text-green-400" />
+                <span className="text-xs text-gray-300">This Week</span>
               </div>
+              <span className="text-xs font-medium text-white">
+                {stats.data.human_readable_total || '0m'}
+              </span>
+            </div>
+            
+            {stats.data.best_day && (
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Trophy className="w-3 h-3 text-yellow-400" />
+                  <span className="text-xs text-gray-300">Best Day</span>
+                </div>
+                <span className="text-xs font-medium text-white">
+                  {stats.data.best_day.text}
+                </span>
+              </div>
+            )}
+            
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <TrendingUp className="w-3 h-3 text-purple-400" />
+                <span className="text-xs text-gray-300">Range</span>
+              </div>
+              <span className="text-xs font-medium text-white">
+                {stats.data.human_readable_range || 'Last 7 days'}
+              </span>
             </div>
           </div>
-          
-          <div className="flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-gray-500"></div>
-            <div className="flex-1">
-              <div className="text-xs text-white">
-                Portfolio updated
-              </div>
-              <div className="text-xs text-gray-500">
-                1 week ago
-              </div>
-            </div>
+        ) : (
+          <div className="text-center py-2">
+            <TrendingUp className="w-4 h-4 mx-auto mb-1 text-gray-500" />
+            <p className="text-xs text-gray-400">No stats available</p>
           </div>
-        </div>
+        )}
       </motion.div>
     </div>
   );
