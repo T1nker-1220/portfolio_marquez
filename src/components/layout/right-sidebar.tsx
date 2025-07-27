@@ -95,7 +95,7 @@ export default function RightSidebar() {
           Skills Showcase
         </h3>
         
-        <div className="h-20">
+        <div className="h-20 overflow-hidden">
           <VerticalScrollSkills />
         </div>
       </motion.div>
@@ -105,7 +105,7 @@ export default function RightSidebar() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="flex-shrink-0 mt-4"
+        className="flex-shrink-0 mt-8"
       >
         <h3 className="text-sm font-medium text-foreground mb-2 flex items-center gap-2 drop-shadow-lg">
           <Activity className="w-4 h-4" />

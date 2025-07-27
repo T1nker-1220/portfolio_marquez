@@ -39,7 +39,7 @@ function VerticalScrollColumn({ title, skillsList, color, direction = "up", spee
   
   // Create enough copies for seamless scrolling
   const repeatedSkills = Array(6).fill(skillsList).flat();
-  const itemHeight = 60;
+  const itemHeight = 28;
   const singleSetHeight = skillsList.length * itemHeight;
   
   useEffect(() => {
@@ -79,7 +79,7 @@ function VerticalScrollColumn({ title, skillsList, color, direction = "up", spee
       <h4 className="text-xs font-medium mb-2 text-gray-300 text-center">
         {title}
       </h4>
-      <div className="relative overflow-hidden rounded-lg bg-gradient-to-b from-gray-500/10 to-gray-800/20 border border-gray-500/20 h-48">
+      <div className="relative overflow-hidden rounded-lg bg-gradient-to-b from-gray-500/10 to-gray-800/20 border border-gray-500/20 h-12">
         <div 
           ref={containerRef}
           className="flex flex-col items-center"
@@ -93,10 +93,10 @@ function VerticalScrollColumn({ title, skillsList, color, direction = "up", spee
             return (
               <div 
                 key={`${skill.name}-${index}`}
-                className="flex-shrink-0 h-[56px] my-1 w-full flex flex-col items-center justify-center bg-white/5 rounded-md p-2"
+                className="flex-shrink-0 h-[24px] my-0.5 w-full flex flex-col items-center justify-center bg-white/5 rounded-md p-1"
               >
-                <IconComponent className="w-5 h-5 text-gray-400 mb-1" />
-                <span className="text-[8px] text-center text-gray-300 leading-tight truncate w-full">
+                <IconComponent className="w-3 h-3 text-gray-400" />
+                <span className="text-[6px] text-center text-gray-300 leading-none truncate w-full mt-0.5">
                   {skill.name.split(' ')[0]}
                 </span>
               </div>
@@ -116,7 +116,7 @@ export default function VerticalScrollSkills() {
   };
 
   return (
-    <div className="flex gap-3 h-64">
+    <div className="flex gap-3 h-16">
       <VerticalScrollColumn 
         title="🎨 Frontend"
         skillsList={skillsByCategory.frontend}
