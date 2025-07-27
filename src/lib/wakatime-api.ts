@@ -55,8 +55,8 @@ class WakaTimeAPI {
     return response.json();
   }
 
-  // Get coding stats for the last 7 days
-  async getStats(range: string = 'last_7_days'): Promise<WakaTimeStats> {
+  // Get coding stats for the last 30 days
+  async getStats(range: string = 'last_30_days'): Promise<WakaTimeStats> {
     return this.request<WakaTimeStats>('/stats', { range });
   }
 

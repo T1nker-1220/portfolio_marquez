@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
   }
 
   const { searchParams } = new URL(request.url);
-  const range = searchParams.get('range') || 'last_7_days';
+  const range = searchParams.get('range') || 'last_30_days';
 
   try {
     const response = await fetch(`${WAKATIME_BASE_URL}/users/current/stats/${range}`, {
