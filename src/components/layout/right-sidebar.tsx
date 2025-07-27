@@ -88,7 +88,7 @@ export default function RightSidebar() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="flex-shrink-0"
+        className="flex-shrink-0 mb-2"
       >
         <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2 drop-shadow-lg">
           <Code2 className="w-4 h-4" />
@@ -105,7 +105,7 @@ export default function RightSidebar() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="flex-shrink-0 max-h-24"
+        className="flex-shrink-0 mt-4"
       >
         <h3 className="text-sm font-medium text-foreground mb-2 flex items-center gap-2 drop-shadow-lg">
           <Activity className="w-4 h-4" />

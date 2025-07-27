@@ -146,6 +146,225 @@ export const projects: Project[] = [
     featuredRank: 6,
   },
   {
+    id: "minrights-regulatory-platform",
+    title: "MinRights Regulatory Platform",
+    description:
+      "A sophisticated multi-state regulatory data extraction and management system specifically designed for oil & gas spacing orders and operator information. The platform integrates directly with the MinRights PostgreSQL database to provide real-time regulatory data availability across multiple states with ultra-fast database operations achieving 7,799+ records/sec.",
+    image: "/images/projects/minrights-regulatory-platform.png",
+    video: {
+      src: "/videos/minrights-regulatory-platform.mp4",
+      poster: "/images/projects/minrights-regulatory-platform.png",
+    },
+    liveUrl: "https://www.mineralrights.ai/",
+    githubUrl: "",
+    techStack: [
+      // Core Infrastructure
+      { name: "Python 3.11+", icon: "python", color: "#3776AB" },
+      { name: "PostgreSQL", icon: "postgresql", color: "#336791" },
+      { name: "asyncpg", icon: "postgresql", color: "#336791" },
+      { name: "pandas", icon: "pandas", color: "#150458" },
+      { name: "SQLAlchemy", icon: "sqlalchemy", color: "#D71F00" },
+
+      // Web Scraping & HTTP
+      { name: "requests", icon: "requests", color: "#2563EB" },
+      { name: "aiohttp", icon: "aiohttp", color: "#2C5BB4" },
+      { name: "ScrapingBee API", icon: "spider", color: "#FF7043" },
+      { name: "BeautifulSoup4", icon: "beautifulsoup", color: "#4CAF50" },
+      { name: "Selenium", icon: "selenium", color: "#43B02A" },
+
+      // Document Processing
+      { name: "PyMuPDF", icon: "pdf", color: "#E53E3E" },
+      { name: "pdfplumber", icon: "pdf", color: "#E53E3E" },
+      { name: "pytesseract", icon: "ocr", color: "#9C27B0" },
+      { name: "Pillow", icon: "image", color: "#FF9800" },
+
+      // Data Processing
+      { name: "RapidFuzz", icon: "fuzzy", color: "#FF6B6B" },
+      { name: "dateutil", icon: "date", color: "#770C98" },
+      { name: "regex", icon: "regex", color: "#4B32C3" },
+      { name: "csv", icon: "csv", color: "#16A34A" },
+
+      // Concurrency & Performance
+      { name: "ThreadPoolExecutor", icon: "threading", color: "#FF4154" },
+      { name: "multiprocessing", icon: "multiprocessing", color: "#FF6384" },
+      { name: "asyncio", icon: "async", color: "#00D8FF" },
+      { name: "Connection Pooling", icon: "database", color: "#00BFFF" },
+
+      // State-Specific Integration
+      { name: "Colorado ECMC", icon: "government", color: "#1E40AF" },
+      { name: "Wyoming WOGCC", icon: "government", color: "#7C3AED" },
+      { name: "North Dakota NDIC", icon: "government", color: "#DC2626" },
+      { name: "New Mexico EMNRD", icon: "government", color: "#EA580C" },
+
+      // Database Operations
+      { name: "PostgreSQL COPY", icon: "database", color: "#336791" },
+      { name: "Bulk Insert", icon: "database", color: "#00BFFF" },
+      { name: "Section ID Mapping", icon: "mapping", color: "#10B981" },
+      { name: "Transaction Management", icon: "transaction", color: "#8B5CF6" },
+
+      // Development & Deployment
+      { name: "python-dotenv", icon: "dotenv", color: "#ECD53F" },
+      { name: "logging", icon: "logging", color: "#6B7280" },
+      { name: "argparse", icon: "cli", color: "#4B5563" },
+      { name: "pathlib", icon: "filesystem", color: "#9CA3AF" },
+
+      // Cloud Infrastructure
+      { name: "AWS RDS", icon: "aws", color: "#FF9900" },
+      { name: "MinRights Database", icon: "database", color: "#3ECF8E" },
+      { name: "Linux/Windows", icon: "server", color: "#607D8B" },
+
+      // Quality Assurance
+      { name: "unittest", icon: "test", color: "#9C27B0" },
+      { name: "black", icon: "black", color: "#000000" },
+      { name: "flake8", icon: "flake8", color: "#3F51B5" },
+      { name: "mypy", icon: "mypy", color: "#2E8B57" },
+
+      // Configuration Management
+      { name: "JSON", icon: "json", color: "#FFC107" },
+      { name: "Environment Variables", icon: "env", color: "#4CAF50" },
+      { name: "State Configs", icon: "config", color: "#2196F3" },
+    ],
+    features: [
+      "Multi-state support: Colorado, Wyoming, North Dakota, New Mexico, Texas (planned)",
+      "Ultra-fast database operations: PostgreSQL COPY achieving 7,799+ records/sec",
+      "Intelligent section mapping to MinRights section identifiers",
+      "Concurrent processing with configurable worker pools (up to 35 threads)",
+      "Dual-mode operation: CSV export + direct database integration",
+      "Enhanced operator extraction with 440+ curated operator database",
+      "Production-grade error handling with retry strategies",
+      "Comprehensive PDF document processing with OCR capabilities",
+      "ScrapingBee API integration for JavaScript-heavy government sites",
+      "Access database (.accdb) processing for Colorado ECMC data",
+      "Historical data coverage from 1990-2025 for Wyoming WOGCC",
+      "Commission order processing (1-29,250 range) for North Dakota NDIC",
+      "EMNRD hearing information integration for New Mexico",
+      "Fuzzy matching with 75% confidence threshold for operator identification",
+      "Automated section-township-range coordinate parsing",
+      "Real-time regulatory compliance data collection",
+      "Performance monitoring with records/sec tracking",
+      "Atomic database operations with transaction management",
+      "Memory-efficient streaming for large datasets",
+      "CLI interface with comprehensive help and error handling",
+      "In-memory section lookup for O(1) mapping performance",
+      "Blacklist filtering for regulatory boilerplate text removal",
+      "Multi-format date validation and standardization",
+      "Batch processing with optimized memory usage",
+      "Comprehensive logging and error tracking system",
+    ],
+    category: "Data Engineering",
+    status: "Completed",
+    completedAt: "2025-07",
+    featured: true,
+    featuredRank: 7,
+  },
+  {
+    id: "minrights-pipeline",
+    title: "MinRights Pipeline",
+    description:
+      "A sophisticated oil & gas data processing system designed for targeted investment analysis across multiple US states. This system processes large-scale energy data (~23,782 wells) to support investment decision-making in the oil & gas sector with nightly updates and zero-downtime deployments.",
+    image: "/images/projects/minrights-pipeline.png",
+    video: {
+      src: "/videos/minrights-pipeline.mp4",
+      poster: "/images/projects/minrights-pipeline.png",
+    },
+    liveUrl: "https://www.mineralrights.ai/",
+    githubUrl: "",
+    techStack: [
+      // Core Programming & Runtime
+      { name: "Python 3.9+", icon: "python", color: "#3776AB" },
+      { name: "CLI Interface", icon: "cli", color: "#4B5563" },
+      { name: "argparse", icon: "argparse", color: "#6B7280" },
+      { name: "Virtual Environment", icon: "venv", color: "#9CA3AF" },
+
+      // Data Processing & Analytics
+      { name: "pandas >= 2.1.0", icon: "pandas", color: "#150458" },
+      { name: "numpy >= 1.24.0", icon: "numpy", color: "#013243" },
+      { name: "pyarrow >= 14.0.0", icon: "pyarrow", color: "#E53E3E" },
+      { name: "scipy >= 1.11.0", icon: "scipy", color: "#654FF0" },
+      { name: "matplotlib", icon: "matplotlib", color: "#11557c" },
+
+      // Database & Spatial Technologies
+      { name: "PostgreSQL", icon: "postgresql", color: "#336791" },
+      { name: "PostGIS", icon: "postgis", color: "#336791" },
+      { name: "psycopg2-binary >= 2.9.9", icon: "postgresql", color: "#336791" },
+      { name: "SQLAlchemy >= 2.0.0", icon: "sqlalchemy", color: "#D71F00" },
+      { name: "GeoAlchemy2 >= 0.14.0", icon: "geoalchemy", color: "#4CAF50" },
+      { name: "shapely >= 2.0.0", icon: "shapely", color: "#2196F3" },
+
+      // Cloud Infrastructure & Storage
+      { name: "AWS S3", icon: "aws", color: "#FF9900" },
+      { name: "boto3 >= 1.28.0", icon: "boto3", color: "#FF9900" },
+      { name: "AWS Lambda", icon: "lambda", color: "#FF9900" },
+      { name: "aws-lambda-powertools >= 2.25.0", icon: "lambda", color: "#FF9900" },
+      { name: "AWS IAM", icon: "iam", color: "#FF9900" },
+      { name: "AWS CloudWatch", icon: "cloudwatch", color: "#FF9900" },
+
+      // Configuration & Environment
+      { name: "python-dotenv >= 1.0.0", icon: "dotenv", color: "#ECD53F" },
+      { name: "YAML", icon: "yaml", color: "#CB171E" },
+      { name: "JSON/JSONB", icon: "json", color: "#FFC107" },
+
+      // Development & Quality Tools
+      { name: "pytest >= 7.4.0", icon: "pytest", color: "#0A9EDC" },
+      { name: "pytest-cov >= 4.1.0", icon: "pytest", color: "#0A9EDC" },
+      { name: "black >= 23.0.0", icon: "black", color: "#000000" },
+      { name: "flake8 >= 6.0.0", icon: "flake8", color: "#3F51B5" },
+      { name: "mypy >= 1.5.0", icon: "mypy", color: "#2E8B57" },
+
+      // CLI & User Interface
+      { name: "tabulate >= 0.9.0", icon: "tabulate", color: "#607D8B" },
+
+      // Deployment & DevOps
+      { name: "Bash Scripts", icon: "bash", color: "#4EAA25" },
+      { name: "Git", icon: "git", color: "#F05032" },
+      { name: "ZIP Packaging", icon: "zip", color: "#FFD700" },
+
+      // Geographic & Spatial Systems
+      { name: "PLSS (Public Land Survey)", icon: "survey", color: "#8BC34A" },
+      { name: "SRID 4326 (WGS84)", icon: "gps", color: "#2196F3" },
+      { name: "BLM PLSS Data", icon: "blm", color: "#795548" },
+      { name: "PostGIS GIST Indexes", icon: "index", color: "#9C27B0" },
+
+      // Analytics & Business Logic
+      { name: "Decline Curve Analysis", icon: "analytics", color: "#FF5722" },
+      { name: "Hyperbolic Decline Models", icon: "math", color: "#E91E63" },
+      { name: "PDP/PUD Forecasting", icon: "forecast", color: "#673AB7" },
+      { name: "Investment Scenarios", icon: "investment", color: "#3F51B5" },
+    ],
+    features: [
+      "Multi-state oil & gas data processing: NM, UT, CO, WY, ND",
+      "Processes ~23,782 wells with nightly automated updates",
+      "Geographic filtering using PostGIS and BLM PLSS township data",
+      "PDP (Proved Developed Producing) and PUD (Proved Undeveloped) forecasting",
+      "Decline curve analysis with 20-40% improved accuracy",
+      "Investment scenario modeling: Conservative/Base/Aggressive projections",
+      "Zero-downtime updates using shadow table deployment pattern",
+      "Hybrid CLI/Lambda architecture for flexible deployment",
+      "S3 Parquet file processing for large-scale data ingestion",
+      "Spatial operations with PostGIS for well-section overlap analysis",
+      "Lateral length calculations for horizontal well efficiency metrics",
+      "Configurable chunked processing for memory optimization",
+      "Production forecasting with hyperbolic/exponential/harmonic models",
+      "Well geometry handling with LineString and MultiLineString support",
+      "Investment analysis for oil & gas sector decision-making",
+      "Real-time spatial indexing with GIST performance optimization",
+      "Comprehensive CLI interface with dry-run and testing modes",
+      "AWS cloud integration with S3, Lambda, and CloudWatch",
+      "Database schema management with staging and production separation",
+      "Performance monitoring with 10,000 records/chunk throughput",
+      "Geographic coordinate system support (SRID 4326)",
+      "Automated deployment with Bash scripting and ZIP packaging",
+      "Connection pooling for optimized database performance",
+      "Quality assurance with pytest, coverage, and static analysis",
+      "Environment-specific configuration management",
+    ],
+    category: "Data Engineering",
+    status: "Completed",
+    completedAt: "2025-07",
+    featured: true,
+    featuredRank: 8,
+  },
+  {
     id: "ultracontextai",
     title: "UltraContextAI",
     description:
