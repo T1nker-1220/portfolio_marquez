@@ -150,7 +150,7 @@ export default function CodingActivityDashboard() {
           </h3>
           
           <div className="space-y-3">
-            {topLanguages.map((language, index) => (
+            {topLanguages.length > 0 ? topLanguages.map((language, index) => (
               <div key={language.name} className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-blue-500 flex items-center justify-center text-white text-sm font-bold">
@@ -173,7 +173,13 @@ export default function CodingActivityDashboard() {
                   </div>
                 </div>
               </div>
-            ))}
+            )) : (
+              <div className="text-center py-8">
+                <Code2 className="w-12 h-12 mx-auto mb-3 text-gray-500" />
+                <p className="text-gray-400">No language data yet</p>
+                <p className="text-sm text-gray-500">Start coding to see your language breakdown</p>
+              </div>
+            )}
           </div>
         </motion.div>
 
@@ -190,7 +196,7 @@ export default function CodingActivityDashboard() {
           </h3>
           
           <div className="space-y-3">
-            {topProjects.map((project, index) => (
+            {topProjects.length > 0 ? topProjects.map((project, index) => (
               <div key={project.name} className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-white text-sm font-bold">
@@ -213,7 +219,13 @@ export default function CodingActivityDashboard() {
                   </div>
                 </div>
               </div>
-            ))}
+            )) : (
+              <div className="text-center py-8">
+                <GitBranch className="w-12 h-12 mx-auto mb-3 text-gray-500" />
+                <p className="text-gray-400">No project data yet</p>
+                <p className="text-sm text-gray-500">Keep coding to see your active projects</p>
+              </div>
+            )}
           </div>
         </motion.div>
       </div>
