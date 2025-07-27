@@ -49,7 +49,7 @@ export default function RightSidebar() {
   ];
 
   return (
-    <div className="h-full flex flex-col space-y-4 overflow-y-auto">
+    <div className="h-full flex flex-col space-y-3 overflow-y-auto">
       {/* Stats Overview */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -95,7 +95,7 @@ export default function RightSidebar() {
           Skills Showcase
         </h3>
         
-        <div className="h-32">
+        <div className="h-20">
           <VerticalScrollSkills />
         </div>
       </motion.div>
@@ -105,15 +105,15 @@ export default function RightSidebar() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="flex-shrink-0"
+        className="flex-shrink-0 max-h-24"
       >
-        <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2 drop-shadow-lg">
+        <h3 className="text-sm font-medium text-foreground mb-2 flex items-center gap-2 drop-shadow-lg">
           <Activity className="w-4 h-4" />
           Active Projects
         </h3>
         
         {loading ? (
-          <div className="flex items-center justify-center py-4">
+          <div className="flex items-center justify-center py-2">
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
@@ -174,10 +174,9 @@ export default function RightSidebar() {
             })}
           </div>
         ) : (
-          <div className="text-center py-3">
-            <GitBranch className="w-6 h-6 mx-auto mb-1 text-gray-500" />
+          <div className="text-center py-1">
+            <GitBranch className="w-4 h-4 mx-auto mb-1 text-gray-500" />
             <p className="text-xs text-gray-400">No active projects</p>
-            <p className="text-xs text-gray-500">Start coding to see your projects</p>
           </div>
         )}
       </motion.div>
