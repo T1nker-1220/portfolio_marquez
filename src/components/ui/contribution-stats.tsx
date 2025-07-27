@@ -22,43 +22,43 @@ export function ContributionStatsCard({ stats, className = "" }: ContributionSta
       label: "Total Contributions",
       value: stats.totalContributions.toLocaleString(),
       icon: GitCommit,
-      color: "text-emerald-600",
-      bgColor: "from-emerald-500/20 to-green-500/20 border-emerald-500/20"
+      color: "text-gray-300",
+      bgColor: "from-gray-500/20 to-gray-700/20 border-gray-500/20"
     },
     {
       label: "Current Streak",
       value: `${stats.currentStreak} ${stats.currentStreak === 1 ? 'day' : 'days'}`,
       icon: Calendar,
-      color: "text-blue-600",
-      bgColor: "from-blue-500/20 to-cyan-500/20 border-blue-500/20"
+      color: "text-gray-300",
+      bgColor: "from-gray-500/20 to-gray-700/20 border-gray-500/20"
     },
     {
       label: "Longest Streak", 
       value: `${stats.longestStreak} ${stats.longestStreak === 1 ? 'day' : 'days'}`,
       icon: Award,
-      color: "text-purple-600",
-      bgColor: "from-purple-500/20 to-violet-500/20 border-purple-500/20"
+      color: "text-gray-300",
+      bgColor: "from-gray-500/20 to-gray-700/20 border-gray-500/20"
     },
     {
       label: "Daily Average",
       value: stats.averagePerDay.toFixed(1),
       icon: TrendingUp,
-      color: "text-orange-600",
-      bgColor: "from-orange-500/20 to-amber-500/20 border-orange-500/20"
+      color: "text-gray-300",
+      bgColor: "from-gray-500/20 to-gray-700/20 border-gray-500/20"
     },
     {
       label: "Most Active Day",
       value: stats.mostActiveDay,
       icon: Clock,
-      color: "text-pink-600",
-      bgColor: "from-pink-500/20 to-rose-500/20 border-pink-500/20"
+      color: "text-gray-300",
+      bgColor: "from-gray-500/20 to-gray-700/20 border-gray-500/20"
     },
     {
       label: "Most Active Month",
       value: stats.mostActiveMonth,
       icon: BarChart3,
-      color: "text-indigo-600",
-      bgColor: "from-indigo-500/20 to-blue-500/20 border-indigo-500/20"
+      color: "text-gray-300",
+      bgColor: "from-gray-500/20 to-gray-700/20 border-gray-500/20"
     }
   ];
 
@@ -76,14 +76,14 @@ export function ContributionStatsCard({ stats, className = "" }: ContributionSta
             className={`bg-gradient-to-r ${item.bgColor} backdrop-blur-md rounded-xl p-4 border glass-container hover:scale-[1.02] transition-transform`}
           >
             <div className="flex items-center gap-3">
-              <div className={`p-2 rounded-lg bg-white/10 ${item.color}`}>
-                <Icon className="w-5 h-5" />
+              <div className="p-2 rounded-lg bg-white/10">
+                <Icon className={`w-5 h-5 ${item.color}`} />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide">
                   {item.label}
                 </div>
-                <div className={`text-lg font-bold ${item.color} truncate`}>
+                <div className="text-lg font-bold text-white truncate">
                   {item.value}
                 </div>
               </div>
@@ -104,11 +104,11 @@ export function ContributionLevelStats({ contributionsByLevel, className = "" }:
   const totalDays = Object.values(contributionsByLevel).reduce((sum, count) => sum + count, 0);
   
   const levels = [
-    { level: 0, label: "No contributions", color: "bg-muted/20" },
-    { level: 1, label: "1-3 contributions", color: "bg-emerald-200 dark:bg-emerald-900/30" },
-    { level: 2, label: "4-6 contributions", color: "bg-emerald-400 dark:bg-emerald-700/50" },
-    { level: 3, label: "7-9 contributions", color: "bg-emerald-600 dark:bg-emerald-600/70" },
-    { level: 4, label: "10+ contributions", color: "bg-emerald-800 dark:bg-emerald-500/90" }
+    { level: 0, label: "No contributions", color: "bg-gray-800/30" },
+    { level: 1, label: "1-3 contributions", color: "bg-gray-600/40" },
+    { level: 2, label: "4-6 contributions", color: "bg-gray-500/50" },
+    { level: 3, label: "7-9 contributions", color: "bg-gray-400/60" },
+    { level: 4, label: "10+ contributions", color: "bg-gray-300/70" }
   ];
 
   return (
@@ -141,7 +141,7 @@ export function ContributionLevelStats({ contributionsByLevel, className = "" }:
                     initial={{ width: 0 }}
                     animate={{ width: `${percentage}%` }}
                     transition={{ duration: 0.8, delay: level * 0.1 }}
-                    className="bg-emerald-500 h-1.5 rounded-full"
+                    className="bg-gray-400 h-1.5 rounded-full"
                   />
                 </div>
               </div>
