@@ -15,10 +15,31 @@ interface WakaTimeStats {
       digital: string;
       text: string;
     }>;
+    editors: Array<{
+      name: string;
+      total_seconds: number;
+      percent: number;
+      digital: string;
+      text: string;
+    }>;
+    operating_systems: Array<{
+      name: string;
+      total_seconds: number;
+      percent: number;
+      digital: string;
+      text: string;
+    }>;
     total_seconds: number;
     human_readable_total: string;
     daily_average: number;
     human_readable_daily_average: string;
+    best_day?: {
+      date: string;
+      total_seconds: number;
+      text: string;
+    };
+    human_readable_range: string;
+    range: string;
   };
 }
 
@@ -34,6 +55,16 @@ interface WakaTimeActivity {
     entity: string;
     branch: string;
   }>;
+}
+
+interface WakaTimeHeartbeats {
+  data: Array<any>;
+  hourly_breakdown: Array<{
+    hour: number;
+    minutes: number;
+    label: string;
+  }>;
+  total_heartbeats: number;
 }
 
 class WakaTimeAPI {
@@ -72,6 +103,31 @@ class WakaTimeAPI {
     return this.request<WakaTimeStats>(`/users/current/summaries?start=${today}&end=${today}`);
   }
 
+  // Get all-time stats
+  async getAllTimeStats(): Promise<any> {
+    return this.request<any>('/all-time');
+  }
+
+  // Get goals and current streak
+  async getGoals(): Promise<any> {
+    return this.request<any>('/users/current/goals');
+  }
+
+  // Get weekly data for trends
+  async getWeeklyData(): Promise<any> {
+    const endDate = new Date();
+    const startDate = new Date(endDate.getTime() - 4 * 7 * 24 * 60 * 60 * 1000); // 4 weeks
+    const start = startDate.toISOString().split('T')[0];
+    const end = endDate.toISOString().split('T')[0];
+    return this.request<any>(`/users/current/summaries?start=${start}&end=${end}`);
+  }
+
+  // Get heartbeats for hourly breakdown
+  async getHeartbeats(date?: string): Promise<WakaTimeHeartbeats> {
+    const dateParam = date || new Date().toISOString().split('T')[0];
+    return this.request<WakaTimeHeartbeats>(`/heartbeats?date=${dateParam}`);
+  }
+
   // Format seconds to human readable time
   formatTime(seconds: number): string {
     const hours = Math.floor(seconds / 3600);
@@ -85,4 +141,4 @@ class WakaTimeAPI {
 }
 
 export const wakaTimeAPI = new WakaTimeAPI();
-export type { WakaTimeStats, WakaTimeActivity };
+export type { WakaTimeStats, WakaTimeActivity, WakaTimeHeartbeats };

@@ -9,12 +9,26 @@ function transformSummariesToStats(summariesData: any) {
   // Aggregate all data across days
   const languageMap = new Map();
   const projectMap = new Map();
+  const editorMap = new Map();
+  const osMap = new Map();
   let totalSeconds = 0;
+  let bestDay = null;
+  let bestDaySeconds = 0;
 
   summaries.forEach((day: any) => {
     // Safely access grand_total
     const dayTotal = day?.grand_total?.total_seconds || 0;
     totalSeconds += dayTotal;
+    
+    // Track best day
+    if (dayTotal > bestDaySeconds) {
+      bestDaySeconds = dayTotal;
+      bestDay = {
+        date: day.range?.date || 'Unknown',
+        total_seconds: dayTotal,
+        text: formatSecondsToText(dayTotal)
+      };
+    }
     
     // Aggregate languages
     if (day.languages && Array.isArray(day.languages)) {
@@ -37,6 +51,28 @@ function transformSummariesToStats(summariesData: any) {
         }
       });
     }
+
+    // Aggregate editors
+    if (day.editors && Array.isArray(day.editors)) {
+      day.editors.forEach((editor: any) => {
+        if (editor.name && typeof editor.total_seconds === 'number') {
+          const existing = editorMap.get(editor.name) || { name: editor.name, total_seconds: 0 };
+          existing.total_seconds += editor.total_seconds;
+          editorMap.set(editor.name, existing);
+        }
+      });
+    }
+
+    // Aggregate operating systems
+    if (day.operating_systems && Array.isArray(day.operating_systems)) {
+      day.operating_systems.forEach((os: any) => {
+        if (os.name && typeof os.total_seconds === 'number') {
+          const existing = osMap.get(os.name) || { name: os.name, total_seconds: 0 };
+          existing.total_seconds += os.total_seconds;
+          osMap.set(os.name, existing);
+        }
+      });
+    }
   });
 
   // Convert to arrays and calculate percentages
@@ -54,6 +90,20 @@ function transformSummariesToStats(summariesData: any) {
     text: formatSecondsToText(proj.total_seconds)
   })).sort((a, b) => b.total_seconds - a.total_seconds);
 
+  const editors = Array.from(editorMap.values()).map(editor => ({
+    ...editor,
+    percent: totalSeconds > 0 ? (editor.total_seconds / totalSeconds) * 100 : 0,
+    digital: formatSeconds(editor.total_seconds),
+    text: formatSecondsToText(editor.total_seconds)
+  })).sort((a, b) => b.total_seconds - a.total_seconds);
+
+  const operating_systems = Array.from(osMap.values()).map(os => ({
+    ...os,
+    percent: totalSeconds > 0 ? (os.total_seconds / totalSeconds) * 100 : 0,
+    digital: formatSeconds(os.total_seconds),
+    text: formatSecondsToText(os.total_seconds)
+  })).sort((a, b) => b.total_seconds - a.total_seconds);
+
   return {
     data: {
       total_seconds: totalSeconds,
@@ -62,6 +112,11 @@ function transformSummariesToStats(summariesData: any) {
       human_readable_daily_average: formatSecondsToText(summaries.length > 0 ? Math.round(totalSeconds / summaries.length) : 0),
       languages,
       projects,
+      editors,
+      operating_systems,
+      best_day: bestDay,
+      human_readable_range: 'Last 7 days',
+      range: 'last_7_days',
       status: 'ok'
     }
   };
@@ -126,6 +181,11 @@ export async function GET(request: NextRequest) {
           human_readable_daily_average: '0 secs',
           languages: [],
           projects: [],
+          editors: [],
+          operating_systems: [],
+          best_day: null,
+          human_readable_range: 'Last 7 days',
+          range: 'last_7_days',
           status: 'ok'
         }
       });
@@ -144,6 +204,11 @@ export async function GET(request: NextRequest) {
           human_readable_daily_average: '0 secs',
           languages: [],
           projects: [],
+          editors: [],
+          operating_systems: [],
+          best_day: null,
+          human_readable_range: 'Last 7 days',
+          range: 'last_7_days',
           status: 'error'
         }
       });

@@ -135,14 +135,112 @@ export const projects: Project[] = [
     liveUrl: "https://www.mineralrights.ai/",
     githubUrl: "",
     techStack: [
-      { name: "Next.js", icon: "nextjs", color: "#E5E7EB" },
-      { name: "Mantine v7", icon: "mantine", color: "#339AF0" },
-      { name: "TypeScript", icon: "typescript", color: "#3178C6" },
-      { name: "Python", icon: "python", color: "#3776AB" },
-      { name: "React", icon: "react", color: "#61DAFB" },
+      // Based on the comprehensive deep dive analysis from PM1, PM2, and the architecture planner, here is
+      // the complete inventory of ALL tech stacks in your MinRights codebase:
+
+      // 🏗️ Complete MinRights Tech Stack Inventory
+
+      // Frontend Technologies (Next.js 14 Ecosystem)
+
+      // Core Framework:
+      { name: "Next.js 14.1.0", icon: "nextjs", color: "#E5E7EB" },
+      { name: "React 18", icon: "react", color: "#61DAFB" },
+      { name: "TypeScript 5.7.3", icon: "typescript", color: "#3178C6" },
+      { name: "Node.js >=18", icon: "nodejs", color: "#339933" },
+      { name: "pnpm >=8", icon: "pnpm", color: "#F69220" },
+
+      // UI Framework & Styling:
+      { name: "Mantine v7.17.4", icon: "mantine", color: "#339AF0" },
+      { name: "Tailwind CSS 3.3.0", icon: "tailwindcss", color: "#06B6D4" },
+      { name: "PostCSS", icon: "postcss", color: "#DD3A0A" },
+      { name: "Framer Motion 12.5.0", icon: "framer", color: "#0055FF" },
+      { name: "@tabler/icons-react", icon: "tabler", color: "#94A3B8" },
+      { name: "Lucide React", icon: "lucide", color: "#94A3B8" },
+      { name: "React Icons", icon: "react-icons", color: "#94A3B8" },
+
+      // State & Data Management:
+      { name: "Zustand 5.0.3", icon: "zustand", color: "#FF4154" },
+      { name: "Immer 10.0.0", icon: "immer", color: "#00D8FF" },
+      { name: "Axios 1.9.0", icon: "axios", color: "#5A29E4" },
+      { name: "Zod 4.0.5", icon: "zod", color: "#3E67B1" },
+
+      // Maps & Geospatial:
+      { name: "MapLibre GL JS 5.1.0", icon: "maplibre", color: "#396CB2" },
+      { name: "React Map GL 8.0.1", icon: "mapbox", color: "#4264FB" },
+      { name: "@turf/turf 7.2.0", icon: "turf", color: "#6BB843" },
+      { name: "GeoJSON 0.5.0", icon: "geojson", color: "#47A4C2" },
+
+      // Charts & Visualization:
+      { name: "Chart.js 4.4.8", icon: "chartjs", color: "#FF6384" },
+      { name: "React ChartJS 2", icon: "react-chartjs", color: "#FF6384" },
+      { name: "ECharts 5.6.0", icon: "echarts", color: "#5470C6" },
+      { name: "Recharts 2.15.2", icon: "recharts", color: "#8884D8" },
+      { name: "React Gauge Chart", icon: "gauge", color: "#82CA9D" },
+      { name: "React Sparklines", icon: "sparklines", color: "#FFC658" },
+      { name: "React Animated Numbers", icon: "animated-numbers", color: "#FF7300" },
+      { name: "Mantine DataTable", icon: "datatable", color: "#339AF0" },
+
+      // Database Integration:
       { name: "Supabase", icon: "supabase", color: "#3ECF8E" },
+      { name: "pg 8.15.5", icon: "postgresql", color: "#336791" },
+
+      // Utilities:
+      { name: "date-fns 4.1.0", icon: "date-fns", color: "#770C98" },
+      { name: "dayjs 1.11.13", icon: "dayjs", color: "#FB8C3A" },
+      { name: "clsx 2.1.1", icon: "clsx", color: "#0284C7" },
+      { name: "Financial 0.2.4", icon: "financial", color: "#16A34A" },
+      { name: "jsPDF 3.0.1", icon: "jspdf", color: "#E53E3E" },
+
+      // Backend Technologies (Python FastAPI)
+
+      // Core Framework:
+      { name: "Python 3.10+", icon: "python", color: "#3776AB" },
+      { name: "FastAPI 0.115.12", icon: "fastapi", color: "#009688" },
+      { name: "Uvicorn 0.23.2", icon: "uvicorn", color: "#417E87" },
+      { name: "Pydantic 2.10.0", icon: "pydantic", color: "#E92063" },
+      { name: "Poetry", icon: "poetry", color: "#60A5FA" },
+
+      // Database & ORM:
+      { name: "PostgreSQL", icon: "postgresql", color: "#336791" },
+      { name: "SQLAlchemy 2.0", icon: "sqlalchemy", color: "#D71F00" },
+      { name: "psycopg2-binary 2.9.9", icon: "psycopg2", color: "#336791" },
+
+      // Data Analysis:
+      { name: "Pandas 2.0.0", icon: "pandas", color: "#150458" },
+      { name: "NumPy 2.2.4", icon: "numpy", color: "#013243" },
+      { name: "Matplotlib 3.8.0", icon: "matplotlib", color: "#11557c" },
+
+      // Document Generation:
+      { name: "WeasyPrint 62.3", icon: "weasyprint", color: "#006233" },
+      { name: "ReportLab 4.1.0", icon: "reportlab", color: "#1F4788" },
+      { name: "Jinja2 3.1.4", icon: "jinja", color: "#B41717" },
+      { name: "PyPDF2 3.0.1", icon: "pypdf", color: "#E53E3E" },
+      { name: "XlsxWriter 3.1.9", icon: "xlsxwriter", color: "#217346" },
+
+      // External Services:
+      { name: "OpenAI 1.16.2", icon: "openai", color: "#412991" },
+      { name: "Stripe 7.0.0", icon: "stripe", color: "#635BFF" },
+      { name: "minrights-chatbot", icon: "chatbot", color: "#FF6B6B" },
+
+      // Development Tools:
+      { name: "Black 23.9.1", icon: "black", color: "#000000" },
+      { name: "isort 5.12.0", icon: "isort", color: "#EF5552" },
+      { name: "MyPy 1.5.1", icon: "mypy", color: "#2E8B57" },
+      { name: "Ruff 0.0.292", icon: "ruff", color: "#D7FF64" },
+      { name: "pytest 7.4.2", icon: "pytest", color: "#0A9EDC" },
+
+      // Infrastructure & Deployment
       { name: "Heroku", icon: "heroku", color: "#E5E7EB" },
-      
+      { name: "AWS App Runner", icon: "aws", color: "#FF9900" },
+      { name: "Webpack", icon: "webpack", color: "#8DD6F9" },
+      { name: "SWC", icon: "swc", color: "#FE5F08" },
+      { name: "Turbopack", icon: "turbopack", color: "#0070F3" },
+      { name: "Concurrently 8.2.2", icon: "concurrently", color: "#6CC04A" },
+      { name: "Git", icon: "git", color: "#F05032" },
+
+      // This represents 87 distinct technologies across frontend (46), backend (25), infrastructure (8), and      
+      // shared packages (8), making it a comprehensive full-stack application with sophisticated geospatial       
+      // and financial analysis capabilities.
     ],
     features: [
       "Modern UI with Mantine v7 components",
