@@ -166,7 +166,47 @@ export async function GET(request: NextRequest) {
     });
 
     if (!response.ok) {
-      throw new Error(`WakaTime API error: ${response.status} - ${response.statusText}`);
+      console.error(`WakaTime API error: ${response.status} - ${response.statusText}`);
+      
+      // Handle payment required (402) and other errors gracefully
+      if (response.status === 402) {
+        return NextResponse.json({
+          data: {
+            total_seconds: 0,
+            human_readable_total: '0 mins',
+            daily_average: 0,
+            human_readable_daily_average: '0 mins',
+            languages: [],
+            projects: [],
+            editors: [],
+            operating_systems: [],
+            best_day: null,
+            human_readable_range: 'Last 7 days',
+            range: 'last_7_days',
+            status: 'payment_required',
+            message: 'WakaTime subscription required'
+          }
+        });
+      }
+      
+      // For other errors, return empty data
+      return NextResponse.json({
+        data: {
+          total_seconds: 0,
+          human_readable_total: '0 mins',
+          daily_average: 0,
+          human_readable_daily_average: '0 mins',
+          languages: [],
+          projects: [],
+          editors: [],
+          operating_systems: [],
+          best_day: null,
+          human_readable_range: 'Last 7 days',
+          range: 'last_7_days',
+          status: 'error',
+          message: `API Error: ${response.status}`
+        }
+      });
     }
 
     const summariesData = await response.json();

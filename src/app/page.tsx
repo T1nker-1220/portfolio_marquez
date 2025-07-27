@@ -13,14 +13,13 @@ import CodingActivityDashboard from "@/components/sections/coding-activity-dashb
 
 import { motion } from "framer-motion";
 import { useState, useMemo } from "react";
-import { Filter, Search, X, Tag, Star, Calendar, FolderOpen, GitCommit } from "lucide-react";
+import { Filter, Search, X, Star, Calendar, FolderOpen, GitCommit } from "lucide-react";
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<string>("projects");
   const [filter, setFilter] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [selectedTech, setSelectedTech] = useState<string[]>([]);
   const [featuredOnly, setFeaturedOnly] = useState<boolean>(false);
   const [sortBy, setSortBy] = useState<string>("featured"); // featured, date, title
   const [showAdvancedFilters, setShowAdvancedFilters] = useState<boolean>(false);
@@ -31,24 +30,12 @@ export default function HomePage() {
     return cats.sort();
   }, []);
 
-  const technologies = useMemo(() => {
-    const techs = [...new Set(projects.flatMap(p => p.techStack.map(t => t.name)))];
-    return techs.sort();
-  }, []);
 
-  const handleTechToggle = (tech: string) => {
-    setSelectedTech(prev => 
-      prev.includes(tech) 
-        ? prev.filter(t => t !== tech)
-        : [...prev, tech]
-    );
-  };
 
   const clearFilters = () => {
     setFilter("all");
     setSearchQuery("");
     setSelectedCategory("all");
-    setSelectedTech([]);
     setFeaturedOnly(false);
     setSortBy("featured");
     setShowAdvancedFilters(false);
@@ -105,12 +92,6 @@ export default function HomePage() {
           return false;
         }
         
-        // Technology filter
-        if (selectedTech.length > 0) {
-          const projectTechs = project.techStack.map((tech: any) => tech.name);
-          const hasSelectedTech = selectedTech.some(tech => projectTechs.includes(tech));
-          if (!hasSelectedTech) return false;
-        }
         
         // Featured filter
         if (featuredOnly && !project.featured) {
@@ -150,13 +131,12 @@ export default function HomePage() {
      }
     
     return filtered;
-  }, [feedItems, filter, searchQuery, selectedCategory, selectedTech, featuredOnly, sortBy]);
+  }, [feedItems, filter, searchQuery, selectedCategory, featuredOnly, sortBy]);
   
   const activeFiltersCount = (
     (filter !== "all" ? 1 : 0) +
     (searchQuery ? 1 : 0) +
     (selectedCategory !== "all" ? 1 : 0) +
-    selectedTech.length +
     (featuredOnly ? 1 : 0)
   );
 
@@ -289,28 +269,6 @@ export default function HomePage() {
                    </div>
                  </div>
                  
-                 {/* Technologies */}
-                 <div className="flex flex-col sm:flex-row sm:items-start gap-3">
-                   <span className="text-sm font-medium text-muted-foreground min-w-fit drop-shadow-md">Technologies</span>
-                   <div className="flex items-center gap-2 flex-wrap">
-                     {technologies.slice(0, 10).map(tech => (
-                       <motion.button
-                         key={tech}
-                         whileHover={{ scale: 1.02 }}
-                         whileTap={{ scale: 0.98 }}
-                         onClick={() => handleTechToggle(tech)}
-                         className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
-                           selectedTech.includes(tech) 
-                             ? "bg-blue-500/20 text-blue-600" 
-                             : "bg-muted/20 text-muted-foreground hover:bg-muted/30"
-                         }`}
-                       >
-                         <Tag className="w-3 h-3" />
-                         {tech}
-                       </motion.button>
-                     ))}
-                   </div>
-                 </div>
                  
                  {/* Clear Filters */}
                  {activeFiltersCount > 0 && (
