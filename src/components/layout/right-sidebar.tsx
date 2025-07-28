@@ -3,7 +3,7 @@
 import { projects } from "@/data/projects";
 import { motion } from "framer-motion";
 import VerticalScrollSkills from "@/components/ui/vertical-scroll-skills";
-import { wakaTimeAPI, type WakaTimeStats } from "@/lib/wakatime-api";
+import { wakaTimeAPI, type WakaTimeStats, type WakaTimeHeartbeats } from "@/lib/wakatime-api";
 import { useState, useEffect } from "react";
 import { 
   Code2, 
@@ -20,14 +20,24 @@ import {
 
 export default function RightSidebar() {
   const [stats, setStats] = useState<WakaTimeStats | null>(null);
+  const [heartbeats, setHeartbeats] = useState<WakaTimeHeartbeats | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchWakaTimeData() {
       try {
-        const data = await wakaTimeAPI.getStats();
-        setStats(data);
+        const [statsData, heartbeatsData] = await Promise.allSettled([
+          wakaTimeAPI.getStats(),
+          wakaTimeAPI.getHeartbeats()
+        ]);
+
+        if (statsData.status === 'fulfilled') {
+          setStats(statsData.value);
+        }
+        if (heartbeatsData.status === 'fulfilled') {
+          setHeartbeats(heartbeatsData.value);
+        }
         setError(null);
       } catch (err) {
         console.error('WakaTime API error:', err);
@@ -304,6 +314,58 @@ export default function RightSidebar() {
           <div className="text-center py-2">
             <TrendingUp className="w-4 h-4 mx-auto mb-1 text-gray-500" />
             <p className="text-xs text-gray-400">No stats available</p>
+          </div>
+        )}
+      </motion.div>
+
+      {/* Today's Activity Pattern */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="flex-shrink-0"
+      >
+        <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
+          <Activity className="w-4 h-4" />
+          Today's Activity
+        </h3>
+        
+        {loading ? (
+          <div className="flex items-center justify-center py-4">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full"
+            />
+          </div>
+        ) : heartbeats?.hourly_breakdown ? (
+          <div className="space-y-2">
+            <div className="grid grid-cols-12 gap-1">
+              {heartbeats.hourly_breakdown.map((hour) => (
+                <div key={hour.hour} className="text-center">
+                  <div 
+                    className="bg-gradient-to-t from-blue-500/30 to-purple-500/30 rounded-sm mb-1 transition-all duration-300 hover:from-blue-500/50 hover:to-purple-500/50"
+                    style={{ 
+                      height: `${Math.max(2, (hour.minutes / Math.max(...heartbeats.hourly_breakdown.map(h => h.minutes))) * 30)}px` 
+                    }}
+                    title={`${hour.label}: ${hour.minutes} minutes`}
+                  />
+                  <span className="text-xs text-gray-400 block">
+                    {hour.hour % 8 === 0 ? hour.hour.toString().padStart(2, '0') : ''}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-between text-xs text-gray-400 mt-2">
+              <span>12AM</span>
+              <span>12PM</span>
+              <span>12AM</span>
+            </div>
+          </div>
+        ) : (
+          <div className="text-center py-4">
+            <Activity className="w-6 h-6 mx-auto mb-2 text-gray-500" />
+            <p className="text-xs text-gray-400">No activity today</p>
           </div>
         )}
       </motion.div>
