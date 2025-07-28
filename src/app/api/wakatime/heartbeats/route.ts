@@ -51,7 +51,7 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error('WakaTime heartbeats API error:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch WakaTime heartbeats data', details: error.message },
+      { error: 'Failed to fetch WakaTime heartbeats data', details: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     );
   }

@@ -35,10 +35,10 @@ interface PerfectScrollRowProps {
 
 function PerfectScrollRow({ title, skillsList, color, direction = "left", speed = 30 }: PerfectScrollRowProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
   
   // Create enough copies for seamless scrolling
-  const repeatedSkills = Array(8).fill(skillsList).flat();
+  const repeatedSkills = [...Array(8)].reduce((acc, _) => [...acc, ...skillsList], [] as any[]);
   const itemWidth = 80;
   const singleSetWidth = skillsList.length * itemWidth;
   
@@ -88,7 +88,7 @@ function PerfectScrollRow({ title, skillsList, color, direction = "left", speed 
             willChange: 'transform'
           }}
         >
-          {repeatedSkills.map((skill, index) => {
+          {repeatedSkills.map((skill: any, index: number) => {
             const IconComponent = getIconComponent(skill.name);
             return (
               <div 

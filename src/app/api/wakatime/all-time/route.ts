@@ -28,7 +28,7 @@ export async function GET() {
   } catch (error) {
     console.error('WakaTime all-time API error:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch WakaTime all-time data', details: error.message },
+      { error: 'Failed to fetch WakaTime all-time data', details: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     );
   }

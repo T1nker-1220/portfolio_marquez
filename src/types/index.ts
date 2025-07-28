@@ -33,13 +33,10 @@ export interface Project {
 }
 
 export type ProjectCategory =
-  | "Web Development"
-  | "API Integration"
-  | "UI/UX Design"
-  | "Full Stack"
-  | "Coming Soon"
-  | "Content Creation"
-  | "Cursor-AI";
+  | "Websites"
+  | "AI"
+  | "MCP"
+  | "Scraping";
 
 export type ProjectStatus = "Completed" | "In Progress" | "Coming Soon";
 

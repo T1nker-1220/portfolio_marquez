@@ -34,11 +34,11 @@ interface VerticalScrollColumnProps {
 }
 
 function VerticalScrollColumn({ title, skillsList, color, direction = "up", speed = 20 }: VerticalScrollColumnProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number>();
-  
-  // Create enough copies for seamless scrolling
-  const repeatedSkills = Array(6).fill(skillsList).flat();
+  const containerRef = useRef<HTMLDivElement>(null);   
+  const animationRef = useRef<number | null>(null);
+
+  // Create enough copies for seamless scrolling       
+  const repeatedSkills = Array(6).fill(skillsList).flat(1);
   const itemHeight = 28;
   const singleSetHeight = skillsList.length * itemHeight;
   
