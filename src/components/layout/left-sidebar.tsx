@@ -4,7 +4,6 @@ import { personalInfo } from "@/data/personal-info";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { 
-  User, 
   MapPin, 
   Mail, 
   Github, 
@@ -14,13 +13,9 @@ import {
   MessageCircle,
   Youtube,
   FolderOpen,
-  User2,
-  FileText,
-  MessageSquare,
   Download,
   Sparkles,
-  GitCommit,
-  Activity
+  GitCommit
 } from "lucide-react";
 import Link from "next/link";
 
@@ -56,11 +51,6 @@ const navigationItems: NavigationItem[] = [
     id: "contributions",
     label: "Contributions", 
     icon: <GitCommit className="w-4 h-4" />,
-  },
-  {
-    id: "activity",
-    label: "Coding Activity",
-    icon: <Activity className="w-4 h-4" />,
   }
 ];
 
