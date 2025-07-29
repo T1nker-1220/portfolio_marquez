@@ -129,7 +129,7 @@ export default function LeftSidebar({
                 />
               </div>
             </div>
-            <div className="absolute bottom-0 right-0 w-5 h-5 bg-gray-500 rounded-full border-2 border-background"></div>
+            <div className="absolute bottom-0 right-0 w-5 h-5 bg-emerald-500 rounded-full border-2 border-background"></div>
           </div>
           
           <h2 className="text-lg font-semibold text-white drop-shadow-lg">
