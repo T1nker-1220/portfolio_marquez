@@ -155,7 +155,7 @@ export const projects: Project[] = [
       src: "/videos/minrights-regulatory-platform.mp4",
       poster: "/images/projects/minrights-regulatory-platform.png",
     },
-    liveUrl: "https://www.mineralrights.ai/",
+    liveUrl: "",
     githubUrl: "",
     techStack: [
       // Core Infrastructure
@@ -267,7 +267,7 @@ export const projects: Project[] = [
       src: "/videos/minrights-pipeline.mp4",
       poster: "/images/projects/minrights-pipeline.png",
     },
-    liveUrl: "https://www.mineralrights.ai/",
+    liveUrl: "",
     githubUrl: "",
     techStack: [
       // Core Programming & Runtime
