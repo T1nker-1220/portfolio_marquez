@@ -66,3 +66,5 @@ private/
 .cursorindexingignore
 .cursorrules
 .gitignore
+.claude/
+.mcp.json
