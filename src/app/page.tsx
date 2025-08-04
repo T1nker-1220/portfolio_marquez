@@ -9,6 +9,7 @@ import SocialPostCard from "@/components/ui/social-post-card";
 import TimelinePost from "@/components/ui/timeline-post";
 import { TabContent } from "@/components/ui/tabs";
 import ContributionsDashboard from "@/components/sections/contributions-dashboard";
+import ChatSection from "@/components/sections/chat-section";
 
 import { motion } from "framer-motion";
 import { useState, useMemo } from "react";
@@ -344,6 +345,12 @@ export default function HomePage() {
         {activeTab === "contributions" && (
           <TabContent>
             <ContributionsDashboard />
+          </TabContent>
+        )}
+
+        {activeTab === "chat" && (
+          <TabContent>
+            <ChatSection />
           </TabContent>
         )}
 

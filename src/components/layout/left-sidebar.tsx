@@ -51,6 +51,11 @@ const navigationItems: NavigationItem[] = [
     id: "contributions",
     label: "Contributions", 
     icon: <GitCommit className="w-4 h-4" />,
+  },
+  {
+    id: "chat",
+    label: "Chat",
+    icon: <MessageCircle className="w-4 h-4" />,
   }
 ];
 
