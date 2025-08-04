@@ -12,7 +12,7 @@ import ContributionsDashboard from "@/components/sections/contributions-dashboar
 
 import { motion } from "framer-motion";
 import { useState, useMemo } from "react";
-import { Filter, Search, X, Star, Calendar, FolderOpen, GitCommit } from "lucide-react";
+import { Search, Star, Calendar, FolderOpen, GitCommit, Filter } from "lucide-react";
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<string>("projects");
@@ -21,7 +21,7 @@ export default function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [featuredOnly, setFeaturedOnly] = useState<boolean>(false);
   const [sortBy, setSortBy] = useState<string>("featured"); // featured, date, title
-  const [showAdvancedFilters, setShowAdvancedFilters] = useState<boolean>(false);
+
 
   // Extract unique categories and technologies
   const categories = useMemo(() => {
@@ -37,7 +37,6 @@ export default function HomePage() {
     setSelectedCategory("all");
     setFeaturedOnly(false);
     setSortBy("featured");
-    setShowAdvancedFilters(false);
   };
 
   // Prepare feed items
@@ -132,12 +131,7 @@ export default function HomePage() {
     return filtered;
   }, [feedItems, filter, searchQuery, selectedCategory, featuredOnly, sortBy]);
   
-  const activeFiltersCount = (
-    (filter !== "all" ? 1 : 0) +
-    (searchQuery ? 1 : 0) +
-    (selectedCategory !== "all" ? 1 : 0) +
-    (featuredOnly ? 1 : 0)
-  );
+
 
 
   return (
@@ -162,129 +156,76 @@ export default function HomePage() {
        >
          <div className="max-w-4xl mx-auto">
                        <div className="bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-2xl shadow-2xl shadow-black/25 border border-white/20 dark:border-white/10 overflow-hidden glass-container">
-             {/* Main Filter Bar */}
-             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 p-3">
-               {/* Search */}
-               <div className="relative w-full sm:w-64">
-                 <Search className="absolute left-2.5 top-1/2 transform -translate-y-1/2 w-3.5 h-3.5 text-muted-foreground" />
-                 <input
-                   type="text"
-                   placeholder="Search projects..."
-                   value={searchQuery}
-                   onChange={(e) => setSearchQuery(e.target.value)}
-                   className="w-full pl-8 pr-3 py-2 bg-muted/20 border-0 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:bg-muted/30 transition-all"
-                 />
-               </div>
+                         {/* Main Filter Bar - Single Line */}
+            <div className="flex flex-wrap items-center justify-center gap-2 p-3">
+              {/* Search */}
+              <div className="relative">
+                <Search className="absolute left-2.5 top-1/2 transform -translate-y-1/2 w-3.5 h-3.5 text-muted-foreground" />
+                <input
+                  type="text"
+                  placeholder="Search projects..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-48 pl-8 pr-3 py-2 bg-muted/20 border-0 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:bg-muted/30 transition-all"
+                />
+              </div>
 
-               {/* Quick Actions */}
-               <div className="flex items-center gap-1.5">
-                 <select
-                   value={sortBy}
-                   onChange={(e) => setSortBy(e.target.value)}
-                   className="px-3 py-2 bg-muted/20 border-0 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500/30 transition-all"
-                 >
-                   <option value="featured">Featured</option>
-                   <option value="date">Latest</option>
-                   <option value="title">A-Z</option>
-                 </select>
-                 
-                 <motion.button
-                   whileHover={{ scale: 1.02 }}
-                   whileTap={{ scale: 0.98 }}
-                   onClick={() => setFeaturedOnly(!featuredOnly)}
-                   className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-all ${
-                     featuredOnly 
-                       ? "bg-emerald-500/20 text-emerald-600" 
-                       : "bg-muted/20 text-muted-foreground hover:bg-muted/30"
-                   }`}
-                 >
-                   <Star className="w-3.5 h-3.5" />
-                   Featured
-                 </motion.button>
+              {/* Categories */}
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setSelectedCategory("all")}
+                className={`px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                  selectedCategory === "all" 
+                    ? "bg-emerald-500/20 text-emerald-600 shadow-sm" 
+                    : "bg-muted/20 text-muted-foreground hover:bg-muted/30"
+                }`}
+              >
+                All
+              </motion.button>
+              {categories.map(category => (
+                <motion.button
+                  key={category}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                    selectedCategory === category 
+                      ? "bg-emerald-500/20 text-emerald-600 shadow-sm" 
+                      : "bg-muted/20 text-muted-foreground hover:bg-muted/30"
+                  }`}
+                >
+                  {category}
+                </motion.button>
+              ))}
 
-                 <motion.button
-                   whileHover={{ scale: 1.02 }}
-                   whileTap={{ scale: 0.98 }}
-                   onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
-                   className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-all ${
-                     showAdvancedFilters || activeFiltersCount > 0
-                       ? "bg-blue-500/20 text-blue-600"
-                       : "bg-muted/20 text-muted-foreground hover:bg-muted/30"
-                   }`}
-                 >
-                   <Filter className="w-3.5 h-3.5" />
-                   Filters
-                   {activeFiltersCount > 0 && (
-                     <span className="min-w-[1rem] h-4 px-1 bg-blue-500 text-white text-xs rounded-full flex items-center justify-center">
-                       {activeFiltersCount}
-                     </span>
-                   )}
-                 </motion.button>
-               </div>
-             </div>
+              {/* Quick Actions */}
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="px-3 py-2 bg-muted/20 border-0 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500/30 transition-all"
+              >
+                <option value="featured">Featured</option>
+                <option value="date">Latest</option>
+                <option value="title">A-Z</option>
+              </select>
+              
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setFeaturedOnly(!featuredOnly)}
+                className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                  featuredOnly 
+                    ? "bg-emerald-500/20 text-emerald-600" 
+                    : "bg-muted/20 text-muted-foreground hover:bg-muted/30"
+                }`}
+              >
+                <Star className="w-3.5 h-3.5" />
+                Featured
+              </motion.button>
+            </div>
 
-             {/* Advanced Filters */}
-             <motion.div
-               initial={false}
-               animate={{ 
-                 height: showAdvancedFilters ? "auto" : 0,
-                 opacity: showAdvancedFilters ? 1 : 0 
-               }}
-               transition={{ duration: 0.2, ease: "easeInOut" }}
-               className="overflow-hidden"
-             >
-               <div className="px-4 pb-4 space-y-4">
-                 {/* Categories */}
-                 <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-                   <span className="text-sm font-medium text-muted-foreground min-w-fit drop-shadow-md">Categories</span>
-                   <div className="flex items-center gap-2 flex-wrap">
-                     <motion.button
-                       whileHover={{ scale: 1.02 }}
-                       whileTap={{ scale: 0.98 }}
-                       onClick={() => setSelectedCategory("all")}
-                       className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
-                         selectedCategory === "all" 
-                           ? "bg-emerald-500/20 text-emerald-600" 
-                           : "bg-muted/20 text-muted-foreground hover:bg-muted/30"
-                       }`}
-                     >
-                       All
-                     </motion.button>
-                     {categories.map(category => (
-                       <motion.button
-                         key={category}
-                         whileHover={{ scale: 1.02 }}
-                         whileTap={{ scale: 0.98 }}
-                         onClick={() => setSelectedCategory(category)}
-                         className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
-                           selectedCategory === category 
-                             ? "bg-emerald-500/20 text-emerald-600" 
-                             : "bg-muted/20 text-muted-foreground hover:bg-muted/30"
-                         }`}
-                       >
-                         {category}
-                       </motion.button>
-                     ))}
-                   </div>
-                 </div>
-                 
-                 
-                 {/* Clear Filters */}
-                 {activeFiltersCount > 0 && (
-                   <div className="flex justify-center pt-2">
-                     <motion.button
-                       whileHover={{ scale: 1.02 }}
-                       whileTap={{ scale: 0.98 }}
-                       onClick={clearFilters}
-                       className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-500/10 rounded-lg transition-all"
-                     >
-                       <X className="w-4 h-4" />
-                       Clear All Filters ({activeFiltersCount})
-                     </motion.button>
-                   </div>
-                 )}
-               </div>
-             </motion.div>
+             
            </div>
          </div>
        </motion.div>
