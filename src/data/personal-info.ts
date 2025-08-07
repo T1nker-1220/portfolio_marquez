@@ -5,7 +5,7 @@ export const personalInfo: PersonalInfo = {
   fullName: "John Nathaniel Marquez",
   location: "Amadeo, Cavite",
   email: "marquezjohnnathanieljade@gmail.com",
-  bio: "I'm a passionate web developer with a strong foundation in modern technologies. My latest project, the T1NKER PC Rental & Management System, showcases my ability to architect secure, real-time, and user-friendly solutions for real-world business needs. I embrace AI-assisted development and modern frameworks to deliver high-quality, scalable applications. Starting from basic programming concepts, I've evolved to embrace AI-assisted development while maintaining high standards of code quality. My journey includes successful projects in both frontend and full-stack development, showcasing my ability to learn and adapt quickly.",
+  bio: "I'm a passionate web developer with a strong foundation in modern technologies and extensive expertise in AI-assisted development. I leverage cutting-edge AI tools including Claude Code CLI, WindSurf, Cursor, Cline, RooCode, v0.dev, ChatGPT, Perplexity, and Claude to accelerate development workflows and deliver innovative solutions. My latest project, the T1NKER PC Rental & Management System, showcases my ability to architect secure, real-time, and user-friendly solutions for real-world business needs. Starting from basic programming concepts, I've evolved to master AI-assisted development while maintaining high standards of code quality. My journey includes successful projects in both frontend and full-stack development, showcasing my ability to learn and adapt quickly.",
   education: [
     {
       school: "ICCT College Cainta Campus",
@@ -126,6 +126,17 @@ export const skills: Skill[] = [
   { name: "Pytest", category: "tools", level: "Intermediate", since: "2025" },
   { name: "Webpack", category: "tools", level: "Beginner", since: "2024" },
   { name: "Vite", category: "tools", level: "Beginner", since: "2024" },
+
+  // AI-Assisted Development Tools
+  { name: "Claude Code CLI", category: "ai", level: "Advanced", since: "2024" },
+  { name: "WindSurf", category: "ai", level: "Advanced", since: "2024" },
+  { name: "Cursor", category: "ai", level: "Advanced", since: "2024" },
+  { name: "Cline", category: "ai", level: "Intermediate", since: "2024" },
+  { name: "RooCode", category: "ai", level: "Intermediate", since: "2025" },
+  { name: "v0.dev", category: "ai", level: "Advanced", since: "2024" },
+  { name: "ChatGPT", category: "ai", level: "Advanced", since: "2023" },
+  { name: "Perplexity", category: "ai", level: "Intermediate", since: "2024" },
+  { name: "Claude", category: "ai", level: "Advanced", since: "2024" },
 ];
 
 // Skill Icon Mapping for devicons-react components
@@ -180,4 +191,15 @@ export const SKILL_ICONS = {
   "Pytest": "PytestOriginal",
   "Webpack": "WebpackOriginal",
   "Vite": "ViteOriginal",
+
+  // AI-Assisted Development Tools
+  "Claude Code CLI": "TerminalOriginal",
+  "WindSurf": "AiOriginal",
+  "Cursor": "CursorOriginal",
+  "Cline": "AiOriginal",
+  "RooCode": "AiOriginal",
+  "v0.dev": "VercelOriginal",
+  "ChatGPT": "OpenaiOriginal",
+  "Perplexity": "AiOriginal",
+  "Claude": "AnthropicOriginal",
 } as const;
