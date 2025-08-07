@@ -7,7 +7,7 @@ export type TimelineItem = {
 export interface Skill {
   name: string;
   icon?: string;
-  category: "frontend" | "backend" | "tools" | "other" | "soft skills";
+  category: "frontend" | "backend" | "tools" | "other" | "soft skills" | "ai";
   level?: "Beginner" | "Intermediate" | "Advanced" | "Expert";
   since?: string;
 }
