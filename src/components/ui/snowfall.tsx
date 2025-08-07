@@ -24,11 +24,21 @@ export default function Snowfall({
 }: SnowfallProps) {
   const [particles, setParticles] = useState<SnowParticle[]>([]);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [isMobile, setIsMobile] = useState(false);
 
   // Generate random particles
   useEffect(() => {
+    // Detect mobile device
+    const checkMobile = () => {
+      const isMobileDevice = window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      setIsMobile(isMobileDevice);
+    };
+
     const generateParticles = (): SnowParticle[] => {
-      return Array.from({ length: particleCount }, (_, i) => ({
+      // Reduce particle count significantly on mobile devices
+      const effectiveParticleCount = isMobile ? Math.max(Math.floor(particleCount * 0.3), 10) : particleCount;
+      
+      return Array.from({ length: effectiveParticleCount }, (_, i) => ({
         id: i,
         x: Math.random() * 100, // percentage
         y: Math.random() * -100, // start above viewport
@@ -39,21 +49,22 @@ export default function Snowfall({
       }));
     };
 
-    setParticles(generateParticles());
-
     // Update dimensions on resize
     const updateDimensions = () => {
       setDimensions({
         width: window.innerWidth,
         height: window.innerHeight,
       });
+      checkMobile();
     };
 
+    checkMobile();
+    setParticles(generateParticles());
     updateDimensions();
     window.addEventListener('resize', updateDimensions);
     
     return () => window.removeEventListener('resize', updateDimensions);
-  }, [particleCount]);
+  }, [particleCount, isMobile]);
 
   return (
     <div 
