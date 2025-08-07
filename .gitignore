@@ -69,3 +69,4 @@ private/
 .claude/
 .mcp.json
 jobs/
+.playwright-mcp/

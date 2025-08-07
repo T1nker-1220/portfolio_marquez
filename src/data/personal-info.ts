@@ -40,6 +40,30 @@ export const personalInfo: PersonalInfo = {
       url: "https://www.youtube.com/@t1nkergaming731",
     },
   ],
+  workstation: {
+    typingSpeed: "47 WPM with 95% accuracy",
+    hardware: {
+      motherboard: "Asus Prime B650-A II AM5",
+      processor: "AMD Ryzen 7 7700",
+      gpu: "PowerColor RX 7800XT 16GB GDDR6",
+      ram: "G.Skill Ripjaws M5 32GB (2x16GB) 6000MHz DDR5 RGB",
+      storage: ["Kingston NV3 1TB NVMe M.2 SSD", "Kingston NV3 2TB NVMe M.2 SSD"],
+      psu: "XPG Corsair 850G 850W 80+ Gold",
+      case: "Y60K Panoramic Glass Case",
+      cooling: "DarkFlash Twister DX360 Liquid Cooler",
+      fans: ["KeyTech Prism 3-in-1 RGB Fan", "KeyTech Prism Single RGB Fan"],
+      monitor: "Lenovo Legion 1080p",
+      connectivity: "High-speed fiber internet (50+ Mbps)"
+    },
+    setup: "Professional dual-monitor capable workstation with RGB lighting and liquid cooling for extended development sessions"
+  },
+  portfolioAssets: {
+    typingTestProof: "https://drive.google.com/file/d/1hse8vZfpKiekPW9S2iZwXH_iCSKNfE0s/view?usp=sharing",
+    scrapingProjects: {
+      gmbScraping: "https://docs.google.com/spreadsheets/d/1tx96wwPwPDzmvbgk2sgPZ-rR-lHAduhh2GIemrJstck/edit?usp=sharing",
+      productListing: "https://docs.google.com/spreadsheets/d/1Xpf469ByKEmYYzz-HQ4dr-mqAoqfl6im0mVH9T-F9f0/edit?usp=sharing"
+    }
+  },
 };
 
 export const timeline: TimelineItem[] = [

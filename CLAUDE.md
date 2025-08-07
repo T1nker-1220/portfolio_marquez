@@ -115,3 +115,36 @@ src/
 - Follow the established component patterns for consistency
 - Maintain type safety throughout the application
 - Test responsive design across different screen sizes
+
+## Job Application Assistance
+
+### Job Application Management
+- Created `/Jobs/` folder for organized job application storage
+- Each application file includes:
+  - Platform information (OnlineJobs.ph)
+  - Job title and direct link
+  - Salary and hour requirements
+  - Properly formatted application content for easy copying
+
+### Job Application Safety Protocol
+- **Always analyze job postings for red flags**:
+  - Extremely low compensation rates
+  - Suspicious email formats or contact methods
+  - Excessive personal information requests
+  - Unusual requirements (workstation photos, etc.)
+  - Too-good-to-be-true claims in job titles vs actual content
+- **Provide clear warnings** when potential scams are detected
+- **User safety is priority** - better to warn and be wrong than ignore red flags
+
+### Application Customization Approach
+- Analyze job requirements thoroughly
+- Match user's skills and projects to specific job needs
+- Highlight relevant portfolio projects that demonstrate required capabilities
+- Emphasize AI-enhanced development workflow as competitive advantage
+- Address experience gaps honestly while showcasing project complexity
+- Include portfolio link (https://portfolio-marquez.vercel.app) and GitHub in all applications
+
+### Personal Information Usage
+- Use data from `/src/data/personal-info.ts` for consistent application details
+- Highlight comprehensive AI tool expertise (Claude Code CLI, WindSurf, Cursor, v0.dev, etc.)
+- Leverage project portfolio from `/src/data/projects.ts` for relevant experience examples
