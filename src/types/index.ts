@@ -65,4 +65,28 @@ export type PersonalInfo = {
     endYear: string;
   }[]
   socialLinks: SocialLink[];
+  workstation?: {
+    typingSpeed: string;
+    hardware: {
+      motherboard: string;
+      processor: string;
+      gpu: string;
+      ram: string;
+      storage: string[];
+      psu: string;
+      case: string;
+      cooling: string;
+      fans: string[];
+      monitor: string;
+      connectivity: string;
+    };
+    setup: string;
+  };
+  portfolioAssets?: {
+    typingTestProof: string;
+    scrapingProjects: {
+      gmbScraping: string;
+      productListing: string;
+    };
+  };
 };
