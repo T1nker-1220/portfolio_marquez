@@ -633,7 +633,7 @@ export const projects: Project[] = [
     status: "Completed",
     completedAt: "2025-01",
     featured: true,
-    featuredRank: 4,
+    featuredRank: 6,
   },
   {
     id: "memories-with-lessons-mcp-server",
@@ -670,7 +670,7 @@ export const projects: Project[] = [
     status: "Completed",
     completedAt: "2025-01",
     featured: true,
-    featuredRank: 3,
+    featuredRank: 4,
   },
   {
     id: "minrights-ai",
@@ -954,9 +954,124 @@ export const projects: Project[] = [
     category: "Scraping",
     status: "Completed",
     completedAt: "2025-01",
-    featured: false,
+    featured: true,
+    featuredRank: 3,
   },
+  {
+    id: "gabe-gmb-scraper",
+    title: "Gabe GMB Multi-Worker Scraper",
+    description:
+      "A sophisticated Google My Business scraper engineered for maximum efficiency and data quality. Features 13 parallel Chrome browsers with anti-detection mechanisms, processing 25 cities across British Columbia with 57 business categories. Built for lead generation with intelligent website filtering and real-time data validation.",
+    image: "/images/projects/gabe-gmb-scraper.png",
+    video: {
+      src: "/videos/gabe-gmb-scraper.mp4",
+      poster: "/images/projects/gabe-gmb-scraper.png",
+    },
+    liveUrl: "",
+    githubUrl: "",
+    techStack: [
+      // Core Framework & Runtime
+      { name: "Python 3.11+", icon: "python", color: "#3776AB" },
+      { name: "Selenium WebDriver", icon: "selenium", color: "#43B02A" },
+      { name: "undetected-chromedriver", icon: "chrome", color: "#4285F4" },
+      { name: "Chrome Browser 138", icon: "chrome", color: "#4285F4" },
 
+      // Multi-Processing & Concurrency
+      { name: "multiprocessing", icon: "multiprocessing", color: "#FF6384" },
+      { name: "threading", icon: "threading", color: "#FF4154" },
+      { name: "Queue Manager", icon: "queue", color: "#9C27B0" },
+      { name: "Process Pool", icon: "pool", color: "#4CAF50" },
+
+      // Data Processing & Export
+      { name: "Pandas", icon: "pandas", color: "#150458" },
+      { name: "CSV Export", icon: "csv", color: "#16A34A" },
+      { name: "JSON Export", icon: "json", color: "#FFC107" },
+      { name: "Data Validation", icon: "validation", color: "#4CAF50" },
+
+      // Anti-Detection & Stealth
+      { name: "Undetected Chrome", icon: "stealth", color: "#43B02A" },
+      { name: "Random Delays", icon: "random", color: "#FF9800" },
+      { name: "Human-like Scrolling", icon: "scroll", color: "#2196F3" },
+      { name: "Viewport Randomization", icon: "viewport", color: "#9C27B0" },
+      { name: "User Agent Rotation", icon: "useragent", color: "#607D8B" },
+
+      // Browser Management
+      { name: "WebDriverWait", icon: "wait", color: "#9C27B0" },
+      { name: "Chrome Options", icon: "config", color: "#4285F4" },
+      { name: "Health Monitoring", icon: "health", color: "#4CAF50" },
+      { name: "Automatic Recovery", icon: "recovery", color: "#FF5722" },
+
+      // Performance & Optimization
+      { name: "13 Parallel Browsers", icon: "parallel", color: "#FF6B6B" },
+      { name: "Sequential Launch", icon: "sequence", color: "#2196F3" },
+      { name: "Load Balancing", icon: "balance", color: "#4CAF50" },
+      { name: "Memory Management", icon: "memory", color: "#9C27B0" },
+
+      // Data Quality & Validation
+      { name: "Website Detection", icon: "detection", color: "#FF9800" },
+      { name: "Duplicate Prevention", icon: "duplicate", color: "#F44336" },
+      { name: "Phone Validation", icon: "phone", color: "#4CAF50" },
+      { name: "Address Validation", icon: "address", color: "#2196F3" },
+      { name: "Business Classification", icon: "classification", color: "#9C27B0" },
+
+      // Geographic & Business Logic
+      { name: "25 BC Cities Coverage", icon: "geography", color: "#8BC34A" },
+      { name: "57 Business Categories", icon: "categories", color: "#FF5722" },
+      { name: "Lead Qualification", icon: "qualification", color: "#4CAF50" },
+      { name: "Location Targeting", icon: "targeting", color: "#2196F3" },
+
+      // Error Handling & Monitoring
+      { name: "Retry Logic", icon: "retry", color: "#FF5722" },
+      { name: "Graceful Degradation", icon: "graceful", color: "#4CAF50" },
+      { name: "Real-time Logging", icon: "logging", color: "#6B7280" },
+      { name: "Progress Tracking", icon: "progress", color: "#2196F3" },
+      { name: "Health Checks", icon: "health", color: "#4CAF50" },
+
+      // Output & Reporting
+      { name: "Real-time CSV Output", icon: "csv", color: "#16A34A" },
+      { name: "JSON Export", icon: "json", color: "#FFC107" },
+      { name: "Statistics Dashboard", icon: "stats", color: "#8884D8" },
+      { name: "Lead Counting", icon: "counter", color: "#FF6384" },
+
+      // Architecture & Design
+      { name: "Worker Pattern", icon: "worker", color: "#607D8B" },
+      { name: "Multi-City Distribution", icon: "distribution", color: "#4CAF50" },
+      { name: "Intelligent Extraction", icon: "extraction", color: "#FF9800" },
+      { name: "Browser Health Validation", icon: "validation", color: "#4CAF50" },
+    ],
+    features: [
+      "13 parallel Chrome browsers for maximum scraping speed (13x faster)",
+      "Covers 25 cities across British Columbia with 57 business categories",
+      "Anti-detection system with undetected Chrome and human-like behavior",
+      "Intelligent website filtering - only businesses WITHOUT websites",
+      "Real-time data validation with strict phone and address requirements",
+      "Multi-worker architecture with automatic city distribution",
+      "Health monitoring and automatic browser recovery mechanisms",
+      "Duplicate prevention using business name + city combination",
+      "Sequential browser launch with health validation for stability",
+      "Graceful error handling with individual failure isolation",
+      "Real-time CSV and JSON output with immediate data saving",
+      "Smart list extraction to minimize detail page clicks",
+      "Chrome version matching (138.x) with automatic driver management",
+      "Random delays and human-like scrolling patterns",
+      "Quality-focused data collection with strict validation rules",
+      "Progress tracking with detailed statistics and logging",
+      "Memory-efficient processing with connection pooling",
+      "Two-check website detection system based on screenshot analysis",
+      "Load balancing across workers with failed city redistribution",
+      "Production-ready configuration with environment management",
+      "Comprehensive business data extraction (name, phone, address, maps link)",
+      "Industry-specific categorization and lead qualification",
+      "Timeout management and page load optimization",
+      "Viewport and window positioning for visual monitoring",
+      "Automatic retry and recovery for failed operations",
+    ],
+    category: "Scraping",
+    status: "Completed",
+    completedAt: "2025-01",
+    featured: true,
+    featuredRank: 2,
+  },
 
   {
     id: "wedding-memories",
@@ -1195,6 +1310,6 @@ export const projects: Project[] = [
     status: "Completed",
     completedAt: "2025-05",
     featured: true,
-    featuredRank: 2,
+    featuredRank: 5,
   },
 ];
