@@ -1,6 +1,7 @@
 import { MainLayout } from "@/components/layout/main-layout";
 import { fontHeading, fontMono, fontSans } from "@/lib/fonts";
 import "@/styles/globals.css";
+import "@/lib/suppress-image-errors";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";

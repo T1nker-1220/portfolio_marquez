@@ -62,6 +62,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
               loading="lazy"
               quality={90}
               onLoad={() => setImageLoading(false)}
+              onError={(e) => {
+                e.currentTarget.src = '/images/logo.png';
+                e.currentTarget.className = cn(
+                  "object-contain p-8 transition-all duration-500",
+                  imageLoading ? "scale-110 blur-xl" : "scale-100 blur-0"
+                );
+                setImageLoading(false);
+              }}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
               placeholder="blur"
               blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkMjU1LC0yMi4xODY6PTw2ODk8RUhGR01RU1pWVl86WX1phWRphf/2wBDARUXFx4aHh8gIB8gFC4kLhQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBf/AABEIACUAMgMBIgACEQEDEQH/xAAaAAACAwEBAAAAAAAAAAAAAAAABQMEBgIB/8QAHxAAAgMAAgMBAQAAAAAAAAAAAAECAxEEEiExQRNR/8QAGAEAAwEBAAAAAAAAAAAAAAAAAAIDAQT/xAAcEQACAgMBAQAAAAAAAAAAAAAAAQIRAxIhMUH/2gAMAwEAAhEDEQA/APqoAAAAAAAAAAAAAGGflqKz7K5Xt+GS5vKlN4vSMjJvWZ5cnkN+2L7Ll+GzqtT9MqXKx+yUbk/7KYzZXJjjJUh9GxP6TwsT9mWq5Ov2XKuT/WVU0yM8EX4aADD1cpr6XKeW19MlkZnLjlE1YAMxNgAAAAYTlwx+DPcni/1ozcFJeGNuRxnB+jz5RcXTNi3FmSVLi/Btwp9l5NrxuR2Ro6+Qn7OiE4zXGSUXE+jFNeS+mxr2Z6rkY/Zdr5K/pfHl/TnyYP0ewMtXyWvpcq5P9JLMpLHKPjPQAVJgAAAHE4JrGcgAR8jg791YzP8AI4c6n7PogpcngxtW4ysWX4YpOP6jC4nzP5tfC3XyP6bW7gQmvgts4EX9J/pJeobY0zFV8n+lyvk/1m8t4EX9K9vAi/pRZ4v1CvBJeoxYGVr5TXstwkmvB6KNNWZ4AAAAAAAAAAAAAAAAAP/Z"
@@ -193,6 +201,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 height={1080}
                 className="h-full w-full object-cover"
                 quality={90}
+                onError={(e) => {
+                  e.currentTarget.src = '/images/logo.png';
+                  e.currentTarget.className = "h-full w-full object-contain p-8";
+                }}
               />
             </div>
 

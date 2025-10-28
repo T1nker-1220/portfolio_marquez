@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { errorLogger } from '@/lib/error-logger';
 
 const WAKATIME_API_KEY = process.env.NEXT_PUBLIC_WAKATIME_API_KEY;
 const WAKATIME_BASE_URL = 'https://wakatime.com/api/v1';
@@ -166,7 +167,7 @@ export async function GET(request: NextRequest) {
     });
 
     if (!response.ok) {
-      console.error(`WakaTime API error: ${response.status} - ${response.statusText}`);
+      errorLogger.logError('WakaTime Stats API', `HTTP ${response.status} - ${response.statusText}`);
       
       // Handle payment required (402) and other errors gracefully
       if (response.status === 402) {
@@ -254,7 +255,7 @@ export async function GET(request: NextRequest) {
       });
     }
   } catch (error) {
-    console.error('WakaTime API error:', error);
+    errorLogger.logError('WakaTime Stats API', error);
     return NextResponse.json(
       { error: 'Failed to fetch WakaTime data', details: error instanceof Error ? error.message : String(error) },
       { status: 500 }

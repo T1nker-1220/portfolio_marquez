@@ -219,6 +219,10 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            onError={(e) => {
+              e.currentTarget.src = '/images/logo.png';
+              e.currentTarget.className = "object-contain p-8";
+            }}
           />
           
           {/* Enhanced Featured Badge on Image */}

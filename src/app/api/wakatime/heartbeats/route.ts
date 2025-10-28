@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { errorLogger } from '@/lib/error-logger';
 
 const WAKATIME_API_KEY = process.env.NEXT_PUBLIC_WAKATIME_API_KEY;
 const WAKATIME_BASE_URL = 'https://wakatime.com/api/v1';
@@ -49,7 +50,7 @@ export async function GET(request: NextRequest) {
       total_heartbeats: heartbeats.length
     });
   } catch (error) {
-    console.error('WakaTime heartbeats API error:', error);
+    errorLogger.logError('WakaTime Heartbeats API', error);
     return NextResponse.json(
       { error: 'Failed to fetch WakaTime heartbeats data', details: error instanceof Error ? error.message : String(error) },
       { status: 500 }

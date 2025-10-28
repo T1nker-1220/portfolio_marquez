@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { errorLogger } from '@/lib/error-logger';
 
 const WAKATIME_API_KEY = process.env.NEXT_PUBLIC_WAKATIME_API_KEY;
 const WAKATIME_BASE_URL = 'https://wakatime.com/api/v1';
@@ -26,7 +27,7 @@ export async function GET() {
     const data = await response.json();
     return NextResponse.json(data);
   } catch (error) {
-    console.error('WakaTime all-time API error:', error);
+    errorLogger.logError('WakaTime All-Time API', error);
     return NextResponse.json(
       { error: 'Failed to fetch WakaTime all-time data', details: error instanceof Error ? error.message : String(error) },
       { status: 500 }

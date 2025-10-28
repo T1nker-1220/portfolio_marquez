@@ -15,6 +15,7 @@ import {
   Flame
 } from "lucide-react";
 import { wakaTimeAPI, type WakaTimeStats, type WakaTimeHeartbeats } from "@/lib/wakatime-api";
+import { errorLogger } from "@/lib/error-logger";
 
 
 export default function CodingActivityDashboard() {
@@ -34,18 +35,32 @@ export default function CodingActivityDashboard() {
           wakaTimeAPI.getAllTimeStats()
         ]);
 
+        // Clear error context on successful fetch
+        let hasSuccess = false;
+        
         if (statsData.status === 'fulfilled') {
           setStats(statsData.value);
+          hasSuccess = true;
         }
         if (heartbeatsData.status === 'fulfilled') {
           setHeartbeats(heartbeatsData.value);
+          hasSuccess = true;
         }
         if (allTimeData.status === 'fulfilled') {
           setAllTimeStats(allTimeData.value);
+          hasSuccess = true;
+        }
+
+        // Clear error tracking if any request succeeded
+        if (hasSuccess) {
+          errorLogger.clearContext('WakaTime Stats API');
+          errorLogger.clearContext('WakaTime Heartbeats API');
+          errorLogger.clearContext('WakaTime All-Time API');
+          setError(null);
         }
       } catch (err) {
         setError('Failed to fetch coding activity data');
-        console.error('WakaTime API error:', err);
+        errorLogger.logOnce('Coding Activity Dashboard', err);
       } finally {
         setLoading(false);
       }
@@ -53,8 +68,8 @@ export default function CodingActivityDashboard() {
 
     fetchWakaTimeData();
     
-    // Refresh data every 5 minutes
-    const interval = setInterval(fetchWakaTimeData, 5 * 60 * 1000);
+    // Refresh data every 15 minutes (reduced from 5 to minimize API calls)
+    const interval = setInterval(fetchWakaTimeData, 15 * 60 * 1000);
     return () => clearInterval(interval);
   }, []);
 
