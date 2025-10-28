@@ -2,6 +2,82 @@ import { Project } from "@/types";
 
 export const projects: Project[] = [
   {
+    id: "afterdark",
+    title: "AfterDark Society",
+    description:
+      "A comprehensive digital platform for AfterDark Society, featuring modern web technologies and seamless user experience. Built with cutting-edge frameworks to deliver exceptional performance and functionality for the community.",
+    image: "/images/projects/afterdark.png",
+    video: {
+      src: "/videos/afterdark.mp4",
+      poster: "/images/projects/afterdark.png",
+    },
+    liveUrl: "https://afterdarksociety.com",
+    githubUrl: null,
+    techStack: [
+      { name: "Next.js 15", icon: "nextjs", color: "#E5E7EB" },
+      { name: "React 19", icon: "react", color: "#61DAFB" },
+      { name: "TypeScript", icon: "typescript", color: "#3178C6" },
+      { name: "Tailwind CSS", icon: "tailwindcss", color: "#06B6D4" },
+      { name: "Shadcn UI", icon: "shadcn", color: "#E5E7EB" },
+      { name: "Framer Motion", icon: "framer", color: "#0055FF" },
+      { name: "Zustand", icon: "zustand", color: "#FF4154" },
+      { name: "Vercel", icon: "vercel", color: "#E5E7EB" },
+    ],
+    features: [
+      "Modern responsive design",
+      "Server-side rendering",
+      "Optimized performance",
+      "Type-safe development",
+      "Smooth animations",
+      "State management",
+      "SEO optimized",
+      "Production deployment",
+    ],
+    category: "Websites",
+    status: "Completed",
+    completedAt: "2025-10",
+    featured: true,
+    featuredRank: 1,
+  },
+  {
+    id: "mojogift",
+    title: "MojoGift Platform",
+    description:
+      "A sophisticated gift management and delivery platform built with modern web technologies. Features comprehensive gift tracking, user management, and seamless integration with payment systems for a complete gifting experience.",
+    image: "/images/projects/mojogift.png",
+    video: {
+      src: "/videos/mojogift.mp4",
+      poster: "/images/projects/mojogift.png",
+    },
+    liveUrl: "",
+    githubUrl: null,
+    techStack: [
+      { name: "Next.js 14", icon: "nextjs", color: "#E5E7EB" },
+      { name: "React 18", icon: "react", color: "#61DAFB" },
+      { name: "TypeScript", icon: "typescript", color: "#3178C6" },
+      { name: "Tailwind CSS", icon: "tailwindcss", color: "#06B6D4" },
+      { name: "PostgreSQL", icon: "postgresql", color: "#336791" },
+      { name: "Supabase", icon: "supabase", color: "#3ECF8E" },
+      { name: "Zustand", icon: "zustand", color: "#FF4154" },
+      { name: "Framer Motion", icon: "framer", color: "#0055FF" },
+    ],
+    features: [
+      "Gift tracking system",
+      "User management",
+      "Payment integration",
+      "Real-time updates",
+      "Responsive design",
+      "Database integration",
+      "State management",
+      "Modern UI/UX",
+    ],
+    category: "Websites",
+    status: "Completed",
+    completedAt: "2025-09",
+    featured: true,
+    featuredRank: 2,
+  },
+  {
     id: "kda-ordering-system",
     title: "KDA Ordering System",
     description:
@@ -47,7 +123,7 @@ export const projects: Project[] = [
     status: "Completed",
     completedAt: "2025-01",
     featured: true,
-    featuredRank: 5,
+    featuredRank: 7,
   },
   {
     id: "minrights-chatbot",
@@ -143,7 +219,7 @@ export const projects: Project[] = [
     status: "Completed",
     completedAt: "2025-07",
     featured: true,
-    featuredRank: 6,
+    featuredRank: 8,
   },
   {
     id: "minrights-regulatory-platform",
@@ -255,7 +331,7 @@ export const projects: Project[] = [
     status: "Completed",
     completedAt: "2025-07",
     featured: true,
-    featuredRank: 7,
+    featuredRank: 9,
   },
   {
     id: "minrights-pipeline",
@@ -362,7 +438,7 @@ export const projects: Project[] = [
     status: "Completed",
     completedAt: "2025-07",
     featured: true,
-    featuredRank: 8,
+    featuredRank: 10,
   },
   {
     id: "supabase-postgres-pcrental-mcp",
@@ -469,7 +545,7 @@ export const projects: Project[] = [
     status: "Completed",
     completedAt: "2025-07",
     featured: true,
-    featuredRank: 9,
+    featuredRank: 11,
   },
   {
     id: "aws-postgres-mcp-server",
@@ -597,7 +673,7 @@ export const projects: Project[] = [
     status: "Completed",
     completedAt: "2025-07",
     featured: true,
-    featuredRank: 10,
+    featuredRank: 12,
   },
   {
     id: "ultracontextai",
@@ -633,7 +709,7 @@ export const projects: Project[] = [
     status: "Completed",
     completedAt: "2025-01",
     featured: true,
-    featuredRank: 6,
+    featuredRank: 13,
   },
   {
     id: "memories-with-lessons-mcp-server",
@@ -670,7 +746,7 @@ export const projects: Project[] = [
     status: "Completed",
     completedAt: "2025-01",
     featured: true,
-    featuredRank: 4,
+    featuredRank: 14,
   },
   {
     id: "minrights-ai",
@@ -805,7 +881,7 @@ export const projects: Project[] = [
     status: "Completed",
     completedAt: "2025-06",
     featured: true,
-    featuredRank: 1,
+    featuredRank: 3,
   },
   {
     id: "excel-glass",
@@ -955,7 +1031,7 @@ export const projects: Project[] = [
     status: "Completed",
     completedAt: "2025-01",
     featured: true,
-    featuredRank: 3,
+    featuredRank: 4,
   },
   {
     id: "gabe-gmb-scraper",
@@ -1070,7 +1146,7 @@ export const projects: Project[] = [
     status: "Completed",
     completedAt: "2025-01",
     featured: true,
-    featuredRank: 2,
+    featuredRank: 6,
   },
 
   {
