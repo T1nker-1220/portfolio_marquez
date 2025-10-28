@@ -5,7 +5,6 @@ import { Analytics } from "@vercel/analytics/react";
 import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";
 import { type PropsWithChildren } from "react";
-import ResponsiveVideoBackground from "@/components/ui/responsive-video-background";
 import Snowfall from "@/components/ui/snowfall";
 import { ToastProvider } from "@/components/ui/toast";
 
@@ -148,11 +147,11 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <body
         className={`${fontSans.variable} ${fontMono.variable} ${fontHeading.variable} min-h-screen font-sans antialiased relative overflow-hidden`}
       >
-                          {/* Responsive Video Background Component */}
-         <ResponsiveVideoBackground />
+        {/* Dark Background */}
+        <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black z-0"></div>
         
-                 {/* Enhanced Overlay for Better Text Readability */}
-         <div className="fixed inset-0 bg-black/20 dark:bg-black/30 z-10"></div>
+        {/* Enhanced Overlay for Better Text Readability */}
+        <div className="fixed inset-0 bg-black/40 dark:bg-black/50 z-10"></div>
         
         {/* Snowfall Effect */}
         <Snowfall particleCount={35} />

@@ -7,10 +7,6 @@ export const projects: Project[] = [
     description:
       "A comprehensive digital platform for AfterDark Society, featuring modern web technologies and seamless user experience. Built with cutting-edge frameworks to deliver exceptional performance and functionality for the community.",
     image: "/images/projects/afterdark.png",
-    video: {
-      src: "/videos/afterdark.mp4",
-      poster: "/images/projects/afterdark.png",
-    },
     liveUrl: "https://afterdarksociety.com",
     githubUrl: null,
     techStack: [
@@ -45,10 +41,6 @@ export const projects: Project[] = [
     description:
       "A sophisticated gift management and delivery platform built with modern web technologies. Features comprehensive gift tracking, user management, and seamless integration with payment systems for a complete gifting experience.",
     image: "/images/projects/mojogift.png",
-    video: {
-      src: "/videos/mojogift.mp4",
-      poster: "/images/projects/mojogift.png",
-    },
     liveUrl: "",
     githubUrl: null,
     techStack: [
@@ -83,10 +75,6 @@ export const projects: Project[] = [
     description:
       "A comprehensive full-stack restaurant ordering system with customer-facing menus, kiosk mode, real-time order tracking, and admin dashboard. Features three interfaces: customer menu, kiosk ordering, and admin portal for managing products, orders, and revenue analytics with receipt printing capabilities.",
     image: "/images/projects/kda-ordering-system.png",
-    video: {
-      src: "/videos/kda-ordering-system.mp4",
-      poster: "/images/projects/kda-ordering-system.png",
-    },
     liveUrl: "",
     githubUrl: "",
     techStack: [
@@ -131,10 +119,6 @@ export const projects: Project[] = [
     description:
       "A sophisticated Python package providing AI-powered conversational interfaces for oil & gas data analysis. Built for the MinRights platform, it implements a two-tier bot architecture (Basic and Premium) with comprehensive database integration, web search capabilities, and advanced analytics features.",
     image: "/images/projects/minrights-chatbot.png",
-    video: {
-      src: "/videos/minrights-chatbot.mp4",
-      poster: "/images/projects/minrights-chatbot.png",
-    },
     liveUrl: "https://www.mineralrights.ai/",
     githubUrl: "",
     techStack: [
@@ -227,10 +211,6 @@ export const projects: Project[] = [
     description:
       "A sophisticated multi-state regulatory data extraction and management system specifically designed for oil & gas spacing orders and operator information. The platform integrates directly with the MinRights PostgreSQL database to provide real-time regulatory data availability across multiple states with ultra-fast database operations achieving 7,799+ records/sec.",
     image: "/images/projects/minrights-regulatory-platform.png",
-    video: {
-      src: "/videos/minrights-regulatory-platform.mp4",
-      poster: "/images/projects/minrights-regulatory-platform.png",
-    },
     liveUrl: "",
     githubUrl: "",
     techStack: [
@@ -339,10 +319,6 @@ export const projects: Project[] = [
     description:
       "A sophisticated oil & gas data processing system designed for targeted investment analysis across multiple US states. This system processes large-scale energy data (~23,782 wells) to support investment decision-making in the oil & gas sector with nightly updates and zero-downtime deployments.",
     image: "/images/projects/minrights-pipeline.png",
-    video: {
-      src: "/videos/minrights-pipeline.mp4",
-      poster: "/images/projects/minrights-pipeline.png",
-    },
     liveUrl: "",
     githubUrl: "",
     techStack: [
@@ -446,10 +422,6 @@ export const projects: Project[] = [
     description:
       "A sophisticated Model Context Protocol (MCP) server designed for safe PostgreSQL database interactions with Supabase. Provides both read and controlled write access while maintaining security and performance safeguards specifically for PC rental management systems.",
     image: "/images/projects/supabase-postgres-pcrental-mcp.png",
-    video: {
-      src: "/videos/supabase-postgres-pcrental-mcp.mp4",
-      poster: "/images/projects/supabase-postgres-pcrental-mcp.png",
-    },
     liveUrl: "",
     githubUrl: "",
     techStack: [
@@ -553,10 +525,6 @@ export const projects: Project[] = [
     description:
       "A sophisticated, production-ready Model Context Protocol server specifically designed for oil & gas industry data management with advanced PostgreSQL integration on AWS RDS. Features comprehensive safety controls, geospatial operations, and industry-specific tools for petroleum data analysis.",
     image: "/images/projects/aws-postgres-mcp-server.png",
-    video: {
-      src: "/videos/aws-postgres-mcp-server.mp4",
-      poster: "/images/projects/aws-postgres-mcp-server.png",
-    },
     liveUrl: "",
     githubUrl: "",
     techStack: [
@@ -681,10 +649,6 @@ export const projects: Project[] = [
     description:
       "A comprehensive system for managing AI interactions through memory management, lessons learned tracking, and dual-mode operation (Plan/Agent). Ensures consistent, high-quality development while maintaining detailed project documentation and knowledge retention.",
     image: "/images/projects/ulracontextai.png",
-    video: {
-      src: "/videos/UltraContextAI.mp4",
-      poster: "/images/projects/ulracontextai.png",
-    },
     liveUrl: "https://github.com/T1nker-1220/UltraContextAI",
     githubUrl: "https://github.com/T1nker-1220/UltraContextAI",
     techStack: [
@@ -717,10 +681,6 @@ export const projects: Project[] = [
     description:
       "Enhanced knowledge graph memory server that lets Claude remember information about users across chats and learn from past errors through a lesson system. Built on the MCP protocol for AI memory management.",
     image: "/images/projects/memories-with-lessons-mcp-server.png",
-    video: {
-      src: "/videos/memories-lessons-mcp.mp4",
-      poster: "/images/projects/memories-with-lessons-mcp-server.png",
-    },
     liveUrl: "https://github.com/T1nker-1220/memories-with-lessons-mcp-server",
     githubUrl: "https://github.com/T1nker-1220/memories-with-lessons-mcp-server",
     techStack: [
@@ -754,10 +714,6 @@ export const projects: Project[] = [
     description:
       "A full-stack web application built with Next.js and Mantine v7. As a collaborative project, I focus primarily on frontend development and API integration while also contributing to Python backend tasks when needed. The application features a modern responsive interface with comprehensive data management capabilities.",
     image: "/images/projects/minrights-ai.png",
-    video: {
-      src: "/videos/minrights-ai.mp4",
-      poster: "/images/projects/minrights-ai.png",
-    },
     liveUrl: "https://www.mineralrights.ai/",
     githubUrl: "",
     techStack: [
@@ -889,10 +845,6 @@ export const projects: Project[] = [
     description:
       "A modern website for Excel Glass Inc. showcasing their products and services with a beautiful UI and responsive design.",
     image: "/images/projects/excel-glass.webp",
-    video: {
-      src: "/videos/excel_glass.mp4",
-      poster: "/images/projects/excel-glass.webp",
-    },
     liveUrl: "https://excel-glass.vercel.app",
     githubUrl: "https://github.com/T1nker-1220/ExcelGlass",
     techStack: [
@@ -933,10 +885,6 @@ export const projects: Project[] = [
     description:
       "High-performance web scraper for MyProtein products with JavaScript rendering capabilities. Extracts comprehensive product data including flavors, sizes, prices, nutritional information, and product variations using Scrapy and Selenium WebDriver for dynamic content handling.",
     image: "/images/projects/myprotein-scraper.png",
-    video: {
-      src: "/videos/myprotein-scraper.mp4",
-      poster: "/images/projects/myprotein-scraper.png",
-    },
     liveUrl: "",
     githubUrl: "https://github.com/T1nker-1220/myprotein_scraper",
     techStack: [
@@ -1039,10 +987,6 @@ export const projects: Project[] = [
     description:
       "A sophisticated Google My Business scraper engineered for maximum efficiency and data quality. Features 13 parallel Chrome browsers with anti-detection mechanisms, processing 25 cities across British Columbia with 57 business categories. Built for lead generation with intelligent website filtering and real-time data validation.",
     image: "/images/projects/gabe-gmb-scraper.png",
-    video: {
-      src: "/videos/gabe-gmb-scraper.mp4",
-      poster: "/images/projects/gabe-gmb-scraper.png",
-    },
     liveUrl: "",
     githubUrl: "",
     techStack: [
@@ -1155,10 +1099,6 @@ export const projects: Project[] = [
     description:
       "A beautiful wedding memories website with photo galleries and event information.",
     image: "/images/projects/wedding-memories.webp",
-    video: {
-      src: "/videos/wedding_memories.mp4",
-      poster: "/images/projects/wedding-memories.webp",
-    },
     liveUrl: "https://nicholsweddingmemories.vercel.app",
     githubUrl: "https://github.com/T1nker-1220/nichols-wed-blog",
     techStack: [
@@ -1200,10 +1140,6 @@ export const projects: Project[] = [
     description:
       "Modern portfolio website showcasing my projects and skills with advanced animations and interactions",
     image: "/images/projects/portfolio-marquez.webp",
-    video: {
-      src: "/videos/portfolio-marquez.mp4",
-      poster: "/images/projects/portfolio-marquez.webp",
-    },
     liveUrl: "https://portfolio-marquez.vercel.app",
     githubUrl: "https://github.com/T1nker-1220/portfolio_marquez",
     techStack: [
@@ -1244,10 +1180,6 @@ export const projects: Project[] = [
     description:
       "A modern restaurant management system with online ordering, inventory tracking, and customer relationship management.",
     image: "/images/projects/kda-product-showcase.vercel.app.jpeg",
-    video: {
-      src: "/videos/kusina_de_amadeo.mp4",
-      poster: "/images/projects/kda-product-showcase.vercel.app.jpeg",
-    },
     liveUrl: "https://kda-product-showcase.vercel.app/",
     githubUrl: "https://github.com/T1nker-1220/kda-product-showcase",
     techStack: [
@@ -1292,10 +1224,6 @@ export const projects: Project[] = [
     description:
       "A secure, automated, and user-friendly time-based PC rental system for internet cafes and gaming lounges. Features a web-based admin dashboard, real-time session management, robust client kiosk app, and comprehensive transaction and activity logging. Built for operational efficiency, security, and a seamless user experience.",
     image: "/images/projects/tinker-pc-rental.png",
-    video: {
-      src: "/videos/tinker-pc-rental.mp4",
-      poster: "/images/projects/tinker-pc-rental.png",
-    },
     liveUrl: "",
     githubUrl: "",
     techStack: [

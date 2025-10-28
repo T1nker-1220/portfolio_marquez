@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { 
   Github,
   Tag,
-  Play,
   Eye,
   Star,
   Sparkles,
@@ -22,7 +21,6 @@ interface SocialPostCardProps {
 }
 
 export default function SocialPostCard({ project }: SocialPostCardProps) {
-  const [showVideo, setShowVideo] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [techHoverIndex, setTechHoverIndex] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -214,41 +212,16 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
 
       {/* Media Section */}
       <div className="relative">
-        {showVideo && project.video ? (
-          <div className="aspect-[4/3] bg-black/60 backdrop-blur-sm">
-            <video
-              src={project.video.src}
-              poster={project.video.poster}
-              controls
-              className="w-full h-full object-cover"
-              autoPlay
-            />
-          </div>
-        ) : (
-          <div className="relative aspect-[4/3] group/media">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-            
-            {/* Video Play Overlay */}
-            {project.video && (
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setShowVideo(true)}
-                className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-sm opacity-0 group-hover/media:opacity-100 transition-opacity"
-              >
-                <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center">
-                  <Play className="w-6 h-6 text-white ml-1" />
-                </div>
-              </motion.button>
-            )}
-            
-            {/* Enhanced Featured Badge on Image */}
+        <div className="relative aspect-[4/3] group/media">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+          
+          {/* Enhanced Featured Badge on Image */}
             {project.featured && (
               <motion.div 
                 className="absolute top-3 left-3"
@@ -274,9 +247,8 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
               }`}>
                 {project.status}
               </div>
-            </div>
           </div>
-        )}
+        </div>
       </div>
 
       {/* Enhanced Content */}

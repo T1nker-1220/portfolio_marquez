@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { OptimizedVideo } from "@/components/ui/optimized-video";
 import { cn } from "@/lib/utils";
 import { Project } from "@/types";
 import { motion } from "framer-motion";
@@ -40,17 +39,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
         className="relative aspect-[16/9] w-full overflow-hidden rounded-t-[calc(var(--radius)-1px)] bg-muted"
         aria-hidden={true}
       >
-        {project.video ? (
-          <OptimizedVideo
-            src={project.video.src}
-            poster={project.video.poster}
-            alt={project.title}
-            className="h-full w-full object-cover"
-          />
-        ) : (
-          <>
-            {/* Loading Skeleton */}
-            {imageLoading && (
+        <>
+          {/* Loading Skeleton */}
+          {imageLoading && (
               <div
                 className="absolute inset-0 bg-muted animate-pulse"
                 role="progressbar"
@@ -75,8 +66,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               placeholder="blur"
               blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkMjU1LC0yMi4xODY6PTw2ODk8RUhGR01RU1pWVl86WX1phWRphf/2wBDARUXFx4aHh8gIB8gFC4kLhQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBf/AABEIACUAMgMBIgACEQEDEQH/xAAaAAACAwEBAAAAAAAAAAAAAAAABQMEBgIB/8QAHxAAAgMAAgMBAQAAAAAAAAAAAAECAxEEEiExQRNR/8QAGAEAAwEBAAAAAAAAAAAAAAAAAAIDAQT/xAAcEQACAgMBAQAAAAAAAAAAAAAAAQIRAxIhMUH/2gAMAwEAAhEDEQA/APqoAAAAAAAAAAAAAGGflqKz7K5Xt+GS5vKlN4vSMjJvWZ5cnkN+2L7Ll+GzqtT9MqXKx+yUbk/7KYzZXJjjJUh9GxP6TwsT9mWq5Ov2XKuT/WVU0yM8EX4aADD1cpr6XKeW19MlkZnLjlE1YAMxNgAAAAYTlwx+DPcni/1ozcFJeGNuRxnB+jz5RcXTNi3FmSVLi/Btwp9l5NrxuR2Ro6+Qn7OiE4zXGSUXE+jFNeS+mxr2Z6rkY/Zdr5K/pfHl/TnyYP0ewMtXyWvpcq5P9JLMpLHKPjPQAVJgAAAHE4JrGcgAR8jg791YzP8AI4c6n7PogpcngxtW4ysWX4YpOP6jC4nzP5tfC3XyP6bW7gQmvgts4EX9J/pJeobY0zFV8n+lyvk/1m8t4EX9K9vAi/pRZ4v1CvBJeoxYGVr5TXstwkmvB6KNNWZ4AAAAAAAAAAAAAAAAAP/Z"
             />
-          </>
-        )}
+        </>
         <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/50 to-transparent" />
 
         {/* Featured Badge */}
@@ -196,23 +186,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <div className="space-y-4 sm:space-y-8">
             {/* Project Media */}
             <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-muted">
-              {project.video ? (
-                <OptimizedVideo
-                  src={project.video.src}
-                  poster={project.video.poster}
-                  alt={project.title}
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <Image
-                  src={project.image}
-                  alt={`${project.title} - Project Preview`}
-                  width={1920}
-                  height={1080}
-                  className="h-full w-full object-cover"
-                  quality={90}
-                />
-              )}
+              <Image
+                src={project.image}
+                alt={`${project.title} - Project Preview`}
+                width={1920}
+                height={1080}
+                className="h-full w-full object-cover"
+                quality={90}
+              />
             </div>
 
             {/* Project Details */}
