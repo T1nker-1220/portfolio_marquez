@@ -2,16 +2,19 @@
 
 import { Project } from "@/types";
 import { motion } from "framer-motion";
-import { 
+import {
   Github,
   Tag,
   Eye,
-  Star
+  Star,
+  X,
+  ExternalLink
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useMemo, useEffect } from "react";
 import { usePerformantAnimation, useReducedMotion } from "@/hooks/usePerformantAnimation";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 
 interface SocialPostCardProps {
@@ -23,6 +26,7 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
   const [techHoverIndex, setTechHoverIndex] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isTouch, setIsTouch] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Performance-optimized animations
   const {
@@ -133,9 +137,9 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
         </div>
       )}
       {/* Enhanced Card Header */}
-      <div className="relative p-3 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <h2 className="text-base font-semibold text-foreground drop-shadow-lg">
+      <div className="relative p-1.5 flex items-center justify-between">
+        <div className="flex items-center gap-1.5">
+          <h2 className="text-xs font-semibold text-foreground drop-shadow-lg line-clamp-1">
             {project.title}
           </h2>
         </div>
@@ -143,7 +147,7 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
         {/* Featured badge in header */}
         {project.featured && (
           <motion.div
-            className="px-3 py-1 bg-gradient-to-r from-emerald-400 to-teal-500 text-white text-xs font-medium rounded-full flex items-center gap-1 shadow-lg"
+            className="px-1.5 py-0.5 bg-gradient-to-r from-emerald-400 to-teal-500 text-white text-xs font-medium rounded-full flex items-center gap-0.5 shadow-lg flex-shrink-0"
             whileHover={{ scale: 1.05 }}
             animate={{
               boxShadow: [
@@ -154,30 +158,29 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
             }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            <Star className="w-3 h-3" />
-            Featured
+            <Star className="w-2.5 h-2.5" />
           </motion.div>
         )}
       </div>
 
       {/* Year, Category & Description */}
-      <div className="px-4 pb-3">
-        <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
-          <span>{project.completedAt}</span>
+      <div className="px-1.5 pb-1.5">
+        <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
+          <span className="text-xs">{project.completedAt}</span>
           <span>•</span>
-          <span className="flex items-center gap-1">
-            <Tag className="w-3 h-3" />
+          <span className="flex items-center gap-1 text-xs">
+            <Tag className="w-2.5 h-2.5" />
             {project.category}
           </span>
         </div>
-        <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed drop-shadow-md">
+        <p className="text-xs text-muted-foreground line-clamp-2 leading-snug drop-shadow-md">
           {project.description}
         </p>
       </div>
 
       {/* Media Section */}
       <div className="relative">
-        <div className="relative aspect-[4/3] group/media">
+        <div className="relative aspect-[2/1] group/media">
           <Image
             src={project.image}
             alt={project.title}
@@ -193,62 +196,30 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
       </div>
 
       {/* Enhanced Content */}
-      <div className="p-3 relative">
+      <div className="p-1.5 relative">
         {/* Interactive Organized Tech Stack */}
-        <div className="mb-4">
-          <h4 className="text-xs font-medium text-muted-foreground mb-2 flex items-center gap-1 drop-shadow-md">
-            <Tag className="w-3 h-3" />
+        <div className="mb-1.5">
+          <h4 className="text-xs font-medium text-muted-foreground mb-1 flex items-center gap-0.5 drop-shadow-md">
+            <Tag className="w-2.5 h-2.5" />
             Tech Stack
           </h4>
-          
+
           {/* Frontend Stack */}
           {organizedTechStack.frontend.length > 0 && (
-            <div className="mb-2">
-              <span className="text-xs text-muted-foreground/80 mb-1 block">Frontend</span>
-              <div className="flex flex-wrap gap-1">
-                {organizedTechStack.frontend.slice(0, 4).map((tech, index) => (
-                  <motion.span
+            <div className="mb-1">
+              <div className="flex flex-wrap gap-0.5">
+                {organizedTechStack.frontend.slice(0, 2).map((tech, index) => (
+                  <span
                     key={`frontend-${tech.name}`}
-                    className={`relative px-2 py-1 text-xs rounded-md transition-all duration-200 ${
-                      isMobile ? 'active:scale-95' : 'cursor-pointer'
-                    }`}
-                    style={{ 
+                    className="px-1.5 py-0.5 text-xs rounded"
+                    style={{
                       backgroundColor: `${tech.color}15`,
                       color: tech.color,
                       border: `1px solid ${tech.color}30`
                     }}
-                    whileHover={!isMobile ? { 
-                      scale: 1.05,
-                      backgroundColor: `${tech.color}25`,
-                      y: -1
-                    } : {}}
-                    whileTap={{ scale: 0.95 }}
-                    onHoverStart={() => !isMobile && setTechHoverIndex(index)}
-                    onHoverEnd={() => !isMobile && setTechHoverIndex(null)}
-                    onTouchStart={() => isMobile && setTechHoverIndex(index)}
-                    onTouchEnd={() => isMobile && setTimeout(() => setTechHoverIndex(null), 1000)}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
                   >
                     {tech.name}
-                    {techHoverIndex === index && (
-                      <motion.div
-                        className={`absolute left-1/2 transform -translate-x-1/2 px-2 py-1 bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs rounded whitespace-nowrap z-10 ${
-                          isMobile ? '-bottom-8' : '-top-8'
-                        }`}
-                        initial={{ opacity: 0, y: isMobile ? -5 : 5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: isMobile ? -5 : 5 }}
-                      >
-                        {tech.name}
-                        {/* Small arrow pointing to the tech badge */}
-                        <div className={`absolute left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white/20 backdrop-blur-md border border-white/30 rotate-45 ${
-                          isMobile ? '-top-1' : '-bottom-1'
-                        }`} />
-                      </motion.div>
-                    )}
-                  </motion.span>
+                  </span>
                 ))}
               </div>
             </div>
@@ -256,72 +227,48 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
           
           {/* Backend Stack */}
           {organizedTechStack.backend.length > 0 && (
-            <div className="mb-2">
-              <span className="text-xs text-muted-foreground/80 mb-1 block">Backend</span>
-              <div className="flex flex-wrap gap-1">
-                {organizedTechStack.backend.slice(0, 3).map((tech, index) => (
-                  <motion.span
+            <div className="mb-1">
+              <div className="flex flex-wrap gap-0.5">
+                {organizedTechStack.backend.slice(0, 2).map((tech, index) => (
+                  <span
                     key={`backend-${tech.name}`}
-                    className={`px-2 py-1 text-xs rounded-md transition-all duration-200 ${
-                      isMobile ? 'active:scale-95' : 'cursor-pointer'
-                    }`}
-                    style={{ 
+                    className="px-1.5 py-0.5 text-xs rounded"
+                    style={{
                       backgroundColor: `${tech.color}15`,
                       color: tech.color,
                       border: `1px solid ${tech.color}30`
                     }}
-                    whileHover={!isMobile ? { 
-                      scale: 1.05,
-                      backgroundColor: `${tech.color}25`,
-                      y: -1
-                    } : {}}
-                    whileTap={{ scale: 0.95 }}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: (index + 4) * 0.05 }}
                   >
                     {tech.name}
-                  </motion.span>
+                  </span>
                 ))}
               </div>
             </div>
           )}
-          
+
           {/* Tools & Others */}
           {organizedTechStack.tools.length > 0 && (
             <div>
-              <div className="flex flex-wrap gap-1">
-                {organizedTechStack.tools.slice(0, 3).map((tech, index) => (
-                  <motion.span
+              <div className="flex flex-wrap gap-0.5">
+                {organizedTechStack.tools.slice(0, 2).map((tech, index) => (
+                  <span
                     key={`tools-${tech.name}`}
-                    className={`px-2 py-1 text-xs rounded-md transition-all duration-200 ${
-                      isMobile ? 'active:scale-95' : 'cursor-pointer'
-                    }`}
-                    style={{ 
+                    className="px-1.5 py-0.5 text-xs rounded"
+                    style={{
                       backgroundColor: `${tech.color}15`,
                       color: tech.color,
                       border: `1px solid ${tech.color}30`
                     }}
-                    whileHover={!isMobile ? { 
-                      scale: 1.05,
-                      backgroundColor: `${tech.color}25`,
-                      y: -1
-                    } : {}}
-                    whileTap={{ scale: 0.95 }}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: (index + 7) * 0.05 }}
                   >
                     {tech.name}
-                  </motion.span>
+                  </span>
                 ))}
-                {project.techStack.length > 10 && (
-                  <motion.span 
-                    className="px-2 py-1 text-xs bg-white/15 backdrop-blur-sm border border-white/20 text-muted-foreground rounded-md cursor-pointer"
-                    whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.25)' }}
+                {project.techStack.length > 6 && (
+                  <span
+                    className="px-1.5 py-0.5 text-xs bg-white/15 backdrop-blur-sm border border-white/20 text-muted-foreground rounded"
                   >
-                    +{project.techStack.length - 10} more
-                  </motion.span>
+                    +{project.techStack.length - 6}
+                  </span>
                 )}
               </div>
             </div>
@@ -329,47 +276,162 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
         </div>
 
         {/* Enhanced Action Buttons */}
-        <div className="flex gap-2">
+        <div className="flex gap-1">
           {project.liveUrl && (
             <Link href={project.liveUrl} target="_blank" className="flex-1">
               <motion.button
-                whileHover={{ 
-                  scale: 1.02,
-                  boxShadow: project.featured 
-                    ? '0 8px 25px rgba(16, 185, 129, 0.3)'
-                    : '0 8px 25px rgba(16, 185, 129, 0.2)'
-                }}
+                whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`w-full flex items-center justify-center gap-2 py-2.5 px-4 text-white text-sm font-medium rounded-lg transition-all duration-200 backdrop-blur-md border ${
-                  project.featured 
-                    ? 'bg-emerald-500/30 border-emerald-400/40 shadow-lg shadow-emerald-500/25'
-                    : 'bg-emerald-500/25 border-emerald-400/30 shadow-md shadow-emerald-500/20'
+                className={`w-full flex items-center justify-center gap-1 py-1.5 px-2 text-white text-xs font-medium rounded transition-all duration-200 backdrop-blur-md border ${
+                  project.featured
+                    ? 'bg-emerald-500/30 border-emerald-400/40'
+                    : 'bg-emerald-500/25 border-emerald-400/30'
                 }`}
               >
-                <Eye className="w-4 h-4" />
-                View Live
+                <Eye className="w-3 h-3" />
+                <span className="hidden sm:inline">Live</span>
               </motion.button>
             </Link>
           )}
-          
+
           {project.githubUrl && (
             <Link href={project.githubUrl || "#"} target="_blank" className="flex-1">
               <motion.button
-                whileHover={{ 
-                  scale: 1.02,
-                  backgroundColor: 'rgba(255, 255, 255, 0.25)',
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
-                }}
+                whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-white/15 backdrop-blur-sm text-foreground text-sm font-medium rounded-lg transition-all duration-200 border border-white/20 hover:border-white/30"
+                className="w-full flex items-center justify-center gap-1 py-1.5 px-2 bg-white/15 backdrop-blur-sm text-foreground text-xs font-medium rounded transition-all duration-200 border border-white/20"
               >
-                <Github className="w-4 h-4" />
-                Code
+                <Github className="w-3 h-3" />
+                <span className="hidden sm:inline">Code</span>
               </motion.button>
             </Link>
           )}
+
+          {/* View Details Button */}
+          <motion.button
+            onClick={() => setIsModalOpen(true)}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="flex-1 flex items-center justify-center gap-1 py-1.5 px-2 bg-white/10 backdrop-blur-sm text-foreground text-xs font-medium rounded transition-all duration-200 border border-white/20"
+          >
+            <ExternalLink className="w-3 h-3" />
+            <span className="hidden sm:inline">More</span>
+          </motion.button>
         </div>
       </div>
+
+      {/* Project Details Modal */}
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="max-w-3xl w-[95vw] max-h-[85vh] overflow-y-auto p-4 sm:p-6 gap-4 sm:gap-6 custom-scrollbar bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-2xl shadow-black/25">
+          <DialogHeader className="space-y-2 sm:space-y-3">
+            <div className="flex items-center justify-between">
+              <DialogTitle className="text-xl sm:text-2xl font-bold pr-8 text-foreground drop-shadow-lg">
+                {project.title}
+              </DialogTitle>
+              {project.featured && (
+                <div className="px-3 py-1 bg-gradient-to-r from-emerald-400 to-teal-500 text-white text-xs font-medium rounded-full flex items-center gap-1 shadow-lg">
+                  <Star className="w-3 h-3" />
+                  Featured
+                </div>
+              )}
+            </div>
+            <div className="flex items-center gap-2 text-xs text-muted-foreground drop-shadow-md">
+              <span>{project.completedAt}</span>
+              <span>•</span>
+              <span className="flex items-center gap-1">
+                <Tag className="w-3 h-3" />
+                {project.category}
+              </span>
+            </div>
+            <DialogDescription className="text-sm sm:text-base text-muted-foreground/90 drop-shadow-md">
+              {project.description}
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-4 sm:space-y-8">
+            {/* Project Image */}
+            <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
+              <Image
+                src={project.image}
+                alt={`${project.title} - Project Preview`}
+                width={1920}
+                height={1080}
+                className="h-full w-full object-cover"
+                quality={90}
+                onError={(e) => {
+                  e.currentTarget.src = '/images/logo.png';
+                  e.currentTarget.className = "h-full w-full object-contain p-8";
+                }}
+              />
+            </div>
+
+            {/* Features Section */}
+            {project.features && project.features.length > 0 && (
+              <div className="space-y-3">
+                <h3 className="text-base sm:text-lg font-semibold text-foreground drop-shadow-lg">Key Features</h3>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm sm:text-base text-muted-foreground/90">
+                  {project.features.map((feature, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 mt-[0.4rem] rounded-full bg-emerald-500 flex-shrink-0 shadow-sm shadow-emerald-500/50" />
+                      <span className="drop-shadow-md">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Complete Tech Stack */}
+            <div className="space-y-3">
+              <h3 className="text-base sm:text-lg font-semibold text-foreground drop-shadow-lg">Complete Tech Stack</h3>
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                {project.techStack.map((tech) => (
+                  <motion.span
+                    key={tech.name}
+                    whileHover={{ scale: 1.05 }}
+                    className="px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm rounded-full transition-all duration-300 border backdrop-blur-sm"
+                    style={{
+                      backgroundColor: `${tech.color}15`,
+                      color: tech.color,
+                      borderColor: `${tech.color}30`,
+                      textShadow: "0 1px 2px rgba(0,0,0,0.1)"
+                    }}
+                  >
+                    {tech.name}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
+
+            {/* Project Links */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-4 pt-2">
+              {project.liveUrl && (
+                <Link href={project.liveUrl} target="_blank" className="flex-1">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-gradient-to-r from-emerald-500/30 to-teal-500/30 hover:from-emerald-500/40 hover:to-teal-500/40 text-white text-sm font-medium rounded-lg border border-emerald-400/30 shadow-lg shadow-emerald-500/20 backdrop-blur-md"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    Visit Live Demo
+                  </motion.button>
+                </Link>
+              )}
+              {project.githubUrl && (
+                <Link href={project.githubUrl} target="_blank" className="flex-1">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-white/10 hover:bg-white/15 text-foreground text-sm font-medium rounded-lg border border-white/20 hover:border-white/30 shadow-md backdrop-blur-sm"
+                  >
+                    <Github className="w-4 h-4" />
+                    View Source Code
+                  </motion.button>
+                </Link>
+              )}
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </motion.article>
   );
 }

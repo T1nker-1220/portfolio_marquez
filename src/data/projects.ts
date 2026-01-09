@@ -76,7 +76,7 @@ export const projects: Project[] = [
       "A comprehensive full-stack restaurant ordering system with customer-facing menus, kiosk mode, real-time order tracking, and admin dashboard. Features three interfaces: customer menu, kiosk ordering, and admin portal for managing products, orders, and revenue analytics with receipt printing capabilities.",
     image: "/images/projects/kda-ordering-system.png",
     liveUrl: "",
-    githubUrl: "",
+    githubUrl: null,
     techStack: [
       { name: "Next.js App Router", icon: "nextjs", color: "#E5E7EB" },
       { name: "TypeScript", icon: "typescript", color: "#3178C6" },
@@ -120,7 +120,7 @@ export const projects: Project[] = [
       "A sophisticated Python package providing AI-powered conversational interfaces for oil & gas data analysis. Built for the MinRights platform, it implements a two-tier bot architecture (Basic and Premium) with comprehensive database integration, web search capabilities, and advanced analytics features.",
     image: "/images/projects/minrights-chatbot.png",
     liveUrl: "https://www.mineralrights.ai/",
-    githubUrl: "",
+    githubUrl: null,
     techStack: [
       // Programming Languages & Core Runtime
       { name: "Python >=3.8", icon: "python", color: "#3776AB" },
@@ -212,7 +212,7 @@ export const projects: Project[] = [
       "A sophisticated multi-state regulatory data extraction and management system specifically designed for oil & gas spacing orders and operator information. The platform integrates directly with the MinRights PostgreSQL database to provide real-time regulatory data availability across multiple states with ultra-fast database operations achieving 7,799+ records/sec.",
     image: "/images/projects/minrights-regulatory-platform.png",
     liveUrl: "",
-    githubUrl: "",
+    githubUrl: null,
     techStack: [
       // Core Infrastructure
       { name: "Python 3.11+", icon: "python", color: "#3776AB" },
@@ -320,7 +320,7 @@ export const projects: Project[] = [
       "A sophisticated oil & gas data processing system designed for targeted investment analysis across multiple US states. This system processes large-scale energy data (~23,782 wells) to support investment decision-making in the oil & gas sector with nightly updates and zero-downtime deployments.",
     image: "/images/projects/minrights-pipeline.png",
     liveUrl: "",
-    githubUrl: "",
+    githubUrl: null,
     techStack: [
       // Core Programming & Runtime
       { name: "Python 3.9+", icon: "python", color: "#3776AB" },
@@ -423,7 +423,7 @@ export const projects: Project[] = [
       "A sophisticated Model Context Protocol (MCP) server designed for safe PostgreSQL database interactions with Supabase. Provides both read and controlled write access while maintaining security and performance safeguards specifically for PC rental management systems.",
     image: "/images/projects/supabase-postgres-pcrental-mcp.png",
     liveUrl: "",
-    githubUrl: "",
+    githubUrl: null,
     techStack: [
       // Runtime & Language
       { name: "Node.js", icon: "nodejs", color: "#339933" },
@@ -526,7 +526,7 @@ export const projects: Project[] = [
       "A sophisticated, production-ready Model Context Protocol server specifically designed for oil & gas industry data management with advanced PostgreSQL integration on AWS RDS. Features comprehensive safety controls, geospatial operations, and industry-specific tools for petroleum data analysis.",
     image: "/images/projects/aws-postgres-mcp-server.png",
     liveUrl: "",
-    githubUrl: "",
+    githubUrl: null,
     techStack: [
       // Runtime & Language
       { name: "Node.js", icon: "nodejs", color: "#339933" },
@@ -650,7 +650,7 @@ export const projects: Project[] = [
       "A comprehensive system for managing AI interactions through memory management, lessons learned tracking, and dual-mode operation (Plan/Agent). Ensures consistent, high-quality development while maintaining detailed project documentation and knowledge retention.",
     image: "/images/projects/ulracontextai.png",
     liveUrl: "https://github.com/T1nker-1220/UltraContextAI",
-    githubUrl: "https://github.com/T1nker-1220/UltraContextAI",
+    githubUrl: null,
     techStack: [
       { name: "Cursor AI", icon: "cursor", color: "#E5E7EB" },
       { name: "JavaScript", icon: "javascript", color: "#F7DF1E" },
@@ -682,7 +682,7 @@ export const projects: Project[] = [
       "Enhanced knowledge graph memory server that lets Claude remember information about users across chats and learn from past errors through a lesson system. Built on the MCP protocol for AI memory management.",
     image: "/images/projects/memories-with-lessons-mcp-server.png",
     liveUrl: "https://github.com/T1nker-1220/memories-with-lessons-mcp-server",
-    githubUrl: "https://github.com/T1nker-1220/memories-with-lessons-mcp-server",
+    githubUrl: null,
     techStack: [
       { name: "JavaScript", icon: "javascript", color: "#F7DF1E" },
       { name: "TypeScript", icon: "typescript", color: "#3178C6" },
@@ -715,7 +715,7 @@ export const projects: Project[] = [
       "A full-stack web application built with Next.js and Mantine v7. As a collaborative project, I focus primarily on frontend development and API integration while also contributing to Python backend tasks when needed. The application features a modern responsive interface with comprehensive data management capabilities.",
     image: "/images/projects/minrights-ai.png",
     liveUrl: "https://www.mineralrights.ai/",
-    githubUrl: "",
+    githubUrl: null,
     techStack: [
       // Based on the comprehensive deep dive analysis from PM1, PM2, and the architecture planner, here is
       // the complete inventory of ALL tech stacks in your MinRights codebase:
@@ -846,7 +846,7 @@ export const projects: Project[] = [
       "A modern website for Excel Glass Inc. showcasing their products and services with a beautiful UI and responsive design.",
     image: "/images/projects/excel-glass.webp",
     liveUrl: "https://excel-glass.vercel.app",
-    githubUrl: "https://github.com/T1nker-1220/ExcelGlass",
+    githubUrl: null,
     techStack: [
       { name: "Next.js 14", icon: "nextjs", color: "#E5E7EB" },
       { name: "React 19", icon: "react", color: "#61DAFB" },
@@ -886,7 +886,7 @@ export const projects: Project[] = [
       "High-performance web scraper for MyProtein products with JavaScript rendering capabilities. Extracts comprehensive product data including flavors, sizes, prices, nutritional information, and product variations using Scrapy and Selenium WebDriver for dynamic content handling.",
     image: "/images/projects/myprotein-scraper.png",
     liveUrl: "",
-    githubUrl: "https://github.com/T1nker-1220/myprotein_scraper",
+    githubUrl: null,
     techStack: [
       // Core Framework & Runtime
       { name: "Python 3.11+", icon: "python", color: "#3776AB" },
@@ -988,7 +988,7 @@ export const projects: Project[] = [
       "A sophisticated Google My Business scraper engineered for maximum efficiency and data quality. Features 13 parallel Chrome browsers with anti-detection mechanisms, processing 25 cities across British Columbia with 57 business categories. Built for lead generation with intelligent website filtering and real-time data validation.",
     image: "/images/projects/gabe-gmb-scraper.png",
     liveUrl: "",
-    githubUrl: "",
+    githubUrl: null,
     techStack: [
       // Core Framework & Runtime
       { name: "Python 3.11+", icon: "python", color: "#3776AB" },
@@ -1100,7 +1100,7 @@ export const projects: Project[] = [
       "A beautiful wedding memories website with photo galleries and event information.",
     image: "/images/projects/wedding-memories.webp",
     liveUrl: "https://nicholsweddingmemories.vercel.app",
-    githubUrl: "https://github.com/T1nker-1220/nichols-wed-blog",
+    githubUrl: null,
     techStack: [
       { name: "Next.js 13.5", icon: "nextjs", color: "#E5E7EB" },
       { name: "React 19", icon: "react", color: "#61DAFB" },
@@ -1133,47 +1133,6 @@ export const projects: Project[] = [
     status: "Completed",
     completedAt: "2024",
   },
-
-  {
-    id: "portfolio-marquez",
-    title: "Portfolio Website",
-    description:
-      "Modern portfolio website showcasing my projects and skills with advanced animations and interactions",
-    image: "/images/projects/portfolio-marquez.webp",
-    liveUrl: "https://portfolio-marquez.vercel.app",
-    githubUrl: "https://github.com/T1nker-1220/portfolio_marquez",
-    techStack: [
-      { name: "Next.js 15", icon: "nextjs", color: "#E5E7EB" },
-      { name: "React 19", icon: "react", color: "#61DAFB" },
-      { name: "TypeScript 5", icon: "typescript", color: "#3178C6" },
-      { name: "TailwindCSS", icon: "tailwind", color: "#06B6D4" },
-      { name: "Shadcn UI", icon: "shadcn", color: "#E5E7EB" },
-      { name: "Framer Motion", icon: "framer", color: "#0055FF" },
-      { name: "GSAP", icon: "gsap", color: "#88CE02" },
-      { name: "Zustand", icon: "zustand", color: "#FF4154" },
-      { name: "React Query", icon: "query", color: "#FF4154" },
-      { name: "EmailJS", icon: "email", color: "#00A95C" },
-      { name: "Sentry", icon: "sentry", color: "#7B61FF" },
-      { name: "Vercel", icon: "vercel", color: "#E5E7EB" },
-    ],
-    features: [
-      "Modern UI with glass morphism",
-      "Advanced animations with Framer Motion & GSAP",
-      "Dark mode with next-themes",
-      "Form handling with React Hook Form & Zod",
-      "State management with Zustand",
-      "Error tracking with Sentry",
-      "Performance optimized",
-      "Responsive design",
-      "SEO optimized",
-      "Type-safe development",
-      "Email integration",
-      "Analytics integration",
-    ],
-    category: "Websites",
-    status: "Completed",
-    completedAt: "2024",
-  },
   {
     id: "kusina-de-amadeo",
     title: "Kusina de Amadeo",
@@ -1181,7 +1140,7 @@ export const projects: Project[] = [
       "A modern restaurant management system with online ordering, inventory tracking, and customer relationship management.",
     image: "/images/projects/kda-product-showcase.vercel.app.jpeg",
     liveUrl: "https://kda-product-showcase.vercel.app/",
-    githubUrl: "https://github.com/T1nker-1220/kda-product-showcase",
+    githubUrl: null,
     techStack: [
       { name: "Next.js 14", icon: "nextjs", color: "#E5E7EB" },
       { name: "React 19", icon: "react", color: "#61DAFB" },
@@ -1225,7 +1184,7 @@ export const projects: Project[] = [
       "A secure, automated, and user-friendly time-based PC rental system for internet cafes and gaming lounges. Features a web-based admin dashboard, real-time session management, robust client kiosk app, and comprehensive transaction and activity logging. Built for operational efficiency, security, and a seamless user experience.",
     image: "/images/projects/tinker-pc-rental.png",
     liveUrl: "",
-    githubUrl: "",
+    githubUrl: null,
     techStack: [
       // Frontend Framework
       { name: "Next.js 15.3.2", icon: "nextjs", color: "#E5E7EB" },
