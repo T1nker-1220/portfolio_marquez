@@ -122,21 +122,21 @@ export default function VerticalScrollSkills() {
         skillsList={skillsByCategory.frontend}
         color="emerald"
         direction="up"
-        speed={25}
+        speed={5}
       />
       <VerticalScrollColumn 
         title="⚙️ Backend"
         skillsList={skillsByCategory.backend}
         color="teal"
         direction="up"
-        speed={25}
+        speed={5}
       />
       <VerticalScrollColumn 
         title="🛠️ Tools"
         skillsList={skillsByCategory.tools}
         color="green"
         direction="up"
-        speed={25}
+        speed={5}
       />
     </div>
   );
