@@ -85,39 +85,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </div>
         )}
 
-        {/* Status Badges */}
-        <div
-          className="absolute bottom-0 left-0 right-0 p-4 flex flex-wrap items-center justify-end gap-2 bg-gradient-to-t from-background/90 to-transparent pt-16"
-          aria-label="Project status"
-        >
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className={cn(
-              "px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm rounded-full flex items-center gap-1.5 backdrop-blur-md shadow-sm border font-medium",
-              project.status === "Completed"
-                ? "bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 border-emerald-500/30"
-                : project.status === "In Progress"
-                  ? "bg-amber-500/20 text-amber-800 dark:text-amber-300 border-amber-500/30"
-                  : "bg-blue-500/20 text-blue-800 dark:text-blue-300 border-blue-500/30"
-            )}
-            role="status"
-          >
-            <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4" aria-hidden="true" />
-            <span className="line-clamp-1">{project.status}</span>
-          </motion.span>
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm rounded-full bg-slate-500/20 text-slate-800 dark:text-slate-300 flex items-center gap-1.5 backdrop-blur-md shadow-sm border border-slate-500/30 font-medium"
-            role="status"
-          >
-            <Calendar className="w-3 h-3 sm:w-4 sm:h-4" aria-hidden="true" />
-            <span className="line-clamp-1">{project.completedAt}</span>
-          </motion.span>
-        </div>
+
       </div>
 
       <div className="flex-1 flex flex-col p-6 space-y-6">

@@ -6,9 +6,7 @@ import {
   Github,
   Tag,
   Eye,
-  Star,
-  Sparkles,
-  Zap
+  Star
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -146,22 +144,9 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
             whileHover={{ scale: 1.1, rotate: 5 }}
             transition={{ type: "spring", stiffness: 400 }}
           >
-            {project.featured ? <Sparkles className="w-5 h-5" /> : 'N'}
+            N
           </motion.div>
           <div>
-            <div className="flex items-center gap-2">
-              <h3 className="text-sm font-semibold text-foreground">
-                Nathaniel Marquez
-              </h3>
-              {project.featured && (
-                <motion.div
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                >
-                  <Zap className="w-3 h-3 text-emerald-500" />
-                </motion.div>
-              )}
-            </div>
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
               <span>{project.completedAt}</span>
               <span>•</span>
@@ -239,19 +224,6 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
                 </div>
               </motion.div>
             )}
-            
-            {/* Status Badge */}
-            <div className="absolute top-3 right-3">
-              <div className={`px-2 py-1 text-xs font-medium rounded-full backdrop-blur-sm ${
-                project.status === "Completed" 
-                  ? "bg-emerald-500/20 text-emerald-600 border border-emerald-500/30"
-                  : project.status === "In Progress"
-                  ? "bg-white/20 text-foreground border border-white/30"
-                  : "bg-white/15 text-muted-foreground border border-white/20"
-              }`}>
-                {project.status}
-              </div>
-          </div>
         </div>
       </div>
 
@@ -416,7 +388,7 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
           )}
           
           {project.githubUrl && (
-            <Link href={project.githubUrl} target="_blank" className="flex-1">
+            <Link href={project.githubUrl || "#"} target="_blank" className="flex-1">
               <motion.button
                 whileHover={{ 
                   scale: 1.02,

@@ -16,10 +16,7 @@ const categories = [
   "Scraping",
 ] as const;
 
-const statuses = ["All", "Completed", "In Progress", "Coming Soon"] as const;
-
 type Category = (typeof categories)[number];
-type Status = (typeof statuses)[number];
 
 
 const container = {
@@ -48,7 +45,6 @@ const listContainer = {
 
 export function ProjectShowcase() {
   const [selectedCategory, setSelectedCategory] = useState<Category>("All");
-  const [selectedStatus, setSelectedStatus] = useState<Status>("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   const searchTimeout = useRef<NodeJS.Timeout | undefined>(undefined);
@@ -70,8 +66,6 @@ export function ProjectShowcase() {
     .filter((project) => {
       const matchesCategory =
         selectedCategory === "All" || project.category === selectedCategory;
-      const matchesStatus =
-        selectedStatus === "All" || project.status === selectedStatus;
       const matchesSearch =
         project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -81,7 +75,7 @@ export function ProjectShowcase() {
         project.techStack.some((tech) =>
           tech.name.toLowerCase().includes(searchQuery.toLowerCase())
         );
-      return matchesCategory && matchesStatus && matchesSearch;
+      return matchesCategory && matchesSearch;
     })
     .sort((a, b) => {
       // Sort featured projects first by rank, then non-featured projects
@@ -158,7 +152,7 @@ export function ProjectShowcase() {
           animate="show"
           className="relative sticky top-40 z-20 bg-background/95 backdrop-blur-md p-6 rounded-xl shadow-xl border border-border/50 before:absolute before:inset-0 before:p-[1px] before:bg-gradient-to-r before:from-emerald-500/50 before:via-teal-500/50 before:to-teal-600/50 before:rounded-xl before:-z-10 before:animate-gradient-xy"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 gap-8">
             {/* Categories */}
             <div className="space-y-4" role="group" aria-label="Category filters">
               <h3 className="text-base font-semibold text-foreground flex items-center gap-2">
@@ -189,42 +183,6 @@ export function ProjectShowcase() {
                       aria-controls="project-grid"
                     >
                       {category}
-                    </Button>
-                  </motion.div>
-                ))}
-              </nav>
-            </div>
-
-            {/* Status */}
-            <div className="space-y-4" role="group" aria-label="Status filters">
-              <h3 className="text-base font-semibold text-foreground flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"></div>
-                Status
-              </h3>
-              <nav className="flex flex-wrap gap-2" role="tablist" aria-label="Project status">
-                {statuses.map((status, index) => (
-                  <motion.div
-                    key={status}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.05 + 0.1 }}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Button
-                      variant={selectedStatus === status ? "default" : "outline"}
-                      size="sm"
-                      onClick={() => setSelectedStatus(status)}
-                      className={`transition-all duration-200 text-sm font-medium px-4 py-2 ${
-                        selectedStatus === status
-                          ? "bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg border-0"
-                          : "hover:border-blue-500/50 hover:bg-blue-50 dark:hover:bg-blue-500/10 border-border/50 hover:shadow-md"
-                      }`}
-                      role="tab"
-                      aria-selected={selectedStatus === status}
-                      aria-controls="project-grid"
-                    >
-                      {status}
                     </Button>
                   </motion.div>
                 ))}
