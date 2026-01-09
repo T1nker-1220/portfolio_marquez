@@ -103,9 +103,9 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
       onHoverEnd={handleHoverEnd}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className={`relative rounded-2xl overflow-hidden backdrop-blur-md border group transition-all duration-300 gpu-accelerated glass-container ${
-        project.featured 
-          ? 'bg-white/15 dark:bg-white/10 border-emerald-200/30 dark:border-emerald-400/20 shadow-2xl shadow-emerald-500/20 shimmer' 
+      className={`relative h-[420px] flex flex-col rounded-2xl overflow-hidden backdrop-blur-md border group transition-all duration-300 gpu-accelerated glass-container ${
+        project.featured
+          ? 'bg-white/15 dark:bg-white/10 border-emerald-200/30 dark:border-emerald-400/20 shadow-2xl shadow-emerald-500/20 shimmer'
           : 'bg-white/10 dark:bg-white/5 border-white/20 dark:border-white/10 shadow-2xl shadow-black/25'
       } ${
         isMobile ? 'active:scale-95' : ''
@@ -164,7 +164,7 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
       </div>
 
       {/* Year, Category & Description */}
-      <div className="px-1.5 pb-1.5">
+      <div className="px-1.5 pb-1.5 flex-shrink-0">
         <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
           <span className="text-xs">{project.completedAt}</span>
           <span>•</span>
@@ -179,7 +179,7 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
       </div>
 
       {/* Media Section */}
-      <div className="relative">
+      <div className="relative flex-shrink-0">
         <div className="relative aspect-[2/1] group/media">
           <Image
             src={project.image}
@@ -196,87 +196,39 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
       </div>
 
       {/* Enhanced Content */}
-      <div className="p-1.5 relative">
-        {/* Interactive Organized Tech Stack */}
+      <div className="p-1.5 relative flex-1 flex flex-col justify-between">
+        {/* Interactive Tech Stack */}
         <div className="mb-1.5">
           <h4 className="text-xs font-medium text-muted-foreground mb-1 flex items-center gap-0.5 drop-shadow-md">
             <Tag className="w-2.5 h-2.5" />
             Tech Stack
           </h4>
-
-          {/* Frontend Stack */}
-          {organizedTechStack.frontend.length > 0 && (
-            <div className="mb-1">
-              <div className="flex flex-wrap gap-0.5">
-                {organizedTechStack.frontend.slice(0, 2).map((tech, index) => (
-                  <span
-                    key={`frontend-${tech.name}`}
-                    className="px-1.5 py-0.5 text-xs rounded"
-                    style={{
-                      backgroundColor: `${tech.color}15`,
-                      color: tech.color,
-                      border: `1px solid ${tech.color}30`
-                    }}
-                  >
-                    {tech.name}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-          
-          {/* Backend Stack */}
-          {organizedTechStack.backend.length > 0 && (
-            <div className="mb-1">
-              <div className="flex flex-wrap gap-0.5">
-                {organizedTechStack.backend.slice(0, 2).map((tech, index) => (
-                  <span
-                    key={`backend-${tech.name}`}
-                    className="px-1.5 py-0.5 text-xs rounded"
-                    style={{
-                      backgroundColor: `${tech.color}15`,
-                      color: tech.color,
-                      border: `1px solid ${tech.color}30`
-                    }}
-                  >
-                    {tech.name}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Tools & Others */}
-          {organizedTechStack.tools.length > 0 && (
-            <div>
-              <div className="flex flex-wrap gap-0.5">
-                {organizedTechStack.tools.slice(0, 2).map((tech, index) => (
-                  <span
-                    key={`tools-${tech.name}`}
-                    className="px-1.5 py-0.5 text-xs rounded"
-                    style={{
-                      backgroundColor: `${tech.color}15`,
-                      color: tech.color,
-                      border: `1px solid ${tech.color}30`
-                    }}
-                  >
-                    {tech.name}
-                  </span>
-                ))}
-                {project.techStack.length > 6 && (
-                  <span
-                    className="px-1.5 py-0.5 text-xs bg-white/15 backdrop-blur-sm border border-white/20 text-muted-foreground rounded"
-                  >
-                    +{project.techStack.length - 6}
-                  </span>
-                )}
-              </div>
-            </div>
-          )}
+          <div className="flex flex-wrap gap-0.5 h-[52px] overflow-hidden">
+            {project.techStack.slice(0, 6).map((tech) => (
+              <span
+                key={tech.name}
+                className="px-1.5 py-0.5 text-xs rounded h-fit"
+                style={{
+                  backgroundColor: `${tech.color}15`,
+                  color: tech.color,
+                  border: `1px solid ${tech.color}30`
+                }}
+              >
+                {tech.name}
+              </span>
+            ))}
+            {project.techStack.length > 6 && (
+              <span
+                className="px-1.5 py-0.5 text-xs bg-white/15 backdrop-blur-sm border border-white/20 text-muted-foreground rounded h-fit"
+              >
+                +{project.techStack.length - 6}
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Enhanced Action Buttons */}
-        <div className="flex gap-1">
+        <div className="flex gap-1 flex-shrink-0">
           {project.liveUrl && (
             <Link href={project.liveUrl} target="_blank" className="flex-1">
               <motion.button
