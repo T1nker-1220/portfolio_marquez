@@ -135,35 +135,25 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
       {/* Enhanced Card Header */}
       <div className="relative p-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <motion.div 
-            className={`w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold ${
-              project.featured 
+          <motion.div
+            className={`px-3 py-2 rounded-lg flex items-center justify-center text-white text-sm font-bold ${
+              project.featured
                 ? 'bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-600 shadow-lg shadow-emerald-500/30'
                 : 'bg-gradient-to-br from-gray-400 to-gray-600'
             }`}
-            whileHover={{ scale: 1.1, rotate: 5 }}
+            whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400 }}
           >
-            N
+            {project.title}
           </motion.div>
-          <div>
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <span>{project.completedAt}</span>
-              <span>•</span>
-              <span className="flex items-center gap-1">
-                <Tag className="w-3 h-3" />
-                {project.category}
-              </span>
-            </div>
-          </div>
         </div>
-        
+
         {/* Featured badge in header */}
         {project.featured && (
           <motion.div
             className="px-3 py-1 bg-gradient-to-r from-emerald-400 to-teal-500 text-white text-xs font-medium rounded-full flex items-center gap-1 shadow-lg"
             whileHover={{ scale: 1.05 }}
-            animate={{ 
+            animate={{
               boxShadow: [
                 '0 0 0 0 rgba(16, 185, 129, 0.4)',
                 '0 0 0 10px rgba(16, 185, 129, 0)',
@@ -178,18 +168,16 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
         )}
       </div>
 
-      {/* Enhanced Project Title & Description */}
+      {/* Year, Category & Description */}
       <div className="px-4 pb-3">
-        <motion.h2 
-          className={`text-base font-semibold mb-1 transition-colors drop-shadow-lg ${
-            project.featured 
-              ? 'text-foreground group-hover:text-emerald-400 group-hover:drop-shadow-lg'
-              : 'text-foreground group-hover:text-emerald-400'
-          }`}
-          layoutId={`title-${project.id}`}
-        >
-          {project.title}
-        </motion.h2>
+        <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
+          <span>{project.completedAt}</span>
+          <span>•</span>
+          <span className="flex items-center gap-1">
+            <Tag className="w-3 h-3" />
+            {project.category}
+          </span>
+        </div>
         <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed drop-shadow-md">
           {project.description}
         </p>
