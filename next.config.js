@@ -1,10 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
-    ignoreDuringBuilds: true,
-  },
+  // Turbopack is now default in Next.js 16 - empty config silences migration warnings
+  turbopack: {},
   images: {
     remotePatterns: [
       {
@@ -19,25 +16,6 @@ const nextConfig = {
   },
   // Configure source maps
   productionBrowserSourceMaps: false, // Disable source maps in production
-  webpack: (config, { dev, isServer }) => {
-    // Suppress source map warnings in development
-    if (dev && !isServer) {
-      config.devtool = 'eval-source-map';
-      // Filter out unwanted source map warnings
-      config.ignoreWarnings = [
-        /Failed to parse source map/,
-        /source map/,
-        /sourceMap/
-      ];
-    }
-    return config;
-  },
-  // Suppress specific 404 warnings in development
-  onDemandEntries: {
-    // Reduce log noise
-    maxInactiveAge: 25 * 1000,
-    pagesBufferLength: 2,
-  },
   // Custom logging to suppress image 404 errors
   logging: {
     fetches: {
