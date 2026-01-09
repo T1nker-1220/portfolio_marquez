@@ -3,21 +3,23 @@
 import { personalInfo } from "@/data/personal-info";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { 
-  MapPin, 
-  Mail, 
-  Github, 
-  Linkedin, 
-  Facebook, 
-  Instagram, 
+import {
+  MapPin,
+  Mail,
+  Github,
+  Linkedin,
+  Facebook,
+  Instagram,
   MessageCircle,
   Youtube,
   FolderOpen,
   Download,
   Sparkles,
-  GitCommit
+  GitCommit,
+  Zap
 } from "lucide-react";
 import Link from "next/link";
+import VerticalScrollSkills from "@/components/ui/vertical-scroll-skills";
 
 const socialIcons = {
   GitHub: Github,
@@ -234,13 +236,13 @@ export default function LeftSidebar({
           <h3 className="text-sm font-medium text-white mb-3 drop-shadow-lg">
             Follow Me
           </h3>
-          
+
           <div className="grid grid-cols-3 gap-2">
             {personalInfo.socialLinks.slice(0, 6).map((social, index) => {
               const Icon = socialIcons[social.platform as keyof typeof socialIcons];
-              
+
               if (!Icon) return null;
-              
+
               return (
                 <Link key={social.platform} href={social.url} target="_blank">
                   <motion.div
@@ -253,6 +255,23 @@ export default function LeftSidebar({
                 </Link>
               );
             })}
+          </div>
+        </motion.div>
+
+        {/* Skills Showcase */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="pt-4 border-t border-border/50"
+        >
+          <h3 className="text-sm font-medium text-white mb-3 flex items-center gap-2 drop-shadow-lg">
+            <Zap className="w-4 h-4" />
+            Skills Showcase
+          </h3>
+
+          <div className="h-40 overflow-hidden">
+            <VerticalScrollSkills />
           </div>
         </motion.div>
       </div>

@@ -3,7 +3,7 @@ import { PersonalInfo, Skill, TimelineItem } from "@/types";
 export const personalInfo: PersonalInfo = {
   name: "Nathaniel",
   fullName: "John Nathaniel Marquez",
-  location: "Amadeo, Cavite",
+  location: "Philippines",
   email: "marquezjohnnathanieljade@gmail.com",
   bio: "I'm a passionate web developer with a strong foundation in modern technologies and extensive expertise in AI-assisted development. I leverage cutting-edge AI tools including Claude Code CLI, WindSurf, Cursor, Cline, RooCode, v0.dev, ChatGPT, Perplexity, and Claude to accelerate development workflows and deliver innovative solutions. My latest project, the T1NKER PC Rental & Management System, showcases my ability to architect secure, real-time, and user-friendly solutions for real-world business needs. Starting from basic programming concepts, I've evolved to master AI-assisted development while maintaining high standards of code quality. My journey includes successful projects in both frontend and full-stack development, showcasing my ability to learn and adapt quickly.",
   education: [

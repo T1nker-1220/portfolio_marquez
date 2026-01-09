@@ -4,7 +4,6 @@ import { personalInfo } from "@/data/personal-info";
 import { projects } from "@/data/projects";
 import SocialLayout from "@/components/layout/social-layout";
 import LeftSidebar from "@/components/layout/left-sidebar";
-import RightSidebar from "@/components/layout/right-sidebar";
 import SocialPostCard from "@/components/ui/social-post-card";
 import TimelinePost from "@/components/ui/timeline-post";
 import { TabContent } from "@/components/ui/tabs";
@@ -137,13 +136,12 @@ export default function HomePage() {
   return (
     <SocialLayout
         leftSidebar={
-          <LeftSidebar 
+          <LeftSidebar
             activeTab={activeTab}
             onTabChange={setActiveTab}
             projectsCount={projects.length}
           />
         }
-        rightSidebar={<RightSidebar />}
       >
 
         {activeTab === "projects" && (

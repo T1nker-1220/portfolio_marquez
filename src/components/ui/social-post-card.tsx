@@ -135,17 +135,9 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
       {/* Enhanced Card Header */}
       <div className="relative p-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <motion.div
-            className={`px-3 py-2 rounded-lg flex items-center justify-center text-white text-sm font-bold ${
-              project.featured
-                ? 'bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-600 shadow-lg shadow-emerald-500/30'
-                : 'bg-gradient-to-br from-gray-400 to-gray-600'
-            }`}
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400 }}
-          >
+          <h2 className="text-base font-semibold text-foreground drop-shadow-lg">
             {project.title}
-          </motion.div>
+          </h2>
         </div>
 
         {/* Featured badge in header */}
@@ -197,21 +189,6 @@ export default function SocialPostCard({ project }: SocialPostCardProps) {
               e.currentTarget.className = "object-contain p-8";
             }}
           />
-          
-          {/* Enhanced Featured Badge on Image */}
-            {project.featured && (
-              <motion.div 
-                className="absolute top-3 left-3"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                whileHover={{ scale: 1.1 }}
-              >
-                <div className="px-3 py-1 bg-gradient-to-r from-emerald-400 via-teal-500 to-cyan-600 text-white text-xs font-medium rounded-full flex items-center gap-1 shadow-lg backdrop-blur-sm">
-                  <Star className="w-3 h-3" fill="currentColor" />
-                  Featured
-                </div>
-              </motion.div>
-            )}
         </div>
       </div>
 

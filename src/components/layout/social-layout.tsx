@@ -7,7 +7,7 @@ import { Menu, X, BarChart3, User } from "lucide-react";
 interface SocialLayoutProps {
   children: ReactNode;
   leftSidebar: ReactNode;
-  rightSidebar: ReactNode;
+  rightSidebar?: ReactNode;
 }
 
 export default function SocialLayout({
@@ -32,20 +32,22 @@ export default function SocialLayout({
              <User className="w-4 h-4" />
              <span className="text-sm font-medium">Profile</span>
            </motion.button>
-          
+
           <h1 className="text-lg font-semibold text-foreground">
             Portfolio
           </h1>
-          
-                     <motion.button
-             whileHover={{ scale: 1.05 }}
-             whileTap={{ scale: 0.95 }}
-             onClick={() => setRightSidebarOpen(true)}
-             className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 dark:bg-white/5 hover:bg-white/20 dark:hover:bg-white/10 transition-colors backdrop-blur-sm"
-           >
-             <BarChart3 className="w-4 h-4" />
-             <span className="text-sm font-medium">Stats</span>
-           </motion.button>
+
+          {rightSidebar && (
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setRightSidebarOpen(true)}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 dark:bg-white/5 hover:bg-white/20 dark:hover:bg-white/10 transition-colors backdrop-blur-sm"
+            >
+              <BarChart3 className="w-4 h-4" />
+              <span className="text-sm font-medium">Stats</span>
+            </motion.button>
+          )}
         </div>
       </div>
 
@@ -76,16 +78,18 @@ export default function SocialLayout({
           </motion.main>
 
                      {/* Right Sidebar - Stats & Highlights */}
-           <motion.aside
-             initial={{ opacity: 0, x: 20 }}
-             animate={{ opacity: 1, x: 0 }}
-             transition={{ duration: 0.5, delay: 0.4 }}
-             className="hidden xl:flex xl:flex-col xl:w-80 xl:min-w-[320px] xl:max-w-[400px] xl:sticky xl:top-6 xl:h-[calc(100vh-3rem)]"
-           >
-             <div className="bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/20 dark:border-white/10 shadow-2xl shadow-black/25 h-full flex flex-col glass-container">
-               {rightSidebar}
-             </div>
-           </motion.aside>
+           {rightSidebar && (
+             <motion.aside
+               initial={{ opacity: 0, x: 20 }}
+               animate={{ opacity: 1, x: 0 }}
+               transition={{ duration: 0.5, delay: 0.4 }}
+               className="hidden xl:flex xl:flex-col xl:w-80 xl:min-w-[320px] xl:max-w-[400px] xl:sticky xl:top-6 xl:h-[calc(100vh-3rem)]"
+             >
+               <div className="bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/20 dark:border-white/10 shadow-2xl shadow-black/25 h-full flex flex-col glass-container">
+                 {rightSidebar}
+               </div>
+             </motion.aside>
+           )}
         </div>
       </div>
 
@@ -125,7 +129,7 @@ export default function SocialLayout({
       )}
 
       {/* Mobile Right Sidebar Overlay */}
-      {rightSidebarOpen && (
+      {rightSidebar && rightSidebarOpen && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

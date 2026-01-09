@@ -116,27 +116,27 @@ export default function VerticalScrollSkills() {
   };
 
   return (
-    <div className="flex gap-3 h-16">
+    <div className="flex gap-3 h-40">
       <VerticalScrollColumn 
         title="🎨 Frontend"
         skillsList={skillsByCategory.frontend}
         color="emerald"
         direction="up"
-        speed={15}
+        speed={25}
       />
       <VerticalScrollColumn 
         title="⚙️ Backend"
         skillsList={skillsByCategory.backend}
         color="teal"
         direction="up"
-        speed={15}
+        speed={25}
       />
       <VerticalScrollColumn 
         title="🛠️ Tools"
         skillsList={skillsByCategory.tools}
         color="green"
         direction="up"
-        speed={15}
+        speed={25}
       />
     </div>
   );
