@@ -3,11 +3,11 @@ import { Project } from "@/types";
 export const projects: Project[] = [
   {
     id: "afterdark",
-    title: "AfterDark Society",
+    title: "Community Platform",
     description:
-      "A comprehensive digital platform for AfterDark Society, featuring modern web technologies and seamless user experience. Built with cutting-edge frameworks to deliver exceptional performance and functionality for the community.",
+      "A comprehensive digital platform featuring modern web technologies and seamless user experience. Built with cutting-edge frameworks to deliver exceptional performance and functionality for the community.",
     image: "/images/projects/afterdark.png",
-    liveUrl: "https://afterdarksociety.com",
+    liveUrl: "",
     githubUrl: null,
     techStack: [
       { name: "Next.js 15", icon: "nextjs", color: "#E5E7EB" },
@@ -115,11 +115,11 @@ export const projects: Project[] = [
   },
   {
     id: "minrights-chatbot",
-    title: "MinRights Chatbot",
+    title: "Energy Data Chatbot",
     description:
-      "A sophisticated Python package providing AI-powered conversational interfaces for oil & gas data analysis. Built for the MinRights platform, it implements a two-tier bot architecture (Basic and Premium) with comprehensive database integration, web search capabilities, and advanced analytics features.",
+      "A sophisticated Python package providing AI-powered conversational interfaces for oil & gas data analysis. Built for the platform, it implements a two-tier bot architecture (Basic and Premium) with comprehensive database integration, web search capabilities, and advanced analytics features.",
     image: "/images/projects/minrights-chatbot.png",
-    liveUrl: "https://www.mineralrights.ai/",
+    liveUrl: "",
     githubUrl: null,
     techStack: [
       // Programming Languages & Core Runtime
@@ -190,7 +190,7 @@ export const projects: Project[] = [
       "Tool architecture using @function_tool() decorator",
       "State management for SQL results and chart data",
       "Modular prompt system with dynamic loading",
-      "MCP server integrations (aws-postgres-minrights, context7)",
+      "MCP server integrations (aws-postgres, context7)",
       "Query classification with ML-based routing",
       "Connection pooling for efficient resource management",
       "Base64 chart encoding for web compatibility",
@@ -207,9 +207,9 @@ export const projects: Project[] = [
   },
   {
     id: "minrights-regulatory-platform",
-    title: "MinRights Regulatory Platform",
+    title: "Regulatory Data Platform",
     description:
-      "A sophisticated multi-state regulatory data extraction and management system specifically designed for oil & gas spacing orders and operator information. The platform integrates directly with the MinRights PostgreSQL database to provide real-time regulatory data availability across multiple states with ultra-fast database operations achieving 7,799+ records/sec.",
+      "A sophisticated multi-state regulatory data extraction and management system specifically designed for oil & gas spacing orders and operator information. The platform integrates directly with the PostgreSQL database to provide real-time regulatory data availability across multiple states with ultra-fast database operations achieving 7,799+ records/sec.",
     image: "/images/projects/minrights-regulatory-platform.png",
     liveUrl: "",
     githubUrl: null,
@@ -266,7 +266,7 @@ export const projects: Project[] = [
 
       // Cloud Infrastructure
       { name: "AWS RDS", icon: "aws", color: "#FF9900" },
-      { name: "MinRights Database", icon: "database", color: "#3ECF8E" },
+      { name: "Client Database", icon: "database", color: "#3ECF8E" },
       { name: "Linux/Windows", icon: "server", color: "#607D8B" },
 
       // Quality Assurance
@@ -283,7 +283,7 @@ export const projects: Project[] = [
     features: [
       "Multi-state support: Colorado, Wyoming, North Dakota, New Mexico, Texas (planned)",
       "Ultra-fast database operations: PostgreSQL COPY achieving 7,799+ records/sec",
-      "Intelligent section mapping to MinRights section identifiers",
+      "Intelligent section mapping to section identifiers",
       "Concurrent processing with configurable worker pools (up to 35 threads)",
       "Dual-mode operation: CSV export + direct database integration",
       "Enhanced operator extraction with 440+ curated operator database",
@@ -315,7 +315,7 @@ export const projects: Project[] = [
   },
   {
     id: "minrights-pipeline",
-    title: "MinRights Pipeline",
+    title: "Data Processing Pipeline",
     description:
       "A sophisticated oil & gas data processing system designed for targeted investment analysis across multiple US states. This system processes large-scale energy data (~23,782 wells) to support investment decision-making in the oil & gas sector with nightly updates and zero-downtime deployments.",
     image: "/images/projects/minrights-pipeline.png",
@@ -521,7 +521,7 @@ export const projects: Project[] = [
   },
   {
     id: "aws-postgres-mcp-server",
-    title: "AWS PostgreSQL MCP Server",
+    title: "PostgreSQL MCP Server",
     description:
       "A sophisticated, production-ready Model Context Protocol server specifically designed for oil & gas industry data management with advanced PostgreSQL integration on AWS RDS. Features comprehensive safety controls, geospatial operations, and industry-specific tools for petroleum data analysis.",
     image: "/images/projects/aws-postgres-mcp-server.png",
@@ -625,7 +625,7 @@ export const projects: Project[] = [
       "Decline curve analysis with PDP forecasting and hyperbolic decline parameters",
       "Type curve generation for PUD forecasting at undeveloped locations",
       "Drilling operations tracking with rig status and operational monitoring",
-      "Multi-schema architecture supporting minrights, prod, data, spatial schemas",
+      "Multi-schema architecture supporting client, prod, data, spatial schemas",
       "Advanced query optimization with mandatory LIMIT clauses and timeouts",
       "Transaction management with dry-run capabilities and automatic rollback",
       "EXPLAIN plan analysis for query impact estimation",
@@ -710,17 +710,17 @@ export const projects: Project[] = [
   },
   {
     id: "minrights-ai",
-    title: "Mineral Rights AI",
+    title: "Energy Analytics Platform",
     description:
       "A full-stack web application built with Next.js and Mantine v7. As a collaborative project, I focus primarily on frontend development and API integration while also contributing to Python backend tasks when needed. The application features a modern responsive interface with comprehensive data management capabilities.",
     image: "/images/projects/minrights-ai.png",
-    liveUrl: "https://www.mineralrights.ai/",
+    liveUrl: "",
     githubUrl: null,
     techStack: [
       // Based on the comprehensive deep dive analysis from PM1, PM2, and the architecture planner, here is
-      // the complete inventory of ALL tech stacks in your MinRights codebase:
+      // the complete inventory of ALL tech stacks in the codebase:
 
-      // 🏗️ Complete MinRights Tech Stack Inventory
+      // 🏗️ Complete Tech Stack Inventory
 
       // Frontend Technologies (Next.js 14 Ecosystem)
 
@@ -802,7 +802,7 @@ export const projects: Project[] = [
       // External Services:
       { name: "OpenAI 1.16.2", icon: "openai", color: "#412991" },
       { name: "Stripe 7.0.0", icon: "stripe", color: "#635BFF" },
-      { name: "minrights-chatbot", icon: "chatbot", color: "#FF6B6B" },
+      { name: "energy-chatbot", icon: "chatbot", color: "#FF6B6B" },
 
       // Development Tools:
       { name: "Black 23.9.1", icon: "black", color: "#000000" },
