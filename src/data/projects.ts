@@ -3,9 +3,9 @@ import { Project } from "@/types";
 export const projects: Project[] = [
   {
     id: "afterdark",
-    title: "Community Platform",
+    title: "AfterDark Social Platform",
     description:
-      "A comprehensive digital platform featuring modern web technologies and seamless user experience. Built with cutting-edge frameworks to deliver exceptional performance and functionality for the community.",
+      "A Firebase-powered social discovery platform where communities come alive through real-time connections. Think Facebook meets Tinder for building genuine friendships and communities - users can create rich content with posts and videos, discover people through swipe-based matching, join interest-based groups, attend local events, and engage in real-time messaging. The web app serves as the in-depth engagement hub for content creation and community management, while the mobile app focuses on real-time interactions and location-based discovery. Built for real customers with dual Firebase environments (staging for development, production for live users) and deployed on Vercel serving thousands of active community members.",
     image: "/images/projects/afterdark.png",
     liveUrl: "",
     githubUrl: null,
@@ -37,9 +37,9 @@ export const projects: Project[] = [
   },
   {
     id: "mojogift",
-    title: "MojoGift Platform",
+    title: "MojoGift - Luxury Digital Gifting Platform",
     description:
-      "A sophisticated gift management and delivery platform built with modern web technologies. Features comprehensive gift tracking, user management, and seamless integration with payment systems for a complete gifting experience.",
+      "A full-stack luxury experience platform that transforms digital gifting into emotionally-resonant moments. Imagine Instagram for memories meets AI-powered travel planner meets corporate gifting suite - users create beautiful memory journals with photos and videos to capture life's meaningful moments, get personalized travel recommendations from Clevis AI (powered by Google Gemini) through an interactive chat-based itinerary builder with Google Maps integration, and companies can manage bulk gift campaigns with employee roster uploads and analytics dashboards. Built with Next.js 15 (React 19, TypeScript) frontend and Express backend with Prisma ORM connecting to PostgreSQL, featuring Cloudinary media storage, Amazon SES emails, JWT authentication, and role-based access control. A complete ecosystem for personal memories, dream vacations, and corporate appreciation.",
     image: "/images/projects/mojogift.png",
     liveUrl: "",
     githubUrl: null,
@@ -710,9 +710,9 @@ export const projects: Project[] = [
   },
   {
     id: "minrights-ai",
-    title: "Energy Analytics Platform",
+    title: "MinRights - Oil & Gas Property Evaluation Platform",
     description:
-      "A full-stack web application built with Next.js and Mantine v7. As a collaborative project, I focus primarily on frontend development and API integration while also contributing to Python backend tasks when needed. The application features a modern responsive interface with comprehensive data management capabilities.",
+      "A sophisticated mineral rights analysis platform that transforms oil & gas property evaluation through interactive mapping and financial modeling. Imagine having the power to analyze entire states of oil & gas data - visualizing thousands of wells, townships, and land sections on an interactive MapLibre GL JS map with heat maps showing peak production, rig density, and section values, while running complex financial calculations including hyperbolic decline curves for production forecasting, NPV calculations with multiple discount rate scenarios, and economic modeling that accounts for royalty rates, deduction rates, operating expenses, and capital costs. Built as a pnpm monorepo with Next.js 14 (React 18, TypeScript, Mantine v7) frontend featuring Zustand state management, TanStack Query for data fetching, and Recharts/Chart.js/ECharts for visualizations paired with a Python FastAPI backend using SQLAlchemy, Pandas, and NumPy to crunch the numbers. The platform processes data across a 5-level geographic hierarchy (States → Counties → Townships → Sections → Wells), generates PDP (Producing Developed Petroleum) and PUD (Proved Undeveloped) forecasts, offers multi-scenario analysis (low/expected/high), creates PDF reports for premium users, and integrates with PostgreSQL via Supabase for real-time data access. From drilling to dollars, every decision backed by data.",
     image: "/images/projects/minrights-ai.png",
     liveUrl: "",
     githubUrl: null,
@@ -841,9 +841,9 @@ export const projects: Project[] = [
   },
   {
     id: "excel-glass",
-    title: "Excel Glass Inc.",
+    title: "Excel Glass Inc. - Corporate Website",
     description:
-      "A modern website for Excel Glass Inc. showcasing their products and services with a beautiful UI and responsive design.",
+      "A stunning headless WordPress website for Excel Glass, Inc., a prestigious glass company with 28 years of excellence in the industry. Built as a modern JAMstack architecture using WordPress as a headless CMS with Faust.js, the site showcases their premium glass products and services through elegant animations and interactive galleries. Features include a hero section with glass-effect backgrounds, animated service showcases with hover effects, client testimonial carousels, achievement counters highlighting their decades of service, portfolio galleries of completed projects, multi-channel contact options (forms, click-to-call, WhatsApp, social media), interactive Google Maps integration, and responsive design optimized for all devices. The website combines Playfair Display serif fonts for elegant headings with modern Inter sans-serif for body text, creating a sophisticated brand presence that reflects their professional craftsmanship.",
     image: "/images/projects/excel-glass.webp",
     liveUrl: "https://excel-glass.vercel.app",
     githubUrl: null,
@@ -1095,9 +1095,9 @@ export const projects: Project[] = [
 
   {
     id: "wedding-memories",
-    title: "Wedding Memories",
+    title: "Nichols Wedding Memories - Love Story Timeline",
     description:
-      "A beautiful wedding memories website with photo galleries and event information.",
+      "An elegant interactive wedding website that beautifully chronicles Jamaica and Morgan's love story from their digital meeting on Filipino Cupid to their wedding day. Features a stunning hero section, chronological timeline with five key milestone events (Digital Beginning in May 2023, First Visit & Proposal in December 2023, and more), each showcasing optimized image carousels with touch/swipe gestures and keyboard navigation. Built with Next.js 13.5, React 19, TypeScript, and Prisma 6 for the RSVP system, the site includes a full-size photo gallery with lightbox, automatic image advancement every 5 seconds, WebP and AVIF format optimization, responsive device sizes, blur placeholders for smooth loading, and an RSVP system for guests. The image carousels display at 600px height with object-fit contain for proper scaling, feature smooth transitions and animations, and are fully accessible. A romantic digital experience that captures their journey and invites guests to celebrate their special day.",
     image: "/images/projects/wedding-memories.webp",
     liveUrl: "https://nicholsweddingmemories.vercel.app",
     githubUrl: null,
@@ -1135,9 +1135,9 @@ export const projects: Project[] = [
   },
   {
     id: "kusina-de-amadeo",
-    title: "Kusina de Amadeo",
+    title: "Kusina de Amadeo - Restaurant Showcase",
     description:
-      "A modern restaurant management system with online ordering, inventory tracking, and customer relationship management.",
+      "A modern product showcase website for Kusina de Amadeo restaurant, highlighting their authentic Filipino cuisine and signature dishes. Built with Next.js 14, React 19, and TypeScript, featuring beautiful product galleries with Framer Motion animations, responsive design with Tailwind CSS and Shadcn UI components, Radix UI primitives for accessible interactions, Zustand state management for smooth user experience, and Sonner toast notifications for user feedback. The site showcases the restaurant's menu items with optimized images, smooth scroll animations, and elegant hover effects that bring their culinary offerings to life. Deployed on Vercel with environment variables for different stages, featuring modular component-based architecture with proper TypeScript typing throughout.",
     image: "/images/projects/kda-product-showcase.vercel.app.jpeg",
     liveUrl: "https://kda-product-showcase.vercel.app/",
     githubUrl: null,
@@ -1181,7 +1181,7 @@ export const projects: Project[] = [
     id: "t1nker-pc-rental",
     title: "T1NKER PC Rental & Management System",
     description:
-      "A secure, automated, and user-friendly time-based PC rental system for internet cafes and gaming lounges. Features a web-based admin dashboard, real-time session management, robust client kiosk app, and comprehensive transaction and activity logging. Built for operational efficiency, security, and a seamless user experience.",
+      "A complete full-stack PC rental ecosystem for internet cafes that combines a powerful web admin dashboard with Electron desktop clients deployed on every rental machine. Imagine a cyber cafe management system where admins can monitor all PCs in real-time through beautiful analytics dashboards with charts showing revenue, session statistics, and PC utilization - while customers interact with sleek kiosk interfaces on each rental computer to start/end sessions and make payments. Built with Next.js 15 (React 19, TypeScript) for the web dashboard and Electron for the desktop clients, all connected to Supabase PostgreSQL with real-time subscriptions that instantly sync data across all devices. Features Zustand stores for client-side state management, Tremor & Recharts for stunning analytics visualizations, bcryptjs for secure password hashing, and automated builds for individual PC deployments. The system tracks every second of usage, processes payments accurately, generates comprehensive reports, and provides a seamless experience from customer login to admin oversight.",
     image: "/images/projects/tinker-pc-rental.png",
     liveUrl: "",
     githubUrl: null,
